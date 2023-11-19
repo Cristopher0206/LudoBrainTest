@@ -14,7 +14,7 @@ export default function RegistrarEducador() {
             method: "post",
             data: {
                 usuario: usuario,
-                password: password,
+                user_password: password,
                 nombre: nombre,
                 apellido: apellido,
             },
@@ -52,7 +52,7 @@ export default function RegistrarEducador() {
                 <br/><br/>
                 <label>Contraseña</label>
                 <br/>
-                <input name={`password`}
+                <input name={`user_password`}
                        type="password"
                        onChange={e => setPassword(e.target.value)}/>
                 <br/><br/>

@@ -50,7 +50,7 @@ app.post('/login', (req, res, next) => {
     })(req, res, next)
 });
 app.post('/registrarEducador', (req, res) => {
-    const {usuario, password, nombre, apellido} = req.body;
+    const {usuario, user_password, nombre, apellido} = req.body;
     const querySelect = "SELECT * FROM educador WHERE usuario = ?"
     db.query(querySelect, [usuario], (err, result) => {
         if (err) { /* La consulta no pudo ejecutarse */
@@ -60,8 +60,8 @@ app.post('/registrarEducador', (req, res) => {
             res.send({message: 'El usuario ya se encuentra registrado'});
         }
         if (result.length === 0) {
-            const queryInsert = "INSERT INTO educador (usuario, password, nombre, apellido) VALUES (?,?,?,?)";
-            db.query(queryInsert, [usuario, password, nombre, apellido], (err, result) => {
+            const queryInsert = "INSERT INTO educador (usuario, user_password, nombre, apellido) VALUES (?,?,?,?)";
+            db.query(queryInsert, [usuario, user_password, nombre, apellido], (err, result) => {
                 if (err) {
                     throw err;
                 }

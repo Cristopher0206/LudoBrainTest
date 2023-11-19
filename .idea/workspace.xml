@@ -5,32 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/UpperBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/jsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/_app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/_document.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/api/hello.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/registrarEducador.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/next.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/vercel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/passportConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/navstyles.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/SectionList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createNiño.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createTest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createBusqueda.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createComprension.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createConceptos.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createDibujos.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createInformacion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createMatrices.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createNombres.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createReconocimiento.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createSemejanzas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createVocabulario.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/instrucciones.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/menuOpcionesTest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulos.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulosCreacion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/presentacion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaInformacion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaSemejanzas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaVocabulario.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readNiño.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readPregunta.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readTest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectNiño.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectSeccionPregunta.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectSeccionTest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/registrarEducador.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/registrarEducador.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,25 +67,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/GitHub/LudoBrainTest",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/LudoBrainTest&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages\read\preguntas" />
+      <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages\select" />
+      <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages\create" />
+      <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages\read" />
       <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages" />
     </key>
   </component>
@@ -111,6 +120,7 @@
       <updated>1699934836697</updated>
       <workItem from="1699934838148" duration="499000" />
       <workItem from="1700264637787" duration="11945000" />
+      <workItem from="1700354722574" duration="3677000" />
     </task>
     <servers />
   </component>

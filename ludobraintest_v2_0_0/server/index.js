@@ -70,3 +70,16 @@ app.post('/registrarEducador', (req, res) => {
         }
     });
 });
+app.get('/getUser', (req, res) => {
+    if (req.isAuthenticated()) {
+        // Si el usuario está autenticado, envía la información del usuario
+        res.send({
+            id: req.user.id,  // Asumiendo que el id del usuario está disponible en req.user
+            username: req.user.username,
+            name: req.user.name
+        });
+    } else {
+        // Si el usuario no está autenticado, envía un objeto vacío o un código de error
+        res.status(401).send({message: "Usuario no autenticado"});
+    }
+})

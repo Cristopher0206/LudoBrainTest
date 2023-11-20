@@ -21,14 +21,14 @@ export default function RegistrarEducador() {
             withCredentials: true,
             url: "http://localhost:3001/registrarEducador"
         }).then((res) => {
-            console.log("Exitoso",res);
+            console.log("Exitoso", res);
         }).catch((err) => {
-            console.log("No Exitoso",err);
+            console.log("No Exitoso", err);
         })
     }
     return (
         <div className={`container-fluid border-2 border-black p-0`}>
-            <UpperBar></UpperBar>
+            <UpperBar redirectionPath={`/login`}/>
             <div className={`container-fluid text-black`}>
                 <br/>
                 <label>Nombre</label>

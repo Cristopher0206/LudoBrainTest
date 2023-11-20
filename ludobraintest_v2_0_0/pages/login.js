@@ -1,17 +1,16 @@
-import UpperBar from "@/components/UpperBar";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 export default function Login() {
-    /* Estados */
+    const router = useRouter();
+    /* ESTADOS */
     const [loginUsuario, setLoginUsuario] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
-    //useState para el estado de la alarma
-    const [showAlert, setShowAlert] = useState(false);
-
-    const router = useRouter();
-
+    const [showAlert, setShowAlert] = useState(false); // estado de la alarma
+    /* FUNCIONES */
     const login = () => {
         axios({
             method: "post",
@@ -23,8 +22,8 @@ export default function Login() {
             url: "http://localhost:3001/login"
         }).then(res => {
             if (res.data === "Usuario logeado") {
-                console.log("BIENVENIDOOOOOOOOO");
-                //router.push('/modulos');
+                //console.log("BIENVENIDOOOOOOOOO");
+                router.push('/modulos');
             } else {
                 // Si las credenciales son incorrectas, salta una alerta
                 setShowAlert(true);
@@ -96,6 +95,21 @@ export default function Login() {
                     <button className={`btn btn-success w-100`}>
                         Jugar como invitado
                     </button>
+                </div>
+            </div>
+            <br/>
+            <div className={`row d-flex justify-content-center`}>
+                <div className="col-12">
+                    <Link href={`#`} className={`d-flex justify-content-center`}>
+                        ¿Olvidaste tu contraseña?
+                    </Link>
+                </div>
+            </div>
+            <div className={`row d-flex justify-content-center`}>
+                <div className="col-12">
+                    <Link href={`/registrarEducador`} className={`d-flex justify-content-center`}>
+                        ¿No tienes una cuenta? ¡Regístrate!
+                    </Link>
                 </div>
             </div>
             <br/>

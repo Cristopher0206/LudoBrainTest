@@ -43,8 +43,9 @@ module.exports = function (passport) {
                 db.query(query, [id], (err, result) => {
                     if (err) throw err;
                     const userInfo = {
-                        id_usuario: result[0].id_educador,
-                        usuario: result[0].usuario,
+                        id: result[0].id_educador,
+                        username: result[0].usuario,
+                        name: result[0].nombre,
                     }
                     done(null, userInfo);
                 })

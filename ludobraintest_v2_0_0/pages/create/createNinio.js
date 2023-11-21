@@ -2,6 +2,7 @@ import UpperBar from "@/components/UpperBar";
 import InstructionBar from "@/components/InstructionBar";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import navstyles from "@/styles/navstyles.module.css";
 
 export default function CreateNinio() {
     /*------------------- ESTADOS -------------------*/
@@ -43,7 +44,8 @@ export default function CreateNinio() {
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/login`}></UpperBar>
+            <UpperBar redirectionPath={`/login`}
+                      color={navstyles.upper_bar_yellow}/>
             <InstructionBar previousPage={`../read/readNinio`}
                             instruction={`Registra a un niño`}/>
             <div className={`container-fluid text-black`}>

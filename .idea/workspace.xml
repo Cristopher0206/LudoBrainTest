@@ -5,14 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/AddButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/SectionList.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/SectionList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/UpperBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/UpperBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createNiño.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createNinio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createNinio.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createNinio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createInformacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/preguntas/createInformacion.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulos.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulosCreacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulosCreacion.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/presentacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/presentacion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readNiño.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readNinio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readNinio.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readNinio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readPregunta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectSeccionPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectSeccionPregunta.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/navstyles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/navstyles.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +106,8 @@
       <workItem from="1700264637787" duration="11945000" />
       <workItem from="1700354722574" duration="3677000" />
       <workItem from="1700446713326" duration="5185000" />
-      <workItem from="1700481245226" duration="8230000" />
+      <workItem from="1700481245226" duration="9999000" />
+      <workItem from="1700530598077" duration="12199000" />
     </task>
     <servers />
   </component>

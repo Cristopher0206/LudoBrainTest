@@ -1,8 +1,7 @@
 import UpperBar from "@/components/UpperBar";
 import InstructionBar from "@/components/InstructionBar";
-import {useEffect, useState} from "react";
-import axios from "axios";
 import Link from "next/link";
+import navstyles from "@/styles/navstyles.module.css";
 
 export default function Modulos(){
     /*------------------- ESTADOS -------------------*/
@@ -10,7 +9,8 @@ export default function Modulos(){
     /*------------------- FUNCIONES -------------------*/
     return(
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/login`}/>
+            <UpperBar redirectionPath={`/login`}
+                      color={navstyles.upper_bar_yellow}/>
             <InstructionBar previousPage={`/presentacion`}
                             instruction={`Selecciona un módulo`}/>
             <div className={`container-fluid border-2 border-black`}>
@@ -20,7 +20,11 @@ export default function Modulos(){
                         Módulo de test
                     </div>
                     <div className={`col-5 border-2 border-red-500`}>
-                        Módulo de creación
+                        <Link href="/modulosCreacion">
+                            <button type={`button`} className={`btn btn-success w-100`}>
+                                Módulo de Creación
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <br/>

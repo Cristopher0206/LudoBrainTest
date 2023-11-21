@@ -23,7 +23,12 @@ export default function Login() {
         }).then(res => {
             if (res.data === "Usuario logeado") {
                 //console.log("BIENVENIDOOOOOOOOO");
-                router.push('/presentacion');
+                router.push('/presentacion')
+                    .then(r => {
+                        console.log(r);
+                    }).catch( err => {
+                        console.log(err);
+                })
             } else {
                 // Si las credenciales son incorrectas, salta una alerta
                 setShowAlert(true);

@@ -4,7 +4,7 @@ import navstyles from '../styles/navstyles.module.css'
 import Link from "next/link";
 import axios from "axios";
 import {useEffect, useState} from "react";
-export default function UpperBar({redirectionPath}) {
+export default function UpperBar({redirectionPath, color}) {
     /*------------------- ESTADOS -------------------*/
     const [userId, setUserId] = useState('');
     const [username, setUsername] = useState('');
@@ -29,7 +29,7 @@ export default function UpperBar({redirectionPath}) {
         });
     }
     return (
-        <div className={`${navstyles.upper_bar} container-fluid px-4 py-3`}>
+        <div className={`${color} container-fluid px-4 py-3`}>
             <div className={`row justify-content-between`}>
                 <div className={`col-5 d-flex justify-content-center`}>
                     <img src="" alt="user logo"/>

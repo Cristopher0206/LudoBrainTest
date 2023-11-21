@@ -122,3 +122,17 @@ app.post('/crearNinio', (req, res) => {
         }
     });
 });
+/* Funciones de Lectura */
+app.get('/getChildren', (req, res) => {
+    const id_educador = req.user.id;
+    const query = 'SELECT niño.nombre, niño.edad ' +
+        'FROM niño JOIN educador_niño ' +
+        'ON niño.id_ninio = educador_niño.id_niño ' +
+        'WHERE educador_niño.id_educador = ?';
+    db.query(query, [id_educador], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+});

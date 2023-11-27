@@ -1,10 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import navstyles from '../styles/navstyles.module.css'
-
 import Link from "next/link";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {useRouter} from "next/router";
 export default function UpperBar({redirectionPath, color}) {
+    const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     const [userId, setUserId] = useState('');
     const [username, setUsername] = useState('');
@@ -25,7 +26,7 @@ export default function UpperBar({redirectionPath, color}) {
             setName(res.data.name);
         }).catch(err => {
             console.log(err);
-            //router.push('/login');
+            router.push('/login');
         });
     }
     return (

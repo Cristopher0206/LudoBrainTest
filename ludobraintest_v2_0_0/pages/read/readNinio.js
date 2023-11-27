@@ -22,8 +22,12 @@ export default function ReadNinio() {
             withCredentials: true,
             url: "http://localhost:3001/getChildren"
         }).then((res) => {
-            setChildren(res.data); // Establece el estado con los resultados
-            console.log(res);
+            if (res.data) {
+                setChildren(res.data); // Establece el estado con los resultados
+                console.log(res);
+            } else {
+                console.error("No existe información", res);
+            }
         }).catch((err) => {
             console.log(err);
         })
@@ -38,8 +42,10 @@ export default function ReadNinio() {
             <AddButton createPage={`../create/createNinio`}
                        color={navstyles.upper_bar_yellow}/>
             <div className={`container-fluid border-2 border-black p-0`}>
-                {children.map((child) => (
-                    <div key={child.id_ninio} className={`container-fluid py-4 px-5 border-2 border-red-500`}>
+                <br/>
+                <img src="../../public/images/Icono_5.png" alt=""/>
+                {children.map((child, index) => (
+                    <div key={index} className={`container-fluid py-4 px-5 border-2 border-red-500`}>
                         <div className={`row justify-content-between p-0 border-2 border-green-500`}>
                             <div className={`col-3 border-2 border-amber-950`}>
                                 {child.nombre}
@@ -48,8 +54,7 @@ export default function ReadNinio() {
                                 {child.edad} años
                             </div>
                             <div className={`col-3 d-flex justify-content-end border-2 border-amber-950`}>
-                                <img src="" alt="trash logo"/>
-                                <img src="" alt="pencil logo"/>
+                                <box-icon name='trash-alt' type='solid' ></box-icon>
                             </div>
                         </div>
                     </div>

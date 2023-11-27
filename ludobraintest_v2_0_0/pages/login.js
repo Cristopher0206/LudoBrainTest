@@ -97,9 +97,11 @@ export default function Login() {
                     </button>
                 </div>
                 <div className={`col-5 p-0 d-flex justify-content-center`}>
-                    <button className={`btn btn-success w-100`}>
-                        Jugar como invitado
-                    </button>
+                    <Link href={`/presentacion`} className={`w-100`}>
+                        <button className={`btn btn-success w-100`}>
+                            Jugar como invitado
+                        </button>
+                    </Link>
                 </div>
             </div>
             <br/>

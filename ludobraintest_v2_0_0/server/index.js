@@ -87,24 +87,42 @@ app.post('/registrarEducador', (req, res) => {
     });
 });
 app.post('/crearNinio', (req, res) => {
-    const {nombre, edad, id_educador} = req.body;
-    const querySelect = "SELECT * FROM niño WHERE nombre = ? AND id_educador = ?"
-    db.query(querySelect, [nombre, id_educador], (err, result) => {
+    const id_educador = req.user.id;
+    const {nombre, edad} = req.body;
+    const querySelect = "SELECT * FROM niño WHERE nombre = ?"
+    db.query(querySelect, [nombre], (err, result) => {
         if (err) { /* La consulta no pudo ejecutarse */
             throw err;
         }
-        if (result.length > 0) { /* La consulta encontró un dato en la base */
-            res.send({message: 'Este niño ya se encuentra registrado'});
+        if (result.length > 0) { /* La consulta encontró un niño en la base */
+            const querySelect2 = 'SELECT * FROM educador_niño WHERE id_educador = ? AND id_niño = ?';
+            db.query(querySelect2, [id_educador, result[0].id_ninio], (err, result3) => {
+                if (err) {
+                    throw err;
+                }
+                if(result3.length > 0){
+                    res.send({message: 'Este niño ya se encuentra registrado'});
+                }
+                if(result3.length === 0) {
+                    const queryInsert2 = 'INSERT INTO educador_niño (id_educador, id_niño) VALUES (?, ?)';
+                    db.query(queryInsert2, [id_educador, result[0].id_ninio], (err, result4) => {
+                        if(err) {
+                            throw err;
+                        }
+                        res.send({message: 'Niño creado correctamente'});
+                    })
+                }
+            })
         }
         if (result.length === 0) {
-            const queryInsert = "INSERT INTO niño (nombre, edad, id_educador) VALUES (?,?,?)";
-            db.query(queryInsert, [nombre, edad, id_educador], (err, result) => {
+            const queryInsert = "INSERT INTO niño (nombre, edad) VALUES (?,?)";
+            db.query(queryInsert, [nombre, edad], (err, result) => {
                 if (err) {
                     throw err;
                 }
                 // Se selecciona el id del niño ingresado recientemente
-                const querySelectNinio = 'SELECT id_ninio FROM niño WHERE nombre = ? AND id_educador = ?';
-                db.query(querySelectNinio, [nombre, id_educador], (err, result2) => {
+                const querySelectNinio = 'SELECT id_ninio FROM niño WHERE nombre = ?';
+                db.query(querySelectNinio, [nombre], (err, result2) => {
                     if(err){
                         throw err;
                     }
@@ -128,7 +146,8 @@ app.get('/getChildren', (req, res) => {
     const query = 'SELECT niño.nombre, niño.edad ' +
         'FROM niño JOIN educador_niño ' +
         'ON niño.id_ninio = educador_niño.id_niño ' +
-        'WHERE educador_niño.id_educador = ?';
+        'WHERE educador_niño.id_educador = ? ' +
+        'ORDER BY niño.edad;';
     db.query(query, [id_educador], (err, result) => {
         if (err) {
             throw err;

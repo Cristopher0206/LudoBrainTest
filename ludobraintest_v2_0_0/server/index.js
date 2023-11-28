@@ -143,7 +143,7 @@ app.post('/crearNinio', (req, res) => {
 /* Funciones de Lectura */
 app.get('/getChildren', (req, res) => {
     const id_educador = req.user.id;
-    const query = 'SELECT niño.nombre, niño.edad ' +
+    const query = 'SELECT niño.id_ninio, niño.nombre, niño.edad ' +
         'FROM niño JOIN educador_niño ' +
         'ON niño.id_ninio = educador_niño.id_niño ' +
         'WHERE educador_niño.id_educador = ? ' +
@@ -155,3 +155,24 @@ app.get('/getChildren', (req, res) => {
         res.json(result);
     });
 });
+/* Funciones de actualización */
+
+/* Funciones de eliminación */
+app.post('/deleteChild', (req, res) => {
+    const id_educador = req.user.id;
+    const id_ninio = req.body.id_ninio;
+    const queryDelete = 'DELETE FROM educador_niño WHERE id_educador = ? AND id_niño = ?';
+    db.query(queryDelete, [id_educador, id_ninio], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.status(200).json({message: 'Niño eliminado exitosamente'});
+        /*const queryDelete2 = 'DELETE FROM niño WHERE id_ninio = ?';
+        db.query(queryDelete2, [id_ninio], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            res.send({message: 'Niño eliminado exitosamente'});
+        })*/
+    })
+})

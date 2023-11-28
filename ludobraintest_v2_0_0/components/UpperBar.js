@@ -26,7 +26,7 @@ export default function UpperBar({redirectionPath, color}) {
             setName(res.data.name);
         }).catch(err => {
             console.log(err);
-            router.push('/login');
+            router.push('/');
         });
     }
     return (

@@ -11,6 +11,7 @@ export default function ReadNinio() {
     const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     const [children, setChildren] = useState([]);
+    const [info, setInfo] = useState('');
     const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
@@ -59,8 +60,9 @@ export default function ReadNinio() {
             })
         }
     }
-    const actualizarNinio = () => {
-
+    const goActualizarNinio = (idNinio) => {
+        sessionStorage.setItem('dataToPass', idNinio);
+        router.push('../update/updateNinio')
     }
 
     return (
@@ -95,7 +97,7 @@ export default function ReadNinio() {
                                     <img src="/images/eliminar.png" alt="trashIcon"
                                          className={`${styles.manage_icon} border-2 border-black`}/>
                                 </button>
-                                <button onClick={actualizarNinio}>
+                                <button onClick={() => goActualizarNinio(child.id_ninio)}>
                                     <img src="/images/lapiz.png" alt="editIcon"
                                          className={`${styles.manage_icon} shadow-2xl border-2 border-black`}/>
                                 </button>

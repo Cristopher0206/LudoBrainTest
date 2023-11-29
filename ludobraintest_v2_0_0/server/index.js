@@ -155,8 +155,29 @@ app.get('/getChildren', (req, res) => {
         res.json(result);
     });
 });
+app.post('/getChildrenById', (req, res) => {
+    const id = req.body.id_ninio;
+    const querySelect = 'SELECT * FROM niño WHERE id_ninio = ?';
+    db.query(querySelect, [id], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
 /* Funciones de actualización */
-
+app.post('/updateChildren', (req, res) => {
+    const {id_ninio, nombre, edad} = req.body;
+    // Construye la consulta de actualización
+    const queryUpdate = `UPDATE niño SET nombre = ?, edad = ? WHERE id_ninio = ?;`;
+    // Ejecuta la consulta de actualización con los valores correspondientes
+    db.query(queryUpdate, [nombre, edad, id_ninio], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.send({message: "Niño actualizado exitosamente"});
+    });
+});
 /* Funciones de eliminación */
 app.post('/deleteChild', (req, res) => {
     const id_educador = req.user.id;

@@ -3,12 +3,13 @@ import {useState} from "react";
 import axios from "axios";
 
 export default function RegistrarEducador() {
-    /* Estados para el usuario y la contraseña */
+    /*------------------- ESTADOS -------------------*/
     const [usuario, setUsuario] = useState('');
     const [password, setPassword] = useState('');
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
-    /* Funciones */
+    /*------------------- EFECTOS -------------------*/
+    /*------------------- FUNCIONES -------------------*/
     const registrarEducador = () => {
         axios({
             method: "post",
@@ -28,7 +29,7 @@ export default function RegistrarEducador() {
     }
     return (
         <div className={`container-fluid border-2 border-black p-0`}>
-            <UpperBar redirectionPath={`/login`}/>
+            <UpperBar redirectionPath={`/`}/>
             <div className={`container-fluid text-black`}>
                 <br/>
                 <label>Nombre</label>

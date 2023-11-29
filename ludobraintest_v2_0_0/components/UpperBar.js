@@ -4,7 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-export default function UpperBar({redirectionPath, color}) {
+export default function UpperBar({redirectionPath, color, questionType}) {
     const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     const [userId, setUserId] = useState('');
@@ -32,13 +32,16 @@ export default function UpperBar({redirectionPath, color}) {
     return (
         <div className={`${color} container-fluid px-4 py-3`}>
             <div className={`row justify-content-between`}>
-                <div className={`col-5 d-flex justify-content-center`}>
+                <div className={`col-4 d-flex justify-content-center`}>
                     <img src="" alt="user logo"/>
                     <div className={`ps-2`}>{name}</div>
                 </div>
-                <div className={`col-5 d-flex justify-content-end`}>
+                <div className={`col-4 d-flex justify-content-center`}>
+                    <div className={`ps-2`}>{questionType}</div>
+                </div>
+                <div className={`col-4 d-flex justify-content-end`}>
                     <Link href={redirectionPath}>
-                        <button className={`py-3 px-5 rounded-2xl ${navstyles.btn_exit}`}>Salir</button>
+                        <button className={`py-3 px-5 rounded-2xl ${navstyles.btn_exit}`}>Cerrar Sesión</button>
                     </Link>
                 </div>
             </div>

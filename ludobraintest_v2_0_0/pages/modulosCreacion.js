@@ -4,9 +4,12 @@ import Link from "next/link";
 import navstyles from '@/styles/navstyles.module.css'
 
 export default function ModulosCreacion(){
+    /*------------------- ESTADOS -------------------*/
+    /*------------------- EFECTOS -------------------*/
+    /*------------------- FUNCIONES -------------------*/
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/modulos`}
+            <UpperBar redirectionPath={`/`}
                       color={navstyles.upper_bar_yellow}/>
             <InstructionBar previousPage={`/modulos`}
                             instruction={`¿Qué quieres crear?`}/>

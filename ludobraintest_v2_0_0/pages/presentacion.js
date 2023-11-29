@@ -17,9 +17,10 @@ export default function Presentacion(){
         nextPage();
     }, [router]);
     /*------------------- FUNCIONES -------------------*/
+
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/login`}
+            <UpperBar redirectionPath={`/`}
                       color={navstyles.upper_bar_yellow}/>
             <div className={`container-fluid`}>
                 <img src="" alt="Echo"/>

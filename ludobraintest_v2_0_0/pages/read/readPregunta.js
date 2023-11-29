@@ -6,7 +6,7 @@ import AddButton from "@/components/AddButton";
 export default function ReadPregunta(){
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/modulosCreacion`}
+            <UpperBar redirectionPath={`/`}
                       color={navstyles.upper_bar_red}></UpperBar>
             <InstructionBar previousPage={`/modulosCreacion`}
                             instruction={`Crea una nueva pregunta`}/>

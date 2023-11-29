@@ -9,7 +9,7 @@ export default function Modulos(){
     /*------------------- FUNCIONES -------------------*/
     return(
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/login`}
+            <UpperBar redirectionPath={`/`}
                       color={navstyles.upper_bar_yellow}/>
             <InstructionBar previousPage={`/presentacion`}
                             instruction={`Selecciona un módulo`}/>

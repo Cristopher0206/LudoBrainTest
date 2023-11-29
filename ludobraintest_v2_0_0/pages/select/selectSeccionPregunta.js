@@ -6,7 +6,7 @@ import SectionList from "@/components/SectionList";
 export default function SelectSeccionPregunta(){
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`../read/readPregunta`}
+            <UpperBar redirectionPath={`/`}
                       color={navstyles.upper_bar_red}></UpperBar>
             <InstructionBar previousPage={`../read/readPregunta`}
                             instruction={`¿Qué tipo de pregunta quieres crear?`}/>

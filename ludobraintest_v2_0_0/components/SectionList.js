@@ -1,4 +1,5 @@
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 export default function SectionList(
     {
@@ -14,79 +15,55 @@ export default function SectionList(
         searchPage
     }
 ) {
+    const router = useRouter();
+    const definirPregunta = (tipoPregunta) => {
+        localStorage.setItem('dato', tipoPregunta);
+        router.push('../create/createPregunta');
+    }
     return (
         <div className="grid gap-x-8 gap-y-5 grid-cols-3 justify-center justify-items-center border-2 border-black">
-            <Link href={`${informationPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Información
-                </button>
-            </Link>
-            <Link href={`${similaritiesPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Semejanzas
-                </button>
-            </Link>
-            <Link href={`${vocabularyPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Vocabulario
-                </button>
-            </Link>
-            <Link href={`${comprehensionPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Comprensión
-                </button>
-            </Link>
-            <Link href={`${drawsPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Dibujos
-                </button>
-            </Link>
-            <Link href={`${namesPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Nombres
-                </button>
-            </Link>
-            <Link href={`${arraysPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Matrices
-                </button>
-            </Link>
-            <Link href={`${conceptsPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Conceptos
-                </button>
-            </Link>
-            <Link href={`${recognitionPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Reconocimiento
-                </button>
-            </Link>
+            <button onClick={() => definirPregunta('Información')}
+                    className={`btn btn-dark w-100`}>
+                Información
+            </button>
+            <button onClick={() => definirPregunta('Semejanzas')}
+                    className={`btn btn-dark w-100`}>
+                Semejanzas
+            </button>
+            <button onClick={() => definirPregunta('Vocabulario')}
+                    className={`btn btn-dark w-100`}>
+                Vocabulario
+            </button>
+            <button onClick={() => definirPregunta('Comprensión')}
+                    className={`btn btn-dark w-100`}>
+                Comprensión
+            </button>
+            <button onClick={() => definirPregunta('Dibujos')}
+                    className={`btn btn-dark w-100`}>
+                Dibujos
+            </button>
+            <button onClick={() => definirPregunta('Nombres')}
+                    className={`btn btn-dark w-100`}>
+                Nombres
+            </button>
+            <button onClick={() => definirPregunta('Matrices')}
+                    className={`btn btn-dark w-100`}>
+                Matrices
+            </button>
+            <button onClick={() => definirPregunta('Conceptos')}
+                    className={`btn btn-dark w-100`}>
+                Conceptos
+            </button>
+            <button onClick={() => definirPregunta('Reconocimiento')}
+                    className={`btn btn-dark w-100`}>
+                Reconocimiento
+            </button>
             <div></div>
-            <Link href={`${searchPage}`}
-                  className={`border-2 border-red-500 text-decoration-none text-black 
-                  w-100 d-flex justify-content-center`}>
-                <button className={`btn btn-dark w-100`}>
-                    Búsqueda
-                </button>
-            </Link>
+            <button onClick={() => definirPregunta('Búsqueda')}
+                    className={`btn btn-dark w-100`}>
+                Búsqueda
+            </button>
+
             <div></div>
         </div>
     )

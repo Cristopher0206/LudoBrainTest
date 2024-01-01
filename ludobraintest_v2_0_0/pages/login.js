@@ -22,13 +22,7 @@ export default function Login() {
             url: "http://localhost:3001/login"
         }).then(res => {
             if (res.data === "Usuario logeado") {
-                //console.log("BIENVENIDOOOOOOOOO");
-                router.push('/presentacion')
-                    .then(r => {
-                        console.log(r);
-                    }).catch( err => {
-                        console.log(err);
-                })
+                router.push('/presentacion');
             } else {
                 // Si las credenciales son incorrectas, salta una alerta
                 setShowAlert(true);

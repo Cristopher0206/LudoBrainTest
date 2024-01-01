@@ -54,7 +54,7 @@ export default function CreateNinio() {
                     router.push('../read/readNinio');
                 }, 3000);
             } else if(res.data.message === 'Este niño ya se encuentra registrado') {
-                // Si el niño se crea, muestra un mensaje de confirmacion
+                // Si el niño ya existe, muestra un mensaje de adveertencia
                 setWarningMessage(true);
                 // El mensaje desaparece luego de 3 segundos
                 setTimeout(() => {

@@ -7,6 +7,8 @@ const expressSession = require('express-session');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const db = require('./db');
+const multer = require("multer");
+const path = require("path");
 
 const app = express();
 
@@ -36,7 +38,7 @@ app.get('/getUser', (req, res) => {
     if (req.isAuthenticated()) {
         // Si el usuario está autenticado, envía la información del usuario
         res.send({
-            id: req.user.id,  // Asumiendo que el id del usuario está disponible en req.user
+            id: req.user.id,  // Asumiendo que el ID del usuario está disponible en req.user
             username: req.user.username,
             name: req.user.name
         });
@@ -100,13 +102,13 @@ app.post('/crearNinio', (req, res) => {
                 if (err) {
                     throw err;
                 }
-                if(result3.length > 0){
+                if (result3.length > 0) {
                     res.send({message: 'Este niño ya se encuentra registrado'});
                 }
-                if(result3.length === 0) {
+                if (result3.length === 0) {
                     const queryInsert2 = 'INSERT INTO educador_niño (id_educador, id_niño) VALUES (?, ?)';
                     db.query(queryInsert2, [id_educador, result[0].id_ninio], (err, result4) => {
-                        if(err) {
+                        if (err) {
                             throw err;
                         }
                         res.send({message: 'Niño creado correctamente'});
@@ -123,7 +125,7 @@ app.post('/crearNinio', (req, res) => {
                 // Se selecciona el id del niño ingresado recientemente
                 const querySelectNinio = 'SELECT id_ninio FROM niño WHERE nombre = ?';
                 db.query(querySelectNinio, [nombre], (err, result2) => {
-                    if(err){
+                    if (err) {
                         throw err;
                     }
                     const id_ninio = result2[0].id_ninio;
@@ -140,6 +142,80 @@ app.post('/crearNinio', (req, res) => {
         }
     });
 });
+//const upload = multer({storage: storage}).array("files", 5);
+//const upload = multer({dest: path.join(__dirname, 'images')}).array('imagen_$',5);
+// Configuración de multer para guardar archivos en una carpeta
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "./public/images"); // La carpeta donde se guardarán los archivos
+    },
+    filename: function (req, file, cb) {
+        const index = req.body.imagenIndex || 0; // Obtener el índice del campo imagenIndex
+        cb(null, `${file.originalname}`); // ${path.extname(file.originalname)} Esta es la extensión del archivo
+    },
+});
+const upload = multer({storage}).array('imagenes', 100);
+
+app.post('/uploadQuestion', upload, (req, res) => {
+    const pregunta = req.body;
+    console.log("Soy el cuerpo: ", pregunta);
+    const querySelectPregunta = 'SELECT * FROM pregunta WHERE pregunta = ?'; // Consulta para verificar si la pregunta ya se encuentra registrada
+    db.query(querySelectPregunta, [pregunta.pregunta], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        if (result.length > 0) {
+            res.send({message: 'Esta pregunta ya se encuentra registrada'});
+        }
+        if (result.length === 0){
+            const queryInsertQuestion = 'INSERT INTO pregunta (id_seccion,pregunta) VALUES (?,?)';
+            db.query(queryInsertQuestion, [pregunta.idSection, pregunta.pregunta], (err, result) => {
+                if (err) {
+                    throw err;
+                }
+                const querySelectQuestion = 'SELECT id_pregunta FROM pregunta WHERE pregunta = ?';
+                db.query(querySelectQuestion, [pregunta.pregunta], (err, result1) => {
+                    if (err) {
+                        throw err;
+                    }
+                    const id_pregunta = result1[0].id_pregunta;
+                    const respuestas = req.files;
+                    const querySelectImage = 'SELECT * FROM respuesta WHERE imagen = ?'; // Consulta para verificar si la imagen ya se encuentra registrada
+                    const queryInsertImage = 'INSERT INTO respuesta (imagen, respuesta_correcta, numero_fila) VALUES (?,?,?)';
+                    pregunta.imagenIndex.forEach((img, index) => {
+                        db.query(querySelectImage, [respuestas[index].originalname], (err, result2) => {
+                            if (err) {
+                                throw err;
+                            }
+                            if (result2.length > 0) {
+                                //res.send({message: 'Esta imagen ya se encuentra registrada'});
+                                const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta) VALUES (?,?)';
+                                db.query(queryInsertQuestionAnswer, [id_pregunta, result2[0].id_respuesta], (err, result3) => {
+                                    if (err) {
+                                        throw err;
+                                    }
+                                })
+                            } else {
+                                db.query(queryInsertImage, [respuestas[index].originalname, pregunta.respuestaCorrecta[index], pregunta.fila[index]], (err, result4) => {
+                                    if (err) {
+                                        throw err;
+                                    }
+                                    const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta) VALUES (?,?)';
+                                    db.query(queryInsertQuestionAnswer, [id_pregunta, result4.insertId], (err, result5) => {
+                                        if (err) {
+                                            throw err;
+                                        }
+                                    })
+                                })
+                            }
+                        })
+                    })
+                    res.send({message: "Pregunta creada correctamente"});
+                })
+            })
+        }
+    });
+})
 /* Funciones de Lectura */
 app.get('/getChildren', (req, res) => {
     const id_educador = req.user.id;
@@ -188,12 +264,5 @@ app.post('/deleteChild', (req, res) => {
             throw err;
         }
         res.status(200).json({message: 'Niño eliminado exitosamente'});
-        /*const queryDelete2 = 'DELETE FROM niño WHERE id_ninio = ?';
-        db.query(queryDelete2, [id_ninio], (err, result) => {
-            if (err) {
-                throw err;
-            }
-            res.send({message: 'Niño eliminado exitosamente'});
-        })*/
     })
 })

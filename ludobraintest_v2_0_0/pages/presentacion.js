@@ -20,7 +20,7 @@ export default function Presentacion(){
 
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
+            <UpperBar redirectionPath={`#`}
                       color={navstyles.upper_bar_yellow}/>
             <div className={`container-fluid`}>
                 <img src="" alt="Echo"/>

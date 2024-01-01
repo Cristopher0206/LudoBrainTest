@@ -4,7 +4,8 @@ import Link from "next/link";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-export default function UpperBar({redirectionPath, color, questionType}) {
+
+export default function UpperBar({color, questionType}) {
     const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     const [userId, setUserId] = useState('');
@@ -29,6 +30,12 @@ export default function UpperBar({redirectionPath, color, questionType}) {
             router.push('/');
         });
     }
+    const cerrarSesion = () => {
+        const confirmacion = window.confirm('¿Estás seguro que deseas cerrar tu sesión?');
+        if(confirmacion){
+            router.push('/');
+        }
+    }
     return (
         <div className={`${color} container-fluid px-4 py-3`}>
             <div className={`row justify-content-between`}>
@@ -40,9 +47,10 @@ export default function UpperBar({redirectionPath, color, questionType}) {
                     <div className={`ps-2`}>{questionType}</div>
                 </div>
                 <div className={`col-4 d-flex justify-content-end`}>
-                    <Link href={redirectionPath}>
-                        <button className={`py-3 px-5 rounded-2xl ${navstyles.btn_exit}`}>Cerrar Sesión</button>
-                    </Link>
+                    <button onClick={cerrarSesion}
+                            className={`py-3 px-5 rounded-2xl ${navstyles.btn_exit}`}>
+                        Cerrar Sesión
+                    </button>
                 </div>
             </div>
         </div>

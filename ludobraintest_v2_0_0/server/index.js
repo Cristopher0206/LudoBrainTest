@@ -216,6 +216,58 @@ app.post('/uploadQuestion', upload, (req, res) => {
         }
     });
 })
+app.post('/createTest', upload, (req, res) => {
+    const {nombre, seccion, preguntas} = req.body;
+    const querySelect = 'SELECT * FROM test WHERE nombre_test = ?';
+    db.query(querySelect, [nombre], (err, result1) => {
+        if (err) {
+            throw err;
+        }
+        if (result1.length > 0) {
+            res.send({message: 'Este test ya ha sido creado'});
+        }
+        if (result1.length === 0) {
+            /* Primero, obtener el id de la sección*/
+            const querySelectSection = 'SELECT * FROM seccion WHERE nombre_seccion = ?';
+            db.query(querySelectSection, [seccion], (err, result2) => {
+                if (err) {
+                    throw err;
+                }
+                const id_seccion = result2[0].id_seccion;
+                const queryInsert = 'INSERT INTO test (nombre_test, id_seccion) VALUES (?,?)';
+                db.query(queryInsert, [nombre, id_seccion], (err, result2) => {
+                    if (err) {
+                        throw err;
+                    }
+                    const querySelectTest = 'SELECT id_test FROM test WHERE nombre_test = ?';
+                    db.query(querySelectTest, [nombre], (err, result3) => {
+                        if (err) {
+                            throw err;
+                        }
+                        const id_test = result3[0].id_test;
+                        const querySelectQuestion = 'SELECT * FROM pregunta WHERE pregunta = ?';
+                        preguntas.forEach((pregunta, index) => {
+                            db.query(querySelectQuestion, [pregunta.pregunta], (err, result4) => {
+                                if (err) {
+                                    throw err;
+                                }
+                                if (result4.length > 0) {
+                                    const queryInsertTestQuestion = 'INSERT INTO test_pregunta (id_test, id_pregunta) VALUES (?,?)';
+                                    db.query(queryInsertTestQuestion, [id_test, result4[0].id_pregunta], (err, result5) => {
+                                        if (err) {
+                                            throw err;
+                                        }
+                                    })
+                                }
+                            })
+                        })
+                        res.send({message: "Test creado correctamente"});
+                    })
+                })
+            })
+        }
+    })
+})
 /* Funciones de Lectura */
 app.get('/getChildren', (req, res) => {
     const id_educador = req.user.id;
@@ -241,6 +293,27 @@ app.post('/getChildrenById', (req, res) => {
         res.json(result);
     });
 })
+app.get('/getSections', (req, res) => {
+    const query = 'SELECT * FROM seccion';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+});
+app.post('/getPreguntasBySeccion', (req, res) => {
+   const seccion = req.body.seccion;
+   console.log(seccion);
+   const query = 'SELECT * FROM pregunta JOIN seccion ON pregunta.id_seccion = seccion.id_seccion ' +
+       'WHERE seccion.nombre_seccion = ?';
+    db.query(query, [seccion], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+});
 /* Funciones de actualización */
 app.post('/updateChildren', (req, res) => {
     const {id_ninio, nombre, edad} = req.body;

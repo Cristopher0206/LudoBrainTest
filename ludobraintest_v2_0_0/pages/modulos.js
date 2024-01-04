@@ -2,6 +2,7 @@ import UpperBar from "@/components/UpperBar";
 import InstructionBar from "@/components/InstructionBar";
 import Link from "next/link";
 import navstyles from "@/styles/navstyles.module.css";
+import styles from "@/styles/styles.module.css";
 
 export default function Modulos(){
     /*------------------- ESTADOS -------------------*/
@@ -13,31 +14,43 @@ export default function Modulos(){
                       color={navstyles.upper_bar_yellow}/>
             <InstructionBar previousPage={`/presentacion`}
                             instruction={`Selecciona un módulo`}/>
-            <div className={`container-fluid border-2 border-black`}>
+            <div className={`container-fluid`}>
                 <br/>
                 <div className={`row justify-content-evenly`}>
-                    <div className={`col-5 border-2 border-red-500`}>
-                        Módulo de test
+                    <div className={`col-5 p-0 d-flex justify-content-center`}>
+                        <Link href="/" className={`w-100`}>
+                            <button className={`p-5 rounded-lg font-bold text-black shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_test}`}>
+                                <h4>Módulo de Test</h4>
+                            </button>
+                        </Link>
                     </div>
-                    <div className={`col-5 border-2 border-red-500`}>
-                        <Link href="/modulosCreacion">
-                            <button type={`button`} className={`btn btn-success w-100`}>
-                                Módulo de Creación
+                    <div className={`col-5 p-0 d-flex justify-content-center`}>
+                        <Link href="/modulosCreacion" className={`w-100`}>
+                            <button className={`p-5 rounded-xl font-bold text-black shadow-md
+                            border-2 border-black border-opacity-10 w-100 ${styles.btn_creacion}`}>
+                                <h4>Módulo de Creación</h4>
                             </button>
                         </Link>
                     </div>
                 </div>
                 <br/>
                 <div className={`row justify-content-evenly`}>
-                    <div className={`col-5 border-2 border-red-500`}>
-                        <Link href="/read/readNinio">
-                            <button type={`button`} className={`btn btn-warning w-100`}>
-                                Módulo de Registro
+                    <div className={`col-5 p-0 d-flex justify-content-center`}>
+                        <Link href="/" className={`w-100`}>
+                            <button type={`button`} className={`p-5 rounded-xl font-bold text-black shadow-md
+                            border-2 border-black border-opacity-10 w-100 ${styles.btn_resultados}`}>
+                                <h4>Módulo de Resultados</h4>
                             </button>
                         </Link>
                     </div>
-                    <div className={`col-5 border-2 border-red-500`}>
-                        Módulo de resultados
+                    <div className={`col-5 p-0 d-flex justify-content-center`}>
+                        <Link href="/read/readNinio" className={`w-100`}>
+                            <button type={`button`} className={`p-5 rounded-xl font-bold text-black shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_registro}`}>
+                                <h4>Módulo de Registro</h4>
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <br/>

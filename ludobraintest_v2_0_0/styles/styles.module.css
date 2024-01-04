@@ -3,22 +3,242 @@
     .manage_icon {
         width: 4vw;
     }
+
+    .epn_logo {
+        height: 15vw;
+    }
+
+    .ludolab_logo {
+        height: 15vw;
+    }
+
+    .user_logo {
+        width: 7.5vw;
+    }
+
+    .password_logo {
+        width: 7.5vw;
+    }
+
+    .echo_logo {
+        height: 40vw;
+    }
+
+    .echo_logo_ib {
+        height: 15vw;
+    }
+
+    .instruction_text {
+        font-weight: bolder;
+        font-size: 3vw;
+        text-align: center;
+    }
+
+    .label {
+        font-size: 2.7vw;
+    }
+
+    .input_text {
+        font-size: 2.2vw;
+    }
+
+    .btn_text {
+        font-size: 2.2vw;
+    }
 }
+
 @media (min-width: 768px) and (max-width: 992px) {
     /* Para pantallas md */
     .manage_icon {
         width: 4vw;
     }
+
+    .epn_logo {
+        height: 13vw;
+    }
+
+    .ludolab_logo {
+        height: 13vw;
+    }
+
+    .user_logo {
+        width: 5.5vw;
+    }
+
+    .password_logo {
+        width: 5.5vw;
+    }
+
+    .echo_logo {
+        height: 40vw;
+    }
+
+    .echo_logo_ib {
+        height: 14vw;
+    }
+
+    .instruction_text {
+        font-weight: bolder;
+        font-size: 3vw;
+        text-align: center;
+    }
+
+    .label {
+        font-size: 2.2vw;
+    }
+
+    .input_text {
+        font-size: 2vw;
+    }
+
+    .btn_text {
+        font-size: 2vw;
+    }
 }
+
 @media (min-width: 992px) and (max-width: 1200px) {
     /* Para pantallas lg */
     .manage_icon {
         width: 2.3vw;
     }
+
+    .epn_logo {
+        height: 12vw;
+    }
+
+    .ludolab_logo {
+        height: 12vw;
+    }
+
+    .user_logo {
+        width: 4.5vw;
+    }
+
+    .password_logo {
+        width: 4.5vw;
+    }
+
+    .echo_logo {
+        height: 35vw;
+    }
+
+    .echo_logo_ib {
+        height: 12vw;
+    }
+
+    .instruction_text {
+        font-weight: bolder;
+        font-size: 2.5vw;
+        text-align: center;
+    }
+
+    .label {
+        font-size: 2vw;
+    }
+
+    .input_text {
+        font-size: 1.8vw;
+    }
+
+    .btn_text {
+        font-size: 1.8vw;
+    }
 }
+
 @media (min-width: 1200px) {
     /* Para pantallas xl */
     .manage_icon {
         width: 2.5vw;
     }
+
+    .epn_logo {
+        height: 10vw;
+    }
+
+    .ludolab_logo {
+        height: 10vw;
+    }
+
+    .user_logo {
+        width: 4.5vw;
+    }
+
+    .password_logo {
+        width: 4.5vw;
+    }
+
+    .echo_logo {
+        height: 30vw;
+    }
+
+    .echo_logo_ib {
+        height: 10vw;
+    }
+
+    .instruction_text {
+        font-weight: bolder;
+        font-size: 2.25vw;
+    }
+
+    .label {
+        font-size: 1.8vw;
+    }
+
+    .input_text {
+        font-size: 1.6vw;
+    }
+
+    .btn_text {
+        font-size: 1.6vw;
+    }
+}
+
+.input_sky_blue {
+    background-color: rgba(25, 169, 182, 0.6);
+    color: #ffffff;
+}
+
+.input_yellow {
+    background-color: rgba(246, 218, 39, 0.6);
+    color: #000000;
+}
+
+.label_red {
+    color: #FF4331;
+}
+
+.btn_test {
+    background-color: #19A9B6;
+    color: #000000;
+    opacity: 90%;
+}
+
+.btn_creacion {
+    background-color: #04BB03;
+    color: #000000;
+    opacity: 90%;
+}
+
+.btn_resultados {
+    background-color: #FF4331;
+    color: #000000;
+    opacity: 90%;
+}
+
+.btn_registro {
+    background-color: #F6DA27;
+    color: #000000;
+    opacity: 90%;
+}
+
+.card_body_green {
+    background-color: rgba(4, 187, 3, 0.5);
+    color: #000000;
+    opacity: 100%;
+}
+
+.card_body_yellow {
+    background-color: rgba(246, 218, 39, 0.5);
+    color: #000000;
+    opacity: 100%;
 }

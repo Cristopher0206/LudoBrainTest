@@ -17,6 +17,7 @@
 .btn_exit {
     background-color: black;
     color: #fff;
+    font-weight: bolder;
 }
 
 @media (min-width: 0px) and (max-width: 768px) {

@@ -3,6 +3,7 @@ import UpperBar from "@/components/UpperBar";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import navstyles from "@/styles/navstyles.module.css";
+import styles from "@/styles/styles.module.css";
 
 export default function Presentacion(){
     const router = useRouter();
@@ -23,8 +24,15 @@ export default function Presentacion(){
             <UpperBar redirectionPath={`#`}
                       color={navstyles.upper_bar_yellow}/>
             <div className={`container-fluid`}>
-                <img src="" alt="Echo"/>
-                <div>¡Hola, soy Echo!</div>
+                <br/><br/><br/>
+                <div className={`d-flex justify-content-center`}>
+                    <img src="/images/asistente-de-robot.png"
+                         alt="Echo"
+                         className={`${styles.echo_logo}`}/>
+                </div>
+                <div className={`d-flex justify-content-center`}>
+                    <h1>¡Hola, soy Echo!</h1>
+                </div>
             </div>
         </main>
     )

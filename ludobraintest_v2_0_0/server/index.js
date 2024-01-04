@@ -314,6 +314,15 @@ app.post('/getPreguntasBySeccion', (req, res) => {
         res.json(result);
     });
 });
+app.get('/getTests', (req, res) => {
+    const query = 'SELECT * FROM test';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+});
 /* Funciones de actualización */
 app.post('/updateChildren', (req, res) => {
     const {id_ninio, nombre, edad} = req.body;

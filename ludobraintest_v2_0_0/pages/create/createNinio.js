@@ -3,6 +3,7 @@ import InstructionBar from "@/components/InstructionBar";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import navstyles from "@/styles/navstyles.module.css";
+import styles from "@/styles/styles.module.css";
 import {useRouter} from "next/router";
 
 export default function CreateNinio() {
@@ -75,26 +76,32 @@ export default function CreateNinio() {
             <div className={`container-fluid text-black`}>
                 <br/>
                 <div className={`row justify-content-center`}>
-                    <div className={`col-3 d-flex justify-content-center`}>
-                        <label>Nombre</label>
+                    <div className={`col-sm-2 col-lg-1 d-flex justify-content-end pt-1`}>
+                        <label className={`font-bold ${styles.label_red} ${styles.label}`}>
+                            Nombre
+                        </label>
                     </div>
-                    <div className={`col-5 d-flex justify-content-center`}>
+                    <div className={`col-sm-9 col-md-8 col-lg-8 d-flex justify-content-center`}>
                         <input value={registerName}
                                type="text"
                                onChange={e => setRegisterName(e.target.value)}
-                               className={`w-100`}/>
+                               className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-black border-opacity-10  
+                           text-black ${styles.input_yellow} ${styles.input_text}`}/>
                     </div>
                 </div>
                 <br/>
                 <div className={`row justify-content-center`}>
-                    <div className={`col-3 d-flex justify-content-center`}>
-                        <label>Edad</label>
+                    <div className={`col-sm-2 col-lg-1 d-flex justify-content-end pt-1`}>
+                        <label className={`font-bold ${styles.label_red} ${styles.label}`}>
+                            Edad
+                        </label>
                     </div>
-                    <div className={`col-5 d-flex justify-content-center`}>
+                    <div className={`col-sm-9 col-md-8 col-lg-8 d-flex justify-content-center`}>
                         <input value={registerAge}
-                               type="text"
+                               type="number"
                                onChange={e => setRegisterAge(e.target.value)}
-                               className={`w-100`}/>
+                               className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-black border-opacity-10  
+                           text-black ${styles.input_yellow} ${styles.input_text}`}/>
                     </div>
                 </div>
                 <br/>
@@ -114,9 +121,11 @@ export default function CreateNinio() {
                         <br/>
                     </div>
                 )}
+                <br/>
                 <div className={`d-flex justify-content-center`}>
-                    <button onClick={crearNinio} className={`btn btn-primary`}>
-                        Registrar
+                    <button onClick={crearNinio} className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_yellow} ${styles.btn_text}`}>
+                        Registrar Jugador
                     </button>
                 </div>
                 <br/>

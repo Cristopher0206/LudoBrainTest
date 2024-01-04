@@ -6,6 +6,7 @@ import AddButton from "@/components/AddButton";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import axios from "axios";
+import Link from "next/link";
 
 export default function ReadNinio() {
     const router = useRouter();
@@ -73,6 +74,7 @@ export default function ReadNinio() {
                             instruction={`Registra un nuevo niño`}/>
             <AddButton createPage={`../create/createNinio`}
                        color={navstyles.upper_bar_yellow}/>
+            <br/> <br/>
             {successMessage && (
                 <div>
                     <br/>
@@ -82,26 +84,36 @@ export default function ReadNinio() {
                     <br/>
                 </div>
             )}
-            <div className={`container-fluid border-2 border-black p-0`}>
+            <div className={`container-fluid p-0`}>
                 {children.map((child, index) => (
-                    <div key={index} className={`container-fluid py-4 px-5 border-2 border-red-500`}>
-                        <div className={`row justify-content-between p-0 border-2 border-green-500`}>
-                            <div className={`col-3 border-2 border-amber-950`}>
-                                {child.nombre}
+                    <div key={index} className={`row justify-content-center`}>
+                        <div className={`col-9`}>
+                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                ${styles.card_body_yellow}`}>
+                                <div className={`card-body`}>
+                                    <div className={`container-fluid`}>
+                                        <div className={`row justify-content-between`}>
+                                            <div className={`col-sm-4 col-lg-3`}>
+                                                <h5 className={`card-title pt-1`}>{child.nombre}</h5>
+                                            </div>
+                                            <div className={`col-sm-4 col-lg-7 d-flex justify-content-center`}>
+                                                <h5 className={`card-title pt-0`}>{child.edad} años</h5>
+                                            </div>
+                                            <div className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
+                                                <button onClick={() => eliminarNinio(child.id_ninio)}>
+                                                    <img src="/images/eliminar.png" alt="trashIcon"
+                                                         className={`${styles.manage_icon}`}/>
+                                                </button>
+                                                <button onClick={() => goActualizarNinio(child.id_ninio)}>
+                                                    <img src="/images/lapiz.png" alt="editIcon"
+                                                         className={`${styles.manage_icon} shadow-2xl`}/>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className={`col-3 border-2 border-amber-950`}>
-                                {child.edad} años
-                            </div>
-                            <div className={`col-3 d-flex justify-content-evenly border-2 border-amber-950`}>
-                                <button onClick={() => eliminarNinio(child.id_ninio)}>
-                                    <img src="/images/eliminar.png" alt="trashIcon"
-                                         className={`${styles.manage_icon} border-2 border-black`}/>
-                                </button>
-                                <button onClick={() => goActualizarNinio(child.id_ninio)}>
-                                    <img src="/images/lapiz.png" alt="editIcon"
-                                         className={`${styles.manage_icon} shadow-2xl border-2 border-black`}/>
-                                </button>
-                            </div>
+                            <br/>
                         </div>
                     </div>
                 ))}

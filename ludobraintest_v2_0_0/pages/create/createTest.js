@@ -138,7 +138,7 @@ export default function CreateTest() {
                 <br/>
                 <br/>
                 <h4>Preguntas</h4>
-                {warningMessage && (
+                {warningLengthMessage && (
                     <div>
                         <div className="alert alert-warning d-flex justify-content-center" role="alert">
                             ¡No se puede añadir más de 10 preguntas!

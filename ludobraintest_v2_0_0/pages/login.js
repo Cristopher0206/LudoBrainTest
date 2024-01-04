@@ -1,4 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import styles from '../styles/styles.module.css'
+import navstyles from '../styles/navstyles.module.css'
 import {useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/router";
@@ -37,45 +39,54 @@ export default function Login() {
     }
 
     return (
-        <div className={`container-fluid border-2 border-black`}>
-            <br/>
+        <div className={`container-fluid`}>
+            <br/><br/>
             <div className={`row d-flex justify-content-between`}>
                 <div className={`col-5 d-flex justify-content-center`}>
-                    <img src="" alt="EPN LOGO"/>
+                    <img src="/images/EPN_logo_big.png"
+                         alt="EPN LOGO"
+                         className={`${styles.epn_logo}`}/>
                 </div>
                 <div className={`col-5 d-flex justify-content-center`}>
-                    <img src="" alt="LUDOLAB LOGO"/>
+                    <img src="/images/341894265_1090311248597302_516144097782360263_n.jpg"
+                         alt="LUDOLAB LOGO"
+                         className={`${styles.ludolab_logo}`}/>
                 </div>
             </div>
-            <br/>
+            <br/><br/>
             <div className={`row`}>
                 <div className={`col-12 d-flex justify-content-center`}>
                     <h1>LudoBrain-Test</h1>
                 </div>
             </div>
             <br/>
-            <div className={`row`}>
-                <div className={`col-6 d-flex justify-content-center`}>
-                    <img src="" alt="user icon"/>
+            <div className={`row justify-content-center`}>
+                <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
+                    <img src="/images/usuario.png"
+                         alt="user icon"
+                         className={`${styles.user_logo}`}/>
                 </div>
-                <div className={`col-6`}>
-                    <input name={`usuario`}
-                           type="text"
-                        /*placeholder={`Ingresa tu usuario (correo electrónico)`}*/
+                <div className={`col-8`}>
+                    <input type="text"
+                           placeholder={`Ingresa tu usuario (correo electrónico)`}
                            onChange={e => setLoginUsuario(e.target.value)}
-                           className={`w-100`}/>
+                           className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100  
+                           text-white ${styles.input_sky_blue}`}/>
                 </div>
             </div>
             <br/>
-            <div className={`row`}>
-                <div className={`col-6 d-flex justify-content-center`}>
-                    <img src="" alt="password icon"/>
+            <div className={`row justify-content-center`}>
+                <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
+                    <img src="/images/llave-de-la-puerta.png"
+                         alt="password icon"
+                         className={`${styles.password_logo}`}/>
                 </div>
-                <div className={`col-6`}>
+                <div className={`col-8`}>
                     <input name={`password`}
                            type="password"
                            onChange={e => setLoginPassword(e.target.value)}
-                           className={`w-100`}/>
+                           className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100
+                           text-white ${styles.input_sky_blue}`}/>
                 </div>
             </div>
             <br/>
@@ -84,21 +95,24 @@ export default function Login() {
                     Credenciales incorrectas. Inténtalo de nuevo.
                 </div>
             )}
-            <div className={`row justify-content-evenly`}>
-                <div className={`col-5 p-0 d-flex justify-content-center`}>
-                    <button type="button" onClick={login} className={`btn btn-success w-100`}>
+            <br/>
+            <div className={`row justify-content-center`}>
+                <div className={`col-5 d-flex`}>
+                    <button onClick={login} className={`w-100 px-5 py-2 text-white rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_green}`}>
                         Iniciar sesión
                     </button>
                 </div>
-                <div className={`col-5 p-0 d-flex justify-content-center`}>
+                <div className={`col-5 d-flex`}>
                     <Link href={`/presentacion`} className={`w-100`}>
-                        <button className={`btn btn-success w-100`}>
+                        <button className={`w-100 px-5 py-2 text-white rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_green}`}>
                             Jugar como invitado
                         </button>
                     </Link>
                 </div>
             </div>
-            <br/>
+            <br/> <br/>
             <div className={`row d-flex justify-content-center`}>
                 <div className="col-12">
                     <Link href={`#`} className={`d-flex justify-content-center`}>
@@ -113,7 +127,13 @@ export default function Login() {
                     </Link>
                 </div>
             </div>
-            <br/>
+            <div className={`row d-flex justify-content-center`}>
+                <div className="col-12">
+                    <Link href={`/registrarEducador`} className={`d-flex justify-content-center`}>
+                        Más información
+                    </Link>
+                </div>
+            </div>
         </div>
     )
 }

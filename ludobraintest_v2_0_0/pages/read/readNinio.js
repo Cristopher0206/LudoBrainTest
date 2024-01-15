@@ -84,7 +84,7 @@ export default function ReadNinio() {
                     <br/>
                 </div>
             )}
-            <div className={`container-fluid p-0`}>
+            <div className={`container-fluid`}>
                 {children.map((child, index) => (
                     <div key={index} className={`row justify-content-center`}>
                         <div className={`col-9`}>

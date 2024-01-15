@@ -43,8 +43,13 @@
     }
 
     .btn_text {
-        font-size: 2.2vw;
+        font-size: 2.7vw;
     }
+
+    .btns_div {
+        padding-top: 5%;
+    }
+
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
@@ -94,6 +99,10 @@
     .btn_text {
         font-size: 2vw;
     }
+    .btns_div {
+        padding-top: 5%;
+    }
+
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
@@ -143,6 +152,10 @@
     .btn_text {
         font-size: 1.8vw;
     }
+    .btns_div {
+        padding-top: 3.5%;
+    }
+
 }
 
 @media (min-width: 1200px) {
@@ -172,12 +185,12 @@
     }
 
     .echo_logo_ib {
-        height: 10vw;
+        height: 8vw;
     }
 
     .instruction_text {
         font-weight: bolder;
-        font-size: 2.25vw;
+        font-size: 1.5vw;
     }
 
     .label {
@@ -191,6 +204,10 @@
     .btn_text {
         font-size: 1.6vw;
     }
+    .btns_div {
+        padding-top: 1.5%;
+    }
+
 }
 
 .input_sky_blue {
@@ -234,11 +251,97 @@
 .card_body_green {
     background-color: rgba(4, 187, 3, 0.5);
     color: #000000;
-    opacity: 100%;
 }
 
 .card_body_yellow {
     background-color: rgba(246, 218, 39, 0.5);
     color: #000000;
-    opacity: 100%;
+}
+
+.card_body_red {
+    background-color: rgba(255, 67, 49, 0.5);
+    color: #000000;
+}
+
+.card_body_blue {
+    background-color: rgba(25, 169, 182, 0.6);
+    color: #000000;
+}
+
+.btn_informacion {
+    background-color: rgba(255, 67, 49, 0.75);
+    font-weight: bolder;
+}
+
+.btn_semejanza {
+    background-color: rgba(4, 187, 3, 0.75);
+    font-weight: bolder;
+}
+
+.btn_vocabulario {
+    background-color: rgba(25, 169, 182, 0.75);
+    font-weight: bolder;
+}
+
+.btn_comprension {
+    background-color: rgba(246, 114, 39, 0.75);
+    font-weight: bolder;
+}
+
+.btn_dibujos {
+    background-color: rgba(189, 49, 255, 0.75);
+    font-weight: bolder;
+}
+
+.btn_nombres {
+    background-color: rgba(49, 70, 255, 0.75);
+    font-weight: bolder;
+}
+
+.btn_matrices {
+    background-color: rgba(161, 187, 3, 0.75);
+    font-weight: bolder;
+}
+
+.btn_conceptos {
+    background-color: rgba(25, 169, 182, 0.75);
+    font-weight: bolder;
+}
+
+.btn_reconocimiento {
+    background-color: rgba(255, 67, 49, 0.75);
+    font-weight: bolder;
+}
+
+.btn_busqueda {
+    background-color: rgba(246, 114, 39, 0.75);
+    font-weight: bolder;
+}
+
+.selected_child_card {
+    background-color: rgb(25, 169, 182);
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #000000;
+}
+
+.selected_test_card {
+    background-color: rgb(25, 169, 182);
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #000000;
+}
+
+.overflow_container {
+    overflow: auto;
+    height: 85%;
+}
+
+.overflow_container_test {
+    overflow: auto;
+    height: 65%;
+}
+
+.overflow_col {
+    height: 335px;
 }

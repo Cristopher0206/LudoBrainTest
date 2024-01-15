@@ -18,7 +18,7 @@ export default function Modulos(){
                 <br/>
                 <div className={`row justify-content-evenly`}>
                     <div className={`col-5 p-0 d-flex justify-content-center`}>
-                        <Link href="/" className={`w-100`}>
+                        <Link href="/select/selectNinio" className={`w-100`}>
                             <button className={`p-5 rounded-lg font-bold text-black shadow-md
                             border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_test}`}>
                                 <h4>Módulo de Test</h4>

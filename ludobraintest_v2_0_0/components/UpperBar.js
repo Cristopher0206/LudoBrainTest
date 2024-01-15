@@ -37,7 +37,7 @@ export default function UpperBar({color, questionType}) {
         }
     }
     return (
-        <div className={`${color} container-fluid px-4 py-3 rounded-b-2xl`}>
+        <div className={`${color} container-fluid px-4 py-3 shadow-md rounded-b-2xl border-2 border-black border-opacity-10`}>
             <div className={`row justify-content-between`}>
                 <div className={`col-4 d-flex justify-content-center p-3`}>
                     <img src="/images/usuario.png"
@@ -50,7 +50,8 @@ export default function UpperBar({color, questionType}) {
                 </div>
                 <div className={`col-4 d-flex justify-content-center`}>
                     <button onClick={cerrarSesion}
-                            className={`py-3 px-5 rounded-2xl w-100 ${navstyles.btn_exit}`}>
+                            className={`py-3 px-5 rounded-2xl w-100 shadow-xl border-2 border-black border-opacity-10
+                             ${navstyles.btn_exit}`}>
                         <div className={`p-0`}>Cerrar Sesión</div>
                     </button>
                 </div>

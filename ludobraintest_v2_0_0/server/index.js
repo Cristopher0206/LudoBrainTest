@@ -158,7 +158,6 @@ const upload = multer({storage}).array('imagenes', 100);
 
 app.post('/uploadQuestion', upload, (req, res) => {
     const pregunta = req.body;
-    console.log("Soy el cuerpo: ", pregunta);
     const querySelectPregunta = 'SELECT * FROM pregunta WHERE pregunta = ?'; // Consulta para verificar si la pregunta ya se encuentra registrada
     db.query(querySelectPregunta, [pregunta.pregunta], (err, result) => {
         if (err) {
@@ -167,7 +166,7 @@ app.post('/uploadQuestion', upload, (req, res) => {
         if (result.length > 0) {
             res.send({message: 'Esta pregunta ya se encuentra registrada'});
         }
-        if (result.length === 0){
+        if (result.length === 0) {
             const queryInsertQuestion = 'INSERT INTO pregunta (id_seccion,pregunta) VALUES (?,?)';
             db.query(queryInsertQuestion, [pregunta.idSection, pregunta.pregunta], (err, result) => {
                 if (err) {
@@ -303,10 +302,10 @@ app.get('/getSections', (req, res) => {
     });
 });
 app.post('/getPreguntasBySeccion', (req, res) => {
-   const seccion = req.body.seccion;
-   console.log(seccion);
-   const query = 'SELECT * FROM pregunta JOIN seccion ON pregunta.id_seccion = seccion.id_seccion ' +
-       'WHERE seccion.nombre_seccion = ?';
+    const seccion = req.body.seccion;
+    console.log(seccion);
+    const query = 'SELECT * FROM pregunta JOIN seccion ON pregunta.id_seccion = seccion.id_seccion ' +
+        'WHERE seccion.nombre_seccion = ?';
     db.query(query, [seccion], (err, result) => {
         if (err) {
             throw err;
@@ -323,6 +322,258 @@ app.get('/getTests', (req, res) => {
         res.json(result);
     });
 });
+app.get('/getInformacionTests', (req, res) => {
+    const query = 'SELECT * FROM test WHERE id_seccion = 1';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getSemejanzasTests', (req, res) => {
+    const query = 'SELECT * FROM test WHERE id_seccion = 2';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.get('/getVocabularioTests', (req, res) => {
+    const query = 'SELECT * FROM test WHERE id_seccion = 3';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+
+})
+app.get('/getComprensionTests', (req, res) => {
+    const query = 'SELECT * FROM test WHERE id_seccion = 4';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.get('/getDibujosTests', (req, res) => {
+    const query = 'SELECT * FROM test WHERE id_seccion = 5';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.get('/getNombresTests', (req, res) => {
+    const query = 'SELECT * FROM test WHERE id_seccion = 6';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.get('/getMatricesTests', (req, res) => {
+    const query = 'SELECT * FROM test WHERE id_seccion = 7';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.get('/getConceptosTests', (req, res) => {
+const query = 'SELECT * FROM test WHERE id_seccion = 8';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.get('/getReconocimientoTests', (req, res) => {
+    const query = 'SELECT * FROM test WHERE id_seccion = 9';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.get('/getBusquedaTests', (req, res) => {
+    const query = 'SELECT * FROM test WHERE id_seccion = 10';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+/*app.get('/getQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        console.log(result);
+        res.json(result);
+    });
+})*/
+app.get('/getInformacionQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 1';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getSemejanzasQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 2';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getVocabularioQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 3';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getComprensionQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 4';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getDibujosQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 5';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getNombresQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 6';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getMatricesQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 7';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getConceptosQuestions', (req, res) => {
+const query = 'SELECT * FROM pregunta WHERE id_seccion = 8';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getReconocimientoQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 9';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.get('/getBusquedaQuestions', (req, res) => {
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 10';
+    db.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    });
+})
+app.post('/startTest', (req, res) => {
+    const id_ninio = req.body.id_ninio;
+    const id_test = req.body.id_test;
+    const querySelect = 'SELECT * FROM test_ninio WHERE id_ninio = ? AND id_test = ?';
+    db.query(querySelect, [id_ninio, id_test], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        if (result.length > 0) {
+            res.send({message: 'Test iniciado correctamente'});
+        }
+        if (result.length === 0) {
+            const queryInsert = 'INSERT INTO test_ninio (id_test, id_ninio) VALUES (?, ?)';
+            db.query(queryInsert, [id_test, id_ninio], (err, result) => {
+                if (err) {
+                    throw err;
+                }
+                res.send({message: 'Test iniciado correctamente'});
+            })
+        }
+    })
+})
+app.post('/getTestSession', (req, res) => {
+    const id_ninio = req.body.id_ninio;
+    const id_test = req.body.id_test;
+    const querySelect = 'SELECT * FROM test_ninio WHERE id_ninio = ? AND id_test = ?';
+    db.query(querySelect, [id_ninio, id_test], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.post('/getNinioTestById', (req, res) => {
+    const id_test = req.body.id_test;
+    const querySelect = 'SELECT test.nombre_test, seccion.nombre_seccion, seccion.informacion\n' +
+        'FROM test_ninio JOIN test ON test_ninio.id_test = test.id_test\n' +
+        'JOIN seccion ON test.id_seccion = seccion.id_seccion\n' +
+        'WHERE test_ninio.id_t_n = ?';
+    db.query(querySelect, [id_test], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.post('/goInstructions', (req, res) => {
+    const id_test = req.body.id_test;
+    const querySelect = 'SELECT * FROM test_ninio WHERE id_test = ?';
+    db.query(querySelect, [id_test], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        if (result.length > 0) {
+            res.send({message: 'Test iniciado correctamente'});
+        }
+        if (result.length === 0) {
+            res.send({message: 'Test no iniciado'});
+        }
+    })
+})
 /* Funciones de actualización */
 app.post('/updateChildren', (req, res) => {
     const {id_ninio, nombre, edad} = req.body;

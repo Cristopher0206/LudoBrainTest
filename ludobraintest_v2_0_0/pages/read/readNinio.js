@@ -74,7 +74,7 @@ export default function ReadNinio() {
                             instruction={`Registra un nuevo niño`}/>
             <AddButton createPage={`../create/createNinio`}
                        color={navstyles.upper_bar_yellow}/>
-            <br/> <br/>
+            <br/>
             {successMessage && (
                 <div>
                     <br/>
@@ -84,39 +84,43 @@ export default function ReadNinio() {
                     <br/>
                 </div>
             )}
-            <div className={`container-fluid`}>
-                {children.map((child, index) => (
-                    <div key={index} className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+            <div className={`px-32`}>
+                <div className={`container-fluid border-1 border-black shadow-md rounded-2xl bg-white
+                        ${styles.overflow_container_children}`}>
+                    <br/>
+                    {children.map((child, index) => (
+                        <div key={index} className={`row justify-content-center`}>
+                            <div className={`col-9`}>
+                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_yellow}`}>
-                                <div className={`card-body`}>
-                                    <div className={`container-fluid`}>
-                                        <div className={`row justify-content-between`}>
-                                            <div className={`col-sm-4 col-lg-3`}>
-                                                <h5 className={`card-title pt-1`}>{child.nombre}</h5>
-                                            </div>
-                                            <div className={`col-sm-4 col-lg-7 d-flex justify-content-center`}>
-                                                <h5 className={`card-title pt-0`}>{child.edad} años</h5>
-                                            </div>
-                                            <div className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                <button onClick={() => eliminarNinio(child.id_ninio)}>
-                                                    <img src="/images/eliminar.png" alt="trashIcon"
-                                                         className={`${styles.manage_icon}`}/>
-                                                </button>
-                                                <button onClick={() => goActualizarNinio(child.id_ninio)}>
-                                                    <img src="/images/lapiz.png" alt="editIcon"
-                                                         className={`${styles.manage_icon} shadow-2xl`}/>
-                                                </button>
+                                    <div className={`card-body`}>
+                                        <div className={`container-fluid`}>
+                                            <div className={`row justify-content-between`}>
+                                                <div className={`col-sm-4 col-lg-4`}>
+                                                    <div className={`card-title pt-sm-1 pt-md-1 ${styles.child_data}`}>{child.nombre}</div>
+                                                </div>
+                                                <div className={`col-sm-4 col-lg-6 d-flex justify-content-center`}>
+                                                    <div className={`card-title pt-sm-4 pt-md-3 ${styles.child_data}`}>{child.edad} años</div>
+                                                </div>
+                                                <div className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
+                                                    <button onClick={() => eliminarNinio(child.id_ninio)}>
+                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                             className={`${styles.manage_icon}`}/>
+                                                    </button>
+                                                    <button onClick={() => goActualizarNinio(child.id_ninio)}>
+                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <br/>
                             </div>
-                            <br/>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </main>
     )

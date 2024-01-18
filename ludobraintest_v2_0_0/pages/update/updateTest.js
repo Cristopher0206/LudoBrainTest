@@ -6,13 +6,16 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-export default function CreateTest() {
+export default function UpdateTest() {
     const router = useRouter();
     let section;
     /*------------------- ESTADOS -------------------*/
     const [nombreTest, setNombreTest] = useState('');
     const [seccion, setSeccion] = useState('');
     const [newPreguntas, setNewPreguntas] = useState([]);
+    const [info, setInfo] = useState(sessionStorage.getItem("dataToPass"));
+    const [nombreActual, setNombreActual] = useState('');
+    const [seccionActual, setSeccionActual] = useState('');
     /* Estados para los arrays */
     const [secciones, setSecciones] = useState([]);
     const [preguntas, setPreguntas] = useState([]);
@@ -23,6 +26,10 @@ export default function CreateTest() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => {
         getSecciones();
+        getCurrentInformation();
+        getPreguntasByIdTest();
+        setNombreTest(nombreActual);
+        setSeccion(seccionActual);
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const clearFields = () => {
@@ -38,6 +45,37 @@ export default function CreateTest() {
             url: "http://localhost:3001/getSections"
         }).then((res) => {
             setSecciones(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const getCurrentInformation = () => {
+        axios({
+            method: "post",
+            withCredentials: true,
+            data: {
+                id_test: info
+            },
+            url: "http://localhost:3001/getCurrentInformation",
+        }).then((res) => {
+            setNombreActual(res.data[0].nombre_test);
+            setSeccionActual(res.data[0].nombre_seccion);
+            setNombreTest(res.data[0].nombre_test);
+            setSeccion(res.data[0].nombre_seccion)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const getPreguntasByIdTest = () => {
+        axios({
+            method: "post",
+            withCredentials: true,
+            data: {
+                id_test: info
+            },
+            url: "http://localhost:3001/getPreguntasByIdTest"
+        }).then((res) => {
+            setNewPreguntas(res.data);
         }).catch((err) => {
             console.log(err);
         })
@@ -73,6 +111,21 @@ export default function CreateTest() {
     const deleteQuestionFromTest = (pregunta) => {
         setNewPreguntas(newPreguntas.filter((newPregunta) => newPregunta.id_pregunta !== pregunta.id_pregunta));
     }
+    const updateTest = () => {
+        axios({
+            method: "post",
+            withCredentials: true,
+            data: {
+                id_test: info
+            },
+            url: "http://localhost:3001/deleteTest",
+        }).then((res) => {
+            console.log(res);
+            createTest();
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     const createTest = () => {
         axios({
             method: "post",
@@ -94,7 +147,7 @@ export default function CreateTest() {
                     router.push(`../read/readTest`);
                 }, 3000);
                 clearFields();
-            } else if (res.data.message === "Este test ya ha sido creado"){
+            } else if (res.data.message === "No se pudo actualizar el test"){
                 // Si el test ya existe, muestra un mensaje de advertencia
                 setWarningMessage(true);
                 // El mensaje desaparece luego de 3 segundos
@@ -106,7 +159,6 @@ export default function CreateTest() {
             console.log(err);
         })
     }
-
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
@@ -132,7 +184,7 @@ export default function CreateTest() {
                                 }
                                 }
                                 className={`w-100 border-1 border-black shadow-md rounded-2xl p-3`}>
-                            <option value="">Selecciona una sección</option>
+                            <option value={`${seccionActual}`}>{seccionActual}</option>
                             {secciones.map((seccion) => (
                                 <option key={seccion.id_seccion} value={seccion.nombre_seccion}>
                                     {seccion.nombre_seccion}
@@ -160,7 +212,9 @@ export default function CreateTest() {
                                         <div className={`row d-flex py-2 px-5 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_green}`}>
                                             <div className={`col-1 d-flex justify-content-end`}>
-                                                <button onClick={() => {deleteQuestionFromTest(pregunta)}}
+                                                <button onClick={() => {
+                                                    deleteQuestionFromTest(pregunta)
+                                                }}
                                                         className={`${styles.minus_btn} py-2 px-3 font-bold`}>
                                                     -
                                                 </button>
@@ -207,24 +261,24 @@ export default function CreateTest() {
                 {successMessage && (
                     <div>
                         <div className="alert alert-success d-flex justify-content-center" role="alert">
-                            ¡Test creado correctamente!
+                            ¡Test actualizado correctamente!
                         </div>
                     </div>
                 )}
                 {warningMessage && (
                     <div>
                         <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                            ¡Este test ya ha sido creado!
+                            ¡No se pudo actualizar el test!
                         </div>
                     </div>
                 )
                 }
                 <div className={`d-flex justify-content-center`}>
-                    <button onClick={createTest}
+                    <button onClick={updateTest}
                             className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
                     border-2 border-black border-opacity-10 
                     ${navstyles.upper_bar_green} ${styles.btn_text}`}>
-                        Agregar Test
+                        Actualizar Test
                     </button>
                 </div>
                 <br/>

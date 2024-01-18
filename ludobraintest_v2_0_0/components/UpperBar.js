@@ -46,7 +46,7 @@ export default function UpperBar({color, questionType}) {
                     <div className={`ps-2 pt-2`}><h5>{name}</h5></div>
                 </div>
                 <div className={`col-4 d-flex justify-content-center`}>
-                    <div className={`ps-2`}>{questionType}</div>
+                    <h4 className={`pt-4 font-medium`}>{questionType}</h4>
                 </div>
                 <div className={`col-4 d-flex justify-content-center`}>
                     <button onClick={cerrarSesion}

@@ -350,6 +350,7 @@ export default function SelectNinio() {
             url: "http://localhost:3001/getTestSession"
         }).then((res) => {
             localStorage.setItem('dato', res.data[0].id_t_n);
+            localStorage.setItem('dato2', testSelected);
             router.push(`/menuOpcionesTest`);
         }).catch((err) => {
             console.log(err);
@@ -395,7 +396,7 @@ export default function SelectNinio() {
                             <br/>
                             {children.map((child, index) => (
                                 <div key={index} className={`justify-content-center`}>
-                                    <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                    <div className={`p-0 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedChild === child.id_ninio ? styles.selected_child_card : ''}`}>
                                         <div className={`card-body`}>
@@ -404,7 +405,7 @@ export default function SelectNinio() {
                                                     setChildSelected(child.id_ninio);
                                                     handleChildClick(child.id_ninio)
                                                 }}
-                                                        className={`d-flex justify-content-center`}>
+                                                        className={`d-flex justify-content-center py-3 w-100`}>
                                                     <h5 className={`card-title pt-1`}>{child.nombre} - {child.edad} años</h5>
                                                 </button>
                                             </div>
@@ -443,33 +444,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {informacionTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -482,33 +469,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {semejanzasTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -521,33 +494,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {vocabularioTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -560,33 +519,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {comprensionTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -599,33 +544,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {dibujosTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -638,33 +569,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {nombresTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -677,33 +594,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {matricesTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -716,33 +619,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {conceptosTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -755,33 +644,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {reconocimientoTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -794,33 +669,19 @@ export default function SelectNinio() {
                                 <div className={`col-12 px-2`}>
                                     {busquedaTests.map((test) => (
                                         <div key={test.id_test} className={`justify-content-center`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <button onClick={() => {
-                                                                setTestSelected(test.id_test);
-                                                                handleTestClick(test.id_test);
-                                                            }}
-                                                                    className={`col-sm-8 col-lg-9`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </button>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-3 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
+                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                        <button onClick={() => {
+                                                            setTestSelected(test.id_test);
+                                                            handleTestClick(test.id_test);
+                                                        }} className={`py-4 w-100`}>
+                                                            <h5 className={`card-title`}>
+                                                                {test.nombre_test}
+                                                            </h5>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

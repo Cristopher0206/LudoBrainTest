@@ -9,8 +9,11 @@ import axios from "axios";
 
 export default function ReadPregunta() {
     const router = useRouter();
+    let section;
     /*------------------- ESTADOS -------------------*/
-    const [questions, setQuestions] = useState([]);
+    const [sectionSelected, setSectionSelected] = useState('');
+    const [sections, setSections] = useState([]);
+    // Estados para las preguntas
     const [informationQuestions, setInformationQuestions] = useState([]); // Estado para las preguntas de tipo Información
     const [semejanzasQuestions, setSemejanzasQuestions] = useState([]); // Estado para las preguntas de tipo Semejanzas
     const [vocabularioQuestions, setVocabularioQuestions] = useState([]); // Estado para las preguntas de tipo Vocabulario
@@ -21,7 +24,6 @@ export default function ReadPregunta() {
     const [conceptosQuestions, setConceptosQuestions] = useState([]); // Estado para las preguntas de tipo Conceptos
     const [reconocimientoQuestions, setReconocimientoQuestions] = useState([]); // Estado para las preguntas de tipo Reconocimiento
     const [busquedaQuestions, setBusquedaQuestions] = useState([]); // Estado para las preguntas de tipo Búsqueda
-    const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
     // Estados para generar los títulos
     const [informationTitle, setInformationTitle] = useState(false);
     const [semejanzasTitle, setSemejanzasTitle] = useState(false);
@@ -35,16 +37,7 @@ export default function ReadPregunta() {
     const [busquedaTitle, setBusquedaTitle] = useState(false);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
-        getInformacionQuestions();
-        getSemejanzasQuestions();
-        getVocabularioQuestions();
-        getComprensionQuestions();
-        getDibujosQuestions();
-        getNombresQuestions();
-        getMatricesQuestions();
-        getConceptosQuestions();
-        getReconocimientoQuestions();
-        getBusquedaQuestions();
+        getSections();
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getInformacionQuestions = () => {
@@ -55,7 +48,7 @@ export default function ReadPregunta() {
         }).then((res) => {
             if (res.data) {
                 setInformationQuestions(res.data);
-                if (res.data.length !== 0){
+                if (res.data.length !== 0) {
                     setInformationTitle(true);
                 }
             } else {
@@ -91,7 +84,7 @@ export default function ReadPregunta() {
         }).then((res) => {
             if (res.data) {
                 setVocabularioQuestions(res.data);
-                if (res.data.length !== 0){
+                if (res.data.length !== 0) {
                     setVocabularioTitle(true);
                 }
             } else {
@@ -109,7 +102,7 @@ export default function ReadPregunta() {
         }).then((res) => {
             if (res.data) {
                 setComprensionQuestions(res.data);
-                if (res.data.length !== 0){
+                if (res.data.length !== 0) {
                     setComprensionTitle(true);
                 }
             } else {
@@ -127,7 +120,7 @@ export default function ReadPregunta() {
         }).then((res) => {
             if (res.data) {
                 setDibujosQuestions(res.data);
-                if (res.data.length !== 0){
+                if (res.data.length !== 0) {
                     setDibujosTitle(true);
                 }
             } else {
@@ -145,7 +138,7 @@ export default function ReadPregunta() {
         }).then((res) => {
             if (res.data) {
                 setNombresQuestions(res.data);
-                if (res.data.length !== 0){
+                if (res.data.length !== 0) {
                     setNombresTitle(true);
                 }
             } else {
@@ -163,7 +156,7 @@ export default function ReadPregunta() {
         }).then((res) => {
             if (res.data) {
                 setMatricesQuestions(res.data);
-                if (res.data.length !== 0){
+                if (res.data.length !== 0) {
                     setMatricesTitle(true);
                 }
             } else {
@@ -181,7 +174,7 @@ export default function ReadPregunta() {
         }).then((res) => {
             if (res.data) {
                 setConceptosQuestions(res.data);
-                if (res.data.length !== 0){
+                if (res.data.length !== 0) {
                     setConceptosTitle(true);
                 }
             } else {
@@ -199,7 +192,7 @@ export default function ReadPregunta() {
         }).then((res) => {
             if (res.data) {
                 setReconocimientoQuestions(res.data);
-                if (res.data.length !== 0){
+                if (res.data.length !== 0) {
                     setReconocimientoTitle(true);
                 }
             } else {
@@ -217,7 +210,7 @@ export default function ReadPregunta() {
         }).then((res) => {
             if (res.data) {
                 setBusquedaQuestions(res.data);
-                if (res.data.length !== 0){
+                if (res.data.length !== 0) {
                     setBusquedaTitle(true);
                 }
             } else {
@@ -227,6 +220,144 @@ export default function ReadPregunta() {
             console.log(err);
         })
     }
+    const getSections = () => {
+        axios({
+            method: "get",
+            withCredentials: true,
+            url: "http://localhost:3001/getSections"
+        }).then((res) => {
+            setSections(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const showTests = () => {
+        switch (section) {
+            case "Información":
+                getInformacionQuestions();
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Semejanzas":
+                getSemejanzasQuestions();
+                setInformationTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Vocabulario":
+                getVocabularioQuestions();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Comprensión":
+                getComprensionQuestions();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Dibujos":
+                getDibujosQuestions();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Nombres":
+                getNombresQuestions();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Matrices":
+                getMatricesQuestions();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Conceptos":
+                getConceptosQuestions();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Reconocimiento":
+                getReconocimientoQuestions();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Búsqueda":
+                getBusquedaQuestions();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                break;
+            default:
+                break;
+
+        }
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
@@ -235,390 +366,396 @@ export default function ReadPregunta() {
                             instruction={`Crea una nueva pregunta`}/>
             <AddButton createPage={`../select/selectSeccionPregunta`}
                        color={navstyles.upper_bar_red}/>
+            <br/>
             <div className={`container-fluid`}>
-                <br/> <br/>
-                {informationTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Información</h3>
-                            {informationQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                            ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row justify-content-between`}>
-                                                        <div className={`col-sm-4 col-lg-3`}>
-                                                            <h5 className={`card-title pt-1`}>{question.pregunta}</h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/eliminar.png" alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/lapiz.png" alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                </div>
-                            ))}
+                <div className={`row`}>
+                    <div className={`col-6`}>
+                        <div className={`flex justify-center border-1 border-black shadow-md rounded-2xl bg-white h-100`}>
+                            <select value={sectionSelected}
+                                    onChange={e => {
+                                        setSectionSelected(e.target.value);
+                                        section = e.target.value;
+                                        showTests();
+                                    }}
+                                    className={`border-2 border-black border-opacity-50 rounded-full font-bold w-75 px-4 py-2 shadow-md
+                                    ${styles.input_red} mt-4 h-min  text-white`}>
+                                <option value="">Selecciona una sección</option>
+                                {sections.map((section, index) => (
+                                    <option key={index}
+                                            value={section.nombre_seccion}>
+                                        {section.nombre_seccion}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                     </div>
-                }
-                {semejanzasTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Semejanzas</h3>
-                            {semejanzasQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                            ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row justify-content-between`}>
-                                                        <div className={`col-sm-4 col-lg-3`}>
-                                                            <h5 className={`card-title pt-1`}>{question.pregunta}</h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/eliminar.png" alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/lapiz.png" alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                }
-                {vocabularioTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Vocabulario</h3>
-                            {vocabularioQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                            ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row justify-content-between`}>
-                                                        <div className={`col-sm-4 col-lg-3`}>
-                                                            <h5 className={`card-title pt-1`}>{question.pregunta}</h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/eliminar.png" alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/lapiz.png" alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                }
-                {comprensionTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Comprensión</h3>
-                            {comprensionQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                            ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row justify-content-between`}>
-                                                        <div className={`col-sm-4 col-lg-3`}>
-                                                            <h5 className={`card-title pt-1`}>{question.pregunta}</h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/eliminar.png" alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/lapiz.png" alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                }
-                {dibujosTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Dibujos</h3>
-                            {dibujosQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                            ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row justify-content-between`}>
-                                                        <div className={`col-sm-4 col-lg-3`}>
-                                                            <h5 className={`card-title pt-1`}>{question.pregunta}</h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/eliminar.png" alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/lapiz.png" alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                }
-                {nombresTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Nombres</h3>
-                            {nombresQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                            ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row justify-content-between`}>
-                                                        <div className={`col-sm-4 col-lg-3`}>
-                                                            <h5 className={`card-title pt-1`}>{question.pregunta}</h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/eliminar.png" alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/lapiz.png" alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                }
-                {matricesTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Matrices</h3>
-                            {matricesQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                            ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row justify-content-between`}>
-                                                        <div className={`col-sm-4 col-lg-3`}>
-                                                            <h5 className={`card-title pt-1`}>{question.pregunta}</h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/eliminar.png" alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/lapiz.png" alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                }
-                {conceptosTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Conceptos</h3>
-                            {conceptosQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                            ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row justify-content-between`}>
-                                                        <div className={`col-sm-4 col-lg-3`}>
-                                                            <h5 className={`card-title pt-1`}>{question.pregunta}</h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/eliminar.png" alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                <img src="/images/lapiz.png" alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                }
-                {reconocimientoTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Reconocimiento</h3>
-                            {reconocimientoQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl 
-                                            ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row justify-content-between`}>
-                                                        <div className={`col-sm-4 col-lg-3`}>
-                                                            <h5 className={`card-title pt-1`}>
-                                                                {question.pregunta}
-                                                            </h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button>
-                                                                <img src="/images/eliminar.png" alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button>
-                                                                <img src="/images/lapiz.png" alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                </div>
-                            ))}
+                    <div className={`col-6`}>
+                        <div className={`border-1 border-black shadow-md rounded-2xl bg-white
+                        ${styles.overflow_container_questions} p-0`}>
                             <br/>
-                        </div>
-                    </div>
-                }
-                {busquedaTitle &&
-                    <div className={`row justify-content-center`}>
-                        <div className={`col-9`}>
-                            <h3 className={`text-center`}>Búsqueda</h3>
-                            {busquedaQuestions.map((question, index) => (
-                                <div key={index} className={`row justify-content-center`}>
-                                    <div className={`col-9`}>
-                                        <div
-                                            className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl 
+                            {informationTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {informationQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                             ${styles.card_body_red}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div
-                                                        className={`row justify-content-between`}>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-3`}>
-                                                            <h5
-                                                                className={`card-title pt-1`}>
-                                                                {question.pregunta}
-                                                            </h5>
-                                                        </div>
-                                                        <div
-                                                            className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <button>
-                                                                <img src="/images/eliminar.png"
-                                                                     alt="trashIcon"
-                                                                     className={`${styles.manage_icon}`}/>
-                                                            </button>
-                                                            <button>
-                                                                <img src="/images/lapiz.png"
-                                                                     alt="editIcon"
-                                                                     className={`${styles.manage_icon} shadow-2xl`}/>
-                                                            </button>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
                                         </div>
-                                        <br/>
-                                    </div>
+                                    ))}
                                 </div>
-                            ))}
-                            <br/>
+                            }
+                            {semejanzasTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {semejanzasQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_red}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                            {vocabularioTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {vocabularioQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_red}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                            {comprensionTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {comprensionQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_red}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                            {dibujosTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {dibujosQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_red}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                            {nombresTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {nombresQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_red}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                            {matricesTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {matricesQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_red}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                            {conceptosTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {conceptosQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_red}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                            {reconocimientoTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {reconocimientoQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_red}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
+                            {busquedaTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {busquedaQuestions.map((question, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_red}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {question.pregunta}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            }
                         </div>
                     </div>
-                }
+                </div>
             </div>
 
         </main>

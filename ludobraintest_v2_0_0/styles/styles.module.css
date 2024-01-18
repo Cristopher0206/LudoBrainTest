@@ -52,14 +52,18 @@
 
     .child_data {
         font-size: 2.5vw;
-        text-align: center;
+        text-align: left;
+    }
+
+    .card_test_text {
+        font-size: 2.5vw;
     }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
     /* Para pantallas md */
     .manage_icon {
-        width: 4vw;
+        width: 3.5vw;
     }
 
     .epn_logo {
@@ -112,12 +116,16 @@
         font-size: 2.2vw;
         text-align: center;
     }
+
+    .card_test_text {
+        font-size: 2vw;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
     /* Para pantallas lg */
     .manage_icon {
-        width: 2.3vw;
+        width: 3vw;
     }
 
     .epn_logo {
@@ -170,7 +178,9 @@
         font-size: 1.8vw;
         text-align: center;
     }
-
+    .card_test_text {
+        font-size: 1.7vw;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -206,6 +216,7 @@
     .instruction_text {
         font-weight: bolder;
         font-size: 1.5vw;
+        text-align: center;
     }
 
     .label {
@@ -228,6 +239,10 @@
         font-size: 1.8vw;
         text-align: center;
     }
+
+    .card_test_text {
+        font-size: 1.4vw;
+    }
 }
 
 .input_sky_blue {
@@ -238,6 +253,17 @@
 .input_yellow {
     background-color: rgba(246, 218, 39, 0.6);
     color: #000000;
+}
+
+.input_red {
+    background-color: rgba(255, 67, 49, 0.6);
+    color: #000000;
+}
+
+.input_green {
+    background-color: rgba(4, 187, 3, 0.6);
+    color: #000000;
+
 }
 
 .label_red {
@@ -367,6 +393,80 @@
     height: 305px;
 }
 
+.overflow_container_questions {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 370px;
+}
+
 .overflow_col {
     height: 335px;
+}
+
+.overflow_container_test2 {
+    overflow-y: auto;
+    height: 300px;
+}
+
+.answer_btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 30% 40%;
+    width: 100%;
+    box-shadow: black 0.1em 0.1em 0.2em
+}
+
+.answer_btn:hover {
+    background-color: rgba(255, 67, 49, 0.75);
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.add_btn {
+    background-color: #4671C6;
+    color: #ffffff;
+    border: 1px solid #4671C6;
+    border-radius: 10px;
+    box-shadow: black 0.05em 0.05em 0.1em;
+    transition: all 0.3s ease-out;
+}
+
+.add_btn:hover {
+    background-color: #A4C9FF;
+    color: #000000;
+    border: 1px solid #A4C9FF;
+    transition: all 0.3s ease-out;
+}
+
+.minus_btn {
+    background-color: #f12727;
+    color: #ffffff;
+    border: 1px solid #f12727;
+    border-radius: 10px;
+    box-shadow: black 0.05em 0.05em 0.1em;
+    transition: all 0.3s ease-out;
+}
+
+.minus_btn:hover {
+    background-color: #F9A7A7;
+    color: #000000;
+    border: 1px solid #F9A7A7;
+    transition: all 0.3s ease-out;
+}
+
+.plus_btn {
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: black 0.05em 0.05em 0.1em;
+    transition: all 0.3s ease-out;
+}
+
+.plus_btn:hover {
+    opacity: 75%;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: black 0.05em 0.05em 0.1em;
+    transition: all 0.3s ease-out;
 }

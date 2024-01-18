@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import navstyles from "@/styles/navstyles.module.css";
+import styles from "@/styles/styles.module.css";
 import UpperBar from "@/components/UpperBar";
 import InstructionBar from "@/components/InstructionBar";
 import axios from "axios";
@@ -171,7 +172,7 @@ export default function CreatePregunta() {
                     router.push('/select/selectSeccionPregunta');
                 }, 3000);
                 clearFields();
-            } else if(response.data.message === 'Esta pregunta ya se encuentra registrada') {
+            } else if (response.data.message === 'Esta pregunta ya se encuentra registrada') {
                 // Si la pregunta ya existe, muestra un mensaje de advertencia
                 setWarningMessage(true);
                 // El mensaje desaparece luego de 3 segundos
@@ -191,9 +192,8 @@ export default function CreatePregunta() {
             <InstructionBar previousPage={`../select/selectSeccionPregunta`}
                             instruction={`Crea una pregunta`}/>
             {tipoInformacion && (
-                <div className={`container-fluid`}>
-                    <br/>
-                    <h4><label htmlFor="myTextarea">Pregunta</label></h4>
+                <div className={`container-fluid px-5`}>
+                    <h5><label htmlFor="myTextarea">Pregunta</label></h5>
                     <textarea
                         id="myTextarea"
                         name="myTextarea"
@@ -202,12 +202,14 @@ export default function CreatePregunta() {
                         rows="4" // Puedes ajustar la cantidad de filas según tus necesidades
                         className={`w-100 border-1 border-black shadow-md rounded-2xl p-3`}
                     />
-                    <h4><label>Respuestas</label></h4>
-                    <div className={`border-1 border-black shadow-md rounded-2xl p-3 bg-white`}>
+                    <br/> <br/>
+                    <h5><label>Respuestas</label></h5>
+                    <div className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white`}>
                         {selectedFiles.map((file, index) => (
                             <div key={index}>
-                                <div className={`container-fluid`}>
-                                    <div className={`row`}>
+                                <div className={`container-fluid `}>
+                                    <div className={`row mx-5 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                ${styles.card_body_red}`}>
                                         <div className={`col-1 d-flex justify-content-end`}>
                                             <input
                                                 type="checkbox"
@@ -220,17 +222,24 @@ export default function CreatePregunta() {
                                                         [index]: isChecked,
                                                     }));
                                                 }}
+                                                className={`w-4/12`}
                                             />
                                         </div>
                                         <div className={`col-5`}>
-                                            <p>{file.name} (opcion {index + 1})</p>
+                                            <div className={`py-3`}>
+                                                {file.name} (opcion {index + 1})
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <br/>
                             </div>
                         ))}
                         <label htmlFor="myAnswersArea" className="custom-file-upload d-flex justify-center">
-                            <div className="btn btn-danger">+</div>
+                            <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
+                                +
+                            </div>
                         </label>
                         <input
                             type="file"
@@ -244,17 +253,22 @@ export default function CreatePregunta() {
                         <div className={`container-fluid`}>
                             <div className={`row justify-content-evenly`}>
                                 <div className={`col-5 d-flex justify-content-center`}>
-                                    <button className={`btn btn-dark`} onClick={handleUpload}>
-                                        Subir imágenes
+                                    <button onClick={handleUpload}
+                                            className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
+                                        Crear Pregunta
                                     </button>
                                 </div>
                                 <div className={`col-5 d-flex justify-content-center`}>
-                                    <button className={`btn btn-secondary`} onClick={() => setSelectedFiles([])}>
+                                    <button onClick={() => setSelectedFiles([])}
+                                            className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
                                         Limpiar imágenes
                                     </button>
                                 </div>
                             </div>
                         </div>
+                        <br/>
                     </div>
                 </div>
             )}
@@ -710,6 +724,7 @@ export default function CreatePregunta() {
                     </div>
                 </div>
             )}
+            <br/>
         </main>
     )
 }

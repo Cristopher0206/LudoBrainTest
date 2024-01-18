@@ -6,10 +6,17 @@ import AddButton from "@/components/AddButton";
 import {useState, useEffect} from "react";
 import axios from "axios";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 export default function ReadTest() {
+    const router = useRouter();
+    let section;
     /*------------------- ESTADOS -------------------*/
     const [tests, setTests] = useState([]);
+    const [sectionSelected, setSectionSelected] = useState('');
+    const [sections, setSections] = useState([]);
+    const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
+    // Estados para mostrar las preguntas
     const [informacionTests, setInformacionTests] = useState([]);
     const [semejanzasTests, setSemejanzasTests] = useState([]);
     const [vocabularioTests, setVocabularioTests] = useState([]);
@@ -33,18 +40,20 @@ export default function ReadTest() {
     const [busquedaTitle, setBusquedaTitle] = useState(false);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => {
-        getInformacionTests();
-        getSemejanzasTests();
-        getVocabularioTests();
-        getComprensionTests();
-        getDibujosTests();
-        getNombresTests();
-        getMatricesTests();
-        getConceptosTests();
-        getReconocimientoTests();
-        getBusquedaTests();
+        getSections();
     }, []);
     /*------------------- FUNCIONES -------------------*/
+    const getSections = () => {
+        axios({
+            method: "get",
+            withCredentials: true,
+            url: "http://localhost:3001/getSections"
+        }).then((res) => {
+            setSections(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     const getInformacionTests = () => {
         axios({
             method: "get",
@@ -185,6 +194,163 @@ export default function ReadTest() {
             console.log(err);
         })
     }
+    const showTests = () => {
+        switch (section) {
+            case "Información":
+                getInformacionTests();
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Semejanzas":
+                getSemejanzasTests();
+                setInformationTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Vocabulario":
+                getVocabularioTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Comprensión":
+                getComprensionTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Dibujos":
+                getDibujosTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Nombres":
+                getNombresTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Matrices":
+                getMatricesTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Conceptos":
+                getConceptosTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Reconocimiento":
+                getReconocimientoTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Búsqueda":
+                getBusquedaTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                break;
+            default:
+                break;
+
+        }
+    }
+    const eliminarTest = (idTest) => {
+        const confirmacion = window.confirm('¿Estás seguro que deseas eliminar este test?');
+        if(confirmacion){
+            axios({
+                method: "post",
+                data: {
+                    id_test: idTest,
+                },
+                withCredentials: true,
+                url: "http://localhost:3001/deleteTest"
+            }).then((res) => {
+                console.log(res);
+                if(res.data.message === 'Test eliminado exitosamente') {
+                    // Si el test se elimina, muestra un mensaje de confirmacion
+                    setSuccessMessage(true);
+                    // El mensaje desaparece luego de 3 segundos
+                    setTimeout(() => {
+                        setSuccessMessage(false);
+                        showTests();
+                    }, 3000);
+                }
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    }
+    const goActualizarTest = (idTest) => {
+        sessionStorage.setItem('dataToPass', idTest);
+        router.push('../update/updateTest');
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
@@ -193,386 +359,407 @@ export default function ReadTest() {
                             instruction={`Crea un nuevo Test`}/>
             <AddButton createPage={`../create/createTest`}
                        color={navstyles.upper_bar_green}/>
+            <br/>
             <div className={`container-fluid`}>
-                <br/> <br/>
-                <div className={`container-fluid`}>
-                    {informationTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Información</h3>
-                                {informacionTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                ${styles.card_body_green}`}>
-                                                <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <div className={`col-sm-8 col-lg-10`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </div>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
+                <div className={`row`}>
+                    <div className={`col-6`}>
+                        <div
+                            className={`flex justify-center border-1 border-black shadow-md rounded-2xl bg-white h-100`}>
+                            <select value={sectionSelected}
+                                    onChange={e => {
+                                        setSectionSelected(e.target.value);
+                                        section = e.target.value;
+                                        showTests();
+                                    }}
+                                    className={`border-2 border-black border-opacity-50 rounded-full font-bold w-75 px-4 py-2 shadow-md
+                                    ${styles.input_green} mt-4 h-min  text-white`}>
+                                <option value="">Selecciona una sección</option>
+                                {sections.map((section, index) => (
+                                    <option key={index}
+                                            value={section.nombre_seccion}>
+                                        {section.nombre_seccion}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className={`col-6`}>
+                        <div className={`border-1 border-black shadow-md rounded-2xl bg-white
+                        ${styles.overflow_container_questions} p-0`}>
+                            <br/>
+                            {informationTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {informacionTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
-                                            <br/>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
-                        </div>
-                    }
-                    {semejanzasTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Semejanzas</h3>
-                                {semejanzasTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                ${styles.card_body_green}`}>
-                                                <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <div className={`col-sm-8 col-lg-10`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </div>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
+                                    ))}
+                                </div>
+                            }
+                            {semejanzasTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {semejanzasTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
-                                            <br/>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
-                        </div>
-                    }
-                    {vocabularioTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Vocabulario</h3>
-                                {vocabularioTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                ${styles.card_body_green}`}>
-                                                <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <div className={`col-sm-8 col-lg-10`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </div>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
+                                    ))}
+                                </div>
+                            }
+                            {vocabularioTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {vocabularioTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
-                                            <br/>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
-                        </div>
-                    }
-                    {comprensionTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Comprensión</h3>
-                                {comprensionTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                ${styles.card_body_green}`}>
-                                                <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <div className={`col-sm-8 col-lg-10`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </div>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
+                                    ))}
+                                </div>
+                            }
+                            {comprensionTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {comprensionTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
-                                            <br/>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
-                        </div>
-                    }
-                    {dibujosTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Dibujos</h3>
-                                {dibujosTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                ${styles.card_body_green}`}>
-                                                <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <div className={`col-sm-8 col-lg-10`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </div>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
+                                    ))}
+                                </div>
+                            }
+                            {dibujosTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {dibujosTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
-                                            <br/>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
-                        </div>
-                    }
-                    {nombresTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Nombres</h3>
-                                {nombresTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                ${styles.card_body_green}`}>
-                                                <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <div className={`col-sm-8 col-lg-10`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </div>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
+                                    ))}
+                                </div>
+                            }
+                            {nombresTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {nombresTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
-                                            <br/>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
-                        </div>
-                    }
-                    {matricesTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Matrices</h3>
-                                {matricesTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                ${styles.card_body_green}`}>
-                                                <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <div className={`col-sm-8 col-lg-10`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </div>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
+                                    ))}
+                                </div>
+                            }
+                            {matricesTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {matricesTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
-                                            <br/>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
-                        </div>
-                    }
-                    {conceptosTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Conceptos</h3>
-                                {conceptosTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
-                                ${styles.card_body_green}`}>
-                                                <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <div className={`col-sm-8 col-lg-10`}>
-                                                                <h5 className={`card-title pt-2`}>{test.nombre_test}</h5>
-                                                            </div>
-                                                            <div
-                                                                className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/eliminar.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
-                                                                <Link href={`#`}>
-                                                                    <img src="/images/lapiz.png"
-                                                                         alt="Eliminar LOGO"
-                                                                         className={`h-10`}/>
-                                                                </Link>
+                                    ))}
+                                </div>
+                            }
+                            {conceptosTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {conceptosTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
-                                            <br/>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
-                        </div>
-                    }
-                    {reconocimientoTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Reconocimiento</h3>
-                                {reconocimientoTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}>
-                                            <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl ${styles.card_body_green}`}>
-                                                <div className={`card-body`}>
-                                                    <div className={`container-fluid`}>
-                                                        <div className={`row`}>
-                                                            <div className={`col-sm-8 col-lg-10`}><h5 className={`card-title pt-2`}>{test.nombre_test}</h5></div>
-                                                            <div className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                                <Link href={`#`}><img src="/images/eliminar.png" alt="Eliminar LOGO" className={`h-10`}/></Link>
-                                                                <Link href={`#`}><img src="/images/lapiz.png" alt="Eliminar LOGO" className={`h-10`}/></Link>
+                                    ))}
+                                </div>
+                            }
+                            {reconocimientoTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {reconocimientoTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
-                                            <br/>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
-                        </div>
-                    }
-                    {busquedaTitle &&
-                        <div className={`row justify-content-center`}>
-                            <div className={`col-9`}>
-                                <h3 className={`text-center`}>Búsqueda</h3>
-                                {busquedaTests.map((test) => (
-                                    <div key={test.id_test} className={`row justify-content-center`}>
-                                        <div className={`col-9`}><div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl ${styles.card_body_green}`}>
-                                            <div className={`card-body`}>
-                                                <div className={`container-fluid`}>
-                                                    <div className={`row`}>
-                                                        <div className={`col-sm-8 col-lg-10`}><h5 className={`card-title pt-2`}>{test.nombre_test}</h5></div>
-                                                        <div className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
-                                                            <Link href={`#`}><img src="/images/eliminar.png" alt="Eliminar LOGO" className={`h-10`}/></Link>
-                                                            <Link href={`#`}><img src="/images/lapiz.png" alt="Eliminar LOGO" className={`h-10`}/></Link>
+                                    ))}
+                                </div>
+                            }
+                            {busquedaTitle &&
+                                <div className={`col-12 px-2`}>
+                                    {busquedaTests.map((test, index) => (
+                                        <div key={index} className={`row justify-content-center`}>
+                                            <div className={`col-9`}>
+                                                <div className={`p-3 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            ${styles.card_body_green}`}>
+                                                    <div className={`card-body`}>
+                                                        <div className={`container-fluid`}>
+                                                            <div className={`row justify-content-between`}>
+                                                                <div className={`col-sm-4 col-md-6 col-lg-6`}>
+                                                                    <div className={`font-medium card-title pt-1 ${styles.card_test_text}`}>
+                                                                        {test.nombre_test}
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    <button onClick={() => eliminarTest(test.id_test)}>
+                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                             className={`${styles.manage_icon}`}/>
+                                                                    </button>
+                                                                    <button onClick={() => goActualizarTest(test.id_test)}>
+                                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br/>
                                             </div>
                                         </div>
-                                        <br/>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <br/>
+                                    ))}
+                                </div>
+                            }
                         </div>
-                    }
+                    </div>
                 </div>
             </div>
+            {successMessage &&
+                <div>
+                    <br/>
+                    <div className="alert alert-success d-flex justify-content-center" role="alert">
+                        ¡Test eliminado Exitosamente!
+                    </div>
+                    <br/>
+                </div>
+            }
         </main>
     )
 }

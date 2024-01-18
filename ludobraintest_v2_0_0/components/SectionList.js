@@ -24,7 +24,7 @@ export default function SectionList(
     return (
         <div className="px-5 grid gap-x-8 gap-y-5 grid-cols-3 justify-center justify-items-center">
             <button onClick={() => definirPregunta('Información')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
+                    className={`btn py-4 rounded-lg text-black shadow-md font-medium
                             border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_informacion}`}>
                 Información
             </button>

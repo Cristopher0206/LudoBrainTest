@@ -6,14 +6,13 @@ import navstyles from "@/styles/navstyles.module.css";
 import {useRouter} from "next/router";
 import styles from "@/styles/styles.module.css";
 
-export default function CreateNinio() {
+export default function UpdateNinio() {
     const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     const [idNinio, setIdNinio] = useState('');
     const [registerUpdateName, setRegisterUpdateName] = useState('');
     const [registerUpdateAge, setRegisterUpdateAge] = useState('');
     const [info, setInfo] = useState(sessionStorage.getItem("dataToPass"));
-    //const [registerEducatorId, setRegisterEducatorId] = useState('');
     const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión

@@ -167,7 +167,7 @@ app.post('/uploadQuestion', upload, (req, res) => {
             res.send({message: 'Esta pregunta ya se encuentra registrada'});
         }
         if (result.length === 0) {
-            const queryInsertQuestion = 'INSERT INTO pregunta (id_seccion,pregunta) VALUES (?,?)';
+            const queryInsertQuestion = 'INSERT INTO pregunta (id_seccion, pregunta) VALUES (?,?)';
             db.query(queryInsertQuestion, [pregunta.idSection, pregunta.pregunta], (err, result) => {
                 if (err) {
                     throw err;
@@ -180,27 +180,26 @@ app.post('/uploadQuestion', upload, (req, res) => {
                     const id_pregunta = result1[0].id_pregunta;
                     const respuestas = req.files;
                     const querySelectImage = 'SELECT * FROM respuesta WHERE imagen = ?'; // Consulta para verificar si la imagen ya se encuentra registrada
-                    const queryInsertImage = 'INSERT INTO respuesta (imagen, respuesta_correcta, numero_fila) VALUES (?,?,?)';
+                    const queryInsertImage = 'INSERT INTO respuesta (imagen, numero_fila) VALUES (?,?)';
                     pregunta.imagenIndex.forEach((img, index) => {
                         db.query(querySelectImage, [respuestas[index].originalname], (err, result2) => {
                             if (err) {
                                 throw err;
                             }
                             if (result2.length > 0) {
-                                //res.send({message: 'Esta imagen ya se encuentra registrada'});
-                                const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta) VALUES (?,?)';
-                                db.query(queryInsertQuestionAnswer, [id_pregunta, result2[0].id_respuesta], (err, result3) => {
+                                const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta) VALUES (?,?,?)';
+                                db.query(queryInsertQuestionAnswer, [id_pregunta, result2[0].id_respuesta, pregunta.respuestaCorrecta[index]], (err, result3) => {
                                     if (err) {
                                         throw err;
                                     }
                                 })
                             } else {
-                                db.query(queryInsertImage, [respuestas[index].originalname, pregunta.respuestaCorrecta[index], pregunta.fila[index]], (err, result4) => {
+                                db.query(queryInsertImage, [respuestas[index].originalname, pregunta.fila[index]], (err, result4) => {
                                     if (err) {
                                         throw err;
                                     }
-                                    const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta) VALUES (?,?)';
-                                    db.query(queryInsertQuestionAnswer, [id_pregunta, result4.insertId], (err, result5) => {
+                                    const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta) VALUES (?,?,?)';
+                                    db.query(queryInsertQuestionAnswer, [id_pregunta, result4.insertId, pregunta.respuestaCorrecta[index]], (err, result5) => {
                                         if (err) {
                                             throw err;
                                         }
@@ -303,8 +302,7 @@ app.get('/getSections', (req, res) => {
 });
 app.post('/getPreguntasBySeccion', (req, res) => {
     const seccion = req.body.seccion;
-    console.log(seccion);
-    const query = 'SELECT * FROM pregunta JOIN seccion ON pregunta.id_seccion = seccion.id_seccion ' +
+    const query = 'SELECT pregunta.id_pregunta, pregunta.pregunta FROM pregunta JOIN seccion ON pregunta.id_seccion = seccion.id_seccion ' +
         'WHERE seccion.nombre_seccion = ?';
     db.query(query, [seccion], (err, result) => {
         if (err) {
@@ -323,7 +321,7 @@ app.get('/getTests', (req, res) => {
     });
 });
 app.get('/getInformacionTests', (req, res) => {
-    const query = 'SELECT * FROM test WHERE id_seccion = 1';
+    const query = 'SELECT * FROM test WHERE id_seccion = 1 ORDER BY nombre_test';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -387,7 +385,7 @@ app.get('/getMatricesTests', (req, res) => {
     })
 })
 app.get('/getConceptosTests', (req, res) => {
-const query = 'SELECT * FROM test WHERE id_seccion = 8';
+    const query = 'SELECT * FROM test WHERE id_seccion = 8';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -487,7 +485,7 @@ app.get('/getMatricesQuestions', (req, res) => {
     });
 })
 app.get('/getConceptosQuestions', (req, res) => {
-const query = 'SELECT * FROM pregunta WHERE id_seccion = 8';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 8';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -548,7 +546,7 @@ app.post('/getTestSession', (req, res) => {
 })
 app.post('/getNinioTestById', (req, res) => {
     const id_test = req.body.id_test;
-    const querySelect = 'SELECT test.nombre_test, seccion.nombre_seccion, seccion.informacion\n' +
+    const querySelect = 'SELECT test.nombre_test, test_ninio.id_ninio,seccion.nombre_seccion, seccion.informacion\n' +
         'FROM test_ninio JOIN test ON test_ninio.id_test = test.id_test\n' +
         'JOIN seccion ON test.id_seccion = seccion.id_seccion\n' +
         'WHERE test_ninio.id_t_n = ?';
@@ -573,6 +571,61 @@ app.post('/goInstructions', (req, res) => {
             res.send({message: 'Test no iniciado'});
         }
     })
+});
+app.post('/getQuestionsbyTestId', (req, res) => {
+    const id_test = req.body.id;
+    const id_ninio = req.body.id_ninio;
+    const querySelect = 'SELECT pregunta.id_pregunta, pregunta.pregunta, test_ninio.puntaje\n' +
+        'FROM test JOIN test_pregunta ON test.id_test = test_pregunta.id_test\n' +
+        'JOIN pregunta ON test_pregunta.id_pregunta = pregunta.id_pregunta\n' +
+        'JOIN test_ninio ON test.id_test = test_ninio.id_test\n' +
+        'WHERE test_pregunta.id_test = ? AND test_ninio.id_ninio = ?\n' +
+        'ORDER BY pregunta.pregunta';
+    db.query(querySelect, [id_test, id_ninio], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.post('/getAnswersbyQuestionId', (req, res) => {
+    const id_pregunta = req.body.id;
+    const querySelect = 'SELECT respuesta.imagen , pregunta_respuesta.respuesta_correcta\n' +
+        'FROM pregunta JOIN pregunta_respuesta ON pregunta.id_pregunta = pregunta_respuesta.id_pregunta\n' +
+        'JOIN respuesta ON respuesta.id_respuesta = pregunta_respuesta.id_respuesta\n' +
+        'WHERE pregunta.id_pregunta = ? \n' +
+        'ORDER BY respuesta.imagen';
+    db.query(querySelect, [id_pregunta], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.post('/getCurrentInformation', (req, res) => {
+    const id_test = req.body.id_test;
+    const querySelect = 'SELECT test.nombre_test, seccion.nombre_seccion\n' +
+        'FROM test JOIN seccion ON test.id_seccion = seccion.id_seccion\n' +
+        'WHERE test.id_test = ?';
+    db.query(querySelect, [id_test], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.post('/getPreguntasByIdTest', (req, res) => {
+    const id_test = req.body.id_test;
+    const querySelect = 'SELECT pregunta.id_pregunta, pregunta.pregunta from test_pregunta\n' +
+        'JOIN pregunta ON test_pregunta.id_pregunta = pregunta.id_pregunta\n' +
+        'WHERE id_test = ? ' +
+        'ORDER BY pregunta.pregunta';
+    db.query(querySelect, [id_test], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
 })
 /* Funciones de actualización */
 app.post('/updateChildren', (req, res) => {
@@ -587,6 +640,18 @@ app.post('/updateChildren', (req, res) => {
         res.send({message: "Niño actualizado exitosamente"});
     });
 });
+app.post('/finishTest', (req, res) => {
+    const id_test = req.body.id_test;
+    const id_ninio = req.body.id_ninio;
+    const puntaje = req.body.puntaje;
+    const queryUpdate = 'UPDATE test_ninio SET puntaje = ? WHERE id_test = ? AND id_ninio = ?';
+    db.query(queryUpdate, [puntaje, id_test, id_ninio], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.send({message: 'Test finalizado correctamente'});
+    })
+})
 /* Funciones de eliminación */
 app.post('/deleteChild', (req, res) => {
     const id_educador = req.user.id;
@@ -597,5 +662,27 @@ app.post('/deleteChild', (req, res) => {
             throw err;
         }
         res.status(200).json({message: 'Niño eliminado exitosamente'});
+    })
+})
+app.post('/deleteTest', (req, res) => {
+    const id_test = req.body.id_test;
+    const queryDelete = 'DELETE FROM test_ninio WHERE id_test = ?';
+    db.query(queryDelete, [id_test], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        const queryDelete2 = 'DELETE FROM test_pregunta WHERE id_test = ?';
+        db.query(queryDelete2, [id_test], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            const queryDelete3 = 'DELETE FROM test WHERE id_test = ?';
+            db.query(queryDelete3, [id_test], (err, result) => {
+                if (err) {
+                    throw err;
+                }
+                res.send({message: 'Test eliminado exitosamente'});
+            })
+        })
     })
 })

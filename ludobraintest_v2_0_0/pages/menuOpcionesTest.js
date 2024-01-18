@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 export default function MenuOpcionesTest(){
     const router = useRouter();
     const id = localStorage.getItem('dato');
+    const id_test = localStorage.getItem('dato2');
     let nombre_seccion;
     /*------------------- ESTADOS -------------------*/
     const [test, setTest] = useState('');
@@ -40,6 +41,7 @@ export default function MenuOpcionesTest(){
             console.log(res);
             setTest(res.data[0]);
             nombre_seccion = res.data[0].nombre_seccion;
+            localStorage.setItem('id_ninio', res.data[0].id_ninio);
             generateColor();
         }).catch((err) => {
             console.log(err);
@@ -52,6 +54,41 @@ export default function MenuOpcionesTest(){
     }
     const goBack = () => {
         router.push(`/select/selectNinio`);
+    }
+    const goTest = () => {
+        localStorage.setItem('id_test', id_test);
+        switch (test.nombre_seccion) {
+            case "Información":
+                router.push(`/read/preguntas/readPreguntaInformacion`);
+                break;
+            case "Semejanzas":
+                router.push(`/read/preguntas/readPreguntaSemejanzas`);
+                break;
+            case "Vocabulario":
+                router.push(`/read/preguntas/readPreguntaVocabulario`);
+                break;
+            case "Comprensión":
+                router.push(`/read/preguntas/readPreguntaComprension`);
+                break;
+            case "Dibujos":
+                router.push(`/read/preguntas/readPreguntaDibujos`);
+                break;
+            case "Nombres":
+                router.push(`/read/preguntas/readPreguntaNombres`);
+                break;
+            case "Matrices":
+                router.push(`/read/preguntas/readPreguntaMatrices`);
+                break;
+            case "Conceptos":
+                router.push(`/read/preguntas/readPreguntaConceptos`);
+                break;
+            case "Reconocimiento":
+                router.push(`/read/preguntas/readPreguntaReconocimiento`);
+                break;
+            case "Búsqueda":
+                router.push(`/read/preguntas/readPreguntaBusqueda`);
+                break;
+        }
     }
     const generateColor = async () => {
         switch (nombre_seccion) {
@@ -110,7 +147,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.informacion} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>
@@ -155,7 +192,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.semejanzas} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>
@@ -200,7 +237,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.vocabulario} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>
@@ -245,7 +282,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.comprension} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>
@@ -290,7 +327,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.dibujos} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>
@@ -335,7 +372,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.nombres} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>
@@ -380,7 +417,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.matrices} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>
@@ -425,7 +462,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.conceptos} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>
@@ -470,7 +507,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.reconocimiento} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>
@@ -515,7 +552,7 @@ export default function MenuOpcionesTest(){
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button /*onClick={startTest}*/ className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
+                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
                     border-2 border-black border-opacity-10 w-100 ${sections.busqueda} ${styles.btn_text}`}>
                                         Iniciar Test
                                     </button>

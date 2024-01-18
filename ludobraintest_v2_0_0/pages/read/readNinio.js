@@ -97,10 +97,15 @@ export default function ReadNinio() {
                                         <div className={`container-fluid`}>
                                             <div className={`row justify-content-between`}>
                                                 <div className={`col-sm-4 col-lg-4`}>
-                                                    <div className={`card-title pt-sm-1 pt-md-1 ${styles.child_data}`}>{child.nombre}</div>
+                                                    <div className={`font-semibold card-title pt-sm-1 pt-md-1 ${styles.child_data}`}>
+                                                        {child.nombre}
+                                                    </div>
                                                 </div>
                                                 <div className={`col-sm-4 col-lg-6 d-flex justify-content-center`}>
-                                                    <div className={`card-title pt-sm-4 pt-md-3 ${styles.child_data}`}>{child.edad} años</div>
+                                                    <div className={`font-semibold card-title ps-sm-1 pt-sm-4 pt-md-3 
+                                                    ${styles.child_data}`}>
+                                                        {child.edad} años
+                                                    </div>
                                                 </div>
                                                 <div className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
                                                     <button onClick={() => eliminarNinio(child.id_ninio)}>

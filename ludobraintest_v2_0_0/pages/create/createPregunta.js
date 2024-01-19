@@ -26,15 +26,20 @@ export default function CreatePregunta() {
     const [textareaValue, setTextareaValue] = useState('');
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [correctAnswers, setCorrectAnswers] = useState({});
+    const [esMuestra, setEsMuestra] = useState([]);
     //const [rowNumber, setRowNumber] = useState(0);
     /* Estados para los inputs de Conceptos */
     const [selectedFiles1, setSelectedFiles1] = useState([]);
     const [selectedFiles2, setSelectedFiles2] = useState([]);
     const [selectedFiles3, setSelectedFiles3] = useState([]);
+    /* Estados para los inputs de Semejanzas */
+    const [imagenesMuestra, setImagenesMuestra] = useState([]);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         crearInterfaz();
     }, []);
+    useEffect(() => {
+    }, [selectedFiles]);
     /*------------------- FUNCIONES -------------------*/
     const clearFields = () => { /* Funciòn para limpiar los campos */
         setTextareaValue('');
@@ -45,33 +50,123 @@ export default function CreatePregunta() {
         switch (dato) {
             case 'Información':
                 setTipoInformacion(true);
+                setTipoSemejanza(false);
+                setTipoVocabulario(false);
+                setTipoComprension(false);
+                setTipoDibujos(false);
+                setTipoNombres(false);
+                setTipoMatrices(false);
+                setTipoConceptos(false);
+                setTipoReconocimiento(false);
+                setTipoBusqueda(false);
                 break;
             case 'Semejanzas':
                 setTipoSemejanza(true);
+                setTipoInformacion(false);
+                setTipoVocabulario(false);
+                setTipoComprension(false);
+                setTipoDibujos(false);
+                setTipoNombres(false);
+                setTipoMatrices(false);
+                setTipoConceptos(false);
+                setTipoReconocimiento(false);
+                setTipoBusqueda(false);
                 break;
             case 'Vocabulario':
                 setTipoVocabulario(true);
+                setTipoInformacion(false);
+                setTipoSemejanza(false);
+                setTipoComprension(false);
+                setTipoDibujos(false);
+                setTipoNombres(false);
+                setTipoMatrices(false);
+                setTipoConceptos(false);
+                setTipoReconocimiento(false);
+                setTipoBusqueda(false);
                 break;
             case 'Comprensión':
                 setTipoComprension(true);
+                setTipoInformacion(false);
+                setTipoSemejanza(false);
+                setTipoVocabulario(false);
+                setTipoDibujos(false);
+                setTipoNombres(false);
+                setTipoMatrices(false);
+                setTipoConceptos(false);
+                setTipoReconocimiento(false);
+                setTipoBusqueda(false);
                 break;
             case 'Dibujos':
                 setTipoDibujos(true);
+                setTipoInformacion(false);
+                setTipoSemejanza(false);
+                setTipoVocabulario(false);
+                setTipoComprension(false);
+                setTipoNombres(false);
+                setTipoMatrices(false);
+                setTipoConceptos(false);
+                setTipoReconocimiento(false);
+                setTipoBusqueda(false);
                 break;
             case 'Nombres':
                 setTipoNombres(true);
+                setTipoInformacion(false);
+                setTipoSemejanza(false);
+                setTipoVocabulario(false);
+                setTipoComprension(false);
+                setTipoDibujos(false);
+                setTipoMatrices(false);
+                setTipoConceptos(false);
+                setTipoReconocimiento(false);
+                setTipoBusqueda(false);
                 break;
             case 'Matrices':
                 setTipoMatrices(true);
+                setTipoInformacion(false);
+                setTipoSemejanza(false);
+                setTipoVocabulario(false);
+                setTipoComprension(false);
+                setTipoDibujos(false);
+                setTipoNombres(false);
+                setTipoConceptos(false);
+                setTipoReconocimiento(false);
+                setTipoBusqueda(false);
                 break;
             case 'Conceptos':
                 setTipoConceptos(true);
+                setTipoInformacion(false);
+                setTipoSemejanza(false);
+                setTipoVocabulario(false);
+                setTipoComprension(false);
+                setTipoDibujos(false);
+                setTipoNombres(false);
+                setTipoMatrices(false);
+                setTipoReconocimiento(false);
+                setTipoBusqueda(false);
                 break;
             case 'Reconocimiento':
                 setTipoReconocimiento(true);
+                setTipoInformacion(false);
+                setTipoSemejanza(false);
+                setTipoVocabulario(false);
+                setTipoComprension(false);
+                setTipoDibujos(false);
+                setTipoNombres(false);
+                setTipoMatrices(false);
+                setTipoConceptos(false);
+                setTipoBusqueda(false);
                 break;
             case 'Búsqueda':
                 setTipoBusqueda(true);
+                setTipoInformacion(false);
+                setTipoSemejanza(false);
+                setTipoVocabulario(false);
+                setTipoComprension(false);
+                setTipoDibujos(false);
+                setTipoNombres(false);
+                setTipoMatrices(false);
+                setTipoConceptos(false);
+                setTipoReconocimiento(false);
                 break;
         }
     }
@@ -85,6 +180,12 @@ export default function CreatePregunta() {
             setSelectedFiles((prevFiles) => [...prevFiles, newFile]);
         }
     };
+    const handleFileChangeMuestra = (event) => {
+        const newFile = event.target.files[0];
+        if (newFile) {
+            setImagenesMuestra((prevFiles) => [...prevFiles, newFile]);
+        }
+    }
     // Manejar el cambio de archivos para Conceptos
     const handleFileChangeConcept1 = (event) => {
         const newFile = event.target.files[0];
@@ -113,6 +214,7 @@ export default function CreatePregunta() {
     const handleUpload = async () => {
         // Crear un objeto FormData
         const formData = new FormData();
+        const formData2 = new FormData();
         let data;
         if (tipoInformacion) {
             data = 1;
@@ -126,6 +228,28 @@ export default function CreatePregunta() {
             })
         } else if (tipoSemejanza) {
             data = 2;
+            /* Llenar el array de esMuestra con las opciones de respuesta */
+            selectedFiles.forEach(() => {
+                esMuestra.push(0);
+            });
+            /* Llenar el array de esMuestra con las muestras*/
+            imagenesMuestra.forEach(() => {
+                esMuestra.push(1);
+            });
+            imagenesMuestra.forEach((file) => {
+                selectedFiles.push(file);
+            });
+
+            formData.append("pregunta", textareaValue);
+            formData.append("idSection", data);
+            selectedFiles.forEach((file, index) => {
+                formData.append("imagenes", file); // Usar el mismo nombre de campo para todas las imágenes
+                formData.append("imagenIndex", index + 1); // Agregar información sobre el índice
+                formData.append("respuestaCorrecta", correctAnswers[index] ? 1 : 0); // Agregar la respuesta correcta
+                formData.append("fila", 0);
+                formData.append("esMuestra", esMuestra[index] ? 1 : 0);
+            });
+            console.log("desde semejanza", selectedFiles);
         } else if (tipoVocabulario) {
             data = 3;
         } else if (tipoComprension) {
@@ -273,8 +397,140 @@ export default function CreatePregunta() {
                 </div>
             )}
             {tipoSemejanza && (
-                <div>
-                    CREAR UNA PREGUNTA DE SEMEJANZAS
+                <div className={`container-fluid px-5`}>
+                    <h5><label htmlFor="myTextarea">Pregunta</label></h5>
+                    <textarea
+                        id="myTextarea"
+                        name="myTextarea"
+                        value={textareaValue}
+                        onChange={handleChange}
+                        rows="3" // Puedes ajustar la cantidad de filas según tus necesidades
+                        className={`w-100 border-1 border-black shadow-md rounded-2xl p-3`}
+                    />
+                    <br/> <br/>
+                    <div className={`row`}>
+                        <div className={`col-6`}>
+                            <h5><label>Imágenes de Muestra</label></h5>
+                            <div className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white`}>
+                                {imagenesMuestra.map((file, index) => (
+                                    <div key={index}>
+                                        <div className={`container-fluid `}>
+                                            <div className={`row mx-5 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                ${styles.card_body_red}`}>
+                                                <div className={`col-5`}>
+                                                    <div className={`py-3`}>
+                                                        {file.name}
+                                                        <div className={`font-bold`}>
+                                                            (muestra {index + 1})
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                    </div>
+                                ))}
+                                <label htmlFor="myMuestraArea" className="custom-file-upload d-flex justify-center">
+                                    <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
+                                        +
+                                    </div>
+                                </label>
+                                <input
+                                    type="file"
+                                    id="myMuestraArea"
+                                    accept="image/*"
+                                    onChange={handleFileChangeMuestra}
+                                    style={{display: 'none'}} // Ocultar el input original
+                                    multiple
+                                />
+                                <br/>
+                                <div className={`container-fluid`}>
+                                    <div className={`row justify-content-evenly`}>
+                                        <div className={`col-12 d-flex justify-content-center`}>
+                                            <button onClick={() => setImagenesMuestra([])}
+                                                    className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
+                                                Limpiar imágenes
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                        <div className={`col-6`}>
+                            <h5><label>Opciones de Repsuesta</label></h5>
+                            <div className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white`}>
+                                {selectedFiles.map((file, index) => (
+                                    <div key={index}>
+                                        <div className={`container-fluid `}>
+                                            <div className={`row mx-5 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                ${styles.card_body_red}`}>
+                                                <div className={`col-2 d-flex justify-content-end`}>
+                                                    <input
+                                                        type="checkbox"
+                                                        name={`respuestaCorrecta_${index}`}
+                                                        checked={correctAnswers[index] || false}
+                                                        onChange={(e) => {
+                                                            const isChecked = e.target.checked;
+                                                            setCorrectAnswers((prevRespuestas) => ({
+                                                                ...prevRespuestas,
+                                                                [index]: isChecked,
+                                                            }));
+                                                        }}
+                                                        className={`w-4/12`}
+                                                    />
+                                                </div>
+                                                <div className={`col-5`}>
+                                                    <div className={`py-3`}>
+                                                        <div>{file.name}</div>
+                                                        <div className={`font-bold`}>(opcion {index + 1})</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                    </div>
+                                ))}
+                                <label htmlFor="myAnswersArea" className="custom-file-upload d-flex justify-center">
+                                    <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
+                                        +
+                                    </div>
+                                </label>
+                                <input
+                                    type="file"
+                                    id="myAnswersArea"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                    style={{display: 'none'}} // Ocultar el input original
+                                    multiple
+                                />
+                                <br/>
+                                <div className={`container-fluid`}>
+                                    <div className={`row justify-content-evenly`}>
+                                        <div className={`col-12 d-flex justify-content-center`}>
+                                            <button onClick={() => setSelectedFiles([])}
+                                                    className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
+                                                Limpiar imágenes
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                            </div>
+                            <br/>
+                        </div>
+                        <div className={`d-flex justify-content-center`}>
+                            <button onClick={handleUpload}
+                                    className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
+                                Crear Pregunta
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
             {tipoVocabulario && (

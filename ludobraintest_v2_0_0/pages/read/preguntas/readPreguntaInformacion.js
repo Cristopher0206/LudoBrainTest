@@ -128,12 +128,13 @@ export default function ReadPreguntaInformacion() {
                         <div className={`col-3`} key={index}>
                             <button onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                     className={`${styles.answer_btn} flex justify-center 
-                                shadow-md w-100`}>
-                                {answer.imagen}
+                                shadow-md w-100 h-100`}>
+                                <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                             </button>
                         </div>
                     ))}
                 </div>
+                <br/>
             </div>
             {successMessage && (
                 <div>

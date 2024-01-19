@@ -180,31 +180,85 @@ app.post('/uploadQuestion', upload, (req, res) => {
                     const id_pregunta = result1[0].id_pregunta;
                     const respuestas = req.files;
                     const querySelectImage = 'SELECT * FROM respuesta WHERE imagen = ?'; // Consulta para verificar si la imagen ya se encuentra registrada
-                    const queryInsertImage = 'INSERT INTO respuesta (imagen, numero_fila) VALUES (?,?)';
                     pregunta.imagenIndex.forEach((img, index) => {
+                        console.log("Imagen: " + respuestas[index].originalname);
+                        const muestra = pregunta.esMuestra[index];
                         db.query(querySelectImage, [respuestas[index].originalname], (err, result2) => {
                             if (err) {
                                 throw err;
                             }
-                            if (result2.length > 0) {
-                                const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta) VALUES (?,?,?)';
-                                db.query(queryInsertQuestionAnswer, [id_pregunta, result2[0].id_respuesta, pregunta.respuestaCorrecta[index]], (err, result3) => {
-                                    if (err) {
-                                        throw err;
-                                    }
-                                })
-                            } else {
-                                db.query(queryInsertImage, [respuestas[index].originalname, pregunta.fila[index]], (err, result4) => {
-                                    if (err) {
-                                        throw err;
-                                    }
+                            if (result2.length > 0) { /*Si la imagen ya existe*/
+                                console.log("ESTE ES EL VALOR DE muestra:", muestra);
+                                if (muestra === '0') {
+                                    console.log("La imagen existe y voy a insertar la respuesta en la tabla pregunta_respuesta");
                                     const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta) VALUES (?,?,?)';
-                                    db.query(queryInsertQuestionAnswer, [id_pregunta, result4.insertId, pregunta.respuestaCorrecta[index]], (err, result5) => {
+                                    db.query(queryInsertQuestionAnswer, [id_pregunta, result2[0].id_respuesta, pregunta.respuestaCorrecta[index]], (err, result3) => {
                                         if (err) {
                                             throw err;
                                         }
                                     })
-                                })
+                                } else { /*Estoy insertando una muestra*/
+                                    console.log("La imagen EXISTE y voy a insertar una muestra");
+                                    const querySelectMuestra = 'SELECT * FROM muestra WHERE imagen = ?'; /*Verificar si la muestra ya existe*/
+                                    db.query(querySelectMuestra, [respuestas[index].originalname], (err, result3) => {
+                                        if (err) {
+                                            throw err;
+                                        }
+                                        if (result3.length > 0) {
+                                            const queryInsertQuestionMuestra = 'INSERT INTO pregunta_muestra (id_pregunta, id_muestra) VALUES (?,?)';
+                                            db.query(queryInsertQuestionMuestra, [id_pregunta, result3[0].id_muestra], (err, result4) => {
+                                                if (err) {
+                                                    throw err;
+                                                }
+                                            })
+                                        } else {
+                                            const queryInsertMuestra = 'INSERT INTO muestra (imagen) VALUES (?)';
+                                            db.query(queryInsertMuestra, [respuestas[index].originalname], (err, result4) => {
+                                                if (err) {
+                                                    throw err;
+                                                }
+                                                const queryInsertQuestionMuestra = 'INSERT INTO pregunta_muestra (id_pregunta, id_muestra) VALUES (?,?)';
+                                                db.query(queryInsertQuestionMuestra, [id_pregunta, result4.insertId], (err, result5) => {
+                                                    if (err) {
+                                                        throw err;
+                                                    }
+                                                })
+                                            })
+                                        }
+                                    })
+                                }
+                            } else { /* Si la imagen no existe */
+                                if(muestra === '0'){
+                                    console.log("La imagen no existe, voy a insertar la respuesta en la tabla respuesta");
+                                    const queryInsertImage = 'INSERT INTO respuesta (imagen, numero_fila) VALUES (?,?)';
+                                    db.query(queryInsertImage, [respuestas[index].originalname, pregunta.fila[index]], (err, result4) => {
+                                        if (err) {
+                                            throw err;
+                                        }
+                                        console.log("Voy a insertar la respuesta en la tabla pregunta_respuesta");
+                                        const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta) VALUES (?,?,?)';
+                                        db.query(queryInsertQuestionAnswer, [id_pregunta, result4.insertId, pregunta.respuestaCorrecta[index]], (err, result5) => {
+                                            if (err) {
+                                                throw err;
+                                            }
+                                        })
+                                    })
+                                } else {
+                                    console.log("La imagen no existe, voy a insertar una muestra");
+                                    const queryInsertImage = 'INSERT INTO muestra (imagen) VALUES (?)';
+                                    db.query(queryInsertImage, [respuestas[index].originalname], (err, result4) => {
+                                        if (err) {
+                                            throw err;
+                                        }
+                                        console.log("Voy a insertar la muestra en la tabla pregunta_muestra");
+                                        const queryInsertQuestionMuestra = 'INSERT INTO pregunta_muestra (id_pregunta, id_muestra) VALUES (?,?)';
+                                        db.query(queryInsertQuestionMuestra, [id_pregunta, result4.insertId], (err, result5) => {
+                                            if (err) {
+                                                throw err;
+                                            }
+                                        })
+                                    })
+                                }
                             }
                         })
                     })
@@ -214,6 +268,7 @@ app.post('/uploadQuestion', upload, (req, res) => {
         }
     });
 })
+
 app.post('/createTest', upload, (req, res) => {
     const {nombre, seccion, preguntas} = req.body;
     const querySelect = 'SELECT * FROM test WHERE nombre_test = ?';
@@ -682,6 +737,34 @@ app.post('/deleteTest', (req, res) => {
                     throw err;
                 }
                 res.send({message: 'Test eliminado exitosamente'});
+            })
+        })
+    })
+})
+app.post('/deleteQuestion', (req, res) => {
+    const id_pregunta = req.body.id_pregunta;
+    const queryDelete = 'DELETE FROM test_pregunta WHERE id_pregunta = ?';
+    db.query(queryDelete, [id_pregunta], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        const queryDelete2 = 'DELETE FROM pregunta_respuesta WHERE id_pregunta = ?';
+        db.query(queryDelete2, [id_pregunta], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            const queryDelete3 = 'DELETE FROM pregunta_muestra WHERE id_pregunta = ?';
+            db.query(queryDelete3, [id_pregunta], (err, result) => {
+                if (err) {
+                    throw err;
+                }
+                const queryDelete4 = 'DELETE FROM pregunta WHERE id_pregunta = ?';
+                db.query(queryDelete4, [id_pregunta], (err, result) => {
+                    if (err) {
+                        throw err;
+                    }
+                    res.send({message: 'Pregunta eliminada exitosamente'});
+                })
             })
         })
     })

@@ -13,6 +13,8 @@ export default function ReadPregunta() {
     /*------------------- ESTADOS -------------------*/
     const [sectionSelected, setSectionSelected] = useState('');
     const [sections, setSections] = useState([]);
+    // Estados para los mensajes de confirmación
+    const [successMessage, setSuccessMessage] = useState(false);
     // Estados para las preguntas
     const [informationQuestions, setInformationQuestions] = useState([]); // Estado para las preguntas de tipo Información
     const [semejanzasQuestions, setSemejanzasQuestions] = useState([]); // Estado para las preguntas de tipo Semejanzas
@@ -358,6 +360,32 @@ export default function ReadPregunta() {
 
         }
     }
+    const eliminarPregunta = (id_pregunta) => {
+        const confirmacion = window.confirm("¿Estás seguro de eliminar esta pregunta?");
+        if (confirmacion) {
+            axios({
+                method: "post",
+                data: {
+                    id_pregunta: id_pregunta
+                },
+                withCredentials: true,
+                url: "http://localhost:3001/deleteQuestion",
+            }).then((res) => {
+                console.log(res);
+                if (res.data.message === 'Pregunta eliminada exitosamente') {
+                    // Si el test se elimina, muestra un mensaje de confirmacion
+                    setSuccessMessage(true);
+                    // El mensaje desaparece luego de 3 segundos
+                    setTimeout(() => {
+                        setSuccessMessage(false);
+                        showTests();
+                    }, 3000);
+                }
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
@@ -410,7 +438,7 @@ export default function ReadPregunta() {
                                                                 </div>
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
-                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                    <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
@@ -446,7 +474,7 @@ export default function ReadPregunta() {
                                                                 </div>
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
-                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                    <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
@@ -757,7 +785,15 @@ export default function ReadPregunta() {
                     </div>
                 </div>
             </div>
-
+            {successMessage &&
+                <div>
+                    <br/>
+                    <div className="alert alert-success d-flex justify-content-center" role="alert">
+                        ¡Pregunta eliminada Exitosamente!
+                    </div>
+                    <br/>
+                </div>
+            }
         </main>
     )
 }

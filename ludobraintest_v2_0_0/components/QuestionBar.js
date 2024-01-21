@@ -6,14 +6,14 @@ export default function QuestionBar({previousPage}) {
         <div className={`container-fluid`}>
             <br/>
             <div className={`d-flex justify-content-center`}>
-                <Link href={previousPage} className={`pt-sm-1 pt-md-2 pt-lg-3 pt-lg-2`}>
+                <Link href={previousPage} className={`pt-sm-1 pt-md-2 pt-lg-0`}>
                     <button className={`bg-black text-white rounded-full px-2 py-0 font-bold drop-shadow-lg 
                         border-2 border-opacity-100`}>
                         <h2>←</h2>
                     </button>
                 </Link>
             </div>
-            <br/>
+            <br/> <br/>
             <div className={`d-flex justify-content-center`}>
                 <img src="/images/asistente-de-robot.png"
                      alt="Mini Echo"

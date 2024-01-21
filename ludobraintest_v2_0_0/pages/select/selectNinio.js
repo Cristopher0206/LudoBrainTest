@@ -40,6 +40,10 @@ export default function SelectNinio() {
     const [conceptosTitle, setConceptosTitle] = useState(false);
     const [reconocimientoTitle, setReconocimientoTitle] = useState(false);
     const [busquedaTitle, setBusquedaTitle] = useState(false);
+    // Estados para las alertas
+    const [warningChild, setWarningChild] = useState(false);
+    const [warningTest, setWarningTest] = useState(false);
+    const [warningBoth, setWarningBoth] = useState(false);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getNinios();
@@ -357,21 +361,37 @@ export default function SelectNinio() {
         })
     }
     const startTest = () => {
-        console.log(childSelected);
-        axios({
-            method: "post",
-            withCredentials: true,
-            url: "http://localhost:3001/startTest",
-            data: {
-                id_ninio: childSelected,
-                id_test: testSelected
-            }
-        }).then((res) => {
-            console.log("Test iniciado correctamente");
-            getTestSession();
-        }).catch((err) => {
-            console.log(err);
-        })
+        if (!selectedChild && selectedTest) {
+            setWarningChild(true);
+            setTimeout(() => {
+                setWarningChild(false);
+            }, 3000);
+        } else if (selectedChild && !selectedTest) {
+            setWarningTest(true);
+            setTimeout(() => {
+                setWarningTest(false);
+            }, 3000);
+        } else if (!selectedChild && !selectedTest) {
+            setWarningBoth(true);
+            setTimeout(() => {
+                setWarningBoth(false);
+            }, 3000);
+        } else {
+            axios({
+                method: "post",
+                withCredentials: true,
+                url: "http://localhost:3001/startTest",
+                data: {
+                    id_ninio: childSelected,
+                    id_test: testSelected
+                }
+            }).then((res) => {
+                console.log("Test iniciado correctamente");
+                getTestSession();
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
     }
     const handleChildClick = (childId) => {
         // Si el niño ya estaba seleccionado, lo deselecciona; de lo contrario, lo selecciona
@@ -694,6 +714,30 @@ export default function SelectNinio() {
                     </div>
                 </div>
                 <br/>
+                {warningChild && (
+                    <div>
+                        <div className="alert alert-warning d-flex justify-content-center" role="alert">
+                            ¡Debes seleccionar un<strong className={`px-2`}>jugador</strong>para empezar la sesión!
+                        </div>
+                        <br/>
+                    </div>
+                )}
+                {warningTest && (
+                    <div>
+                        <div className="alert alert-warning d-flex justify-content-center" role="alert">
+                            ¡Debes seleccionar un<strong className={`px-2`}>test</strong>para empezar la sesión!
+                        </div>
+                        <br/>
+                    </div>
+                )}
+                {warningBoth && (
+                    <div>
+                        <div className="alert alert-warning d-flex justify-content-center" role="alert">
+                            ¡Selecciona un<strong className={`px-1`}>jugador</strong>y un<strong className={`px-1`}>test</strong>para empezar la sesión!
+                        </div>
+                        <br/>
+                    </div>
+                )}
                 <div className={`d-flex justify-content-center`}>
                     <button onClick={startTest} className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
                     border-2 border-black border-opacity-10 ${navstyles.upper_bar_skyblue} ${styles.btn_text}`}>

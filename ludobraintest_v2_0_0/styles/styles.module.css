@@ -243,6 +243,16 @@
     .card_test_text {
         font-size: 1.4vw;
     }
+
+    .information_text {
+        font-size: 1.2vw;
+        text-align: justify;
+    }
+
+    .information_text_vocabulario {
+        font-size: 1.2vw;
+        text-align: center;
+    }
 }
 
 .input_sky_blue {
@@ -268,6 +278,18 @@
 
 .label_red {
     color: #FF4331;
+}
+
+.label_green {
+    color: #04BB03;
+}
+
+.label_orange {
+    color: #F67227;
+}
+
+.label_olive {
+    color: #A1BB03;
 }
 
 .btn_test {
@@ -408,12 +430,23 @@
     height: 300px;
 }
 
+.overflow_container_samples {
+    overflow-y: auto;
+    height: 200px;
+}
+
+.overflow_container_samples_2 {
+    overflow-y: hidden;
+    height: 150px;
+}
+
+
 .answer_btn {
     background-color: #ffffff;
     color: #000000;
     border: 1px solid #000000;
     border-radius: 10px;
-    padding: 30% 40%;
+    padding: 20% 30%;
     width: 100%;
     box-shadow: black 0.1em 0.1em 0.2em
 }
@@ -422,6 +455,88 @@
     background-color: rgba(255, 67, 49, 0.75);
     font-weight: bold;
     transition: all 0.3s ease-out;
+}
+
+.answer_btn_semejanzas {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 20% 30%;
+    width: 100%;
+    box-shadow: black 0.1em 0.1em 0.2em
+}
+
+.answer_btn_semejanzas:hover {
+    background-color: rgba(4, 187, 3, 0.75);
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.answer_btn_comprension {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 20% 30%;
+    width: 100%;
+    box-shadow: black 0.1em 0.1em 0.2em
+}
+
+.answer_btn_comprension:hover {
+    background-color: rgba(246, 114, 39, 0.75);
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.answer_btn_matrices {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 20% 30%;
+    width: 100%;
+    box-shadow: black 0.1em 0.1em 0.2em
+}
+
+.answer_btn_matrices:hover {
+    background-color: rgba(161, 187, 3, 0.75);
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.incorrect_btn {
+    background-color: rgba(255, 67, 49, 0.75);
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 10%;
+    width: 100%;
+    box-shadow: black 0.05em 0.05em 0.1em;
+    transition: all 0.3s ease-out;
+}
+
+.incorrect_btn:hover {
+    background-color: rgb(255, 67, 49);
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.correct_btn {
+    background-color: rgba(4, 187, 3, 0.75);
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 10%;
+    width: 100%;
+    box-shadow: black 0.05em 0.05em 0.1em;
+    transition: all 0.3s ease-out;
+}
+
+.correct_btn:hover {
+    background-color: rgb(4, 187, 3);
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
 }
 
 .add_btn {
@@ -469,4 +584,15 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: black 0.05em 0.05em 0.1em;
     transition: all 0.3s ease-out;
+}
+
+.btn_sticky {
+    position: sticky;
+    bottom: 0;
+}
+
+.cart_answer_test {
+    overflow-wrap: break-word;
+    text-align: justify;
+    width: 100% !important;
 }

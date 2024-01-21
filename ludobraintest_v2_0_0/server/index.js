@@ -158,6 +158,13 @@ const upload = multer({storage}).array('imagenes', 100);
 
 app.post('/uploadQuestion', upload, (req, res) => {
     const pregunta = req.body;
+    if (pregunta.idSection === '3') {
+        pregunta.imagenIndex.pop();
+        pregunta.respuestaCorrecta.pop();
+        pregunta.fila.pop();
+        pregunta.esMuestra.pop();
+        req.files.pop();
+    }
     const querySelectPregunta = 'SELECT * FROM pregunta WHERE pregunta = ?'; // Consulta para verificar si la pregunta ya se encuentra registrada
     db.query(querySelectPregunta, [pregunta.pregunta], (err, result) => {
         if (err) {
@@ -385,7 +392,7 @@ app.get('/getInformacionTests', (req, res) => {
     });
 })
 app.get('/getSemejanzasTests', (req, res) => {
-    const query = 'SELECT * FROM test WHERE id_seccion = 2';
+    const query = 'SELECT * FROM test WHERE id_seccion = 2 ORDER BY nombre_test';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -650,6 +657,19 @@ app.post('/getAnswersbyQuestionId', (req, res) => {
         'JOIN respuesta ON respuesta.id_respuesta = pregunta_respuesta.id_respuesta\n' +
         'WHERE pregunta.id_pregunta = ? \n' +
         'ORDER BY respuesta.imagen';
+    db.query(querySelect, [id_pregunta], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
+app.post('/getSamplesByQuestionId', (req, res) => {
+    const id_pregunta = req.body.id;
+    const querySelect = 'SELECT muestra.imagen\n' +
+        'FROM pregunta JOIN pregunta_muestra ON pregunta.id_pregunta = pregunta_muestra.id_pregunta\n' +
+        'JOIN muestra ON muestra.id_muestra = pregunta_muestra.id_muestra\n' +
+        'WHERE pregunta.id_pregunta = ?';
     db.query(querySelect, [id_pregunta], (err, result) => {
         if (err) {
             throw err;

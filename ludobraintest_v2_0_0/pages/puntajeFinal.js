@@ -33,7 +33,7 @@ export default function PuntajeFinal() {
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
                       color={navstyles.upper_bar_skyblue}></UpperBar>
-            <InstructionBar previousPage={`/modulos`}
+            <InstructionBar previousPage={`#`}
                             instruction={`¡Terminaste el Test! \n Este es tu puntaje`}/>
             <div className={`container-fluid d-flex justify-content-center`}>
                 <h1>{puntaje}</h1>

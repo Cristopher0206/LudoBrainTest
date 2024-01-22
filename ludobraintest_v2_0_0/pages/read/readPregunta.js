@@ -546,7 +546,7 @@ export default function ReadPregunta() {
                                                                 </div>
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
-                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                    <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
@@ -582,7 +582,7 @@ export default function ReadPregunta() {
                                                                 </div>
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
-                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                    <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
@@ -618,7 +618,7 @@ export default function ReadPregunta() {
                                                                 </div>
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
-                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                    <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
@@ -654,7 +654,7 @@ export default function ReadPregunta() {
                                                                 </div>
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
-                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                    <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
@@ -690,7 +690,7 @@ export default function ReadPregunta() {
                                                                 </div>
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
-                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                    <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
@@ -726,7 +726,7 @@ export default function ReadPregunta() {
                                                                 </div>
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
-                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                    <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
@@ -762,7 +762,7 @@ export default function ReadPregunta() {
                                                                 </div>
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
-                                                                    <button /*onClick={() => eliminarNinio(question.id_ninio)}*/>
+                                                                    <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>

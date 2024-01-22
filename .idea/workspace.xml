@@ -5,36 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/0b00647ea6910a1c03e982ac4024c66a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/11761.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/29366.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/29367.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/3-36073_blood-moon-1920x1080-pixel-art-fondos-de-pantalla.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/3d-abstracto-luz-neon-triangulo_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/97-974956_skye-cave-bing-wallpaper-hd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/Draven.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/Imagen de WhatsApp 2023-12-06 a las 20.16.23_70795592.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/Imagen de WhatsApp 2023-12-06 a las 20.30.14_4e9033a9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/alguien-viendo-la-luna_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/atardecer-en-paisaje-nevado-arte-digital_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/ciudad-futurista-estilo-retro_7680x4224_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/coven-zyra-league-of-legends-arte_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/depositphotos_160212984-stock-photo-crab-nebula-is-a-remnant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/dj-perro_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/paisaje-de-montanas-en-el-bosque-diseno-minimalista_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/paisaje-digital-de-montanas-deserticas_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/persona-viendo-paisaje-de-torre-en-las-montanas-artwork_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/workSong.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaDibujos.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/amanecer-en-las-montanas-arte-digital_5120x2880_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/atardecer-en-la-montanas-ilustracion_3840x2160_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/atardecer-rosado-arte-digital_3840x2160_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/escenario-de-the-last-of-us_3248x1773_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/espiral-deformada-en-rosa-y-azul_3840x2160_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/ilustracion-atardecer-en-el-bosque_3840x2400_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/noche-colorida-en-las-montanas-arte-digital_7680x4320_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/zorros-3d-low-poly_3840x2160_xtrafondos.com.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/QuestionBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/QuestionBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaComprension.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaComprension.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaMatrices.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaMatrices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaSemejanzas.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaSemejanzas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaVocabulario.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaVocabulario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaConceptos.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaConceptos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaNombres.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaNombres.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readPregunta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectNinio.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectNinio.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" afterDir="false" />
     </list>
@@ -165,7 +150,8 @@
       <workItem from="1705689112581" duration="527000" />
       <workItem from="1705689659587" duration="20821000" />
       <workItem from="1705797457212" duration="10516000" />
-      <workItem from="1705849469763" duration="7585000" />
+      <workItem from="1705849469763" duration="34131000" />
+      <workItem from="1705897872283" duration="4769000" />
     </task>
     <servers />
   </component>

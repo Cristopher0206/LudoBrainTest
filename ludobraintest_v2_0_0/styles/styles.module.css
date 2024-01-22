@@ -253,6 +253,11 @@
         font-size: 1.2vw;
         text-align: center;
     }
+
+    .imagen_dibujos {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .input_sky_blue {
@@ -290,6 +295,14 @@
 
 .label_olive {
     color: #A1BB03;
+}
+
+.label_purple {
+    color: #BD31FF;
+}
+
+.label_blue {
+    color: #19A9B6;
 }
 
 .btn_test {
@@ -400,6 +413,16 @@
     border: 2px solid #000000;
 }
 
+.selected_answer_card {
+    background-color: rgb(25, 169, 182);
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 10% 10%;
+    width: 100%;
+    box-shadow: black 0.1em 0.1em 0.2em;
+    transition: all 0.3s ease-in-out;
+}
+
 .overflow_container {
     overflow: auto;
     height: 85%;
@@ -419,6 +442,12 @@
     overflow-y: auto;
     overflow-x: hidden;
     height: 370px;
+}
+
+.overflow_container_answers {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 125px;
 }
 
 .overflow_col {
@@ -448,7 +477,8 @@
     border-radius: 10px;
     padding: 20% 30%;
     width: 100%;
-    box-shadow: black 0.1em 0.1em 0.2em
+    box-shadow: black 0.1em 0.1em 0.2em;
+    transition: all 0.3s ease-out;
 }
 
 .answer_btn:hover {
@@ -464,7 +494,8 @@
     border-radius: 10px;
     padding: 20% 30%;
     width: 100%;
-    box-shadow: black 0.1em 0.1em 0.2em
+    box-shadow: black 0.1em 0.1em 0.2em;
+    transition: all 0.3s ease-out;
 }
 
 .answer_btn_semejanzas:hover {
@@ -480,11 +511,29 @@
     border-radius: 10px;
     padding: 20% 30%;
     width: 100%;
-    box-shadow: black 0.1em 0.1em 0.2em
+    box-shadow: black 0.1em 0.1em 0.2em;
+    transition: all 0.3s ease-out;
 }
 
 .answer_btn_comprension:hover {
     background-color: rgba(246, 114, 39, 0.75);
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.answer_btn_dibujos {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 10% 10%;
+    width: 100%;
+    box-shadow: black 0.1em 0.1em 0.2em;
+    transition: all 0.3s ease-out;
+}
+
+.answer_btn_dibujos:hover {
+    background-color: rgba(189, 49, 255, 0.75);
     font-weight: bold;
     transition: all 0.3s ease-out;
 }
@@ -496,11 +545,29 @@
     border-radius: 10px;
     padding: 20% 30%;
     width: 100%;
-    box-shadow: black 0.1em 0.1em 0.2em
+    box-shadow: black 0.1em 0.1em 0.2em;
+    transition: all 0.3s ease-out;
 }
 
 .answer_btn_matrices:hover {
     background-color: rgba(161, 187, 3, 0.75);
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.answer_btn_conceptos {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 10% 10%;
+    width: 100%;
+    box-shadow: black 0.1em 0.1em 0.2em;
+    transition: all 0.3s ease-out;
+}
+
+.answer_btn_conceptos:hover {
+    background-color: rgba(25, 169, 182, 0.75);
     font-weight: bold;
     transition: all 0.3s ease-out;
 }

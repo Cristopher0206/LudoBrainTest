@@ -158,7 +158,7 @@ const upload = multer({storage}).array('imagenes', 100);
 
 app.post('/uploadQuestion', upload, (req, res) => {
     const pregunta = req.body;
-    if (pregunta.idSection === '3') {
+    if (pregunta.idSection === '3' || pregunta.idSection === '6') {
         pregunta.imagenIndex.pop();
         pregunta.respuestaCorrecta.pop();
         pregunta.fila.pop();
@@ -198,8 +198,8 @@ app.post('/uploadQuestion', upload, (req, res) => {
                                 console.log("ESTE ES EL VALOR DE muestra:", muestra);
                                 if (muestra === '0') {
                                     console.log("La imagen existe y voy a insertar la respuesta en la tabla pregunta_respuesta");
-                                    const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta) VALUES (?,?,?)';
-                                    db.query(queryInsertQuestionAnswer, [id_pregunta, result2[0].id_respuesta, pregunta.respuestaCorrecta[index]], (err, result3) => {
+                                    const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta, numero_fila) VALUES (?,?,?,?)';
+                                    db.query(queryInsertQuestionAnswer, [id_pregunta, result2[0].id_respuesta, pregunta.respuestaCorrecta[index], pregunta.fila[index]], (err, result3) => {
                                         if (err) {
                                             throw err;
                                         }
@@ -237,14 +237,14 @@ app.post('/uploadQuestion', upload, (req, res) => {
                             } else { /* Si la imagen no existe */
                                 if(muestra === '0'){
                                     console.log("La imagen no existe, voy a insertar la respuesta en la tabla respuesta");
-                                    const queryInsertImage = 'INSERT INTO respuesta (imagen, numero_fila) VALUES (?,?)';
-                                    db.query(queryInsertImage, [respuestas[index].originalname, pregunta.fila[index]], (err, result4) => {
+                                    const queryInsertImage = 'INSERT INTO respuesta (imagen) VALUES (?)';
+                                    db.query(queryInsertImage, [respuestas[index].originalname], (err, result4) => {
                                         if (err) {
                                             throw err;
                                         }
                                         console.log("Voy a insertar la respuesta en la tabla pregunta_respuesta");
-                                        const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta) VALUES (?,?,?)';
-                                        db.query(queryInsertQuestionAnswer, [id_pregunta, result4.insertId, pregunta.respuestaCorrecta[index]], (err, result5) => {
+                                        const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta, numero_fila) VALUES (?,?,?,?)';
+                                        db.query(queryInsertQuestionAnswer, [id_pregunta, result4.insertId, pregunta.respuestaCorrecta[index], pregunta.fila[index]], (err, result5) => {
                                             if (err) {
                                                 throw err;
                                             }
@@ -652,7 +652,7 @@ app.post('/getQuestionsbyTestId', (req, res) => {
 })
 app.post('/getAnswersbyQuestionId', (req, res) => {
     const id_pregunta = req.body.id;
-    const querySelect = 'SELECT respuesta.imagen , pregunta_respuesta.respuesta_correcta\n' +
+    const querySelect = 'SELECT respuesta.id_respuesta, respuesta.imagen , pregunta_respuesta.respuesta_correcta, pregunta_respuesta.numero_fila\n' +
         'FROM pregunta JOIN pregunta_respuesta ON pregunta.id_pregunta = pregunta_respuesta.id_pregunta\n' +
         'JOIN respuesta ON respuesta.id_respuesta = pregunta_respuesta.id_respuesta\n' +
         'WHERE pregunta.id_pregunta = ? \n' +

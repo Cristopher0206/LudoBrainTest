@@ -56,7 +56,7 @@ export default function Login() {
             <br/><br/>
             <div className={`row`}>
                 <div className={`col-12 d-flex justify-content-center`}>
-                    <h1>LudoBrain-Test</h1>
+                    <h1>Poli-Quizzes</h1>
                 </div>
             </div>
             <br/>
@@ -115,7 +115,7 @@ export default function Login() {
             <br/> <br/>
             <div className={`row d-flex justify-content-center`}>
                 <div className="col-12">
-                    <Link href={`#`} className={`d-flex justify-content-center`}>
+                    <Link href={`/changePassword`} className={`d-flex justify-content-center`}>
                         ¿Olvidaste tu contraseña?
                     </Link>
                 </div>
@@ -129,7 +129,7 @@ export default function Login() {
             </div>
             <div className={`row d-flex justify-content-center`}>
                 <div className="col-12">
-                    <Link href={`/registrarEducador`} className={`d-flex justify-content-center`}>
+                    <Link href={`#`} className={`d-flex justify-content-center`}>
                         Más información
                     </Link>
                 </div>

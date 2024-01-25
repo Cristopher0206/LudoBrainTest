@@ -132,17 +132,19 @@ export default function MenuOpcionesTest(){
                               color={sections.informacion}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
                                     instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
@@ -180,14 +182,16 @@ export default function MenuOpcionesTest(){
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
@@ -225,14 +229,16 @@ export default function MenuOpcionesTest(){
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del Test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
@@ -270,14 +276,16 @@ export default function MenuOpcionesTest(){
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
@@ -315,14 +323,16 @@ export default function MenuOpcionesTest(){
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
@@ -360,14 +370,16 @@ export default function MenuOpcionesTest(){
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
@@ -405,14 +417,16 @@ export default function MenuOpcionesTest(){
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
@@ -450,14 +464,16 @@ export default function MenuOpcionesTest(){
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
@@ -495,14 +511,16 @@ export default function MenuOpcionesTest(){
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>
@@ -540,14 +558,16 @@ export default function MenuOpcionesTest(){
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
-                                    {test.nombre_seccion}
-                                </div>
-                                <br/>
+                                <h5>Nombre del test</h5>
                                 <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
                         flex justify-center shadow-inner`}>
                                     {test.nombre_test}
+                                </div>
+                                <br/>
+                                <h5>Puntaje obtenido por {test.nombre}</h5>
+                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
+                        flex justify-center shadow-inner`}>
+                                    {test.puntaje}
                                 </div>
                             </div>
                             <div className={`col-6 ${styles.btns_div}`}>

@@ -178,6 +178,7 @@
         font-size: 1.8vw;
         text-align: center;
     }
+
     .card_test_text {
         font-size: 1.7vw;
     }
@@ -283,6 +284,12 @@
 
 .label_red {
     color: #FF4331;
+    text-align: center;
+}
+
+.label_yellow {
+    color: #F6DA27;
+    text-align: center;
 }
 
 .label_green {
@@ -423,6 +430,23 @@
     transition: all 0.3s ease-in-out;
 }
 
+.selected_test_card_results {
+    background-color: rgb(255, 67, 49);
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #000000;
+}
+
+.selected_answer_card_recon {
+    background-color: rgb(255, 67, 49);
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 10% 10%;
+    width: 100%;
+    box-shadow: black 0.1em 0.1em 0.2em;
+    transition: all 0.3s ease-in-out;
+}
+
 .overflow_container {
     overflow: auto;
     height: 85%;
@@ -430,7 +454,17 @@
 
 .overflow_container_test {
     overflow: auto;
-    height: 65%;
+    height: 67%;
+}
+
+.overflow_container_test_results {
+    overflow-y: auto;
+    height: 80%;
+}
+
+.overflow_container_test_results_2 {
+    overflow-y: auto;
+    height: 94%;
 }
 
 .overflow_container_children {
@@ -454,6 +488,14 @@
     height: 335px;
 }
 
+.overflow_col_results {
+    height: 400px;
+}
+
+.overflow_col_results {
+    height: 400px;
+}
+
 .overflow_container_test2 {
     overflow-y: auto;
     height: 300px;
@@ -466,16 +508,21 @@
 
 .overflow_container_samples_2 {
     overflow-y: hidden;
-    height: 150px;
+    height: 148px;
 }
 
+.overflow_container_answers_busqueda {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 148px;
+}
 
 .answer_btn {
     background-color: #ffffff;
     color: #000000;
     border: 1px solid #000000;
     border-radius: 10px;
-    padding: 20% 30%;
+    padding: 10% 10%;
     width: 100%;
     box-shadow: black 0.1em 0.1em 0.2em;
     transition: all 0.3s ease-out;
@@ -509,7 +556,7 @@
     color: #000000;
     border: 1px solid #000000;
     border-radius: 10px;
-    padding: 20% 30%;
+    padding: 10% 10%;
     width: 100%;
     box-shadow: black 0.1em 0.1em 0.2em;
     transition: all 0.3s ease-out;
@@ -569,6 +616,17 @@
 .answer_btn_conceptos:hover {
     background-color: rgba(25, 169, 182, 0.75);
     font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.sample_btn_busqueda {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 5% 5%;
+    width: 50%;
+    box-shadow: black 0.1em 0.1em 0.2em;
     transition: all 0.3s ease-out;
 }
 
@@ -662,4 +720,9 @@
     overflow-wrap: break-word;
     text-align: justify;
     width: 100% !important;
+}
+
+.back {
+    text-decoration: none;
+    color: black;
 }

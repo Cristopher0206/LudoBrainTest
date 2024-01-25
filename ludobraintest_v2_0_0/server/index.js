@@ -158,7 +158,7 @@ const upload = multer({storage}).array('imagenes', 100);
 
 app.post('/uploadQuestion', upload, (req, res) => {
     const pregunta = req.body;
-    if (pregunta.idSection === '3' || pregunta.idSection === '6') {
+    if (pregunta.idSection === '3' || pregunta.idSection === '6' || pregunta.idSection === '10') {
         pregunta.imagenIndex.pop();
         pregunta.respuestaCorrecta.pop();
         pregunta.fila.pop();
@@ -473,16 +473,7 @@ app.get('/getBusquedaTests', (req, res) => {
         res.json(result);
     })
 })
-/*app.get('/getQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta';
-    db.query(query, (err, result) => {
-        if (err) {
-            throw err;
-        }
-        console.log(result);
-        res.json(result);
-    });
-})*/
+
 app.get('/getInformacionQuestions', (req, res) => {
     const query = 'SELECT * FROM pregunta WHERE id_seccion = 1';
     db.query(query, (err, result) => {
@@ -608,9 +599,10 @@ app.post('/getTestSession', (req, res) => {
 })
 app.post('/getNinioTestById', (req, res) => {
     const id_test = req.body.id_test;
-    const querySelect = 'SELECT test.nombre_test, test_ninio.id_ninio,seccion.nombre_seccion, seccion.informacion\n' +
+    const querySelect = 'SELECT test.nombre_test, test_ninio.id_ninio, test_ninio.puntaje, niño.nombre, seccion.nombre_seccion, seccion.informacion\n' +
         'FROM test_ninio JOIN test ON test_ninio.id_test = test.id_test\n' +
         'JOIN seccion ON test.id_seccion = seccion.id_seccion\n' +
+        'JOIN niño ON test_ninio.id_ninio = niño.id_ninio\n' +
         'WHERE test_ninio.id_t_n = ?';
     db.query(querySelect, [id_test], (err, result) => {
         if (err) {
@@ -702,6 +694,20 @@ app.post('/getPreguntasByIdTest', (req, res) => {
         res.json(result);
     })
 })
+app.post('/getScoreTable', (req, res) => {
+    const id_test = req.body.id_test;
+    const querySelect = 'SELECT niño.nombre, niño.edad, test_ninio.puntaje\n' +
+        'FROM test_ninio JOIN niño\n' +
+        'ON test_ninio.id_ninio = niño.id_ninio\n' +
+        'WHERE test_ninio.id_test = ? \n' +
+        'ORDER BY test_ninio.puntaje DESC';
+    db.query(querySelect, [id_test], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.json(result);
+    })
+})
 /* Funciones de actualización */
 app.post('/updateChildren', (req, res) => {
     const {id_ninio, nombre, edad} = req.body;
@@ -726,6 +732,22 @@ app.post('/finishTest', (req, res) => {
         }
         res.send({message: 'Test finalizado correctamente'});
     })
+})
+app.post('/updateEducador', (req, res) => {
+    const {usuario, user_password} = req.body;
+    // Construye la consulta de actualización
+    const queryUpdate = `UPDATE educador SET user_password = ? WHERE usuario = ?;`;
+    // Ejecuta la consulta de actualización con los valores correspondientes
+    db.query(queryUpdate, [user_password ,usuario], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        if (result.changedRows > 0) {
+            res.send({message: "Contraseña actualizada exitosamente"});
+        } else {
+            res.send({message: "¡Este usuario no existe!"});
+        }
+    });
 })
 /* Funciones de eliminación */
 app.post('/deleteChild', (req, res) => {

@@ -5,21 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaDibujos.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/amanecer-en-las-montanas-arte-digital_5120x2880_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/atardecer-en-la-montanas-ilustracion_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/atardecer-rosado-arte-digital_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/escenario-de-the-last-of-us_3248x1773_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/espiral-deformada-en-rosa-y-azul_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/ilustracion-atardecer-en-el-bosque_3840x2400_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/noche-colorida-en-las-montanas-arte-digital_7680x4320_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/zorros-3d-low-poly_3840x2160_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/changePassword.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/resultados.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/Houses_Skyscrapers_Synthwave_By_SynthEx_Moon_Night_562745_1920x1080.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/espiral-colorido-abstracto-macos_3840x2160_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/figuras-geometricas-de-colores-abstractas_3840x2400_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/gettyimages-56317085-1024x1024.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/hermoso-desierto-en-noche-estrellada-ilustracion_3840x2160_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/la-luna-entre-llamarada-arte-digital_5120x2880_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/playstation-abstracto_3840x2160_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/poligonos-abstractos_3840x2160_xtrafondos.com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/score.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/InstructionBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/InstructionBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaConceptos.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaConceptos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaNombres.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaNombres.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readPregunta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/fileUploader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/menuOpcionesTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/menuOpcionesTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulos.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaBusqueda.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaBusqueda.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaInformacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaInformacion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaMatrices.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaMatrices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaReconocimiento.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaReconocimiento.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/registrarEducador.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/registrarEducador.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" afterDir="false" />
     </list>
@@ -74,7 +85,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\JetBrains\\WebStorm 2023.2.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -152,6 +163,12 @@
       <workItem from="1705797457212" duration="10516000" />
       <workItem from="1705849469763" duration="34131000" />
       <workItem from="1705897872283" duration="4769000" />
+      <workItem from="1705926169676" duration="5151000" />
+      <workItem from="1705976535378" duration="8317000" />
+      <workItem from="1706021877623" duration="125000" />
+      <workItem from="1706022019711" duration="26235000" />
+      <workItem from="1706134988751" duration="8493000" />
+      <workItem from="1706184915773" duration="3512000" />
     </task>
     <servers />
   </component>

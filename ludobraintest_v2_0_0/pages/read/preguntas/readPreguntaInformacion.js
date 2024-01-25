@@ -5,6 +5,7 @@ import styles from "@/styles/styles.module.css";
 import UpperBar from "@/components/UpperBar";
 import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
+import Swal from 'sweetalert2'
 
 export default function ReadPreguntaInformacion() {
     const router = useRouter();
@@ -75,16 +76,44 @@ export default function ReadPreguntaInformacion() {
     const verifyAnswer = (correct) => {
         if (correct === 1) {
             console.log("Respuesta correcta");
-            setSuccessMessage(true);
             setPuntaje(prevPuntaje => prevPuntaje + 1);
+            let timerInterval;
+            Swal.fire({
+                title: "¡Respuesta correcta!",
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
         } else {
             console.log("Respuesta incorrecta");
-            setWrongMessage(true);
+            let timerInterval;
+            Swal.fire({
+                title: "¡Respuesta incorrecta!",
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
         }
-        setTimeout(() => {
-            setSuccessMessage(false);
-            setWrongMessage(false);
-        }, 3000);
         // Verificar si hay elementos en arregloPreguntas antes de hacer shift
         if (questions.length > 0) {
             // Hacer shift solo si hay elementos
@@ -99,6 +128,7 @@ export default function ReadPreguntaInformacion() {
             }
         }, 3000);
     }
+
     return (
         <div className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
@@ -123,7 +153,7 @@ export default function ReadPreguntaInformacion() {
                     Opciones de respuesta
                 </h4>
                 <br/>
-                <div className={`row justify-content-center`}>
+                <div className={`row gy-5 justify-content-center`}>
                     {answers.map((answer, index) => (
                         <div className={`col-3`} key={index}>
                             <button onClick={() => verifyAnswer(answer.respuesta_correcta)}
@@ -136,22 +166,6 @@ export default function ReadPreguntaInformacion() {
                 </div>
                 <br/>
             </div>
-            {successMessage && (
-                <div>
-                    <div className="alert alert-success d-flex justify-content-center" role="alert">
-                        ¡RESPUESTA CORRECTA!
-                    </div>
-                    <br/>
-                </div>
-            )}
-            {wrongMessage && (
-                <div>
-                    <div className="alert alert-danger d-flex justify-content-center" role="alert">
-                        ¡RESPUESTA INCORRECTA!
-                    </div>
-                    <br/>
-                </div>
-            )}
         </div>
     )
 }

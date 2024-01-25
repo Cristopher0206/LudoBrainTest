@@ -6,7 +6,7 @@ import UpperBar from "@/components/UpperBar";
 import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
 
-export default function ReadPreguntaMatrices() {
+export default function readPreguntaMatrices() {
     const router = useRouter();
     const id_test = localStorage.getItem('id_test');
     let arregloPreguntas;

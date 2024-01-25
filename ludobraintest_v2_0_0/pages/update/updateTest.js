@@ -211,15 +211,15 @@ export default function UpdateTest() {
                                     <div className={`container-fluid px-5`}>
                                         <div className={`row d-flex py-2 px-5 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_green}`}>
-                                            <div className={`col-1 d-flex justify-content-end`}>
+                                            <div className={`col-1 d-flex justify-content-end py-4`}>
                                                 <button onClick={() => {
                                                     deleteQuestionFromTest(pregunta)
                                                 }}
-                                                        className={`${styles.minus_btn} py-2 px-3 font-bold`}>
+                                                        className={`${styles.minus_btn} py-2 px-3 font-bold h-fit`}>
                                                     -
                                                 </button>
                                             </div>
-                                            <div className={`col-6`}>
+                                            <div className={`col-10`}>
                                                 <div className={`pt-2 font-medium`}>
                                                     {pregunta.pregunta}
                                                 </div>
@@ -237,13 +237,13 @@ export default function UpdateTest() {
                                     <div className={`container-fluid px-5`}>
                                         <div className={`row d-flex py-2 px-5 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_green}`}>
-                                            <div className={`col-1 d-flex justify-content-end`}>
+                                            <div className={`col-1 d-flex justify-content-end py-4`}>
                                                 <button onClick={() => addQuestionToTest(pregunta)}
-                                                        className={`${styles.add_btn} py-2 px-3 font-bold`}>
+                                                        className={`${styles.add_btn} py-2 px-3 font-bold h-fit`}>
                                                     +
                                                 </button>
                                             </div>
-                                            <div className={`col-6`}>
+                                            <div className={`col-10`}>
                                                 <div className={`pt-2 font-medium`}>
                                                     {pregunta.pregunta}
                                                 </div>

@@ -12,7 +12,7 @@ export default function Modulos(){
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
                       color={navstyles.upper_bar_yellow}/>
-            <InstructionBar previousPage={`/presentacion`}
+            <InstructionBar previousPage={`/`}
                             instruction={`Selecciona un módulo`}/>
             <div className={`container-fluid`}>
                 <br/>
@@ -37,7 +37,7 @@ export default function Modulos(){
                 <br/>
                 <div className={`row justify-content-evenly`}>
                     <div className={`col-5 p-0 d-flex justify-content-center`}>
-                        <Link href="/" className={`w-100`}>
+                        <Link href="/resultados" className={`w-100`}>
                             <button type={`button`} className={`p-5 rounded-xl font-bold text-black shadow-md
                             border-2 border-black border-opacity-10 w-100 ${styles.btn_resultados}`}>
                                 <h4>Módulo de Resultados</h4>

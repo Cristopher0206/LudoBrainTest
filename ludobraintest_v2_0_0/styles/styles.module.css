@@ -259,11 +259,44 @@
         width: 100%;
         height: 100%;
     }
+
+    .modules_instruction_text {
+        font-size: 1.5vw;
+        text-align: center;
+    }
+
+    .test_info {
+        font-size: 1.5vw;
+        text-align: center;
+    }
+
+    .section_text {
+        font-size: 1.7vw;
+        text-align: center;
+    }
+
+    .semejanza_instruction_text {
+        font-size: 1.19vw;
+        text-align: center;
+    }
+
+    .sample_image {
+        width: 50%;
+    }
+
+    .dibujos_text{
+        font-size: 1.25vw;
+        text-align: center;
+    }
+
+    .instruction_matrix_text{
+        font-size: 1.25vw;
+        text-align: center;
+    }
 }
 
 .input_sky_blue {
     background-color: rgba(25, 169, 182, 0.6);
-    color: #ffffff;
 }
 
 .input_yellow {
@@ -294,22 +327,32 @@
 
 .label_green {
     color: #04BB03;
+    text-align: center;
 }
 
 .label_orange {
     color: #F67227;
+    text-align: center;
 }
 
 .label_olive {
     color: #A1BB03;
+    text-align: center;
 }
 
 .label_purple {
     color: #BD31FF;
+    text-align: center;
+}
+
+.label_electric_blue {
+    color: rgba(49, 102, 255, 0.75);
+    text-align: center;
 }
 
 .label_blue {
     color: #19A9B6;
+    text-align: center;
 }
 
 .btn_test {
@@ -539,7 +582,7 @@
     color: #000000;
     border: 1px solid #000000;
     border-radius: 10px;
-    padding: 20% 30%;
+    padding: 10% 10%;
     width: 100%;
     box-shadow: black 0.1em 0.1em 0.2em;
     transition: all 0.3s ease-out;
@@ -590,7 +633,7 @@
     color: #000000;
     border: 1px solid #000000;
     border-radius: 10px;
-    padding: 20% 30%;
+    padding: 10% 10%;
     width: 100%;
     box-shadow: black 0.1em 0.1em 0.2em;
     transition: all 0.3s ease-out;
@@ -643,6 +686,7 @@
 
 .incorrect_btn:hover {
     background-color: rgb(255, 67, 49);
+    color: #ffffff;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
 }
@@ -660,6 +704,7 @@
 
 .correct_btn:hover {
     background-color: rgb(4, 187, 3);
+    color: #ffffff;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
 }
@@ -725,4 +770,10 @@
 .back {
     text-decoration: none;
     color: black;
+}
+
+.div_btn {
+    width: 35%;
+    align-content: center;
+    text-align: center;
 }

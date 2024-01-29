@@ -1,10 +1,12 @@
 import {useEffect, useState} from "react";
 import navstyles from "@/styles/navstyles.module.css";
+import button from "@/styles/button.module.css";
 import styles from "@/styles/styles.module.css";
 import UpperBar from "@/components/UpperBar";
 import InstructionBar from "@/components/InstructionBar";
 import axios from "axios";
 import {useRouter} from "next/router";
+import Button from "@/components/Button";
 
 export default function CreatePregunta() {
     const dato = localStorage.getItem('dato');
@@ -659,6 +661,9 @@ export default function CreatePregunta() {
             console.error("Error al subir la pregunta:", error);
         }
     };
+    const limpiarSelectedFiles = () => {
+        setSelectedFiles([]);
+    };
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
@@ -718,9 +723,9 @@ export default function CreatePregunta() {
                             </div>
                         ))}
                         <label htmlFor="myAnswersArea" className="custom-file-upload d-flex justify-center">
-                            <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                +
+                            <div className={`px-3 py-2 rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${button.btn_red} ${styles.btn_text} ${styles.more}`}>
+                                    +
                             </div>
                         </label>
                         <input
@@ -735,18 +740,14 @@ export default function CreatePregunta() {
                         <div className={`container-fluid`}>
                             <div className={`row justify-content-evenly`}>
                                 <div className={`col-5 d-flex justify-content-center`}>
-                                    <button onClick={handleUpload}
-                                            className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                        Crear Pregunta
-                                    </button>
+                                    <div className={`w-75`}>
+                                        <Button text={`Crear Pregunta`} bg_color={button.btn_red} instruction={handleUpload}></Button>
+                                    </div>
                                 </div>
                                 <div className={`col-5 d-flex justify-content-center`}>
-                                    <button onClick={() => setSelectedFiles([])}
-                                            className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                        Limpiar imágenes
-                                    </button>
+                                    <div className={`w-75`}>
+                                        <Button text={`Limpiar imágenes`} bg_color={button.btn_red} instruction={limpiarSelectedFiles}></Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

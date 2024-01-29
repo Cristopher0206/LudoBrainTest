@@ -1,10 +1,12 @@
 import UpperBar from "@/components/UpperBar";
 import navstyles from "@/styles/navstyles.module.css";
 import styles from "@/styles/styles.module.css";
+import button from "@/styles/button.module.css";
 import InstructionBar from "@/components/InstructionBar";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import Button from "@/components/Button";
 
 export default function CreateTest() {
     const router = useRouter();
@@ -219,13 +221,10 @@ export default function CreateTest() {
                     </div>
                 )
                 }
-                <div className={`d-flex justify-content-center`}>
-                    <button onClick={createTest}
-                            className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 
-                    ${navstyles.upper_bar_green} ${styles.btn_text}`}>
-                        Agregar Test
-                    </button>
+                <div className={`flex justify-center`}>
+                    <div className={`w-25`}>
+                        <Button text={`Agregar Test`} instruction={createTest} bg_color={button.btn_green}></Button>
+                    </div>
                 </div>
                 <br/>
             </div>

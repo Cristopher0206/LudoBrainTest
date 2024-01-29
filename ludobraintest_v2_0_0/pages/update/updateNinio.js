@@ -5,6 +5,8 @@ import axios from "axios";
 import navstyles from "@/styles/navstyles.module.css";
 import {useRouter} from "next/router";
 import styles from "@/styles/styles.module.css";
+import Button from "@/components/Button";
+import button from "@/styles/button.module.css";
 
 export default function UpdateNinio() {
     const router = useRouter();
@@ -107,11 +109,11 @@ export default function UpdateNinio() {
                         <br/>
                     </div>
                 )}
-                <div className={`d-flex justify-content-center`}>
-                    <button onClick={actualizarNinio} className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_yellow} ${styles.btn_text}`}>
-                        Actualizar Jugador
-                    </button>
+                <div className={`flex justify-center`}>
+                    <div className={`${styles.div_btn}`}>
+                        <Button text={`Actualizar Jugador`} instruction={actualizarNinio}
+                                bg_color={button.btn_yellow}></Button>
+                    </div>
                 </div>
                 <br/>
             </div>

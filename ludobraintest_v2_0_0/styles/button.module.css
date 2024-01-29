@@ -1,0 +1,111 @@
+.btn_yellow {
+    background-color: rgba(246, 218, 39, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_yellow:hover {
+    background-color: rgb(246, 218, 39);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_green {
+    background-color: rgba(4, 187, 3, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_green:hover {
+    background-color: rgb(4, 187, 3);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_blue {
+    background-color: rgba(25, 169, 182, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_blue:hover {
+    background-color: rgb(25, 169, 182);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_red {
+    background-color: rgba(255, 67, 49, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_red:hover {
+    background-color: rgb(255, 67, 49);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_orange {
+    background-color: rgba(246, 114, 39, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_orange:hover {
+    background-color: rgb(246, 114, 39);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_purple {
+    background-color: rgba(189, 49, 255, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_purple:hover {
+    background-color: rgb(189, 49, 255, 0.75);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_electric_blue {
+    background-color: rgba(49, 70, 255, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_electric_blue:hover {
+    background-color: rgb(49, 70, 255, 0.75);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_olive {
+    background-color: rgba(161, 187, 3, 0.75);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_olive:hover {
+    background-color: rgb(161, 187, 3);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_black {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_black:hover {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_back_arrow {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_back_arrow:hover {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    transition: all 0.3s ease-in-out;
+}

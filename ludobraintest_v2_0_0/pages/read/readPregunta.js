@@ -437,14 +437,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -473,14 +469,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -509,14 +501,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -545,14 +533,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -581,14 +565,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -617,14 +597,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -653,14 +629,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -689,14 +661,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -725,14 +693,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -761,14 +725,10 @@ export default function ReadPregunta() {
                                                                     </div>
                                                                 </div>
                                                                 <div
-                                                                    className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
+                                                                    className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-between pt-sm-3 pt-md-0 pt-lg-0`}>
                                                                     <button onClick={() => eliminarPregunta(question.id_pregunta)}>
                                                                         <img src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
-                                                                    </button>
-                                                                    <button /*onClick={() => goActualizarNinio(question.id_ninio)}*/>
-                                                                        <img src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>

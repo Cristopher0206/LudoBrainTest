@@ -1,15 +1,20 @@
 import UpperBar from "@/components/UpperBar";
-import navstyles from "@/styles/navstyles.module.css";
+import button from "@/styles/button.module.css";
 import sections from "@/styles/upperBarSectionColors.module.css";
 import InstructionBar from "@/components/InstructionBar";
 import {useEffect, useState} from "react";
 import styles from "@/styles/styles.module.css";
 import {useRouter} from "next/router";
+import Button from "@/components/Button";
 
 export default function Instrucciones() {
     const router = useRouter();
-    const seccion = localStorage.getItem('seccion');
-    const informacion = localStorage.getItem('informacion');
+    let seccion;
+    let informacion;
+    if (typeof window !== 'undefined') {
+        seccion = localStorage.getItem('seccion');
+        informacion = localStorage.getItem('informacion');
+    }
     /*------------------- ESTADOS -------------------*/
     // Estados para generar el color
     const [informationTitle, setInformationTitle] = useState(false);
@@ -71,19 +76,18 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.informacion}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.informacion} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`}
+                                        bg_color={button.btn_red}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -93,19 +97,17 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.semejanzas}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.semejanzas} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`} bg_color={button.btn_green}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,19 +117,17 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.vocabulario}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.vocabulario} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`} bg_color={button.btn_blue}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,19 +137,16 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.comprension}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.comprension} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`} bg_color={button.btn_orange}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,19 +156,17 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.dibujos}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.dibujos} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`} bg_color={button.btn_purple}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -181,19 +176,17 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.nombres}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.nombres} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`} bg_color={button.btn_electric_blue}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -203,19 +196,18 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.matrices}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.matrices} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`}
+                                        bg_color={button.btn_olive}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,19 +217,18 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.conceptos}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.conceptos} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`}
+                                        bg_color={button.btn_blue}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -247,19 +238,18 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.reconocimiento}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.reconocimiento} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`}
+                                        bg_color={button.btn_red}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -269,19 +259,18 @@ export default function Instrucciones() {
                     <UpperBar redirectionPath={`/`}
                               color={sections.busqueda}></UpperBar>
                     <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para los test de habilidad de ${seccion}`}> </InstructionBar>
-                    <br/>
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
                     <div className={`px-5`}>
-                        <div className={`container-fluid border-2 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                        <div
+                            className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
                             {informacion}
                         </div>
-                        <br/> <br/>
-                        <div className={`d-flex justify-content-center mx-96`}>
-                            <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.busqueda} ${styles.btn_text}`}>
-                                Regresar
-                            </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={styles.div_btn}>
+                                <Button instruction={goBack} text={`Regresar`}
+                                        bg_color={button.btn_orange}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -57,7 +57,7 @@ export default function ChangePassword() {
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <InstructionBar previousPage={`/`}
-                            instruction={`¡Regístrate!`}/>
+                            instruction={`¡Cambia tu contraseña0!`}/>
             <br/> <br/> <br/> <br/> <br/> <br/>
             <div className={`container-fluid`}>
                 <div className={`row justify-content-center text-black`}>

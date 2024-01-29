@@ -15,11 +15,11 @@
 }
 
 .dibujos {
-    background-color: #BD31FF;
+    background-color: rgba(189, 49, 255, 0.75);
 }
 
 .nombres {
-    background-color: #3146FF;
+    background-color: rgba(49, 70, 255, 0.75);
 }
 
 .matrices {

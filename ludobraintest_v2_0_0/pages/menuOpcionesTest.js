@@ -2,11 +2,14 @@ import UpperBar from "@/components/UpperBar";
 import sections from "@/styles/upperBarSectionColors.module.css";
 import InstructionBar from "@/components/InstructionBar";
 import styles from "@/styles/styles.module.css";
+import button from "@/styles/button.module.css";
 import axios from "axios";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
+import Button from "@/components/Button";
+import Swal from "sweetalert2";
 
-export default function MenuOpcionesTest(){
+export default function MenuOpcionesTest() {
     const router = useRouter();
     const id = localStorage.getItem('dato');
     const id_test = localStorage.getItem('dato2');
@@ -27,6 +30,7 @@ export default function MenuOpcionesTest(){
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getTest();
+        showInstructions();
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getTest = () => {
@@ -57,6 +61,7 @@ export default function MenuOpcionesTest(){
     }
     const goTest = () => {
         localStorage.setItem('id_test', id_test);
+        localStorage.setItem('nombre_test', test.nombre_test);
         switch (test.nombre_seccion) {
             case "Información":
                 router.push(`/read/preguntas/readPreguntaInformacion`);
@@ -124,49 +129,67 @@ export default function MenuOpcionesTest(){
                 break;
         }
     }
-    return(
+    const showInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            html: "<div>\n" +
+                "                <p>En la parte izquierda de la pantalla encontrarás el nombre de la <strong>Evaluación</strong> y\n" +
+                "                    el puntaje actual del <strong>Jugador</strong></p>\n" +
+                "                <p>Selecciona una de las tres opciones para continuar</p>\n" +
+                "                <h5>Iniciar Evaluación</h5>\n" +
+                "                <p>Permite iniciar la <strong>Evaluación</strong></p>\n" +
+                "                <h5>Instrucciones</h5>\n" +
+                "                <p>Permite ver las instrucciones relacionadas a la sección a la que pertenece la <strong>Evaluación</strong></p>\n" +
+                "                <h5>Salir</h5>\n" +
+                "                <p>Permite volver a la página de selección de Jugador y Evaluación</p>\n" +
+                "            </div>",
+            confirmButtonText: "¡De acuerdo!",
+            confirmButtonColor: "black",
+        }).then((result) => {
+            console.log("result", result);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    return (
         <main className={`bg-amber-50 min-h-screen`}>
+
             {informationTitle &&
                 <div>
                     <UpperBar redirectionPath={`/`}
                               color={sections.informacion}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_red}/>
+                    <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.informacion} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_red}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.informacion} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_red}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.informacion} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_red} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -178,42 +201,37 @@ export default function MenuOpcionesTest(){
                     <UpperBar redirectionPath={`/`}
                               color={sections.semejanzas}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_green}/>
+                    <br/>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.semejanzas} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_green}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.semejanzas} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_green}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.semejanzas} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_green} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -225,42 +243,36 @@ export default function MenuOpcionesTest(){
                     <UpperBar redirectionPath={`/`}
                               color={sections.vocabulario}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_blue}/>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del Test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.vocabulario} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_blue}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.vocabulario} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_blue}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.vocabulario} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_blue} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -272,42 +284,37 @@ export default function MenuOpcionesTest(){
                     <UpperBar redirectionPath={`/`}
                               color={sections.comprension}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_orange}/>
+                    <br/>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.comprension} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_orange}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.comprension} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_orange}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.comprension} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_orange} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -319,42 +326,36 @@ export default function MenuOpcionesTest(){
                     <UpperBar redirectionPath={`/`}
                               color={sections.dibujos}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_purple}/>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.dibujos} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_purple}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.dibujos} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_purple}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.dibujos} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_purple} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -366,42 +367,36 @@ export default function MenuOpcionesTest(){
                     <UpperBar redirectionPath={`/`}
                               color={sections.nombres}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_electric_blue}/>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.nombres} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_electric_blue}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.nombres} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_electric_blue}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.nombres} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_electric_blue} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -413,42 +408,37 @@ export default function MenuOpcionesTest(){
                     <UpperBar redirectionPath={`/`}
                               color={sections.matrices}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_olive}/>
+                    <br/>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.matrices} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_olive}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.matrices} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_olive}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.matrices} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_olive} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -460,42 +450,37 @@ export default function MenuOpcionesTest(){
                     <UpperBar redirectionPath={`/`}
                               color={sections.conceptos}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_blue}/>
+                    <br/>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.conceptos} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_blue}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.conceptos} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_blue}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.conceptos} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_blue} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -507,42 +492,37 @@ export default function MenuOpcionesTest(){
                     <UpperBar redirectionPath={`/`}
                               color={sections.reconocimiento}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_red}/>
+                    <br/>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.reconocimiento} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_red}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.reconocimiento} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_red}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.reconocimiento} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_red} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -554,42 +534,37 @@ export default function MenuOpcionesTest(){
                     <UpperBar redirectionPath={`/`}
                               color={sections.busqueda}></UpperBar>
                     <InstructionBar previousPage={`/select/selectNinio`}
-                                    instruction={`Selecciona una opción`}/>
-                    <div className={`container-fluid`}>
+                                    instruction={`Selecciona una opción`}
+                                    information={showInstructions}
+                                    info_color={button.btn_orange}/>
+                    <br/>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row`}>
-                            <div className={`col-6`}>
-                                <h5>Nombre del test</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                            <div className={`col-6 ${styles.test_info} self-center`}>
+                                <br/>
+                                <h5 className={`font-bold`}>Nombre de la Evaluación</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.nombre_test}
                                 </div>
                                 <br/>
-                                <h5>Puntaje obtenido por {test.nombre}</h5>
-                                <div className={`container-fluid border-1 border-black rounded-2xl bg-white px-4 py-5
-                        flex justify-center shadow-inner`}>
+                                <h5 className={`font-bold`}>Puntaje actual de {test.nombre}</h5>
+                                <div className={`text-3xl italic`}>
                                     {test.puntaje}
                                 </div>
                             </div>
-                            <div className={`col-6 ${styles.btns_div}`}>
+                            <div className={`col-6 self-center ${styles.btns_div}`}>
                                 <div className={`d-flex justify-content-center`}>
-                                    <button onClick={goTest} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.busqueda} ${styles.btn_text}`}>
-                                        Iniciar Test
-                                    </button>
+                                    <Button text={`Iniciar Evaluación`} bg_color={button.btn_orange}
+                                            instruction={goTest}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goInstructions} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.busqueda} ${styles.btn_text}`}>
-                                        Instrucciones
-                                    </button>
+                                    <Button text={`Instrucciones`} bg_color={button.btn_orange}
+                                            instruction={goInstructions}></Button>
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <button onClick={goBack} className={`px-5 py-2 text-black rounded-3xl shadow-sm font-bold
-                    border-2 border-black border-opacity-10 w-100 ${sections.busqueda} ${styles.btn_text}`}>
-                                        Salir
-                                    </button>
+                                    <Button text={`Salir`} bg_color={button.btn_orange} instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>

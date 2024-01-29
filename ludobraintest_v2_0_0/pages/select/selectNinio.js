@@ -5,7 +5,11 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import styles from "@/styles/styles.module.css";
+import button from "@/styles/button.module.css";
 import Link from "next/link";
+import Button from "@/components/Button";
+import Swal from 'sweetalert2'
+import SweetAlert from "sweetalert2";
 
 export default function SelectNinio() {
     const router = useRouter();
@@ -48,6 +52,7 @@ export default function SelectNinio() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getNinios();
         getSections();
+        showInstructions();
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getNinios = () => {
@@ -362,20 +367,38 @@ export default function SelectNinio() {
     }
     const startTest = () => {
         if (!selectedChild && selectedTest) {
-            setWarningChild(true);
-            setTimeout(() => {
-                setWarningChild(false);
-            }, 3000);
+            SweetAlert.fire({
+                icon: "warning",
+                title: "Debes seleccionar un Jugador antes de empezar",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(25,169,182,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            });
         } else if (selectedChild && !selectedTest) {
-            setWarningTest(true);
-            setTimeout(() => {
-                setWarningTest(false);
-            }, 3000);
+            SweetAlert.fire({
+                icon: "warning",
+                title: "Debes seleccionar una Evaluación antes de empezar",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(25,169,182,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            });
         } else if (!selectedChild && !selectedTest) {
-            setWarningBoth(true);
-            setTimeout(() => {
-                setWarningBoth(false);
-            }, 3000);
+            SweetAlert.fire({
+                icon: "warning",
+                title: "Debes seleccionar un Jugador y una Evaluación antes de empezar",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(25,169,182,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            });
         } else {
             axios({
                 method: "post",
@@ -401,12 +424,37 @@ export default function SelectNinio() {
         // Si el test ya estaba seleccionado, lo deselecciona; de lo contrario, lo selecciona
         setSelectedTest((prevSelectedTest) => (prevSelectedTest === testId ? null : testId));
     };
+    const showInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            title: "Bienvenido al Módulo de Evaluación",
+            html: "<div>\n" +
+                "                <h5>Paso 1</h5>\n" +
+                "                <p>En el lado izquierdo aparecerá la lista de niños registrados por ti. <strong>Selecciona un\n" +
+                "                    niño para que realice la evaluación.</strong></p>\n" +
+                "                <h5>Paso 2</h5>\n" +
+                "                <p>En el lado derecho, deberás seleccionar un tipo de sección para que aparezcan las evaluaciones\n" +
+                "                    asociadas a dicha sección. Luego, aparecerá la lista de evaluaciones disponibles. <strong>Selecciona\n" +
+                "                        la evaluación que realizará el niño.</strong></p>\n" +
+                "                <h5>Paso 3</h5>\n" +
+                "                <p>Una vez seleccionado el niño y la evaluación, <strong>presiona el botón \"Iniciar sesión de Evaluación\"</strong></p>" +
+                "            </div>",
+            confirmButtonText: "¡De acuerdo!",
+            confirmButtonColor: "rgba(25,169,182,0.75)",
+        }).then((result) => {
+            console.log("result", result);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
                       color={navstyles.upper_bar_skyblue}></UpperBar>
             <InstructionBar previousPage={`/modulos`}
-                            instruction={`Selecciona al jugador y el test que realizará`}/>
+                            instruction={`Selecciona al Jugador y la Evaluación que realizará`}
+                            information={showInstructions}
+                            info_color={button.btn_blue}/>
             <div className={`container-fluid`}>
                 <div className={`row`}>
                     <div className={`col-6 ${styles.overflow_col}`}>
@@ -437,7 +485,7 @@ export default function SelectNinio() {
                         </div>
                     </div>
                     <div className={`col-6 ${styles.overflow_col}`}>
-                        <h4 className={`d-flex justify-content-center`}>Test</h4>
+                        <h4 className={`d-flex justify-content-center`}>Evaluaciones</h4>
                         <div className={`flex justify-center`}>
                             <select value={sectionSelected}
                                     onChange={e => {
@@ -468,7 +516,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -493,7 +542,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -518,7 +568,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -543,7 +594,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -568,7 +620,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -593,7 +646,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -618,7 +672,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -643,7 +698,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -668,7 +724,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -693,7 +750,8 @@ export default function SelectNinio() {
                                 ${styles.card_body_blue}
                                 ${selectedTest === test.id_test ? styles.selected_test_card : ''}`}>
                                                 <div className={`card-body`}>
-                                                    <div className={`container-fluid p-0 d-flex justify-content-center`}>
+                                                    <div
+                                                        className={`container-fluid p-0 d-flex justify-content-center`}>
                                                         <button onClick={() => {
                                                             setTestSelected(test.id_test);
                                                             handleTestClick(test.id_test);
@@ -714,37 +772,13 @@ export default function SelectNinio() {
                     </div>
                 </div>
                 <br/>
-                {warningChild && (
-                    <div>
-                        <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                            ¡Debes seleccionar un<strong className={`px-2`}>jugador</strong>para empezar la sesión!
-                        </div>
-                        <br/>
+                <div className={`flex justify-center`}>
+                    <div className={`${styles.div_btn}`}>
+                        <Button text={`Iniciar sesión de Evaluación`} instruction={startTest}
+                                bg_color={button.btn_blue}></Button>
                     </div>
-                )}
-                {warningTest && (
-                    <div>
-                        <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                            ¡Debes seleccionar un<strong className={`px-2`}>test</strong>para empezar la sesión!
-                        </div>
-                        <br/>
-                    </div>
-                )}
-                {warningBoth && (
-                    <div>
-                        <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                            ¡Selecciona un<strong className={`px-1`}>jugador</strong>y un<strong className={`px-1`}>test</strong>para empezar la sesión!
-                        </div>
-                        <br/>
-                    </div>
-                )}
-                <div className={`d-flex justify-content-center`}>
-                    <button onClick={startTest} className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_skyblue} ${styles.btn_text}`}>
-                        Iniciar sesión de Test
-                    </button>
                 </div>
-                <br/> <br/>
+                <br/>
             </div>
         </main>
     )

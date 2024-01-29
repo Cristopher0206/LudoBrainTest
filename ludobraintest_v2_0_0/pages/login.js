@@ -1,10 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from '../styles/styles.module.css'
-import navstyles from '../styles/navstyles.module.css'
+import styles from '@/styles/styles.module.css'
+import navstyles from '@/styles/navstyles.module.css'
+import button from '@/styles/button.module.css'
 import {useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import Button from "@/components/Button";
 
 export default function Login() {
     const router = useRouter();
@@ -36,6 +38,9 @@ export default function Login() {
         }).catch(err => {
             console.log(err);
         });
+    }
+    const startApp = () => {
+        router.push('/presentacion');
     }
 
     return (
@@ -97,19 +102,11 @@ export default function Login() {
             )}
             <br/>
             <div className={`row justify-content-center`}>
-                <div className={`col-5 d-flex`}>
-                    <button onClick={login} className={`w-100 px-5 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_green}`}>
-                        Iniciar sesión
-                    </button>
+                <div className={`col-5 flex justify-end`}>
+                    <Button text={`Iniciar sesión`} instruction={login} bg_color={button.btn_green}></Button>
                 </div>
-                <div className={`col-5 d-flex`}>
-                    <Link href={`/presentacion`} className={`w-100`}>
-                        <button className={`w-100 px-5 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_green}`}>
-                            Jugar como invitado
-                        </button>
-                    </Link>
+                <div className={`col-5 flex justify-start`}>
+                    <Button text={`Jugar como invitado`} instruction={startApp} bg_color={button.btn_green}></Button>
                 </div>
             </div>
             <br/> <br/>

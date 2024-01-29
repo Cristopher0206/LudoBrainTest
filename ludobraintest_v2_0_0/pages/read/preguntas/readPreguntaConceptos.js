@@ -2,10 +2,13 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import sections from "@/styles/upperBarSectionColors.module.css";
 import styles from "@/styles/styles.module.css";
+import navstyles from "@/styles/navstyles.module.css";
+import button from "@/styles/button.module.css";
 import UpperBar from "@/components/UpperBar";
 import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
-import navstyles from "@/styles/navstyles.module.css";
+import Swal from "sweetalert2";
+import Button from "@/components/Button";
 
 const initialSelectedAnswers = {
     fila1: null,
@@ -20,13 +23,14 @@ const correctAnswersByRow = {
 export default function ReadPreguntaConceptos() {
     const router = useRouter();
     const id_test = localStorage.getItem('id_test');
+    const nombre_test = localStorage.getItem('nombre_test');
     let arregloPreguntas;
     /*------------------- ESTADOS -------------------*/
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState([]);
     const [preguntaActual, setPreguntaActual] = useState('');
-    const [successMessage, setSuccessMessage] = useState(false); // Estado para respuestas correctas
-    const [wrongMessage, setWrongMessage] = useState(false); // Estado para respuestas incorrectas
+    const [totalPreguntas, setTotalPreguntas] = useState(0); // Estado para el total de preguntas
+    const [preguntaActualIndex, setPreguntaActualIndex] = useState(1); // Estado para el índice de la pregunta actual
     const [puntaje, setPuntaje] = useState(0); // Estado para el puntaje final
     //
     const [selectedAnswers, setSelectedAnswers] = useState(initialSelectedAnswers);
@@ -52,8 +56,8 @@ export default function ReadPreguntaConceptos() {
             url: 'http://localhost:3001/getQuestionsbyTestId',
         }).then(res => {
             setQuestions(res.data);
-            //setPuntaje(res.data[0].puntaje);
             arregloPreguntas = res.data;
+            setTotalPreguntas(res.data.length);
             if (arregloPreguntas.length > 0) {
                 const firstQuestionId = res.data[0].id_pregunta;
                 getAnswersbyQuestionId(firstQuestionId);
@@ -71,7 +75,7 @@ export default function ReadPreguntaConceptos() {
             withCredentials: true,
             url: 'http://localhost:3001/getAnswersbyQuestionId',
         }).then(res => {
-            console.log("Estas son las opciones de respuesta",res.data);
+            console.log("Estas son las opciones de respuesta", res.data);
             setAnswers(res.data);
             showQuestion()
         }).catch(err => {
@@ -90,16 +94,46 @@ export default function ReadPreguntaConceptos() {
     const verifyAnswer = () => {
         if (correctAnswers.fila1 === 1 && correctAnswers.fila2 === 1 && correctAnswers.fila3 === 1) {
             console.log("Respuesta correcta");
-            setSuccessMessage(true);
             setPuntaje(prevPuntaje => prevPuntaje + 1);
+            let timerInterval;
+            Swal.fire({
+                icon: 'success',
+                title: "¡Respuesta correcta!",
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
         } else {
             console.log("Respuesta incorrecta");
-            setWrongMessage(true);
+            let timerInterval;
+            Swal.fire({
+                icon: 'error',
+                title: "¡Respuesta incorrecta!",
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
         }
-        setTimeout(() => {
-            setSuccessMessage(false);
-            setWrongMessage(false);
-        }, 3000);
         // Verificar si hay elementos en arregloPreguntas antes de hacer shift
         if (questions.length > 0) {
             // Hacer shift solo si hay elementos
@@ -108,6 +142,7 @@ export default function ReadPreguntaConceptos() {
         setTimeout(() => {
             if (questions.length > 0) {
                 getAnswersbyQuestionId(questions[0].id_pregunta);
+                setPreguntaActualIndex(prevPreguntaActualIndex => prevPreguntaActualIndex + 1);
             } else {
                 console.log("No hay más preguntas");
                 router.push('/puntajeFinal');
@@ -130,24 +165,51 @@ export default function ReadPreguntaConceptos() {
         console.log("selectedAnswers", selectedAnswers);
         console.log("respuestasCorrectas", correctAnswers);
     }
+    const confirmGetBack = () => {
+        Swal.fire({
+            title: '¿Estás seguro que deseas regresar?',
+            text: "¡Perderás todo el progreso de esta Evaluación!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgba(255,67,49)',
+            cancelButtonColor: '#9CA3AF',
+            confirmButtonText: 'Sí, quiero regresar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                router.push('/menuOpcionesTest');
+            }
+        })
+    }
     return (
         <div className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
                       color={sections.conceptos}></UpperBar>
             <br/>
-            <div className={`container-fluid`}>
+            <div className={`container-fluid px-5`}>
                 <div className={`row`}>
                     <div className={`col-sm-3 col-lg-2`}>
-                        <QuestionBar previousPage={`/menuOpcionesTest`}></QuestionBar>
+                        <QuestionBar confirmGetBack={confirmGetBack}
+                                     nombreTest={nombre_test}
+                                     labelColor={styles.label_blue}/>
                     </div>
-                    <div className={`col-sm-9 col-lg-10 ps-sm-3 ps-lg-0 pe-sm-4 pe-lg-5 pt-4`}>
-                        <div className={`border-1 border-black rounded-2xl bg-white px-5 py-4
-                        flex justify-center shadow-inner h-fit`}>
-                            ¡Debes elegir una imagen de cada fila! Recuerda que las imágenes deben tener alguna
-                            relación entre sí.
+                    <div className={`col-2 self-center`}>
+                        <div className={`px-4 flex-col justify-center h-fit ${styles.instruction_matrix_text}`}>
+                            <p><strong>¡Debes elegir una imagen de cada fila!</strong></p>
+                            <p>Recuerda que las imágenes deben tener alguna
+                                relación entre sí.</p>
                         </div>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <Button text={`Verificar Respuestas`} bg_color={button.btn_blue}
+                                    instruction={verifyAnswer}></Button>
+                        </div>
+                    </div>
+                    <div className={`col-sm-9 col-lg-8`}>
                         <div className={`container-fluid`}>
-                            <br/>
+                            <h5>
+                                Pregunta {preguntaActualIndex} / {totalPreguntas}
+                            </h5>
                             <h4 className={`${styles.label_blue}`}>Fila 1</h4>
                             <div className={`row justify-content-center`}>
                                 {answers.map((answer, index) => (
@@ -207,31 +269,7 @@ export default function ReadPreguntaConceptos() {
                         </div>
                     </div>
                 </div>
-                <br/>
-                <div className={`d-flex justify-content-center`}>
-                    <button onClick={verifyAnswer} className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_skyblue} ${styles.btn_text}`}>
-                        Verificar Respuestas
-                    </button>
-                </div>
             </div>
-            <br/>
-            {successMessage && (
-                <div>
-                    <div className="alert alert-success d-flex justify-content-center" role="alert">
-                        ¡RESPUESTA CORRECTA!
-                    </div>
-                    <br/>
-                </div>
-            )}
-            {wrongMessage && (
-                <div>
-                    <div className="alert alert-danger d-flex justify-content-center" role="alert">
-                        ¡RESPUESTA INCORRECTA!
-                    </div>
-                    <br/>
-                </div>
-            )}
         </div>
     )
 }

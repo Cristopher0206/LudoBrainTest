@@ -11,7 +11,7 @@ export default function ModulosCreacion(){
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_yellow}/>
+                      color={navstyles.upper_bar_green}/>
             <InstructionBar previousPage={`/modulos`}
                             instruction={`¿Qué quieres crear?`}/>
             <div className={`container-fluid`}>

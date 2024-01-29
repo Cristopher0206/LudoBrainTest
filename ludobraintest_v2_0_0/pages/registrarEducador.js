@@ -3,8 +3,9 @@ import axios from "axios";
 import {useRouter} from "next/router";
 import InstructionBar from "@/components/InstructionBar";
 import navstyles from "@/styles/navstyles.module.css";
-import UpperBar from "@/components/UpperBar";
+import buttons from "@/styles/button.module.css";
 import styles from "@/styles/styles.module.css";
+import Button from "@/components/Button";
 
 export default function RegistrarEducador() {
     const router = useRouter();
@@ -125,7 +126,7 @@ export default function RegistrarEducador() {
                 </div>
                 {successMessage && (
                     <div>
-                        <br/>
+                        <br/> <br/>
                         <div className="alert alert-success d-flex justify-content-center" role="alert">
                             ¡Educador registrado Exitosamente!
                         </div>
@@ -133,7 +134,7 @@ export default function RegistrarEducador() {
                 )}
                 {warningMessage && (
                     <div>
-                        <br/>
+                        <br/> <br/>
                         <div className="alert alert-warning d-flex justify-content-center" role="alert">
                             ¡Este educador ya se encuentra registrado!
                         </div>
@@ -141,10 +142,7 @@ export default function RegistrarEducador() {
                 )}
                 <br/><br/>
                 <div className={`d-flex justify-content-center`}>
-                    <button onClick={registrarEducador} className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_yellow} ${styles.btn_text}`}  >
-                        Registrar
-                    </button>
+                    <Button instruction={registrarEducador} text={`Registrar`} bg_color={`${buttons.btn_yellow}`}></Button>
                 </div>
             </div>
         </main>

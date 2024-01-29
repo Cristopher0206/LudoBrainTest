@@ -3,11 +3,27 @@ import InstructionBar from "@/components/InstructionBar";
 import Link from "next/link";
 import navstyles from "@/styles/navstyles.module.css";
 import styles from "@/styles/styles.module.css";
+import button from "@/styles/button.module.css";
+import Button from "@/components/Button";
+import {useRouter} from "next/router";
 
 export default function Modulos(){
+    const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     /*------------------- EFECTOS -------------------*/
     /*------------------- FUNCIONES -------------------*/
+    const goTest = () => {
+        router.push("/select/selectNinio");
+    }
+    const goCreate = () => {
+        router.push("/modulosCreacion");
+    }
+    const goResults = () => {
+        router.push("/resultados");
+    }
+    const goRegister = () => {
+        router.push("/read/readNinio");
+    }
     return(
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar redirectionPath={`/`}
@@ -15,45 +31,36 @@ export default function Modulos(){
             <InstructionBar previousPage={`/`}
                             instruction={`Selecciona un módulo`}/>
             <div className={`container-fluid`}>
-                <br/>
-                <div className={`row justify-content-evenly`}>
-                    <div className={`col-5 p-0 d-flex justify-content-center`}>
-                        <Link href="/select/selectNinio" className={`w-100`}>
-                            <button className={`p-5 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_test}`}>
-                                <h4>Módulo de Test</h4>
-                            </button>
-                        </Link>
+                <div className={`row`}>
+                    <div className={`col-6 flex`}>
+                        <div className={`self-center p-5`}>
+                            <div className={`container-fluid px-4 py-5 justify-center self-center italic ${styles.modules_instruction_text}`}>
+                                <p>¡Hola, Bienvenido a Poli-Quizzes!</p>
+                                <p>Selecciona uno de los cuatro módulos que se encuentran
+                                    al lado derecho de la pantalla.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className={`col-5 p-0 d-flex justify-content-center`}>
-                        <Link href="/modulosCreacion" className={`w-100`}>
-                            <button className={`p-5 rounded-xl font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 w-100 ${styles.btn_creacion}`}>
-                                <h4>Módulo de Creación</h4>
-                            </button>
-                        </Link>
-                    </div>
-                </div>
-                <br/>
-                <div className={`row justify-content-evenly`}>
-                    <div className={`col-5 p-0 d-flex justify-content-center`}>
-                        <Link href="/resultados" className={`w-100`}>
-                            <button type={`button`} className={`p-5 rounded-xl font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 w-100 ${styles.btn_resultados}`}>
-                                <h4>Módulo de Resultados</h4>
-                            </button>
-                        </Link>
-                    </div>
-                    <div className={`col-5 p-0 d-flex justify-content-center`}>
-                        <Link href="/read/readNinio" className={`w-100`}>
-                            <button type={`button`} className={`p-5 rounded-xl font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_registro}`}>
-                                <h4>Módulo de Registro</h4>
-                            </button>
-                        </Link>
+                    <div className={`col-6`}>
+                        <br/>
+                        <div className={`px-20`}>
+                            <Button instruction={goTest} bg_color={button.btn_blue} text={`Evaluar un niño`}></Button>
+                        </div>
+                        <br/>
+                        <div className={`px-20`}>
+                            <Button instruction={goCreate} bg_color={button.btn_green} text={`Crear Evaluaciones y Preguntas`}></Button>
+                        </div>
+                        <br/>
+                        <div className={`px-20`}>
+                            <Button instruction={goRegister} bg_color={button.btn_yellow} text={`Registrar un niño`}></Button>
+                        </div>
+                        <br/>
+                        <div className={`px-20`}>
+                            <Button instruction={goResults} bg_color={button.btn_red} text={`Ver resultados`}></Button>
+                        </div>
+                        <br/>
                     </div>
                 </div>
-                <br/>
             </div>
         </main>
     )

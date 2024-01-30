@@ -1,12 +1,13 @@
 import UpperBar from "@/components/UpperBar";
 import InstructionBar from "@/components/InstructionBar";
-import navstyles from '../../styles/navstyles.module.css'
-import styles from '../../styles/styles.module.css'
+import navstyles from '@/styles/navstyles.module.css'
+import styles from '@/styles/styles.module.css'
+import button from '@/styles/button.module.css'
 import AddButton from "@/components/AddButton";
 import {useState, useEffect} from "react";
 import axios from "axios";
-import Link from "next/link";
 import {useRouter} from "next/router";
+import Swal from "sweetalert2";
 
 export default function ReadTest() {
     const router = useRouter();
@@ -41,6 +42,7 @@ export default function ReadTest() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => {
         getSections();
+        showInstructions();
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getSections = () => {
@@ -322,43 +324,85 @@ export default function ReadTest() {
         }
     }
     const eliminarTest = (idTest) => {
-        const confirmacion = window.confirm('¿Estás seguro que deseas eliminar este test?');
-        if(confirmacion){
-            axios({
-                method: "post",
-                data: {
-                    id_test: idTest,
-                },
-                withCredentials: true,
-                url: "http://localhost:3001/deleteTest"
-            }).then((res) => {
-                console.log(res);
-                if(res.data.message === 'Test eliminado exitosamente') {
-                    // Si el test se elimina, muestra un mensaje de confirmacion
-                    setSuccessMessage(true);
-                    // El mensaje desaparece luego de 3 segundos
-                    setTimeout(() => {
-                        setSuccessMessage(false);
-                        showTests();
-                    }, 3000);
-                }
-            }).catch((err) => {
-                console.log(err);
-            })
-        }
+        Swal.fire({
+            title: '¿Estás seguro que deseas eliminar esta Evaluación?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgba(255,67,49)',
+            cancelButtonColor: '#9CA3AF',
+            confirmButtonText: 'Confirmar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios({
+                    method: "post",
+                    data: {
+                        id_test: idTest,
+                    },
+                    withCredentials: true,
+                    url: "http://localhost:3001/deleteTest"
+                }).then((res) => {
+                    console.log(res);
+                    if(res.data.message === 'Test eliminado exitosamente') {
+                        // Si el test se elimina, muestra un mensaje de confirmacion
+                        setSuccessMessage(true);
+                        // El mensaje desaparece luego de 3 segundos
+                        setTimeout(() => {
+                            setSuccessMessage(false);
+                            showTests();
+                        }, 3000);
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
+        })
     }
     const goActualizarTest = (idTest) => {
         sessionStorage.setItem('dataToPass', idTest);
         router.push('../update/updateTest');
     }
+    const showInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            title: "Bienvenido al Módulo de Creación de Evaluaciones",
+            html: "<div>\n" +
+                "                <p>En la parte izquierda de la pantalla encontrarás la lista de <strong>Secciones</strong>, dale\n" +
+                "                    clic para desplegarla.</p>\n" +
+                "                <p>Cuando selecciones una <strong>Sección</strong>, en la parte derecha de la pantalla aparecerán\n" +
+                "                    todas las <strong>Evaluaciones</strong> asociadas a dicha sección.</p>\n" +
+                "                <p>Para <strong>Crear una nueva Evaluación</strong>, dale clic al botón con el símbolo\n" +
+                "                    <strong>+</strong> que se encuentra en la parte superior central de la pantalla.</p>\n" +
+                "                <p>Para <strong>Actualizar una Evaluación</strong>, dale clic al botón con el\n" +
+                "                    símbolo <strong>✏️</strong> que se encuentra al lado derecho de cada tarjeta.</p>\n" +
+                "                <p>Para <strong>Eliminar una Evaluación</strong>, dale clic al botón con el\n" +
+                "                    símbolo <strong>🗑️</strong> que se encuentra al lado derecho de cada tarjeta.</p>\n" +
+                "            </div>",
+            confirmButtonText: "¡De acuerdo!",
+            confirmButtonColor: "rgba(4,187,3,0.75)",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
+        }).then((result) => {
+            console.log("result", result);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const goCreateTest = () => {
+        router.push("/create/createTest");
+    }
+    const confirmGetBack = () => {
+        router.push('/modulosCreacion');
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_green}></UpperBar>
-            <InstructionBar previousPage={`/modulosCreacion`}
-                            instruction={`Crea un nuevo Test`}/>
-            <AddButton createPage={`../create/createTest`}
-                       color={navstyles.upper_bar_green}/>
+            <UpperBar color={navstyles.upper_bar_green}/>
+            <InstructionBar confirmation={confirmGetBack}
+                            instruction={`Crea un nuevo Test`}
+                            information={showInstructions}
+                            info_color={button.btn_green}/>
+            <AddButton createPage={goCreateTest}
+                       color={button.btn_green}/>
             <br/>
             <div className={`container-fluid`}>
                 <div className={`row`}>

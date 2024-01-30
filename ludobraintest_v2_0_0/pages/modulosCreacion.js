@@ -3,35 +3,52 @@ import InstructionBar from "@/components/InstructionBar";
 import Link from "next/link";
 import navstyles from '@/styles/navstyles.module.css'
 import styles from '@/styles/styles.module.css'
+import button from '@/styles/button.module.css'
+import {useRouter} from "next/router";
+import Button from "@/components/Button";
 
-export default function ModulosCreacion(){
+export default function ModulosCreacion() {
+    const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     /*------------------- EFECTOS -------------------*/
     /*------------------- FUNCIONES -------------------*/
+    const goCreateTest = () => {
+        router.push("/read/readTest");
+    }
+    const goCreateQuestion = () => {
+        router.push("/read/readPregunta");
+    }
+    const confirmGetBack = () => {
+        router.push('/modulos');
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_green}/>
-            <InstructionBar previousPage={`/modulos`}
+            <UpperBar color={navstyles.upper_bar_green}/>
+            <InstructionBar confirmation={confirmGetBack}
+                            previousPage={`/modulos`}
                             instruction={`¿Qué quieres crear?`}/>
             <div className={`container-fluid`}>
-                <br/> <br/> <br/> <br/> <br/>
-                <div className={`row justify-content-evenly`}>
-                    <div className={`col-5`}>
-                        <Link href="../read/readTest">
-                            <button type={`button`} className={`p-5 rounded-xl font-bold text-black shadow-2xl
-                            border-2 border-black border-opacity-10 h-100 w-100 ${navstyles.upper_bar_green}`}>
-                                <h4>Tests</h4>
-                            </button>
-                        </Link>
+                <div className={`row`}>
+                    <div className={`col-6 self-center p-5`}>
+                        <div
+                            className={`container-fluid px-4 py-5 justify-center self-center italic ${styles.modules_instruction_text}`}>
+                            <p>Estás en el módulo de <strong>Creación</strong></p>
+                            <p>Selecciona uno de los dos módulos que se encuentran
+                                al lado derecho de la pantalla.</p>
+                        </div>
                     </div>
-                    <div className={`col-5`}>
-                        <Link href="../read/readPregunta">
-                            <button type={`button`} className={`p-5 rounded-xl font-bold text-black shadow-2xl
-                            border-2 border-black border-opacity-10 h-100 w-100 ${navstyles.upper_bar_red}`}>
-                                <h4>Preguntas</h4>
-                            </button>
-                        </Link>
+                    <div className={`col-6 self-center`}>
+                        <div className={`px-20`}>
+                            <Button text={`Crear una Evaluación`}
+                                    instruction={goCreateTest}
+                                    bg_color={button.btn_green}/>
+                        </div>
+                        <br/>
+                        <div className={`px-20`}>
+                            <Button text={`Crear una Pregunta`}
+                                    instruction={goCreateQuestion}
+                                    bg_color={button.btn_red}/>
+                        </div>
                     </div>
                 </div>
                 <br/>

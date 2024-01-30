@@ -4,6 +4,9 @@ import navstyles from "@/styles/navstyles.module.css";
 import {useRouter} from "next/router";
 import axios from "axios";
 import {useState} from "react";
+import Button from "@/components/Button";
+import button from "@/styles/button.module.css";
+import Swal from "sweetalert2";
 
 export default function ChangePassword() {
     const router = useRouter();
@@ -12,8 +15,6 @@ export default function ChangePassword() {
     const [password, setPassword] = useState('');
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
-    const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
-    const [warningMessage, setWarningMessage] = useState(false); // Estado para la advertencia de registro
     /*------------------- EFECTOS -------------------*/
     /*------------------- FUNCIONES -------------------*/
     const clearFields = () => { /* Funciòn para limpiar los campos */
@@ -34,20 +35,46 @@ export default function ChangePassword() {
         }).then(res => {
             console.log(res);
             if (res.data.message === 'Contraseña actualizada exitosamente') {
-                // Si el usuario se crea, muestra un mensaje de confirmacion
-                setSuccessMessage(true);
-                // El mensaje desaparece luego de 3 segundos
+                let timerInterval;
+                Swal.fire({
+                    icon: 'success',
+                    title: "¡Contraseña actualizada Correctamente!",
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log("I was closed by the timer");
+                    }
+                });
                 setTimeout(() => {
-                    setSuccessMessage(false);
                     router.push('/');
                 }, 3000);
             } else {
-                // Si el usuario ya existe, muestra un mensaje de advertencia
-                setWarningMessage(true);
-                // El mensaje desaparece luego de 3 segundos
-                setTimeout(() => {
-                    setWarningMessage(false);
-                }, 3000);
+                let timerInterval;
+                Swal.fire({
+                    icon: 'warning',
+                    title: "¡Nombre de usuario incorrecto, vuelve a intentar!",
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log("I was closed by the timer");
+                    }
+                });
                 clearFields();
             }
         }).catch((err) => {
@@ -57,8 +84,8 @@ export default function ChangePassword() {
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <InstructionBar previousPage={`/`}
-                            instruction={`¡Cambia tu contraseña0!`}/>
-            <br/> <br/> <br/> <br/> <br/> <br/>
+                            instruction={`¡Cambia tu contraseña!`}/>
+            <br/> <br/> <br/> <br/>
             <div className={`container-fluid`}>
                 <div className={`row justify-content-center text-black`}>
                     <div className={`col-sm-2 col-lg-1 d-flex justify-content-center`}>
@@ -90,28 +117,12 @@ export default function ChangePassword() {
                            text-black ${styles.input_yellow} ${styles.input_text}`}/>
                     </div>
                 </div>
-                {successMessage && (
-                    <div>
-                        <br/>
-                        <div className="alert alert-success d-flex justify-content-center" role="alert">
-                            ¡Contraseña actualizada Exitosamente!
-                        </div>
+                <br/> <br/>
+                <div className={`flex justify-center`}>
+                    <div className={`${styles.div_btn}`}>
+                        <Button text={`Actualizar Contraseña`} instruction={updateEducador}
+                                bg_color={button.btn_yellow}></Button>
                     </div>
-                )}
-                {warningMessage && (
-                    <div>
-                        <br/>
-                        <div className="alert alert-danger d-flex justify-content-center" role="alert">
-                            ¡Este usuario no existe!
-                        </div>
-                    </div>
-                )}
-                <br/>
-                <div className={`d-flex justify-content-center`}>
-                    <button onClick={updateEducador} className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_yellow} ${styles.btn_text}`}>
-                        Actualizar Contraseña
-                    </button>
                 </div>
             </div>
         </main>

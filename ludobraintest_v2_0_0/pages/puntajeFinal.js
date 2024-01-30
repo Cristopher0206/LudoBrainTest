@@ -1,8 +1,9 @@
 import UpperBar from "@/components/UpperBar";
-import sections from "@/styles/upperBarSectionColors.module.css";
-import navstyles from "@/styles/navstyles.module.css";
 import InstructionBar from "@/components/InstructionBar";
+import Button from "@/components/Button";
 import styles from "@/styles/styles.module.css";
+import navstyles from "@/styles/navstyles.module.css";
+import button from "@/styles/button.module.css";
 import {useRouter} from "next/router";
 import axios from "axios";
 
@@ -23,8 +24,8 @@ export default function PuntajeFinal() {
             withCredentials: true,
             url: 'http://localhost:3001/finishTest',
         }).then(res => {
-            console.log(res.data);;
-            router.push(`/modulos`);
+            console.log(res.data);
+            router.push(`/menuOpcionesTest`);
         }).catch(err => {
             console.log(err);
         })
@@ -34,16 +35,28 @@ export default function PuntajeFinal() {
             <UpperBar redirectionPath={`/`}
                       color={navstyles.upper_bar_skyblue}></UpperBar>
             <InstructionBar previousPage={`#`}
-                            instruction={`¡Terminaste el Test! Este es tu puntaje`}/>
-            <div className={`container-fluid d-flex justify-content-center`}>
-                <h1>{puntaje}</h1>
-            </div>
+                            instruction={`Observa la puntuación final`}/>
             <br/>
-            <div className={`d-flex justify-content-center`}>
-                <button onClick={finishTest} className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_skyblue} ${styles.btn_text}`}>
-                    Finalizar Test
-                </button>
+            <div className={`container-fluid flex flex-col justify-center`}>
+                <div className={`row ${styles.test_info} self-center`}>
+                    <h2 className={`font-bold`}>¡Felicitaciones!</h2>
+                    <div className={`text-3xl italic`}>
+                        Completaste la Evaluación
+                    </div>
+                    <br/> <br/> <br/>
+                    <h2 className={`font-bold`}>Tu puntuación final es</h2>
+                    <div className={`text-3xl italic`}>
+                        {puntaje}
+                    </div>
+                </div>
+            </div>
+            <br/><br/>
+            <div className={`flex justify-center`}>
+                <div className={`${styles.div_btn}`}>
+                    <Button text={`Finalizar Sesión de Evaluación`}
+                            instruction={finishTest}
+                            bg_color={button.btn_blue}/>
+                </div>
             </div>
         </main>
     )

@@ -293,6 +293,14 @@
         font-size: 1.25vw;
         text-align: center;
     }
+
+    .middle_text{
+        text-align: center;
+    }
+
+    .logo_credits {
+        height: 8.5vw;
+    }
 }
 
 .input_sky_blue {
@@ -742,7 +750,7 @@
 }
 
 .plus_btn {
-    color: white;
+    color: black;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: black 0.05em 0.05em 0.1em;
     transition: all 0.3s ease-out;
@@ -750,7 +758,7 @@
 
 .plus_btn:hover {
     opacity: 75%;
-    color: black;
+    color: white;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: black 0.05em 0.05em 0.1em;
     transition: all 0.3s ease-out;

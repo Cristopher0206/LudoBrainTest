@@ -134,7 +134,7 @@ export default function ReadPreguntaInformacion() {
     }
     const confirmGetBack = () => {
         Swal.fire({
-            title: '¿Estás seguro que deseas regresar?',
+            title: '¿Estás seguro que quieres regresar?',
             text: "¡Perderás todo el progreso de esta Evaluación!",
             icon: 'warning',
             showCancelButton: true,

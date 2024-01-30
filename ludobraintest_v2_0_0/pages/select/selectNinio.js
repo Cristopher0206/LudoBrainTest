@@ -44,10 +44,6 @@ export default function SelectNinio() {
     const [conceptosTitle, setConceptosTitle] = useState(false);
     const [reconocimientoTitle, setReconocimientoTitle] = useState(false);
     const [busquedaTitle, setBusquedaTitle] = useState(false);
-    // Estados para las alertas
-    const [warningChild, setWarningChild] = useState(false);
-    const [warningTest, setWarningTest] = useState(false);
-    const [warningBoth, setWarningBoth] = useState(false);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getNinios();
@@ -437,21 +433,25 @@ export default function SelectNinio() {
                 "                    asociadas a dicha sección. Luego, aparecerá la lista de evaluaciones disponibles. <strong>Selecciona\n" +
                 "                        la evaluación que realizará el niño.</strong></p>\n" +
                 "                <h5>Paso 3</h5>\n" +
-                "                <p>Una vez seleccionado el niño y la evaluación, <strong>presiona el botón \"Iniciar sesión de Evaluación\"</strong></p>" +
+                "                <p>Una vez seleccionado el niño y la evaluación, presiona el botón <strong>\"Iniciar sesión de Evaluación\"</strong></p>" +
                 "            </div>",
             confirmButtonText: "¡De acuerdo!",
             confirmButtonColor: "rgba(25,169,182,0.75)",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
         }).then((result) => {
             console.log("result", result);
         }).catch((err) => {
             console.log(err);
         })
     }
+    const confirmGetBack = () => {
+        router.push('/modulos');
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_skyblue}></UpperBar>
-            <InstructionBar previousPage={`/modulos`}
+            <UpperBar color={navstyles.upper_bar_skyblue}/>
+            <InstructionBar confirmation={confirmGetBack}
                             instruction={`Selecciona al Jugador y la Evaluación que realizará`}
                             information={showInstructions}
                             info_color={button.btn_blue}/>

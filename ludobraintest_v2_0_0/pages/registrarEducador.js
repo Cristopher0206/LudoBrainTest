@@ -6,6 +6,8 @@ import navstyles from "@/styles/navstyles.module.css";
 import buttons from "@/styles/button.module.css";
 import styles from "@/styles/styles.module.css";
 import Button from "@/components/Button";
+import button from "@/styles/button.module.css";
+import Swal from "sweetalert2";
 
 export default function RegistrarEducador() {
     const router = useRouter();
@@ -14,8 +16,6 @@ export default function RegistrarEducador() {
     const [password, setPassword] = useState('');
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
-    const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
-    const [warningMessage, setWarningMessage] = useState(false); // Estado para la advertencia de registro
     /*------------------- EFECTOS -------------------*/
     /*------------------- FUNCIONES -------------------*/
     const clearFields = () => { /* Funciòn para limpiar los campos */
@@ -38,29 +38,58 @@ export default function RegistrarEducador() {
         }).then(res => {
             console.log(res);
             if (res.data.message === 'Usuario creado correctamente') {
-                // Si el usuario se crea, muestra un mensaje de confirmacion
-                setSuccessMessage(true);
-                // El mensaje desaparece luego de 3 segundos
+                let timerInterval;
+                Swal.fire({
+                    icon: 'success',
+                    title: "¡Educador registrado correctamente!",
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log("I was closed by the timer");
+                    }
+                });
                 setTimeout(() => {
-                    setSuccessMessage(false);
                     router.push('/');
                 }, 3000);
             } else if (res.data.message === 'El usuario ya se encuentra registrado') {
-                // Si el usuario ya existe, muestra un mensaje de advertencia
-                setWarningMessage(true);
-                // El mensaje desaparece luego de 3 segundos
-                setTimeout(() => {
-                    setWarningMessage(false);
-                }, 3000);
+                let timerInterval;
+                Swal.fire({
+                    icon: 'warning',
+                    title: "¡Este Educador ya se encuentra Registrado!",
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log("I was closed by the timer");
+                    }
+                });
                 clearFields();
             }
         }).catch((err) => {
             console.log(err);
         })
     }
+    const confirmGetBack = () => {
+        router.push('/');
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <InstructionBar previousPage={`/`}
+            <InstructionBar confirmation={confirmGetBack}
                             instruction={`¡Regístrate!`}/>
             <br/> <br/>
             <div className={`container-fluid`}>
@@ -124,25 +153,12 @@ export default function RegistrarEducador() {
                            text-black ${styles.input_yellow} ${styles.input_text}`}/>
                     </div>
                 </div>
-                {successMessage && (
-                    <div>
-                        <br/> <br/>
-                        <div className="alert alert-success d-flex justify-content-center" role="alert">
-                            ¡Educador registrado Exitosamente!
-                        </div>
-                    </div>
-                )}
-                {warningMessage && (
-                    <div>
-                        <br/> <br/>
-                        <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                            ¡Este educador ya se encuentra registrado!
-                        </div>
-                    </div>
-                )}
                 <br/><br/>
-                <div className={`d-flex justify-content-center`}>
-                    <Button instruction={registrarEducador} text={`Registrar`} bg_color={`${buttons.btn_yellow}`}></Button>
+                <div className={`flex justify-center`}>
+                    <div className={`${styles.div_btn}`}>
+                        <Button text={`Registrar Educador`} instruction={registrarEducador}
+                                bg_color={button.btn_yellow}></Button>
+                    </div>
                 </div>
             </div>
         </main>

@@ -145,20 +145,24 @@ export default function MenuOpcionesTest() {
                 "            </div>",
             confirmButtonText: "¡De acuerdo!",
             confirmButtonColor: "black",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
         }).then((result) => {
             console.log("result", result);
         }).catch((err) => {
             console.log(err);
         })
     }
+    const confirmGetBack = () => {
+        router.push('/select/selectNinio');
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
 
             {informationTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.informacion}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.informacion}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_red}/>

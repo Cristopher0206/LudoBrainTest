@@ -159,25 +159,20 @@ export default function CreateTest() {
                         }
                     });
                     clearFields();
+                    setTimeout(() => {
+                        router.push('/read/readTest');
+                    }, 3000);
                 } else if (res.data.message === "Este test ya ha sido creado") {
-                    let timerInterval;
                     Swal.fire({
                         icon: 'warning',
-                        title: "¡Esta Evaluación ya existe!",
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: () => {
-                            Swal.showLoading();
-                        },
-                        willClose: () => {
-                            clearInterval(timerInterval);
-                        }
+                        title: "Esta Evaluación ya ha sido creada",
+                        confirmButtonText: "¡De acuerdo!",
+                        confirmButtonColor: "rgba(4,187,3,0.75)",
                     }).then((result) => {
-                        /* Read more about handling dismissals below */
-                        if (result.dismiss === Swal.DismissReason.timer) {
-                            console.log("I was closed by the timer");
-                        }
-                    });
+                        console.log("result", result);
+                    }).catch((err) => {
+                        console.log(err);
+                    })
                 }
             }).catch((err) => {
                 console.log(err);
@@ -276,14 +271,14 @@ export default function CreateTest() {
                                         <div className={`container-fluid px-5`}>
                                             <div className={`row d-flex py-2 px-5 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_green}`}>
-                                                <div className={`col-1 d-flex justify-content-end`}>
+                                                <div className={`col-1 flex justify-end self-center`}>
                                                     <button onClick={() => addQuestionToTest(pregunta)}
-                                                            className={`${styles.add_btn} py-2 px-3 font-bold`}>
+                                                            className={`${styles.add_btn} py-2 px-3 font-bold h-fit`}>
                                                         +
                                                     </button>
                                                 </div>
-                                                <div className={`col-6`}>
-                                                    <div className={`pt-2 font-medium`}>
+                                                <div className={`col-11 self-center`}>
+                                                    <div className={`font-medium`}>
                                                         {pregunta.pregunta}
                                                     </div>
                                                 </div>
@@ -302,18 +297,18 @@ export default function CreateTest() {
                                 {newPreguntas.map((pregunta) => (
                                     <div key={pregunta.id_pregunta}>
                                         <div className={`container-fluid px-5`}>
-                                            <div className={`row d-flex py-2 px-5 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`row flex py-2 px-5 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_green}`}>
-                                                <div className={`col-1 d-flex justify-content-end`}>
+                                                <div className={`col-1 flex justify-end self-center`}>
                                                     <button onClick={() => {
                                                         deleteQuestionFromTest(pregunta)
                                                     }}
-                                                            className={`${styles.minus_btn} py-2 px-3 font-bold`}>
+                                                            className={`${styles.minus_btn} py-2 px-3 font-bold h-fit`}>
                                                         -
                                                     </button>
                                                 </div>
-                                                <div className={`col-6`}>
-                                                    <div className={`pt-2 font-medium`}>
+                                                <div className={`col-11 self-center`}>
+                                                    <div className={`font-medium`}>
                                                         {pregunta.pregunta}
                                                     </div>
                                                 </div>

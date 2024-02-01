@@ -6,6 +6,7 @@
 .btn_yellow:hover {
     background-color: rgb(246, 218, 39);
     color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
 
@@ -17,6 +18,7 @@
 .btn_green:hover {
     background-color: rgb(4, 187, 3);
     color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
 
@@ -28,6 +30,7 @@
 .btn_blue:hover {
     background-color: rgb(25, 169, 182);
     color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
 
@@ -39,6 +42,7 @@
 .btn_red:hover {
     background-color: rgb(255, 67, 49);
     color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
 
@@ -50,6 +54,7 @@
 .btn_orange:hover {
     background-color: rgb(246, 114, 39);
     color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
 
@@ -61,6 +66,7 @@
 .btn_purple:hover {
     background-color: rgb(189, 49, 255, 0.75);
     color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
 
@@ -72,6 +78,7 @@
 .btn_electric_blue:hover {
     background-color: rgb(49, 70, 255, 0.75);
     color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
 
@@ -83,6 +90,7 @@
 .btn_olive:hover {
     background-color: rgb(161, 187, 3);
     color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
 
@@ -95,6 +103,19 @@
 .btn_black:hover {
     background-color: rgb(255, 255, 255);
     color: #000000;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_white {
+    background-color: rgb(154, 154, 154);
+    color: #000000;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_white:hover {
+    background-color: rgb(77, 77, 77);
+    color: #ffffff;
+    text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
 

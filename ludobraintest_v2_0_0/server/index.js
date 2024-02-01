@@ -188,16 +188,13 @@ app.post('/uploadQuestion', upload, (req, res) => {
                     const respuestas = req.files;
                     const querySelectImage = 'SELECT * FROM respuesta WHERE imagen = ?'; // Consulta para verificar si la imagen ya se encuentra registrada
                     pregunta.imagenIndex.forEach((img, index) => {
-                        console.log("Imagen: " + respuestas[index].originalname);
                         const muestra = pregunta.esMuestra[index];
                         db.query(querySelectImage, [respuestas[index].originalname], (err, result2) => {
                             if (err) {
                                 throw err;
                             }
                             if (result2.length > 0) { /*Si la imagen ya existe*/
-                                console.log("ESTE ES EL VALOR DE muestra:", muestra);
                                 if (muestra === '0') {
-                                    console.log("La imagen existe y voy a insertar la respuesta en la tabla pregunta_respuesta");
                                     const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta, numero_fila) VALUES (?,?,?,?)';
                                     db.query(queryInsertQuestionAnswer, [id_pregunta, result2[0].id_respuesta, pregunta.respuestaCorrecta[index], pregunta.fila[index]], (err, result3) => {
                                         if (err) {
@@ -205,7 +202,6 @@ app.post('/uploadQuestion', upload, (req, res) => {
                                         }
                                     })
                                 } else { /*Estoy insertando una muestra*/
-                                    console.log("La imagen EXISTE y voy a insertar una muestra");
                                     const querySelectMuestra = 'SELECT * FROM muestra WHERE imagen = ?'; /*Verificar si la muestra ya existe*/
                                     db.query(querySelectMuestra, [respuestas[index].originalname], (err, result3) => {
                                         if (err) {
@@ -236,13 +232,11 @@ app.post('/uploadQuestion', upload, (req, res) => {
                                 }
                             } else { /* Si la imagen no existe */
                                 if(muestra === '0'){
-                                    console.log("La imagen no existe, voy a insertar la respuesta en la tabla respuesta");
                                     const queryInsertImage = 'INSERT INTO respuesta (imagen) VALUES (?)';
                                     db.query(queryInsertImage, [respuestas[index].originalname], (err, result4) => {
                                         if (err) {
                                             throw err;
                                         }
-                                        console.log("Voy a insertar la respuesta en la tabla pregunta_respuesta");
                                         const queryInsertQuestionAnswer = 'INSERT INTO pregunta_respuesta (id_pregunta, id_respuesta, respuesta_correcta, numero_fila) VALUES (?,?,?,?)';
                                         db.query(queryInsertQuestionAnswer, [id_pregunta, result4.insertId, pregunta.respuestaCorrecta[index], pregunta.fila[index]], (err, result5) => {
                                             if (err) {
@@ -251,13 +245,11 @@ app.post('/uploadQuestion', upload, (req, res) => {
                                         })
                                     })
                                 } else {
-                                    console.log("La imagen no existe, voy a insertar una muestra");
                                     const queryInsertImage = 'INSERT INTO muestra (imagen) VALUES (?)';
                                     db.query(queryInsertImage, [respuestas[index].originalname], (err, result4) => {
                                         if (err) {
                                             throw err;
                                         }
-                                        console.log("Voy a insertar la muestra en la tabla pregunta_muestra");
                                         const queryInsertQuestionMuestra = 'INSERT INTO pregunta_muestra (id_pregunta, id_muestra) VALUES (?,?)';
                                         db.query(queryInsertQuestionMuestra, [id_pregunta, result4.insertId], (err, result5) => {
                                             if (err) {
@@ -475,7 +467,7 @@ app.get('/getBusquedaTests', (req, res) => {
 })
 
 app.get('/getInformacionQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 1';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 1 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -484,7 +476,7 @@ app.get('/getInformacionQuestions', (req, res) => {
     });
 })
 app.get('/getSemejanzasQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 2';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 2 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -493,7 +485,7 @@ app.get('/getSemejanzasQuestions', (req, res) => {
     });
 })
 app.get('/getVocabularioQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 3';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 3 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -502,7 +494,7 @@ app.get('/getVocabularioQuestions', (req, res) => {
     });
 })
 app.get('/getComprensionQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 4';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 4 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -511,7 +503,7 @@ app.get('/getComprensionQuestions', (req, res) => {
     });
 })
 app.get('/getDibujosQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 5';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 5 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -520,7 +512,7 @@ app.get('/getDibujosQuestions', (req, res) => {
     });
 })
 app.get('/getNombresQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 6';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 6 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -529,7 +521,7 @@ app.get('/getNombresQuestions', (req, res) => {
     });
 })
 app.get('/getMatricesQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 7';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 7 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -538,7 +530,7 @@ app.get('/getMatricesQuestions', (req, res) => {
     });
 })
 app.get('/getConceptosQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 8';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 8 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -547,7 +539,7 @@ app.get('/getConceptosQuestions', (req, res) => {
     });
 })
 app.get('/getReconocimientoQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 9';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 9 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;
@@ -556,7 +548,7 @@ app.get('/getReconocimientoQuestions', (req, res) => {
     });
 })
 app.get('/getBusquedaQuestions', (req, res) => {
-    const query = 'SELECT * FROM pregunta WHERE id_seccion = 10';
+    const query = 'SELECT * FROM pregunta WHERE id_seccion = 10 ORDER BY pregunta';
     db.query(query, (err, result) => {
         if (err) {
             throw err;

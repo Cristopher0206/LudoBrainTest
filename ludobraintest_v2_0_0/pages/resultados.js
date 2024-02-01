@@ -3,10 +3,11 @@ import navstyles from "@/styles/navstyles.module.css";
 import InstructionBar from "@/components/InstructionBar";
 import styles from "@/styles/styles.module.css";
 import score from "@/styles/score.module.css";
+import button from "@/styles/button.module.css";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import axios from "axios";
-import {apiResolver} from "next/dist/server/api-utils/node/api-resolver";
+import Swal from "sweetalert2";
 
 export default function Resultados() {
     const router = useRouter();
@@ -49,6 +50,7 @@ export default function Resultados() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getSections();
         getScoreTable();
+        showInstructions();
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getScoreTable = (idTest) => {
@@ -382,16 +384,45 @@ export default function Resultados() {
         // Si el test ya estaba seleccionado, lo deselecciona; de lo contrario, lo selecciona
         setSelectedTest((prevSelectedTest) => (prevSelectedTest === testId ? null : testId));
     };
+    const showInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            title: "Bienvenido al Módulo de Resultados",
+            html: "<div>\n" +
+                "                <h5>Paso 1</h5>\n" +
+                "                <p>En el lado izquierdo de la pantalla, selecciona una sección." +
+                "                   A continuación aparecerá la <strong>Lista de Evaluaciones</strong>. </p>\n" +
+                "                <h5>Paso 2</h5>\n" +
+                "                <p>Selecciona una de las evaluaciones para poder observar sus resultados " +
+                "                   haciendo clic sobre la tarjeta." +
+                "                <h5>Paso 3</h5>\n" +
+                "                <p>Revisa la <strong>Tabla de Puntuaciones</strong>. Los tres mejores puntajes obtenidos" +
+                "                de cada evaluación aparecerán en la parte superior a manera de <strong>Podio</strong>.</p>" +
+                "            </div>",
+            confirmButtonText: "¡De acuerdo!",
+            confirmButtonColor: "rgba(255,67,49,0.75)",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
+        }).then((result) => {
+            console.log("result", result);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const confirmGetBack = () => {
+        router.push('/modulos');
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_red}/>
-            <InstructionBar previousPage={`/modulos`}
-                            instruction={`Resultados de los niños`}/>
-            <div className={`container-fluid`}>
-                <div className={`row h-fit`}>
-                    <div className={`col-4`}>
-                        <div className={`${styles.overflow_col_results} px-5 pt-2`}>
+            <UpperBar color={navstyles.upper_bar_red}/>
+            <InstructionBar confirmation={confirmGetBack}
+                            instruction={`Resultados de los niños`}
+                            information={showInstructions} info_color={button.btn_red}/>
+            <div className={`container-fluid px-5`}>
+                <div className={`row px-5 h-fit`}>
+                    <div className={`col-4 self-center p-0`}>
+                        <div className={`${styles.overflow_col_results} px-4`}>
+                            <br/>
                             <div className={`flex justify-center px-0`}>
                                 <select value={sectionSelected}
                                         onChange={e => {
@@ -411,7 +442,7 @@ export default function Resultados() {
                                 </select>
                             </div>
                             <br/>
-                            <h5>Selecciona un Test</h5>
+                            <h3 className={`flex justify-center`}>Lista de Evaluaciones</h3>
                             <div className={`container-fluid border-1 border-black shadow-md rounded-2xl bg-white
                         ${styles.overflow_container_test}`}>
                                 <br/>
@@ -688,9 +719,9 @@ export default function Resultados() {
                             </div>
                         </div>
                     </div>
-                    <div className={`col-8`}>
-                        <div className={`${styles.overflow_col_results} px-5 `}>
-                            <h5 className={`flex justify-center`}>Tabla de puntuaciones</h5>
+                    <div className={`col-8 h-fit p-0`}>
+                        <div className={`${styles.overflow_col_results} px-4 `}>
+                            <h3 className={`flex justify-center`}>Tabla de puntuaciones</h3>
                             <div className={`container-fluid border-1 border-black shadow-md rounded-2xl bg-white
                         ${styles.overflow_container_test_results_2}`}>
                                 <br/>
@@ -705,86 +736,83 @@ export default function Resultados() {
                                             <div>
                                                 {!noResults && (
                                                     <div>
-                                                        {/*<h5 className={`d-flex justify-content-start`}>Podio</h5>*/}
-                                                        <div className={`container-fluid`}>
-                                                            <div className="row justify-content-around">
-                                                                <div className={`col-3 self-end p-0`}>
+                                                        <div className="row justify-content-evenly">
+                                                            <div className={`col-3 self-end p-0`}>
+                                                                <div
+                                                                    className={`d-flex justify-content-center`}>
                                                                     <div
-                                                                        className={`d-flex justify-content-center`}>
-                                                                        <div
-                                                                            className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.silver_star}`}>
-                                                                            <img alt={`medalla de plata`}
-                                                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
-                                                                        </div>
-                                                                        <div
-                                                                            className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.silver_star}`}>
-                                                                            <img alt={`medalla de plata`}
-                                                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
-                                                                        </div>
+                                                                        className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.silver_star}`}>
+                                                                        <img alt={`medalla de plata`}
+                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                    </div>
+                                                                    <div
+                                                                        className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.silver_star}`}>
+                                                                        <img alt={`medalla de plata`}
+                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                    </div>
 
+                                                                </div>
+                                                                <br/>
+                                                                <div className={`${score.bg_plata}`}>
+                                                                    <div
+                                                                        className={`pt-3 font-bold px-2`}>{silverChild.nombre}</div>
+                                                                    <div
+                                                                        className={`pt-2 font-medium`}>{silverChild.edad} años
                                                                     </div>
-                                                                    <br/>
-                                                                    <div className={`${score.bg_plata}`}>
-                                                                        <div
-                                                                            className={`pt-3 font-bold`}>{silverChild.nombre}</div>
-                                                                        <div
-                                                                            className={`pt-2 font-medium`}>{silverChild.edad} años
-                                                                        </div>
-                                                                        <div
-                                                                            className={`font-normal ${score.puntaje_plata}`}>{silverChild.puntaje} puntos
-                                                                        </div>
+                                                                    <div
+                                                                        className={`font-normal ${score.puntaje_plata}`}>{silverChild.puntaje} puntos
                                                                     </div>
                                                                 </div>
-                                                                <div className={`col-3 p-0`}>
+                                                            </div>
+                                                            <div className={`col-3 p-0`}>
+                                                                <div
+                                                                    className={`d-flex justify-content-center`}>
                                                                     <div
-                                                                        className={`d-flex justify-content-center`}>
-                                                                        <div
-                                                                            className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.golden_star}`}>
-                                                                            <img alt={`medalla de plata`}
-                                                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
-                                                                        </div>
-                                                                        <div
-                                                                            className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.golden_star}`}>
-                                                                            <img alt={`medalla de plata`}
-                                                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
-                                                                        </div>
-                                                                        <div
-                                                                            className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.golden_star}`}>
-                                                                            <img alt={`medalla de plata`}
-                                                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
-                                                                        </div>
+                                                                        className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.golden_star}`}>
+                                                                        <img alt={`medalla de plata`}
+                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
                                                                     </div>
-                                                                    <br/>
-                                                                    <div className={`${score.bg_oro}`}>
-                                                                        <div
-                                                                            className={`pt-3 font-bold`}>{goldenChild.nombre}</div>
-                                                                        <div
-                                                                            className={`pt-2 font-medium`}>{goldenChild.edad} años
-                                                                        </div>
-                                                                        <div
-                                                                            className={`font-normal ${score.puntaje_oro}`}>{goldenChild.puntaje} puntos
-                                                                        </div>
+                                                                    <div
+                                                                        className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.golden_star}`}>
+                                                                        <img alt={`medalla de plata`}
+                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                    </div>
+                                                                    <div
+                                                                        className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.golden_star}`}>
+                                                                        <img alt={`medalla de plata`}
+                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
                                                                     </div>
                                                                 </div>
-                                                                <div className={`col-3 self-end p-0`}>
+                                                                <br/>
+                                                                <div className={`${score.bg_oro}`}>
                                                                     <div
-                                                                        className={`d-flex justify-content-center`}>
-                                                                        <div
-                                                                            className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.bronze_star}`}>
-                                                                            <img alt={`medalla de plata`}
-                                                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
-                                                                        </div>
+                                                                        className={`pt-3 font-bold px-2`}>{goldenChild.nombre}</div>
+                                                                    <div
+                                                                        className={`pt-2 font-medium`}>{goldenChild.edad} años
                                                                     </div>
-                                                                    <br/>
-                                                                    <div className={`${score.bg_bronce}`}>
-                                                                        <div
-                                                                            className={`pt-3 font-bold`}>{bronzeChild.nombre}</div>
-                                                                        <div
-                                                                            className={`font-medium`}>{bronzeChild.edad} años
-                                                                        </div>
-                                                                        <div
-                                                                            className={`font-normal ${score.puntaje_bronce}`}>{bronzeChild.puntaje} puntos
-                                                                        </div>
+                                                                    <div
+                                                                        className={`font-normal ${score.puntaje_oro}`}>{goldenChild.puntaje} puntos
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className={`col-3 self-end p-0`}>
+                                                                <div
+                                                                    className={`d-flex justify-content-center`}>
+                                                                    <div
+                                                                        className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.bronze_star}`}>
+                                                                        <img alt={`medalla de plata`}
+                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                    </div>
+                                                                </div>
+                                                                <br/>
+                                                                <div className={`${score.bg_bronce}`}>
+                                                                    <div
+                                                                        className={`pt-3 font-bold px-2`}>{bronzeChild.nombre}</div>
+                                                                    <div
+                                                                        className={`font-medium`}>{bronzeChild.edad} años
+                                                                    </div>
+                                                                    <div
+                                                                        className={`font-normal ${score.puntaje_bronce}`}>{bronzeChild.puntaje} puntos
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -799,21 +827,21 @@ export default function Resultados() {
                                 ${styles.card_body_red}`}>
                                                             <div className={`card-body`}>
                                                                 <div
-                                                                    className={`container-fluid p-0 d-flex justify-content-center`}>
-                                                                    <button className={`py-4 w-100`}>
+                                                                    className={`container-fluid px-5 d-flex justify-content-center`}>
+                                                                    <div className={`py-4 w-100`}>
                                                                         <div className={`row`}>
                                                                             <div className={`col-7`}>
                                                                                 <h5 className={`card-title`}>
                                                                                     {child.nombre} - {child.edad} años
                                                                                 </h5>
                                                                             </div>
-                                                                            <div className={`col-5`}>
+                                                                            <div className={`col-5 flex justify-end`}>
                                                                                 <h5 className={`card-title`}>
                                                                                     Puntaje: <strong>{child.puntaje}</strong>
                                                                                 </h5>
                                                                             </div>
                                                                         </div>
-                                                                    </button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

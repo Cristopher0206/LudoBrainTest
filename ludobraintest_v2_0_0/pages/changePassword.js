@@ -81,9 +81,13 @@ export default function ChangePassword() {
             console.log(err);
         })
     }
+    const confirmGetBack = () => {
+        router.push('/')
+            .then(r => r);
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <InstructionBar previousPage={`/`}
+            <InstructionBar confirmation={confirmGetBack}
                             instruction={`¡Cambia tu contraseña!`}/>
             <br/> <br/> <br/> <br/>
             <div className={`container-fluid`}>

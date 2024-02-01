@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import navstyles from '@/styles/navstyles.module.css'
+import styles from '@/styles/styles.module.css'
 import button from '@/styles/button.module.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
@@ -54,11 +54,8 @@ export default function UpperBar({color, questionType}) {
         <div className={`${color} container-fluid px-4 py-3 shadow-md rounded-b-2xl border-2 border-black border-opacity-10`}>
             <div className={`row justify-content-between`}>
                 <div className={`col-4 d-flex justify-content-center p-3`}>
-                    {/*<img src="/images/usuario.png"
-                         alt="user logo"
-                         className={`h-10`}/>*/}
                     <div className={`ps-2 pt-2`}>
-                        <h5>¡Bienvenido, {name}!</h5>
+                        <h5 className={styles.welcome_text}>¡Bienvenido, {name}!</h5>
                     </div>
                 </div>
                 <div className={`col-4 d-flex justify-content-center`}>

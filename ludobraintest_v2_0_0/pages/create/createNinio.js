@@ -7,6 +7,7 @@ import styles from "@/styles/styles.module.css";
 import {useRouter} from "next/router";
 import Button from "@/components/Button";
 import button from "@/styles/button.module.css";
+import Swal from "sweetalert2";
 
 export default function CreateNinio() {
     const router = useRouter();
@@ -19,6 +20,7 @@ export default function CreateNinio() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getUser();
+        showInstructions();
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getUser = () => {
@@ -38,52 +40,153 @@ export default function CreateNinio() {
         setRegisterAge('');
     };
     const crearNinio = () => {
-        axios({
-            method: "post",
-            data: {
-                nombre: registerName,
-                edad: registerAge,
-            },
-            withCredentials: true,
-            url: "http://localhost:3001/crearNinio"
-        }).then((res) => {
-            console.log(res);
-            if (res.data.message === 'Niño creado correctamente') {
-                // Si el niño se crea, muestra un mensaje de confirmacion
-                setSuccessMessage(true);
-                // El mensaje desaparece luego de 3 segundos
-                setTimeout(() => {
-                    setSuccessMessage(false);
-                    router.push('../read/readNinio');
-                }, 3000);
-            } else if(res.data.message === 'Este niño ya se encuentra registrado') {
-                // Si el niño ya existe, muestra un mensaje de adveertencia
-                setWarningMessage(true);
-                // El mensaje desaparece luego de 3 segundos
-                setTimeout(() => {
-                    setWarningMessage(false);
-                }, 3000);
-                clearFields();
+        if (registerName === '' || registerAge === '') {
+            Swal.fire({
+                icon: 'warning',
+                title: "Llena todos los campos para continuar",
+                confirmButtonText: "<div class='text-amber-950'>¡De acuerdo!<div>",
+                confirmButtonColor: "rgba(246, 218, 39, 0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else if (registerAge <= 1) {
+            Swal.fire({
+                icon: 'warning',
+                title: "El niño debe tener mínimo 2 años para poder registrarse",
+                confirmButtonText: "<div class='text-amber-950'>¡De acuerdo!<div>",
+                confirmButtonColor: "rgba(246, 218, 39, 0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else if (registerAge >= 8) {
+            Swal.fire({
+                icon: 'warning',
+                title: "El niño debe tener máximo 7 años para poder registrarse",
+                confirmButtonText: "<div class='text-amber-950'>¡De acuerdo!<div>",
+                confirmButtonColor: "rgba(246, 218, 39, 0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else {
+            axios({
+                method: "post",
+                data: {
+                    nombre: registerName,
+                    edad: registerAge,
+                },
+                withCredentials: true,
+                url: "http://localhost:3001/crearNinio"
+            }).then((res) => {
+                console.log(res);
+                if (res.data.message === 'Niño creado correctamente') {
+                    let timerInterval;
+                    Swal.fire({
+                        icon: 'success',
+                        title: "¡Niño registrado Correctamente!",
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    }).then((result) => {
+                        /* Read more about handling dismissals below */
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            console.log("I was closed by the timer");
+                        }
+                    });
+                    clearFields();
+                    setTimeout(() => {
+                        router.push('/read/readNinio');
+                    }, 3000);
+                } else if(res.data.message === 'Este niño ya se encuentra registrado') {
+                    let timerInterval;
+                    Swal.fire({
+                        icon: 'warning',
+                        title: "¡Este niño ya se encuentra registrado!",
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    }).then((result) => {
+                        /* Read more about handling dismissals below */
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            console.log("I was closed by the timer");
+                        }
+                    });
+                    clearFields();
+                }
+            }).catch((err) => {
+                console.log("No Exitoso", err);
+            })
+        }
+    }
+    const confirmGetBack = () => {
+        Swal.fire({
+            title: '¿Estás seguro que quieres regresar?',
+            text: "¡Todos los cambios se perderán!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgba(255,67,49)',
+            cancelButtonColor: '#9CA3AF',
+            confirmButtonText: 'Sí, quiero regresar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                router.push('/read/readNinio');
             }
+        })
+    }
+    const showInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            html: "<div>\n" +
+                "                <h5>Paso 1</h5>\n" +
+                "                <p> Coloca el nombre y el apellido del niño que vas a registrar" +
+                "                <h5>Paso 2</h5>\n" +
+                "                <p> Coloca la edad del niño" +
+                "                <h5>Paso 3</h5>\n" +
+                "                <p> Dale clic en el botón <strong>\"Registrar Niño\"</strong> para finalizar el" +
+                "                 proceso de registro</p>   " +
+                "            </div>",
+            confirmButtonText: "<div class='text-amber-950'>¡De acuerdo!<div>",
+            confirmButtonColor: "rgba(246, 218, 39, 0.75)",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
+        }).then((result) => {
+            console.log("result", result);
         }).catch((err) => {
-            console.log("No Exitoso", err);
+            console.log(err);
         })
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_yellow}/>
-            <InstructionBar previousPage={`../read/readNinio`}
-                            instruction={`Registra a un niño`}/>
-            <div className={`container-fluid text-black`}>
+            <UpperBar color={navstyles.upper_bar_yellow}/>
+            <InstructionBar confirmation={confirmGetBack}
+                            instruction={`Registra a un niño`}
+                            information={showInstructions}
+                            info_color={button.btn_yellow}/>
+            <div className={`container-fluid text-black px-5`}>
                 <br/>
-                <div className={`row justify-content-center`}>
-                    <div className={`col-sm-2 col-lg-1 d-flex justify-content-end pt-1`}>
+                <div className={`row justify-content-center px-5`}>
+                    <div className={`col-sm-2 col-lg-1 flex justify-end self-center`}>
                         <label className={`font-bold ${styles.label_red} ${styles.label}`}>
                             Nombre
                         </label>
                     </div>
-                    <div className={`col-sm-9 col-md-8 col-lg-8 d-flex justify-content-center`}>
+                    <div className={`col-sm-9 col-md-8 col-lg-8 flex justify-center self-center`}>
                         <input value={registerName}
                                type="text"
                                onChange={e => setRegisterName(e.target.value)}
@@ -92,7 +195,7 @@ export default function CreateNinio() {
                     </div>
                 </div>
                 <br/>
-                <div className={`row justify-content-center`}>
+                <div className={`row justify-content-center px-5`}>
                     <div className={`col-sm-2 col-lg-1 d-flex justify-content-end pt-1`}>
                         <label className={`font-bold ${styles.label_red} ${styles.label}`}>
                             Edad
@@ -107,26 +210,10 @@ export default function CreateNinio() {
                     </div>
                 </div>
                 <br/>
-                {successMessage && (
-                    <div>
-                        <div className="alert alert-success d-flex justify-content-center" role="alert">
-                            ¡Niño registrado Exitosamente!
-                        </div>
-                        <br/>
-                    </div>
-                )}
-                {warningMessage && (
-                    <div>
-                        <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                            ¡Este niño ya se encuentra registrado!
-                        </div>
-                        <br/>
-                    </div>
-                )}
                 <br/>
                 <div className={`flex justify-center`}>
                     <div className={`w-25`}>
-                        <Button text={`Registrar Jugador`} instruction={crearNinio}
+                        <Button text={`Registrar Niño`} instruction={crearNinio}
                                 bg_color={button.btn_yellow}></Button>
                     </div>
                 </div>

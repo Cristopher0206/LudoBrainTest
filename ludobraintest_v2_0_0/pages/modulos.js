@@ -67,7 +67,7 @@ export default function Modulos() {
                         <br/>
                         <div className={`px-20`}>
                             <Button instruction={goCreate} bg_color={button.btn_green}
-                                    text={`Crear Evaluaciones y Preguntas`}></Button>
+                                    text={`Administrar Evaluaciones y Preguntas`}></Button>
                         </div>
                         <br/>
                         <div className={`px-20`}>

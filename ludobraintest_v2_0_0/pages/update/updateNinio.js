@@ -7,6 +7,7 @@ import {useRouter} from "next/router";
 import styles from "@/styles/styles.module.css";
 import Button from "@/components/Button";
 import button from "@/styles/button.module.css";
+import Swal from "sweetalert2";
 
 export default function UpdateNinio() {
     const router = useRouter();
@@ -15,10 +16,10 @@ export default function UpdateNinio() {
     const [registerUpdateName, setRegisterUpdateName] = useState('');
     const [registerUpdateAge, setRegisterUpdateAge] = useState('');
     const [info, setInfo] = useState(sessionStorage.getItem("dataToPass"));
-    const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getUser();
+        showInstructions();
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getUser = () => {
@@ -39,45 +40,133 @@ export default function UpdateNinio() {
         });
     }
     const actualizarNinio = () => { // Actualizar los datos del niño
-        axios({
-            method: "post",
-            data: {
-                id_ninio: idNinio,
-                nombre: registerUpdateName,
-                edad: registerUpdateAge,
-            },
-            withCredentials: true,
-            url: "http://localhost:3001/updateChildren"
-        }).then(res => {
-            console.log(res);
-            if (res.data.message === 'Niño actualizado exitosamente') {
-                // Si el niño se actualiza, muestra un mensaje de confirmacion
-                setSuccessMessage(true);
-                // El mensaje desaparece luego de 3 segundos
-                setTimeout(() => {
-                    setSuccessMessage(false);
-                    router.push('../read/readNinio');
-                }, 3000);
+        if (registerUpdateName === '' || registerUpdateAge === '') {
+            Swal.fire({
+                icon: 'warning',
+                title: "Llena todos los campos para continuar",
+                confirmButtonText: "<div class='text-amber-950'>¡De acuerdo!<div>",
+                confirmButtonColor: "rgba(246, 218, 39, 0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else if (registerUpdateAge <= 1) {
+            Swal.fire({
+                icon: 'warning',
+                title: "El niño debe tener mínimo 2 años",
+                confirmButtonText: "<div class='text-amber-950'>¡De acuerdo!<div>",
+                confirmButtonColor: "rgba(246, 218, 39, 0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else if (registerUpdateAge >= 8) {
+            Swal.fire({
+                icon: 'warning',
+                title: "El niño debe tener máximo 7 años",
+                confirmButtonText: "<div class='text-amber-950'>¡De acuerdo!<div>",
+                confirmButtonColor: "rgba(246, 218, 39, 0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else {
+            axios({
+                method: "post",
+                data: {
+                    id_ninio: idNinio,
+                    nombre: registerUpdateName,
+                    edad: registerUpdateAge,
+                },
+                withCredentials: true,
+                url: "http://localhost:3001/updateChildren"
+            }).then(res => {
+                console.log(res);
+                if (res.data.message === 'Niño actualizado exitosamente') {
+                    let timerInterval;
+                    Swal.fire({
+                        icon: 'success',
+                        title: "¡Niño actualizado Correctamente!",
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    }).then((result) => {
+                        /* Read more about handling dismissals below */
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            console.log("I was closed by the timer");
+                        }
+                    });
+                    setTimeout(() => {
+                        router.push('/read/readNinio');
+                    }, 3000);
+                }
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    }
+    const confirmGetBack = () => {
+        Swal.fire({
+            title: '¿Estás seguro que quieres regresar?',
+            text: "¡Todos los cambios se perderán!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgba(255,67,49)',
+            cancelButtonColor: '#9CA3AF',
+            confirmButtonText: 'Sí, quiero regresar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                router.push('/read/readNinio');
             }
+        })
+    }
+    const showInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            html: "<div>\n" +
+                "                <h5>Paso 1</h5>\n" +
+                "                <p> Actualiza el nombre y el apellido del niño" +
+                "                <h5>Paso 2</h5>\n" +
+                "                <p> Actualiza la edad del niño" +
+                "                <h5>Paso 3</h5>\n" +
+                "                <p> Dale clic en el botón <strong>\"Actualizar Niño\"</strong> para finalizar el" +
+                "                 proceso de actualización de datos</p>   " +
+                "            </div>",
+            confirmButtonText: "<div class='text-amber-950'>¡De acuerdo!<div>",
+            confirmButtonColor: "rgba(246, 218, 39, 0.75)",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
+        }).then((result) => {
+            console.log("result", result);
         }).catch((err) => {
             console.log(err);
         })
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_yellow}/>
-            <InstructionBar previousPage={`../read/readNinio`}
-                            instruction={`Actualiza a un niño`}/>
-            <div className={`container-fluid text-black`}>
+            <UpperBar color={navstyles.upper_bar_yellow}/>
+            <InstructionBar confirmation={confirmGetBack}
+                            instruction={`Actualiza a un niño`}
+                            information={showInstructions}
+                            info_color={button.btn_yellow}/>
+            <div className={`container-fluid text-black px-5`}>
                 <br/>
-                <div className={`row justify-content-center`}>
-                    <div className={`col-sm-2 col-lg-1 d-flex justify-content-end pt-1`}>
+                <div className={`row justify-content-center px-5`}>
+                    <div className={`col-sm-2 col-lg-1 flex justify-end self-center`}>
                         <label className={`font-bold ${styles.label_red} ${styles.label}`}>
                             Nombre
                         </label>
                     </div>
-                    <div className={`col-sm-9 col-md-8 col-lg-8 d-flex justify-content-center`}>
+                    <div className={`col-sm-9 col-md-8 col-lg-8 flex justify-center self-center`}>
                         <input value={registerUpdateName}
                                type="text"
                                onChange={e => setRegisterUpdateName(e.target.value)}
@@ -86,13 +175,13 @@ export default function UpdateNinio() {
                     </div>
                 </div>
                 <br/>
-                <div className={`row justify-content-center`}>
-                    <div className={`col-sm-2 col-lg-1 d-flex justify-content-end pt-1`}>
+                <div className={`row justify-content-center px-5`}>
+                    <div className={`col-sm-2 col-lg-1 flex justify-end self-center`}>
                         <label className={`font-bold ${styles.label_red} ${styles.label}`}>
                             Edad
                         </label>
                     </div>
-                    <div className={`col-sm-9 col-md-8 col-lg-8 d-flex justify-content-center`}>
+                    <div className={`col-sm-9 col-md-8 col-lg-8 flex justify-center self-center`}>
                         <input value={registerUpdateAge}
                                type="number"
                                onChange={e => setRegisterUpdateAge(e.target.value)}
@@ -101,17 +190,10 @@ export default function UpdateNinio() {
                     </div>
                 </div>
                 <br/>
-                {successMessage && (
-                    <div>
-                        <div className="alert alert-success d-flex justify-content-center" role="alert">
-                            ¡Niño actualizado Exitosamente!
-                        </div>
-                        <br/>
-                    </div>
-                )}
+                <br/>
                 <div className={`flex justify-center`}>
-                    <div className={`${styles.div_btn}`}>
-                        <Button text={`Actualizar Jugador`} instruction={actualizarNinio}
+                    <div className={`w-25`}>
+                        <Button text={`Actualizar Niño`} instruction={actualizarNinio}
                                 bg_color={button.btn_yellow}></Button>
                     </div>
                 </div>

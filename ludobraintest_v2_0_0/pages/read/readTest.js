@@ -13,7 +13,6 @@ export default function ReadTest() {
     const router = useRouter();
     let section;
     /*------------------- ESTADOS -------------------*/
-    const [tests, setTests] = useState([]);
     const [sectionSelected, setSectionSelected] = useState('');
     const [sections, setSections] = useState([]);
     const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
@@ -344,12 +343,26 @@ export default function ReadTest() {
                 }).then((res) => {
                     console.log(res);
                     if(res.data.message === 'Test eliminado exitosamente') {
-                        // Si el test se elimina, muestra un mensaje de confirmacion
-                        setSuccessMessage(true);
-                        // El mensaje desaparece luego de 3 segundos
+                        let timerInterval;
+                        Swal.fire({
+                            icon: 'success',
+                            title: "¡Evaluación eliminada Correctamente!",
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval);
+                            }
+                        }).then((result) => {
+                            /* Read more about handling dismissals below */
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                console.log("I was closed by the timer");
+                            }
+                        });
                         setTimeout(() => {
-                            setSuccessMessage(false);
-                            showTests();
+                            refreshTest();
                         }, 3000);
                     }
                 }).catch((err) => {
@@ -358,14 +371,141 @@ export default function ReadTest() {
             }
         })
     }
+    const refreshTest = () => {
+        switch (sectionSelected) {
+            case "Información":
+                getInformacionTests();
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Semejanzas":
+                getSemejanzasTests();
+                setInformationTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Vocabulario":
+                getVocabularioTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Comprensión":
+                getComprensionTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Dibujos":
+                getDibujosTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Nombres":
+                getNombresTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Matrices":
+                getMatricesTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Conceptos":
+                getConceptosTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setReconocimientoTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Reconocimiento":
+                getReconocimientoTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setBusquedaTitle(false);
+                break;
+            case "Búsqueda":
+                getBusquedaTests();
+                setInformationTitle(false);
+                setSemejanzasTitle(false);
+                setVocabularioTitle(false);
+                setComprensionTitle(false);
+                setDibujosTitle(false);
+                setNombresTitle(false);
+                setMatricesTitle(false);
+                setConceptosTitle(false);
+                setReconocimientoTitle(false);
+                break;
+            default:
+                break;
+
+        }
+    }
     const goActualizarTest = (idTest) => {
         sessionStorage.setItem('dataToPass', idTest);
-        router.push('../update/updateTest');
+        router.push('/update/updateTest');
     }
     const showInstructions = () => {
         Swal.fire({
             icon: "info",
-            title: "Bienvenido al Módulo de Creación de Evaluaciones",
+            title: "Bienvenido al Módulo de Administración de Evaluaciones",
             html: "<div>\n" +
                 "                <p>En la parte izquierda de la pantalla encontrarás la lista de <strong>Secciones</strong>, dale\n" +
                 "                    clic para desplegarla.</p>\n" +
@@ -398,13 +538,13 @@ export default function ReadTest() {
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar color={navstyles.upper_bar_green}/>
             <InstructionBar confirmation={confirmGetBack}
-                            instruction={`Crea un nuevo Test`}
+                            instruction={`Crea una nueva Evaluación`}
                             information={showInstructions}
                             info_color={button.btn_green}/>
             <AddButton createPage={goCreateTest}
                        color={button.btn_green}/>
             <br/>
-            <div className={`container-fluid`}>
+            <div className={`container-fluid px-5`}>
                 <div className={`row`}>
                     <div className={`col-6`}>
                         <div

@@ -27,6 +27,7 @@ export default function UpdateTest() {
         getSecciones();
         getCurrentInformation();
         getPreguntasByIdTest();
+        showInstructions();
         setNombreTest(nombreActual);
         setSeccion(seccionActual);
     }, []);

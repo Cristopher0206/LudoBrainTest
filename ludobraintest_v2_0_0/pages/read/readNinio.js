@@ -2,21 +2,21 @@ import UpperBar from "@/components/UpperBar";
 import InstructionBar from "@/components/InstructionBar";
 import navstyles from "@/styles/navstyles.module.css";
 import styles from "@/styles/styles.module.css";
+import button from "@/styles/button.module.css";
 import AddButton from "@/components/AddButton";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import axios from "axios";
-import Link from "next/link";
+import Swal from "sweetalert2";
 
 export default function ReadNinio() {
     const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     const [children, setChildren] = useState([]);
-    const [info, setInfo] = useState('');
-    const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getNinios();
+        showInstructions();
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getNinios = () => {
@@ -36,54 +36,100 @@ export default function ReadNinio() {
         })
     }
     const eliminarNinio = (idNinio) => {
-        const confirmacion = window.confirm('¿Estás seguro que deseas eliminar este niño?');
-        if(confirmacion){
-            axios({
-                method: "post",
-                data: {
-                    id_ninio: idNinio,
-                },
-                withCredentials: true,
-                url: "http://localhost:3001/deleteChild"
-            }).then((res) => {
-                console.log(res);
-                if(res.data.message === 'Niño eliminado exitosamente') {
-                    // Si el niño se elimina, muestra un mensaje de confirmacion
-                    setSuccessMessage(true);
-                    // El mensaje desaparece luego de 3 segundos
-                    setTimeout(() => {
-                        setSuccessMessage(false);
-                        getNinios();
-                    }, 3000);
-                }
-            }).catch((err) => {
-                console.log(err);
-            })
-        }
+        Swal.fire({
+            title: '¿Estás seguro que deseas eliminar del registro a este Niño?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgba(255,67,49)',
+            cancelButtonColor: '#9CA3AF',
+            confirmButtonText: 'Confirmar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios({
+                    method: "post",
+                    data: {
+                        id_ninio: idNinio,
+                    },
+                    withCredentials: true,
+                    url: "http://localhost:3001/deleteChild"
+                }).then((res) => {
+                    console.log(res);
+                    if (res.data.message === 'Niño eliminado exitosamente') {
+                        let timerInterval;
+                        Swal.fire({
+                            icon: 'success',
+                            title: "¡Niño eliminado del registro Correctamente!",
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval);
+                            }
+                        }).then((result) => {
+                            /* Read more about handling dismissals below */
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                console.log("I was closed by the timer");
+                            }
+                        });
+                        setTimeout(() => {
+                            getNinios();
+                        }, 3000);
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
+        }).catch((err) => {
+            console.log(err);
+        })
     }
     const goActualizarNinio = (idNinio) => {
         sessionStorage.setItem('dataToPass', idNinio);
         router.push('../update/updateNinio')
     }
-
+    const goCreateNinio = () => {
+        router.push('/create/createNinio')
+    }
+    const confirmGetBack = () => {
+        router.push('/modulos')
+    }
+    const showInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            title: "Bienvenido al Módulo de Registro",
+            html: "<div>\n" +
+                "                <p>En la parte inferior de la pantalla encontrarás la lista de <strong>Niños</strong>\n" +
+                "                    ques has registrado.</p>\n" +
+                "                <p>Para <strong>Registrar un niño</strong>, dale clic al botón con el símbolo\n" +
+                "                    <strong>+</strong> que se encuentra en la parte superior central de la pantalla.</p>\n" +
+                "                <p>Para <strong>Actualizar la información de un Niño</strong>, dale clic al botón con el\n" +
+                "                    símbolo <strong>✏️</strong> que se encuentra al lado derecho de cada tarjeta.</p>\n" +
+                "                <p>Para <strong>Eliminar el registro de un Niño</strong>, dale clic al botón con el\n" +
+                "                    símbolo <strong>🗑️</strong> que se encuentra al lado derecho de cada tarjeta.</p>\n" +
+                "            </div>",
+            confirmButtonText: "<div class='text-amber-950'>¡De acuerdo!<div>",
+            confirmButtonColor: "rgba(246, 218, 39, 0.75)",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
+        }).then((result) => {
+            console.log("result", result);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_yellow}/>
-            <InstructionBar previousPage={`/modulos`}
-                            instruction={`Registra un nuevo niño`}/>
-            <AddButton createPage={`../create/createNinio`}
+            <UpperBar color={navstyles.upper_bar_yellow}/>
+            <InstructionBar confirmation={confirmGetBack}
+                            instruction={`Registra un niño`}
+                            information={showInstructions}
+                            info_color={button.btn_yellow}/>
+            <AddButton createPage={goCreateNinio}
                        color={navstyles.upper_bar_yellow}/>
             <br/>
-            {successMessage && (
-                <div>
-                    <br/>
-                    <div className="alert alert-success d-flex justify-content-center" role="alert">
-                        ¡Niño eliminado Exitosamente!
-                    </div>
-                    <br/>
-                </div>
-            )}
             <div className={`px-32`}>
                 <div className={`container-fluid border-1 border-black shadow-md rounded-2xl bg-white
                         ${styles.overflow_container_children}`}>
@@ -97,7 +143,8 @@ export default function ReadNinio() {
                                         <div className={`container-fluid`}>
                                             <div className={`row justify-content-between`}>
                                                 <div className={`col-sm-4 col-lg-4`}>
-                                                    <div className={`font-semibold card-title pt-sm-1 pt-md-1 ${styles.child_data}`}>
+                                                    <div
+                                                        className={`font-semibold card-title pt-sm-1 pt-md-1 ${styles.child_data}`}>
                                                         {child.nombre}
                                                     </div>
                                                 </div>

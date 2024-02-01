@@ -23,7 +23,7 @@ export default function Creditos() {
                 </div>
                 <div className={`row py-3`}>
                     <div className={`flex justify-center self-center text-lg ${styles.middle_text}`}>
-                        <div>El presente proyecto tiene como objetivo Desarrollar una aplicación para mejorar y trabajar
+                        <div>El presente proyecto tiene como objetivo desarrollar una aplicación para mejorar y trabajar
                             habilidades cognitivas como memoria de trabajo, velocidad de procesamiento, razonamiento
                             perceptual basado en la evaluación psicológica WPPSI (Escala de Inteligencia de Wechsler
                             para Preescolares y Primarios) que permita su preparación, seguimiento y evaluación; y fue
@@ -49,8 +49,7 @@ export default function Creditos() {
                     </div>
                     <div className={`col-4`}>
                         <h4 className={`flex justify-center`}>Colaboradores</h4>
-                        <div className={`flex justify-center text-lg`}>Ph.D ...</div>
-                        <div className={`flex justify-center text-lg`}>Ph.D ...</div>
+                        <div className={`flex justify-center text-lg`}>Ph.D Marco Oswaldo Santorum Gaibor</div>
                     </div>
                 </div>
                 <div className={`pt-3 row`}>

@@ -202,9 +202,8 @@ export default function MenuOpcionesTest() {
             }
             {semejanzasTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.semejanzas}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.semejanzas}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_green}/>
@@ -244,9 +243,8 @@ export default function MenuOpcionesTest() {
             }
             {vocabularioTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.vocabulario}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.vocabulario}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_blue}/>
@@ -285,9 +283,8 @@ export default function MenuOpcionesTest() {
             }
             {comprensionTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.comprension}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.comprension}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_orange}/>
@@ -327,9 +324,8 @@ export default function MenuOpcionesTest() {
             }
             {dibujosTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.dibujos}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.dibujos}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_purple}/>
@@ -368,9 +364,8 @@ export default function MenuOpcionesTest() {
             }
             {nombresTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.nombres}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.nombres}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_electric_blue}/>
@@ -409,9 +404,8 @@ export default function MenuOpcionesTest() {
             }
             {matricesTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.matrices}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.matrices}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_olive}/>
@@ -451,9 +445,8 @@ export default function MenuOpcionesTest() {
             }
             {conceptosTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.conceptos}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.conceptos}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_blue}/>
@@ -493,9 +486,8 @@ export default function MenuOpcionesTest() {
             }
             {reconocimientoTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.reconocimiento}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.reconocimiento}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_red}/>
@@ -535,9 +527,8 @@ export default function MenuOpcionesTest() {
             }
             {busquedaTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.busqueda}></UpperBar>
-                    <InstructionBar previousPage={`/select/selectNinio`}
+                    <UpperBar color={sections.busqueda}/>
+                    <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
                                     info_color={button.btn_orange}/>

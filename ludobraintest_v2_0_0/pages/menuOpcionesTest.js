@@ -8,14 +8,19 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import Button from "@/components/Button";
 import Swal from "sweetalert2";
+import useVoiceReader from "@/pages/useVoiceReader";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 
 export default function MenuOpcionesTest() {
     const router = useRouter();
     const id = localStorage.getItem('dato');
     const id_test = localStorage.getItem('dato2');
     let nombre_seccion;
+    const text = "Selecciona una opción";
+    const {speak, speaking} = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
     const [test, setTest] = useState('');
+    const [isSpeaking, setIsSpeaking] = useState(false);
     // Estados para generar el color
     const [informationTitle, setInformationTitle] = useState(false);
     const [semejanzasTitle, setSemejanzasTitle] = useState(false);
@@ -54,44 +59,56 @@ export default function MenuOpcionesTest() {
     const goInstructions = () => {
         localStorage.setItem('seccion', test.nombre_seccion);
         localStorage.setItem('informacion', test.informacion);
-        router.push(`/instrucciones`);
+        router.push(`/instrucciones`).then(r => console.log(r));
+        shutUp();
     }
     const goBack = () => {
-        router.push(`/select/selectNinio`);
+        router.push(`/select/selectNinio`).then(r => console.log(r));
+        shutUp();
     }
     const goTest = () => {
         localStorage.setItem('id_test', id_test);
         localStorage.setItem('nombre_test', test.nombre_test);
         switch (test.nombre_seccion) {
             case "Información":
-                router.push(`/read/preguntas/readPreguntaInformacion`);
+                router.push(`/read/preguntas/readPreguntaInformacion`).then(r => console.log(r));
+                shutUp();
                 break;
             case "Semejanzas":
-                router.push(`/read/preguntas/readPreguntaSemejanzas`);
+                router.push(`/read/preguntas/readPreguntaSemejanzas`).then(r => console.log(r));
+                shutUp();
                 break;
             case "Vocabulario":
-                router.push(`/read/preguntas/readPreguntaVocabulario`);
+                router.push(`/read/preguntas/readPreguntaVocabulario`).then(r => console.log(r));
+                shutUp();
                 break;
             case "Comprensión":
-                router.push(`/read/preguntas/readPreguntaComprension`);
+                router.push(`/read/preguntas/readPreguntaComprension`).then(r => console.log(r));
+                shutUp();
                 break;
             case "Dibujos":
-                router.push(`/read/preguntas/readPreguntaDibujos`);
+                router.push(`/read/preguntas/readPreguntaDibujos`).then(r => console.log(r));
+                shutUp();
                 break;
             case "Nombres":
-                router.push(`/read/preguntas/readPreguntaNombres`);
+                router.push(`/read/preguntas/readPreguntaNombres`).then(r => console.log(r));
+                shutUp();
                 break;
             case "Matrices":
-                router.push(`/read/preguntas/readPreguntaMatrices`);
+                router.push(`/read/preguntas/readPreguntaMatrices`).then(r => console.log(r));
+                shutUp();
                 break;
             case "Conceptos":
-                router.push(`/read/preguntas/readPreguntaConceptos`);
+                router.push(`/read/preguntas/readPreguntaConceptos`).then(r => console.log(r));
+                shutUp();
                 break;
             case "Reconocimiento":
-                router.push(`/read/preguntas/readPreguntaReconocimiento`);
+                router.push(`/read/preguntas/readPreguntaReconocimiento`).then(r => console.log(r));
+                shutUp();
                 break;
             case "Búsqueda":
-                router.push(`/read/preguntas/readPreguntaBusqueda`);
+                router.push(`/read/preguntas/readPreguntaBusqueda`).then(r => console.log(r));
+                shutUp();
                 break;
         }
     }
@@ -154,18 +171,36 @@ export default function MenuOpcionesTest() {
         })
     }
     const confirmGetBack = () => {
-        router.push('/select/selectNinio');
+        router.push('/select/selectNinio').then(r => console.log(r));
+        shutUp();
+    }
+    useVoiceReader(text, isSpeaking);
+    const hearVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    };
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-
             {informationTitle &&
                 <div>
                     <UpperBar color={sections.informacion}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_red}/>
+                                    info_color={button.btn_red}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -206,7 +241,9 @@ export default function MenuOpcionesTest() {
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_green}/>
+                                    info_color={button.btn_green}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -247,7 +284,10 @@ export default function MenuOpcionesTest() {
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_blue}/>
+                                    info_color={button.btn_blue}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
+                    <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
                             <div className={`col-6 ${styles.test_info} self-center`}>
@@ -287,7 +327,9 @@ export default function MenuOpcionesTest() {
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_orange}/>
+                                    info_color={button.btn_orange}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -328,7 +370,9 @@ export default function MenuOpcionesTest() {
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_purple}/>
+                                    info_color={button.btn_purple}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
                             <div className={`col-6 ${styles.test_info} self-center`}>
@@ -368,7 +412,9 @@ export default function MenuOpcionesTest() {
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_electric_blue}/>
+                                    info_color={button.btn_electric_blue}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
                             <div className={`col-6 ${styles.test_info} self-center`}>
@@ -395,7 +441,8 @@ export default function MenuOpcionesTest() {
                                 </div>
                                 <br/>
                                 <div className={`flex justify-center`}>
-                                    <Button text={`Salir`} bg_color={button.btn_electric_blue} instruction={goBack}></Button>
+                                    <Button text={`Salir`} bg_color={button.btn_electric_blue}
+                                            instruction={goBack}></Button>
                                 </div>
                             </div>
                         </div>
@@ -408,7 +455,9 @@ export default function MenuOpcionesTest() {
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_olive}/>
+                                    info_color={button.btn_olive}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -449,7 +498,9 @@ export default function MenuOpcionesTest() {
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_blue}/>
+                                    info_color={button.btn_blue}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -490,7 +541,9 @@ export default function MenuOpcionesTest() {
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_red}/>
+                                    info_color={button.btn_red}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -531,7 +584,9 @@ export default function MenuOpcionesTest() {
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
-                                    info_color={button.btn_orange}/>
+                                    info_color={button.btn_orange}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>

@@ -12,7 +12,8 @@ export default function Presentacion(){
     useEffect(() => {
         const nextPage = () => {
             setTimeout(() => {
-                router.push('/modulos');
+                router.push('/modulos')
+                    .then(r => console.log('Redirigiendo...'));
             }, 3000);
         }
         nextPage();

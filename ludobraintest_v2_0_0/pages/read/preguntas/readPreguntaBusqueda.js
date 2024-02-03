@@ -7,6 +7,8 @@ import UpperBar from "@/components/UpperBar";
 import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
 import Swal from "sweetalert2";
+import useVoiceReader from "@/pages/useVoiceReader";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 
 export default function readPreguntaBusqueda() {
     const router = useRouter();
@@ -17,7 +19,12 @@ export default function readPreguntaBusqueda() {
         nombre_test = localStorage.getItem('nombre_test');
     }
     let arregloPreguntas;
+    const { speak, speaking } = UseSpeechSynthesis();
+    const texto1 = "¿Puedes identificar a este animal?";
+    const texto2 = "Selecciona el animal que apareció en pantalla hace unos segundos.";
     /*------------------- ESTADOS -------------------*/
+    const [isSpeaking1, setIsSpeaking1] = useState(false);
+    const [isSpeaking2, setIsSpeaking2] = useState(false);
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState([]);
     const [samples, setSamples] = useState([]);
@@ -42,7 +49,8 @@ export default function readPreguntaBusqueda() {
         setTimeout(() => {
             setShowSamples(false);
             setGoQuestion(true);
-        }, 5000);
+            setIsSpeaking1(false);
+        }, 10000);
     }
     const getQuestionsbyTestId = () => {
         axios({
@@ -109,6 +117,7 @@ export default function readPreguntaBusqueda() {
     }
     const verifyAnswer = (correct) => {
         if (correct === 1) {
+            setIsSpeaking2(false);
             console.log("Respuesta correcta");
             setPuntaje(prevPuntaje => prevPuntaje + 1);
             let timerInterval;
@@ -117,6 +126,7 @@ export default function readPreguntaBusqueda() {
                 title: "¡Respuesta correcta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -130,6 +140,7 @@ export default function readPreguntaBusqueda() {
                 }
             });
         } else {
+            setIsSpeaking2(false);
             console.log("Respuesta incorrecta");
             let timerInterval;
             Swal.fire({
@@ -137,6 +148,7 @@ export default function readPreguntaBusqueda() {
                 title: "¡Respuesta incorrecta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -163,7 +175,8 @@ export default function readPreguntaBusqueda() {
                 setPreguntaActualIndex(prevPreguntaActualIndex => prevPreguntaActualIndex + 1);
             } else {
                 console.log("No hay más preguntas");
-                router.push('/puntajeFinal');
+                router.push('/puntajeFinal').then(r => console.log(r));
+                shutUp2();
             }
         }, 3000);
     }
@@ -179,14 +192,47 @@ export default function readPreguntaBusqueda() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/menuOpcionesTest');
+                router.push('/menuOpcionesTest').then(r => console.log(r));
+                shutUp1();
+                shutUp2();
             }
         })
     }
+    const repeatVoice1 = () => {
+        if (isSpeaking1 === false) {
+            setIsSpeaking1(true);
+            if (!speaking) {
+                do {
+                    speak(texto1);
+                } while (isSpeaking1);
+            }
+        }
+    }
+    const repeatVoice2 = () => {
+        if (isSpeaking2 === false) {
+            setIsSpeaking2(true);
+            if (!speaking) {
+                do {
+                    speak(texto2);
+                } while (isSpeaking2);
+            }
+        }
+    }
+    const shutUp1 = () => {
+        if (isSpeaking1 === true) {
+            setIsSpeaking1(false);
+        }
+    }
+    const shutUp2 = () => {
+        if (isSpeaking2 === true) {
+            setIsSpeaking2(false);
+        }
+    }
+    useVoiceReader(texto1, isSpeaking1);
+    useVoiceReader(texto2, isSpeaking2);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={sections.busqueda}></UpperBar>
+            <UpperBar color={sections.busqueda}/>
             {showSamples && (
                 <div>
                     <div className={`container-fluid px-5`}>
@@ -194,7 +240,9 @@ export default function readPreguntaBusqueda() {
                             <div className={`col-sm-3 col-lg-2 pt-5`}>
                                 <QuestionBar confirmGetBack={confirmGetBack}
                                              nombreTest={nombre_test}
-                                             labelColor={styles.label_orange}></QuestionBar>
+                                             labelColor={styles.label_orange}
+                                             voiceCommand={repeatVoice1}
+                                             silenceCommand={shutUp1}/>
                             </div>
                             <div className={`col-sm-9 col-lg-10 pt-5`}>
                                 <h5>
@@ -230,7 +278,9 @@ export default function readPreguntaBusqueda() {
                             <div className={`col-sm-3 col-lg-2 pt-5`}>
                                 <QuestionBar confirmGetBack={confirmGetBack}
                                              nombreTest={nombre_test}
-                                             labelColor={styles.label_orange}/>
+                                             labelColor={styles.label_orange}
+                                             voiceCommand={repeatVoice2}
+                                             silenceCommand={shutUp2}/>
                             </div>
                             <div className={`col-sm-9 col-lg-10 pt-5`}>
                                 <h5>
@@ -241,7 +291,7 @@ export default function readPreguntaBusqueda() {
                                     ¡Selecciona el animal que apareció en pantalla hace unos segundos!
                                 </div>
                                 <br/> <br/>
-                                <div className={`container-fluid px-0`}>
+                                <div className={`container-fluid px-0 justify-center`}>
                                     <div className={`grid grid-cols-4 gap-x-5 gap-y-5 ps-16 pe-16`}>
                                         {answers.map((answer, index) => (
                                             <button key={index}

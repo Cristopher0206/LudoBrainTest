@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import styles from "@/styles/styles.module.css";
 import {useRouter} from "next/router";
 import Button from "@/components/Button";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
 
 export default function Instrucciones() {
     const router = useRouter();
@@ -15,7 +17,9 @@ export default function Instrucciones() {
         seccion = localStorage.getItem('seccion');
         informacion = localStorage.getItem('informacion');
     }
+    const { speak, speaking } = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
+    const [isSpeaking, setIsSpeaking] = useState(false);
     // Estados para generar el color
     const [informationTitle, setInformationTitle] = useState(false);
     const [semejanzasTitle, setSemejanzasTitle] = useState(false);
@@ -27,12 +31,16 @@ export default function Instrucciones() {
     const [conceptosTitle, setConceptosTitle] = useState(false);
     const [reconocimientoTitle, setReconocimientoTitle] = useState(false);
     const [busquedaTitle, setBusquedaTitle] = useState(false);
+    const [text, setText] = useState('');
     /*------------------- EFECTOS -------------------*/
     useEffect(() => {
         generateColor();
+        showPresentationHandler();
     }, []);
+    useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const generateColor = () => {
+        setText(informacion);
         switch (seccion) {
             case "Información":
                 setInformationTitle(true);
@@ -67,16 +75,89 @@ export default function Instrucciones() {
         }
     }
     const goBack = () => {
-        router.push(`/menuOpcionesTest`);
+        router.push(`/menuOpcionesTest`).then(r => console.log(r));
+        shutUp();
+    }
+    const hearVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    };
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
+    }
+    const showPresentationHandler = () => {
+        setIsSpeaking(true);
+        switch (seccion) {
+            case "Información":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 30000);
+                break;
+            case "Semejanzas":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 31000);
+                break;
+            case "Vocabulario":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 29000);
+                break;
+            case "Comprensión":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 38000);
+                break;
+            case "Dibujos":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 27500);
+                break;
+            case "Nombres":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 27000);
+                break;
+            case "Matrices":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 26000);
+                break;
+            case "Conceptos":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 25000);
+                break;
+            case "Reconocimiento":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 34000);
+                break;
+            case "Búsqueda":
+                setTimeout(() => {
+                    setIsSpeaking(false);
+                }, 38500);
+                break;
+        }
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             {informationTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.informacion}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.informacion}/>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -94,10 +175,12 @@ export default function Instrucciones() {
             }
             {semejanzasTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.semejanzas}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.semejanzas}></UpperBar>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -114,10 +197,12 @@ export default function Instrucciones() {
             }
             {vocabularioTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.vocabulario}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.vocabulario}></UpperBar>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -134,10 +219,12 @@ export default function Instrucciones() {
             }
             {comprensionTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.comprension}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.comprension}></UpperBar>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -153,10 +240,12 @@ export default function Instrucciones() {
             }
             {dibujosTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.dibujos}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.dibujos}/>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -173,10 +262,12 @@ export default function Instrucciones() {
             }
             {nombresTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.nombres}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.nombres}/>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -193,10 +284,12 @@ export default function Instrucciones() {
             }
             {matricesTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.matrices}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.matrices}/>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -214,10 +307,12 @@ export default function Instrucciones() {
             }
             {conceptosTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.conceptos}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.conceptos}/>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -235,10 +330,12 @@ export default function Instrucciones() {
             }
             {reconocimientoTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.reconocimiento}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.reconocimiento}></UpperBar>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -256,10 +353,12 @@ export default function Instrucciones() {
             }
             {busquedaTitle &&
                 <div>
-                    <UpperBar redirectionPath={`/`}
-                              color={sections.busqueda}></UpperBar>
-                    <InstructionBar previousPage={`/menuOpcionesTest`}
-                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}> </InstructionBar>
+                    <UpperBar color={sections.busqueda}/>
+                    <InstructionBar confirmation={goBack}
+                                    instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>

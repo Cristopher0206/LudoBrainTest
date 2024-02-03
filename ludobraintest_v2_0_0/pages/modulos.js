@@ -5,25 +5,41 @@ import styles from "@/styles/styles.module.css";
 import button from "@/styles/button.module.css";
 import Button from "@/components/Button";
 import {useRouter} from "next/router";
-import Swal from "sweetalert2";
 import SweetAlert from "sweetalert2";
-
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import {useEffect, useState} from "react";
+import useVoiceReader from "@/pages/useVoiceReader";
 export default function Modulos() {
     const router = useRouter();
+    const { speak, speaking } = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
+    const [isPresenting, setIsPresenting] = useState(true);
+    const [isModule, setIsModule] = useState(true);
+    const [isSpeaking, setIsSpeaking] = useState(false);
     /*------------------- EFECTOS -------------------*/
+    useEffect(() => {
+        if (isPresenting) {
+            showPresentationHandler();
+        }
+    }, []);
+    const text = "¡Hola, Bienvenido a Poli-Cuizzes! " + "Selecciona uno de los cuatro módulos que se encuentran al lado derecho de la pantalla.";
+    useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const goTest = () => {
-        router.push("/select/selectNinio");
+        router.push("/select/selectNinio").then(r => console.log(r));
+        shutUp();
     }
     const goCreate = () => {
-        router.push("/modulosCreacion");
+        router.push("/modulosCreacion").then(r => console.log(r));
+        shutUp();
     }
     const goResults = () => {
-        router.push("/resultados");
+        router.push("/resultados").then(r => console.log(r));
+        shutUp();
     }
     const goRegister = () => {
-        router.push("/read/readNinio");
+        router.push("/read/readNinio").then(r => console.log(r));
+        shutUp();
     }
     const confirmGetBack = () => {
         SweetAlert.fire({
@@ -37,51 +53,82 @@ export default function Modulos() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/');
+                router.push('/').then(r => console.log(r));
+                shutUp();
             }
         }).catch(err => {
             console.log(err);
         })
     }
-
+    const showPresentationHandler = () => {
+        setIsSpeaking(true);
+        setTimeout(() => {
+            setIsSpeaking(false);
+        }, 9000);
+    }
+    const hearVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    };
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar color={navstyles.upper_bar_yellow}/>
-            <InstructionBar confirmation={confirmGetBack}
-                            instruction={`Selecciona un módulo`}/>
-            <div className={`container-fluid`}>
-                <div className={`row`}>
-                    <div className={`col-6 self-center p-5`}>
-                        <div
-                            className={`container-fluid px-4 py-5 justify-center self-center italic ${styles.modules_instruction_text}`}>
-                            <p>¡Hola, Bienvenido a Poli-Quizzes!</p>
-                            <p>Selecciona uno de los cuatro módulos que se encuentran
-                                al lado derecho de la pantalla.</p>
+            {isModule && (
+                <div>
+                    <InstructionBar confirmation={confirmGetBack}
+                                    instruction={`Selecciona un módulo`}
+                                    info_color={button.btn_speak}
+                                    voiceCommand={hearVoice}
+                                    silenceCommand={shutUp}
+                                    hiddenInfo={`hidden`}/>
+                    <div className={`container-fluid`}>
+                        <div className={`row`}>
+                            <div className={`col-6 self-center p-5`}>
+                                <div
+                                    className={`container-fluid px-4 py-5 justify-center self-center italic ${styles.modules_instruction_text}`}>
+                                    <p>¡Hola, Bienvenido a Poli-Quizzes!</p>
+                                    <p>Selecciona uno de los cuatro módulos que se encuentran
+                                        al lado derecho de la pantalla.</p>
+                                </div>
+                            </div>
+                            <div className={`col-6 self-center`}>
+                                <br/>
+                                <div className={`px-20`}>
+                                    <Button instruction={goTest} bg_color={button.btn_blue}
+                                            text={`Evaluar un niño`}></Button>
+                                </div>
+                                <br/>
+                                <div className={`px-20`}>
+                                    <Button instruction={goCreate} bg_color={button.btn_green}
+                                            text={`Administrar Evaluaciones y Preguntas`}></Button>
+                                </div>
+                                <br/>
+                                <div className={`px-20`}>
+                                    <Button instruction={goRegister} bg_color={button.btn_yellow}
+                                            text={`Registrar un niño`}></Button>
+                                </div>
+                                <br/>
+                                <div className={`px-20`}>
+                                    <Button instruction={goResults} bg_color={button.btn_red}
+                                            text={`Ver resultados`}></Button>
+                                </div>
+                                <br/>
+                            </div>
                         </div>
-                    </div>
-                    <div className={`col-6 self-center`}>
-                        <br/>
-                        <div className={`px-20`}>
-                            <Button instruction={goTest} bg_color={button.btn_blue} text={`Evaluar un niño`}></Button>
-                        </div>
-                        <br/>
-                        <div className={`px-20`}>
-                            <Button instruction={goCreate} bg_color={button.btn_green}
-                                    text={`Administrar Evaluaciones y Preguntas`}></Button>
-                        </div>
-                        <br/>
-                        <div className={`px-20`}>
-                            <Button instruction={goRegister} bg_color={button.btn_yellow}
-                                    text={`Registrar un niño`}></Button>
-                        </div>
-                        <br/>
-                        <div className={`px-20`}>
-                            <Button instruction={goResults} bg_color={button.btn_red} text={`Ver resultados`}></Button>
-                        </div>
-                        <br/>
                     </div>
                 </div>
-            </div>
+            )}
         </main>
     )
 }

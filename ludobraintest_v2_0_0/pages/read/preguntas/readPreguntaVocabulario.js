@@ -6,13 +6,18 @@ import UpperBar from "@/components/UpperBar";
 import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
 import Swal from "sweetalert2";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
 
 export default function ReadPreguntaVocabulario() {
     const router = useRouter();
     const id_test = localStorage.getItem('id_test');
     const nombre_test = localStorage.getItem('nombre_test');
     let arregloPreguntas;
-    /*------------------- ESTADOS -------------------*/
+    const { speak, speaking } = UseSpeechSynthesis();
+    const texto = "¿Qué es esta figura? ¿Podrías definirla? ";
+    /* ------------------- ESTADOS ------------------- */
+    const [isSpeaking, setIsSpeaking] = useState(false);
     const [questions, setQuestions] = useState([]);
     const [samples, setSamples] = useState([]);
     const [preguntaActual, setPreguntaActual] = useState('');
@@ -75,6 +80,7 @@ export default function ReadPreguntaVocabulario() {
     }
     const verifyAnswer = (correct) => {
         if (correct === 1) {
+            setIsSpeaking(false);
             console.log("Respuesta correcta");
             setPuntaje(prevPuntaje => prevPuntaje + 1);
             let timerInterval;
@@ -83,6 +89,7 @@ export default function ReadPreguntaVocabulario() {
                 title: "¡Respuesta correcta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -96,6 +103,7 @@ export default function ReadPreguntaVocabulario() {
                 }
             });
         } else {
+            setIsSpeaking(false);
             console.log("Respuesta incorrecta");
             let timerInterval;
             Swal.fire({
@@ -103,6 +111,7 @@ export default function ReadPreguntaVocabulario() {
                 title: "¡Respuesta incorrecta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -127,7 +136,8 @@ export default function ReadPreguntaVocabulario() {
                 setPreguntaActualIndex(prevPreguntaActualIndex => prevPreguntaActualIndex + 1);
             } else {
                 console.log("No hay más preguntas");
-                router.push('/puntajeFinal');
+                router.push('/puntajeFinal').then(r => console.log(r));
+                shutUp();
             }
         }, 3000);
     }
@@ -143,29 +153,47 @@ export default function ReadPreguntaVocabulario() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/menuOpcionesTest');
+                router.push('/menuOpcionesTest').then(r => console.log(r));
+                shutUp();
             }
         })
     }
+    const repeatVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(texto);
+                } while (isSpeaking);
+            }
+        }
+    }
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
+    }
+    useVoiceReader(texto, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={sections.vocabulario}></UpperBar>
+            <UpperBar color={sections.vocabulario}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>
                     <div className={`col-sm-3 col-lg-2`}>
-                        <QuestionBar confirmGetBack={confirmGetBack}></QuestionBar>
+                        <QuestionBar confirmGetBack={confirmGetBack}
+                                     voiceCommand={repeatVoice}
+                                     silenceCommand={shutUp}/>
                     </div>
                     <div className={`col-sm-3 col-lg-3 pt-0`}>
-                        <div className={`border-1 border-black rounded-2xl bg-white px-5 py-5
+                        <div className={`border-1 border-black rounded-2xl bg-white p-5
                         flex-col justify-center shadow-inner`}>
-                            <p className={`font-bold flex justify-center`}>
+                            <div className={`font-bold flex justify-center`}>
                                 ¿Qué es esta figura?
-                            </p>
-                            <p className={`font-bold flex justify-center`}>
+                            </div>
+                            <div className={`font-bold flex justify-center`}>
                                 ¿Podrías definirla?
-                            </p>
+                            </div>
                         </div>
                         <br/> <br/>
                         <button onClick={() => verifyAnswer(0)}

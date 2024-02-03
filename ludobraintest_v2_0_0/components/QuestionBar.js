@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from '@/styles/styles.module.css'
 import button from '@/styles/button.module.css'
 
-export default function QuestionBar({confirmGetBack, nombreTest, labelColor}) {
+export default function QuestionBar({confirmGetBack, nombreTest, labelColor, voiceCommand, hiddenVoice, silenceCommand}) {
     return (
         <div className={`container-fluid flex flex-col h-100`}>
             <div className={`pt-sm-1 pt-md-2 pt-lg-0 flex justify-center text-decoration-none`}>
@@ -28,6 +28,21 @@ export default function QuestionBar({confirmGetBack, nombreTest, labelColor}) {
                     <img src="/images/asistente-de-robot.png"
                          alt="Mini Echo"
                          className={`${styles.echo_logo_ib}`}/>
+                </div>
+            </div>
+            <div className={`flex justify-center h-75`}>
+                <div className={`flex self-start`}>
+                    <button onClick={voiceCommand}
+                            className={`me-2 border-2 border-black border-opacity-25 flex h-fit rounded-full px-1 py-1 ${button.btn_speak} 
+                    self-center ${hiddenVoice}`}>
+                        <div className={`text-xl p-0`}>🔊</div>
+                        {/*<h2>🗣️</h2>*/}
+                    </button>
+                    <button onClick={silenceCommand}
+                            className={`mx-2 border-2 border-black border-opacity-25 flex h-fit rounded-full px-1 py-1 ${button.btn_silence} 
+                    self-center ${hiddenVoice}`}>
+                        <div className={`text-xl p-0`}>🔇</div>
+                    </button>
                 </div>
             </div>
         </div>

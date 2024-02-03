@@ -32,6 +32,7 @@ export default function Login() {
                     title: "¡Acceso Correcto!",
                     timer: 3000,
                     timerProgressBar: true,
+                    allowOutsideClick: false,
                     didOpen: () => {
                         Swal.showLoading();
                     },
@@ -54,6 +55,7 @@ export default function Login() {
                     title: "¡Credenciales incorrectas, inténtalo de nuevo!",
                     timer: 3000,
                     timerProgressBar: true,
+                    allowOutsideClick: false,
                     didOpen: () => {
                         Swal.showLoading();
                     },
@@ -72,7 +74,8 @@ export default function Login() {
         });
     }
     const startApp = () => {
-        router.push('/presentacion');
+        router.push('/presentacion')
+            .then(r => console.log('Redirigiendo...'));
     }
 
     return (

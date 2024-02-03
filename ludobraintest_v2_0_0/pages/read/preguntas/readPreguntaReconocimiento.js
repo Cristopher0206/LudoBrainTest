@@ -8,6 +8,8 @@ import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
 import Swal from "sweetalert2";
 import Button from "@/components/Button";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
 
 export default function readPreguntaReconocimiento() {
     const router = useRouter();
@@ -18,7 +20,12 @@ export default function readPreguntaReconocimiento() {
         nombre_test = localStorage.getItem('nombre_test');
     }
     let arregloPreguntas;
+    const { speak, speaking } = UseSpeechSynthesis();
+    const texto1 = "¡Observa con atención las imágenes que aparecen en pantalla!";
+    const texto2 = "Del siguiente conjunto de imágenes, ¿Cuáles aparecieron en pantalla hace unos segundos?";
     /*------------------- ESTADOS -------------------*/
+    const [isSpeaking1, setIsSpeaking1] = useState(false);
+    const [isSpeaking2, setIsSpeaking2] = useState(false);
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState([]);
     const [samples, setSamples] = useState([]);
@@ -44,7 +51,8 @@ export default function readPreguntaReconocimiento() {
         setTimeout(() => {
             setShowSamples(false);
             setGoQuestion(true);
-        }, 5000);
+            setIsSpeaking1(false);
+        }, 10000);
     }
     const getQuestionsbyTestId = () => {
         axios({
@@ -77,7 +85,6 @@ export default function readPreguntaReconocimiento() {
             withCredentials: true,
             url: 'http://localhost:3001/getAnswersbyQuestionId',
         }).then(res => {
-            console.log("Estas son las opciones de respuesta", res.data);
             setAnswers(res.data);
             showQuestion()
         }).catch(err => {
@@ -131,6 +138,7 @@ export default function readPreguntaReconocimiento() {
         const isCorrect = selectedAnswers.length === 2 &&
             selectedAnswers.every(answerId => answers.find(a => a.id_respuesta === answerId)?.respuesta_correcta === 1);
         if (isCorrect) {
+            setIsSpeaking2(false);
             console.log("Respuestas correctas");
             setPuntaje(prevPuntaje => prevPuntaje + 1);
             let timerInterval;
@@ -139,6 +147,7 @@ export default function readPreguntaReconocimiento() {
                 title: "¡Respuesta correcta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -152,6 +161,7 @@ export default function readPreguntaReconocimiento() {
                 }
             });
         } else {
+            setIsSpeaking2(false);
             console.log("Respuestas incorrectas");
             let timerInterval;
             Swal.fire({
@@ -159,6 +169,7 @@ export default function readPreguntaReconocimiento() {
                 title: "¡Respuesta incorrecta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -185,7 +196,8 @@ export default function readPreguntaReconocimiento() {
                 setPreguntaActualIndex(prevPreguntaActualIndex => prevPreguntaActualIndex + 1);
             } else {
                 console.log("No hay más preguntas");
-                router.push('/puntajeFinal');
+                router.push('/puntajeFinal').then(r => console.log(r));
+                shutUp2();
             }
         }, 3000);
     }
@@ -201,14 +213,47 @@ export default function readPreguntaReconocimiento() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/menuOpcionesTest');
+                router.push('/menuOpcionesTest').then(r => console.log(r));
+                shutUp1();
+                shutUp2();
             }
         })
     }
+    const repeatVoice1 = () => {
+        if (isSpeaking1 === false) {
+            setIsSpeaking1(true);
+            if (!speaking) {
+                do {
+                    speak(texto1);
+                } while (isSpeaking1);
+            }
+        }
+    }
+    const repeatVoice2 = () => {
+        if (isSpeaking2 === false) {
+            setIsSpeaking2(true);
+            if (!speaking) {
+                do {
+                    speak(texto2);
+                } while (isSpeaking2);
+            }
+        }
+    }
+    const shutUp1 = () => {
+        if (isSpeaking1 === true) {
+            setIsSpeaking1(false);
+        }
+    }
+    const shutUp2 = () => {
+        if (isSpeaking2 === true) {
+            setIsSpeaking2(false);
+        }
+    }
+    useVoiceReader(texto1, isSpeaking1);
+    useVoiceReader(texto2, isSpeaking2);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={sections.reconocimiento}></UpperBar>
+            <UpperBar color={sections.reconocimiento}/>
             <br/>
             {showSamples && (
                 <div>
@@ -217,7 +262,9 @@ export default function readPreguntaReconocimiento() {
                             <div className={`col-sm-3 col-lg-2`}>
                                 <QuestionBar confirmGetBack={confirmGetBack}
                                              nombreTest={nombre_test}
-                                             labelColor={styles.label_red}/>
+                                             labelColor={styles.label_red}
+                                             voiceCommand={repeatVoice1}
+                                             silenceCommand={shutUp1}/>
                             </div>
                             <div className={`col-sm-9 col-lg-10`}>
                                 <h5>
@@ -232,7 +279,7 @@ export default function readPreguntaReconocimiento() {
                                     <div className={`grid grid-cols-2 gap-x-5 gap-y-5`}>
                                         {samples.map((sample, index) => (
                                             <div key={index}
-                                                 className={`flex justify-center shadow-md w-100 h-100 ${styles.answer_btn}`}>
+                                                 className={`flex justify-center shadow-md w-100 h-100 ${styles.sample_btn_busqueda}`}>
                                                 <img src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}/>
                                             </div>
                                         ))}
@@ -251,7 +298,9 @@ export default function readPreguntaReconocimiento() {
                             <div className={`col-sm-3 col-lg-2`}>
                                 <QuestionBar confirmGetBack={confirmGetBack}
                                              nombreTest={nombre_test}
-                                             labelColor={styles.label_red}/>
+                                             labelColor={styles.label_red}
+                                             voiceCommand={repeatVoice2}
+                                             silenceCommand={shutUp2}/>
                             </div>
                             <div className={`col-sm-9 col-lg-10`}>
                                 <h5>
@@ -259,7 +308,7 @@ export default function readPreguntaReconocimiento() {
                                 </h5>
                                 <div className={`border-1 border-black rounded-2xl bg-white px-5 py-4
                         flex justify-center shadow-inner h-fit text-xl`}>
-                                    De todo este conjunto de imágenes, ¿Cuáles aparecieron en pantalla hace unos
+                                    Del siguiente conjunto de imágenes, ¿Cuáles aparecieron en pantalla hace unos
                                     segundos?
                                 </div>
                                 <div className={`container-fluid p-0`}>

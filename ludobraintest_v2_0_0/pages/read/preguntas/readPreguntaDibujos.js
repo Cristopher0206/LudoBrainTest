@@ -6,13 +6,20 @@ import UpperBar from "@/components/UpperBar";
 import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
 import Swal from "sweetalert2";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
 
 export default function ReadPreguntaDibujos() {
     const router = useRouter();
     const id_test = localStorage.getItem('id_test');
     const nombre_test = localStorage.getItem('nombre_test');
     let arregloPreguntas;
+    const { speak, speaking } = UseSpeechSynthesis();
+    let palabra;
+    const texto = `Selecciona la imagen que coincide con la palabra:`;
     /*------------------- ESTADOS -------------------*/
+    const [isSpeaking, setIsSpeaking] = useState(false);
+    const [text, setText] = useState('Selecciona la imagen que coincide con la palabra');
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState([]);
     const [preguntaActual, setPreguntaActual] = useState('');
@@ -24,7 +31,6 @@ export default function ReadPreguntaDibujos() {
         getQuestionsbyTestId();
     }, []);
     useEffect(() => {
-        console.log("puntaje después de responder:", puntaje);
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
     /*------------------- FUNCIONES -------------------*/
@@ -68,14 +74,19 @@ export default function ReadPreguntaDibujos() {
     const showQuestion = async () => {
         if (questions.length === 0 && arregloPreguntas) {
             setPreguntaActual(arregloPreguntas[0].pregunta);
+            setText(arregloPreguntas[0].pregunta);
+            palabra = arregloPreguntas[0].pregunta;
         } else {
             if (questions.length > 0) {
                 setPreguntaActual(questions[0].pregunta);
+                setText(questions[0].pregunta);
+                palabra = questions[0].pregunta;
             }
         }
     }
     const verifyAnswer = (correct) => {
         if (correct === 1) {
+            setIsSpeaking(false);
             console.log("Respuesta correcta");
             setPuntaje(prevPuntaje => prevPuntaje + 1);
             let timerInterval;
@@ -84,6 +95,7 @@ export default function ReadPreguntaDibujos() {
                 title: "¡Respuesta correcta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -97,6 +109,7 @@ export default function ReadPreguntaDibujos() {
                 }
             });
         } else {
+            setIsSpeaking(false);
             console.log("Respuesta incorrecta");
             let timerInterval;
             Swal.fire({
@@ -104,6 +117,7 @@ export default function ReadPreguntaDibujos() {
                 title: "¡Respuesta incorrecta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -128,7 +142,8 @@ export default function ReadPreguntaDibujos() {
                 setPreguntaActualIndex(prevPreguntaActualIndex => prevPreguntaActualIndex + 1);
             } else {
                 console.log("No hay más preguntas");
-                router.push('/puntajeFinal');
+                router.push('/puntajeFinal').then(r => console.log(r));
+                shutUp();
             }
         }, 3000);
     }
@@ -144,21 +159,40 @@ export default function ReadPreguntaDibujos() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/menuOpcionesTest');
+                router.push('/menuOpcionesTest').then(r => console.log(r));
+                shutUp();
             }
         })
     }
+    const repeatVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(texto);
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    }
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
+    }
+    useVoiceReader(`Selecciona la imagen que coincide con la palabra: ${text}`, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={sections.dibujos}></UpperBar>
+            <UpperBar color={sections.dibujos}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>
                     <div className={`col-sm-3 col-lg-3`}>
                         <QuestionBar confirmGetBack={confirmGetBack}
                                      nombreTest={nombre_test}
-                                     labelColor={styles.label_purple}/>
+                                     labelColor={styles.label_purple}
+                                     voiceCommand={repeatVoice}
+                                     silenceCommand={shutUp}/>
                     </div>
                     <div className={`col-sm-3 col-lg-2 self-start`}>
                         <div className={`pb-2 d-flex justify-content-center font-bold ${styles.dibujos_text}`}>

@@ -130,3 +130,27 @@
     color: #000000;
     transition: all 0.3s ease-in-out;
 }
+
+.btn_speak {
+    background-color: rgba(25, 169, 182, 0.75);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_speak:hover {
+    background-color: rgba(25, 169, 182, 0);
+    color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_silence {
+    background-color: rgba(255, 67, 49, 0.75);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_silence:hover {
+    background-color: rgba(255, 67, 49, 0);
+    color: white;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}

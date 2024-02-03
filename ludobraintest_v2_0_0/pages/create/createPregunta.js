@@ -16,6 +16,9 @@ export default function CreatePregunta() {
     let imagenMuestraBusqueda = [];
     let bandera = false;
     let respCorrecta = 0;
+    let respCorrecta1 = 0;
+    let respCorrecta2 = 0;
+    let respCorrecta3 = 0;
     // Define un estado para manejar las respuestas correctas de cada fila
     /*------------------- ESTADOS -------------------*/
     const [tipoInformacion, setTipoInformacion] = useState(false);
@@ -256,10 +259,10 @@ export default function CreatePregunta() {
             console.log(err);
         })
     }
-    const agregaTresImagenesDeMuestra = () => {
+    const agregaImagenesDeMuestra = (num) => {
         Swal.fire({
             icon: 'warning',
-            title: "Agrega 3 Imágenes de Muestra antes de crear la Pregunta",
+            title: `Agrega ${num} Imágenes de Muestra antes de crear la Pregunta`,
             confirmButtonText: "¡De acuerdo!",
             confirmButtonColor: "rgba(255,67,49,0.75)",
         }).then((result) => {
@@ -372,12 +375,16 @@ export default function CreatePregunta() {
                 setImagenesMuestra((prevFiles) => [...prevFiles, newFile]);
             }
         } else {
-            setWarningLengthSampleMessage(true);
-            // El mensaje desaparece luego de 3 segundos
-            setTimeout(() => {
-                setWarningLengthSampleMessage(false);
-            }, 3000);
-
+            Swal.fire({
+                icon: 'warning',
+                title: "No puedes agregar más de 2 imágenes de muestra",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(255,67,49,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
     }
     const handleFileChangeMuestraBusqueda = (event) => {
@@ -390,12 +397,16 @@ export default function CreatePregunta() {
                 setImagenesMuestra((prevFiles) => [...prevFiles, newFile]);
             }
         } else {
-            setWarningLengthSampleMessage(true);
-            // El mensaje desaparece luego de 3 segundos
-            setTimeout(() => {
-                setWarningLengthSampleMessage(false);
-            }, 3000);
-
+            Swal.fire({
+                icon: 'warning',
+                title: "Solo puedes agregar una imagen de muestra",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(255,67,49,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
     }
     const handleFileChangeMuestraVocabulario = (event) => {
@@ -484,11 +495,16 @@ export default function CreatePregunta() {
                 setSelectedFiles1((prevFiles) => [...prevFiles, newFile]);
             }
         } else {
-            setWarningLengthMessage(true);
-            // El mensaje desaparece luego de 3 segundos
-            setTimeout(() => {
-                setWarningLengthMessage(false);
-            }, 3000);
+            Swal.fire({
+                icon: 'warning',
+                title: "No puedes agregar más de 4 opciones de respuesta",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(255,67,49,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
     };
     const handleFileChangeConcept2 = (event) => {
@@ -498,11 +514,16 @@ export default function CreatePregunta() {
                 setSelectedFiles2((prevFiles) => [...prevFiles, newFile]);
             }
         } else {
-            setWarningLengthMessage(true);
-            // El mensaje desaparece luego de 3 segundos
-            setTimeout(() => {
-                setWarningLengthMessage(false);
-            }, 3000);
+            Swal.fire({
+                icon: 'warning',
+                title: "No puedes agregar más de 4 opciones de respuesta",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(255,67,49,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
     };
     const handleFileChangeConcept3 = (event) => {
@@ -512,11 +533,16 @@ export default function CreatePregunta() {
                 setSelectedFiles3((prevFiles) => [...prevFiles, newFile]);
             }
         } else {
-            setWarningLengthMessage(true);
-            // El mensaje desaparece luego de 3 segundos
-            setTimeout(() => {
-                setWarningLengthMessage(false);
-            }, 3000);
+            Swal.fire({
+                icon: 'warning',
+                title: "No puedes agregar más de 4 opciones de respuesta",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(255,67,49,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
     };
     const handleFileChangeReconocimiento = (event) => {
@@ -526,11 +552,16 @@ export default function CreatePregunta() {
                 setSelectedFiles((prevFiles) => [...prevFiles, newFile]);
             }
         } else {
-            setWarningLengthMessage(true);
-            // El mensaje desaparece luego de 3 segundos
-            setTimeout(() => {
-                setWarningLengthMessage(false);
-            }, 3000);
+            Swal.fire({
+                icon: 'warning',
+                title: "No puedes agregar más de 8 opciones de respuesta",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(255,67,49,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
     };
     const handleFileChangeBusqueda = (event) => {
@@ -540,11 +571,16 @@ export default function CreatePregunta() {
                 setSelectedFiles((prevFiles) => [...prevFiles, newFile]);
             }
         } else {
-            setWarningLengthMessage(true);
-            // El mensaje desaparece luego de 3 segundos
-            setTimeout(() => {
-                setWarningLengthMessage(false);
-            }, 3000);
+            Swal.fire({
+                icon: 'warning',
+                title: "No puedes agregar más de 6 opciones de respuesta",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(255,67,49,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
     };
     const handleUpload = async () => {
@@ -604,7 +640,7 @@ export default function CreatePregunta() {
                 });
             } else if (imagenesMuestra.length < 3) {
                 bandera = true;
-                agregaTresImagenesDeMuestra();
+                agregaImagenesDeMuestra(3);
             } else if (selectedFiles.length < 3) {
                 agregaMinimoOpcionesDeRespuesta(3);
                 bandera = true;
@@ -744,6 +780,7 @@ export default function CreatePregunta() {
                 bandera = true;
                 agregaUnaImagenDeMuestra();
             } else {
+                bandera = false;
                 /* Llenar el array de esMuestra con las opciones de respuesta */
                 selectedFiles.forEach(() => {
                     esMuestra.push(0);
@@ -784,7 +821,7 @@ export default function CreatePregunta() {
                 });
             } else if (imagenesMuestra.length < 3) {
                 bandera = true;
-                agregaTresImagenesDeMuestra();
+                agregaImagenesDeMuestra(3);
             } else if (selectedFiles.length < 3) {
                 agregaMinimoOpcionesDeRespuesta(3);
                 bandera = true;
@@ -797,6 +834,7 @@ export default function CreatePregunta() {
                     bandera = true;
                     seleccionaVariasRespuestasCorrectas();
                 } else {
+                    bandera = false
                     /* Llenar el array de esMuestra con las opciones de respuesta */
                     selectedFiles.forEach(() => {
                         esMuestra.push(0);
@@ -821,77 +859,233 @@ export default function CreatePregunta() {
             }
         } else if (tipoConceptos) {
             data = 8;
-            selectedFiles1.forEach((file) => {
-                selectedFiles.push(file);
-                rowNumber.push(1);
-            });
-            selectedFiles2.forEach((file) => {
-                selectedFiles.push(file);
-                rowNumber.push(2);
-            });
-            selectedFiles3.forEach((file) => {
-                selectedFiles.push(file);
-                rowNumber.push(3);
-            });
-            /* Llenar el array de esMuestra con las opciones de respuesta */
-            selectedFiles.forEach(() => {
-                esMuestra.push(0);
-            });
-            //
-            formData.append("pregunta", textareaValue);
-            formData.append("idSection", data);
-            selectedFiles.forEach((file, index) => {
-                formData.append("imagenes", file); // Usar el mismo nombre de campo para todas las imágenes
-                formData.append("imagenIndex", index + 1); // Agregar información sobre el índice
-                formData.append("respuestaCorrecta", correctAnswersConceptos[index] ? 1 : 0); // Agregar la respuesta correcta
-                formData.append("fila", rowNumber[index]);
-                formData.append("esMuestra", esMuestra[index] ? 1 : 0);
-            })
-            console.log("arreglo total de respuestas correctas", correctAnswersConceptos);
+            console.log("correctAnswersConceptos", correctAnswersConceptos);
+            if (textareaValue === '') {
+                bandera = true;
+                daleNombrePregunta();
+            } else if (selectedFiles1.length === 0 && selectedFiles2.length === 0 && selectedFiles3.length === 0) {
+                bandera = true;
+                Swal.fire({
+                    icon: 'warning',
+                    title: "Agrega Imágenes de Muestra y Opciones de Respuesta en toda las Filas antes de crear la Pregunta",
+                    confirmButtonText: "¡De acuerdo!",
+                    confirmButtonColor: "rgba(255,67,49,0.75)",
+                }).then((result) => {
+                    console.log("result", result);
+                }).catch((err) => {
+                    console.log(err);
+                });
+            } else if (selectedFiles1.length < 4 || selectedFiles2.length < 4 || selectedFiles3.length < 4) {
+                bandera = true;
+                Swal.fire({
+                    icon: 'warning',
+                    title: `Agrega 4 Opciones de Respuesta en cada Fila antes de crear la Pregunta`,
+                    confirmButtonText: "¡De acuerdo!",
+                    confirmButtonColor: "rgba(255,67,49,0.75)",
+                }).then((result) => {
+                    console.log("result", result);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            } else {
+                fillRespuestaCorrectaConceptos();
+                if (respCorrecta === 0) {
+                    bandera = true;
+                    noSeleccionaRespuestaCorrecta();
+                } else if (respCorrecta < 3) {
+                    bandera = true;
+                    Swal.fire({
+                        icon: 'warning',
+                        title: "Debes seleccionar una Respuesta Correcta para cada Fila",
+                        confirmButtonText: "¡De acuerdo!",
+                        confirmButtonColor: "rgba(255,67,49,0.75)",
+                    }).then((result) => {
+                        console.log("result", result);
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+                } else if (respCorrecta > 3) {
+                    bandera = true;
+                    Swal.fire({
+                        icon: 'warning',
+                        title: "Solo puedes seleccionar una Respuesta Correcta para cada Fila",
+                        confirmButtonText: "¡De acuerdo!",
+                        confirmButtonColor: "rgba(255,67,49,0.75)",
+                    }).then((result) => {
+                        console.log("result", result);
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+                } else {
+                    bandera = false;
+                    selectedFiles1.forEach((file) => {
+                        selectedFiles.push(file);
+                        rowNumber.push(1);
+                    });
+                    selectedFiles2.forEach((file) => {
+                        selectedFiles.push(file);
+                        rowNumber.push(2);
+                    });
+                    selectedFiles3.forEach((file) => {
+                        selectedFiles.push(file);
+                        rowNumber.push(3);
+                    });
+                    /* Llenar el array de esMuestra con las opciones de respuesta */
+                    selectedFiles.forEach(() => {
+                        esMuestra.push(0);
+                    });
+                    //
+                    formData.append("pregunta", textareaValue);
+                    formData.append("idSection", data);
+                    selectedFiles.forEach((file, index) => {
+                        formData.append("imagenes", file); // Usar el mismo nombre de campo para todas las imágenes
+                        formData.append("imagenIndex", index + 1); // Agregar información sobre el índice
+                        formData.append("respuestaCorrecta", correctAnswersConceptos[index] ? 1 : 0); // Agregar la respuesta correcta
+                        formData.append("fila", rowNumber[index]);
+                        formData.append("esMuestra", esMuestra[index] ? 1 : 0);
+                    })
+                }
+            }
         } else if (tipoReconocimiento) {
             data = 9;
-            /* Llenar el array de esMuestra con las opciones de respuesta */
-            selectedFiles.forEach(() => {
-                esMuestra.push(0);
-            });
-            /* Llenar el array de esMuestra con las muestras*/
-            imagenesMuestra.forEach(() => {
-                esMuestra.push(1);
-            });
-            imagenesMuestra.forEach((file) => {
-                selectedFiles.push(file);
-            });
-            formData.append("pregunta", textareaValue);
-            formData.append("idSection", data);
-            selectedFiles.forEach((file, index) => {
-                formData.append("imagenes", file); // Usar el mismo nombre de campo para todas las imágenes
-                formData.append("imagenIndex", index + 1); // Agregar información sobre el índice
-                formData.append("respuestaCorrecta", correctAnswers[index] ? 1 : 0); // Agregar la respuesta correcta
-                formData.append("fila", 0);
-                formData.append("esMuestra", esMuestra[index] ? 1 : 0);
-            });
+            if (textareaValue === '') {
+                bandera = true;
+                daleNombrePregunta();
+            } else if (selectedFiles.length === 0 && imagenesMuestra.length === 0) {
+                bandera = true;
+                Swal.fire({
+                    icon: 'warning',
+                    title: "Agrega Imágenes de Muestra y Opciones de Respuesta antes de crear la Pregunta",
+                    confirmButtonText: "¡De acuerdo!",
+                    confirmButtonColor: "rgba(255,67,49,0.75)",
+                }).then((result) => {
+                    console.log("result", result);
+                }).catch((err) => {
+                    console.log(err);
+                });
+            } else if (imagenesMuestra.length < 2) {
+                bandera = true;
+                agregaImagenesDeMuestra(2);
+            } else if (selectedFiles.length < 3) {
+                agregaMinimoOpcionesDeRespuesta(3);
+                bandera = true;
+            } else {
+                fillRespuestaCorrecta();
+                if (respCorrecta === 0) {
+                    bandera = true;
+                    Swal.fire({
+                        icon: 'warning',
+                        title: "Debes seleccionar las respuestas correctas antes de crear la Pregunta",
+                        confirmButtonText: "¡De acuerdo!",
+                        confirmButtonColor: "rgba(255,67,49,0.75)",
+                    }).then((result) => {
+                        console.log("result", result);
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+                } else if (respCorrecta > 2) {
+                    bandera = true;
+                    Swal.fire({
+                        icon: 'warning',
+                        title: "No puedes seleccionar más opciones de respuesta",
+                        confirmButtonText: "¡De acuerdo!",
+                        confirmButtonColor: "rgba(255,67,49,0.75)",
+                    }).then((result) => {
+                        console.log("result", result);
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+                } else if (respCorrecta !== imagenesMuestra.length){
+                    bandera = true;
+                    Swal.fire({
+                        icon: 'warning',
+                        title: "El número de respuestas correctas debe ser el mismo que el número de imágenes de muestra",
+                        confirmButtonText: "¡De acuerdo!",
+                        confirmButtonColor: "rgba(255,67,49,0.75)",
+                    }).then((result) => {
+                        console.log("result", result);
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+                } else {
+                    bandera = false;
+                    /* Llenar el array de esMuestra con las opciones de respuesta */
+                    selectedFiles.forEach(() => {
+                        esMuestra.push(0);
+                    });
+                    /* Llenar el array de esMuestra con las muestras*/
+                    imagenesMuestra.forEach(() => {
+                        esMuestra.push(1);
+                    });
+                    imagenesMuestra.forEach((file) => {
+                        selectedFiles.push(file);
+                    });
+                    formData.append("pregunta", textareaValue);
+                    formData.append("idSection", data);
+                    selectedFiles.forEach((file, index) => {
+                        formData.append("imagenes", file); // Usar el mismo nombre de campo para todas las imágenes
+                        formData.append("imagenIndex", index + 1); // Agregar información sobre el índice
+                        formData.append("respuestaCorrecta", correctAnswers[index] ? 1 : 0); // Agregar la respuesta correcta
+                        formData.append("fila", 0);
+                        formData.append("esMuestra", esMuestra[index] ? 1 : 0);
+                    });
+                }
+            }
         } else if (tipoBusqueda) {
             data = 10;
-            /* Llenar el array de esMuestra con las opciones de respuesta */
-            selectedFiles.forEach(() => {
-                esMuestra.push(0);
-            });
-            /* Llenar el array de esMuestra con las muestras*/
-            imagenesMuestra.forEach(() => {
-                esMuestra.push(1);
-            });
-            imagenesMuestra.forEach((file) => {
-                selectedFiles.push(file);
-            });
-            formData.append("pregunta", textareaValue);
-            formData.append("idSection", data);
-            selectedFiles.forEach((file, index) => {
-                formData.append("imagenes", file); // Usar el mismo nombre de campo para todas las imágenes
-                formData.append("imagenIndex", index + 1); // Agregar información sobre el índice
-                formData.append("respuestaCorrecta", correctAnswers[index] ? 1 : 0); // Agregar la respuesta correcta
-                formData.append("fila", 0);
-                formData.append("esMuestra", esMuestra[index] ? 1 : 0);
-            });
+            if (textareaValue === '') {
+                bandera = true;
+                daleNombrePregunta();
+            } else if (selectedFiles.length === 0 && imagenesMuestra.length === 0) {
+                bandera = true;
+                Swal.fire({
+                    icon: 'warning',
+                    title: "Agrega una imagen de muestra y opciones de respuesta antes de crear la Pregunta",
+                    confirmButtonText: "¡De acuerdo!",
+                    confirmButtonColor: "rgba(255,67,49,0.75)",
+                }).then((result) => {
+                    console.log("result", result);
+                }).catch((err) => {
+                    console.log(err);
+                });
+            } else if (imagenesMuestra.length < 1) {
+                bandera = true;
+                agregaUnaImagenDeMuestra();
+            } else if (selectedFiles.length < 3) {
+                agregaMinimoOpcionesDeRespuesta(3);
+                bandera = true;
+            } else {
+                fillRespuestaCorrecta();
+                if (respCorrecta === 0) {
+                    bandera = true;
+                    noSeleccionaRespuestaCorrecta();
+                } else if (respCorrecta > 1) {
+                    bandera = true;
+                    seleccionaVariasRespuestasCorrectas();
+                } else {
+                    bandera = false;
+                    /* Llenar el array de esMuestra con las opciones de respuesta */
+                    selectedFiles.forEach(() => {
+                        esMuestra.push(0);
+                    });
+                    /* Llenar el array de esMuestra con las muestras*/
+                    imagenesMuestra.forEach(() => {
+                        esMuestra.push(1);
+                    });
+                    imagenesMuestra.forEach((file) => {
+                        selectedFiles.push(file);
+                    });
+                    formData.append("pregunta", textareaValue);
+                    formData.append("idSection", data);
+                    selectedFiles.forEach((file, index) => {
+                        formData.append("imagenes", file); // Usar el mismo nombre de campo para todas las imágenes
+                        formData.append("imagenIndex", index + 1); // Agregar información sobre el índice
+                        formData.append("respuestaCorrecta", correctAnswers[index] ? 1 : 0); // Agregar la respuesta correcta
+                        formData.append("fila", 0);
+                        formData.append("esMuestra", esMuestra[index] ? 1 : 0);
+                    });
+                }
+            }
         }
         try {
             if (!bandera) {
@@ -950,6 +1144,15 @@ export default function CreatePregunta() {
     const limpiarSelectedFiles = () => {
         setSelectedFiles([]);
     };
+    const limpiarSelectedFiles1 = () => {
+        setSelectedFiles1([]);
+    }
+    const limpiarSelectedFiles2 = () => {
+        setSelectedFiles2([]);
+    }
+    const limpiarSelectedFiles3 = () => {
+        setSelectedFiles3([]);
+    }
     const limpiarImagenesMuestra = () => {
         setImagenesMuestra([]);
     };
@@ -1154,6 +1357,91 @@ export default function CreatePregunta() {
             console.log(err);
         })
     }
+    const showConceptosInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            title: `Crea una Pregunta de tipo ${dato}`,
+            html: "<div>\n" +
+                "                <h4>Paso 1</h4>\n" +
+                `                <p><strong>Dale un nombre</strong> a esta Pregunta. Este nombre servirá únicamente como guía para que puedas identificarla más adelante.</p>` +
+                "                <h4>Paso 2</h4>" +
+                "                <p>Debes agregar opciones de respuesta para tres <strong>Filas</strong> diferentes</p>" +
+                "                <p>Presiona el botón con el símbolo de <strong>+</strong> para agregar una opción de respuesta en cada <strong>Fila</strong>\n" +
+                "                <h4>Paso 3</h4>\n" +
+                "                <p>Selecciona la respuesta correcta de cada <strong>Fila</strong> dando clic en el recuadro que aparece al <strong>lado izquierdo</strong> de la opción de\n" +
+                "                    respuesta (Solo puedes escoger una respuesta correcta por fila)</p>\n" +
+                "                <h4>Paso 4</h4>\n" +
+                "                <p>Puedes presionar el botón <strong>Limpiar Imágenes</strong> para borrar todas las opciones de respuesta de una <strong>Fila</strong> en específico</p>\n" +
+                "                <p>Una vez esté todo listo, presiona el botón <strong>Crear Pregunta</strong> para crear la pregunta</p>\n" +
+                "            </div>",
+            confirmButtonText: "¡De acuerdo!",
+            confirmButtonColor: "rgba(255,67,49,0.75)",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
+        }).then((result) => {
+            console.log("result", result);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const showReconocimientoInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            title: `Crea una Pregunta de tipo ${dato}`,
+            html: "<div>\n" +
+                "                <h4>Paso 1</h4>\n" +
+                `                <p><strong>Dale un nombre</strong> a esta Pregunta. Este nombre servirá únicamente como guía para que puedas identificarla más adelante.</p>\n` +
+                "                <h4>Paso 2</h4>\n" +
+                "                <p>Presiona el botón con el símbolo de <strong>+</strong> en el lado izquierdo de la pantalla\n" +
+                "                    para agregar <strong>Imágenes de muestra</strong>.</p>\n" +
+                "                <p>Estas imágenes son la referencia que tendrá el niño para poder dar una respuesta.</p>" +
+                "                <p>Puedes presionar el botón <strong>Limpiar Imágenes</strong> para borrar todas las imágenes de muestra.</p>\n" +
+                "                <h4>Paso 3</h4>\n" +
+                "                <p>Presiona el botón con el símbolo de <strong>+</strong> en el lado derecho de la pantalla\n" +
+                "                    para agregar <strong>Opciones de Respuesta</strong>.</p>\n" +
+                "                <p>Puedes presionar el botón <strong>Limpiar Imágenes</strong> para borrar todas las opciones de respuesta.</p>\n" +
+                "                <h4>Paso 4</h4>\n" +
+                "                <p>Una vez esté todo listo, presiona el botón <strong>Crear Pregunta</strong> para crear la pregunta</p>\n" +
+                "            </div>",
+            confirmButtonText: "¡De acuerdo!",
+            confirmButtonColor: "rgba(255,67,49,0.75)",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
+        }).then((result) => {
+            console.log("result", result);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const showBusquedaInstructions = () => {
+        Swal.fire({
+            icon: "info",
+            title: `Crea una Pregunta de tipo ${dato}`,
+            html: "<div>\n" +
+                "                <h4>Paso 1</h4>\n" +
+                `                <p><strong>Dale un nombre</strong> a esta Pregunta. Este nombre servirá únicamente como guía para que puedas identificarla más adelante.</p>\n` +
+                "                <h4>Paso 2</h4>\n" +
+                "                <p>Presiona el botón con el símbolo de <strong>+</strong> en el lado izquierdo de la pantalla\n" +
+                "                    para agregar una <strong>Imagen de muestra</strong>.</p>\n" +
+                "                <p>Esta es la imagen que deberá reconocer el niño de entre las opciones de respuesta.</p>" +
+                "                <p>Puedes presionar el botón <strong>Limpiar Imagen</strong> para borrar la imagen de muestra.</p>\n" +
+                "                <h4>Paso 3</h4>\n" +
+                "                <p>Presiona el botón con el símbolo de <strong>+</strong> en el lado derecho de la pantalla\n" +
+                "                    para agregar <strong>Opciones de Respuesta</strong>.</p>\n" +
+                "                <p>Puedes presionar el botón <strong>Limpiar Imágenes</strong> para borrar todas las opciones de respuesta.</p>\n" +
+                "                <h4>Paso 4</h4>\n" +
+                "                <p>Una vez esté todo listo, presiona el botón <strong>Crear Pregunta</strong> para crear la pregunta</p>\n" +
+                "            </div>",
+            confirmButtonText: "¡De acuerdo!",
+            confirmButtonColor: "rgba(255,67,49,0.75)",
+            footer: "Puedes volver a ver estas instrucciones dando clic en el botón de información en la parte " +
+                "superior derecha de la pantalla",
+        }).then((result) => {
+            console.log("result", result);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     const confirmGetBack = () => {
         Swal.fire({
             title: '¿Estás seguro que quieres regresar?',
@@ -1173,6 +1461,14 @@ export default function CreatePregunta() {
     const fillRespuestaCorrecta = () => {
         for (let i = 0; i < selectedFiles.length; i++) {
             if (correctAnswers[i] === true) {
+                respCorrecta = respCorrecta + 1;
+            }
+        }
+    }
+    const fillRespuestaCorrectaConceptos = () => {
+        const tamanio = selectedFiles1.length + selectedFiles2.length + selectedFiles3.length;
+        for (let i = 0; i < tamanio; i++) {
+            if (correctAnswersConceptos[i] === 1) {
                 respCorrecta = respCorrecta + 1;
             }
         }
@@ -1218,7 +1514,6 @@ export default function CreatePregunta() {
                                                                     ...prevRespuestas,
                                                                     [index]: isChecked,
                                                                 }));
-                                                                fillRespuestaCorrecta();
                                                             }}
                                                             className={`w-100`}
                                                         />
@@ -1227,7 +1522,7 @@ export default function CreatePregunta() {
                                                         {file.name}
                                                     </div>
                                                     <div className={`col-3 self-center`}>
-                                                        <strong>(opcion {index + 1})</strong>
+                                                        <strong>(opción {index + 1})</strong>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1281,7 +1576,7 @@ export default function CreatePregunta() {
                                     information={showSemejanzasInstructions}
                                     info_color={button.btn_red}/>
                     <div className={`container-fluid px-5`}>
-                        <h4><label htmlFor="myTextarea">Pregunta</label></h4>
+                        <h4><label htmlFor="myTextarea">Nombre de la Pregunta</label></h4>
                         <textarea
                             id="myTextarea"
                             name="myTextarea"
@@ -1298,7 +1593,7 @@ export default function CreatePregunta() {
                                     className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_answers_semejanzas}`}>
                                     {imagenesMuestra.map((file, index) => (
                                         <div key={index}>
-                                            <div className={`container-fluid `}>
+                                            <div className={`container-fluid`}>
                                                 <div className={`row py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_red}`}>
                                                     <div className={`col-8 py-1`}>
@@ -1351,8 +1646,8 @@ export default function CreatePregunta() {
                                     className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_answers_semejanzas}`}>
                                     {selectedFiles.map((file, index) => (
                                         <div key={index}>
-                                            <div className={`container-fluid `}>
-                                                <div className={`row d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`container-fluid`}>
+                                                <div className={`row py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_red}`}>
                                                     <div className={`col-1 d-flex justify-content-end`}>
                                                         <input
@@ -1920,260 +2215,251 @@ export default function CreatePregunta() {
                 </div>
             )}
             {tipoConceptos && (
-                <div className={`container-fluid`}>
-                    <div
-                        className={`w-100 border-1 border-black shadow-md rounded-2xl py-3 px-5 bg-white 
-                        ${styles.information_text_vocabulario}`}>
-                        En cada fila de imágenes, el niño deberá reconocer aquellas que tienen algo en común.
-                        Un texto aparecerá en pantalla para darle esta indicación
-                    </div>
-                    <br/>
-                    <h5><label htmlFor="myTextarea">Nombre de la pregunta</label></h5>
-                    <textarea
-                        id="myTextarea"
-                        name="myTextarea"
-                        value={textareaValue}
-                        onChange={handleChange}
-                        rows="1" // Puedes ajustar la cantidad de filas según tus necesidades
-                        className={`w-100 border-1 border-black shadow-md rounded-2xl p-3`}
-                    /> <br/> <br/>
-                    <div className={`row`}>
-                        <div className={`col-4`}>
-                            <h5><label>Opciones de respuesta de la Fila 1</label></h5>
-                            <div
-                                className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_samples}`}>
-                                {selectedFiles1.map((file, index) => (
-                                    <div key={index}>
-                                        <div className={`container-fluid p-0`}>
-                                            <div className={`row mx-0 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                <div>
+                    <InstructionBar confirmation={confirmGetBack}
+                                    instruction={`Crea una pregunta`}
+                                    information={showConceptosInstructions}
+                                    info_color={button.btn_red}/>
+                    <div className={`container-fluid px-5`}>
+                        <h4><label htmlFor="myTextarea">Nombre de la Pregunta</label></h4>
+                        <textarea
+                            id="myTextarea"
+                            name="myTextarea"
+                            value={textareaValue}
+                            onChange={handleChange}
+                            rows="1" // Puedes ajustar la cantidad de filas según tus necesidades
+                            className={`w-100 border-1 border-black shadow-md rounded-2xl p-3`}
+                        /> <br/> <br/>
+                        <div className={`row`}>
+                            <div className={`col-4`}>
+                                <h4><label>Opciones de Respuesta de la Fila 1</label></h4>
+                                <div
+                                    className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_samples}`}>
+                                    {selectedFiles1.map((file, index) => (
+                                        <div key={index}>
+                                            <div className={`container-fluid p-0`}>
+                                                <div className={`row py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_red}`}>
-                                                <div className={`col-2 d-flex justify-content-end`}>
-                                                    <input
-                                                        type="checkbox"
-                                                        name={`respuestaCorrecta1_${index}`}
-                                                        checked={correctAnswersConceptos[index] || false}
-                                                        onChange={(e) => {
-                                                            const isChecked = e.target.checked;
-                                                            setCorrectAnswersConceptos((prevRespuestas) => {
-                                                                const newRespuestas = [...prevRespuestas];
-                                                                newRespuestas[index] = isChecked ? 1 : 0;
-                                                                return newRespuestas;
-                                                            });
-                                                        }}
-                                                        className={`w-2/3`}
-                                                    />
-                                                </div>
-                                                <div className={`col-10`}>
-                                                    <div className={`p-0`}>
-                                                        <div className={`${styles.cart_answer_test}`}>
-                                                            {file.name}
-                                                        </div>
-                                                        <div className={`font-bold`}>
-                                                            (opcion {index + 1})
+                                                    <div className={`col-2 d-flex justify-content-end`}>
+                                                        <input
+                                                            type="checkbox"
+                                                            name={`respuestaCorrecta1_${index}`}
+                                                            checked={correctAnswersConceptos[index] || false}
+                                                            onChange={(e) => {
+                                                                const isChecked = e.target.checked;
+                                                                setCorrectAnswersConceptos((prevRespuestas) => {
+                                                                    const newRespuestas = [...prevRespuestas];
+                                                                    newRespuestas[index] = isChecked ? 1 : 0;
+                                                                    return newRespuestas;
+                                                                });
+                                                            }}
+                                                            className={`w-2/3`}
+                                                        />
+                                                    </div>
+                                                    <div className={`col-10`}>
+                                                        <div className={`p-0`}>
+                                                            <div className={`${styles.cart_answer_test}`}>
+                                                                {file.name} <strong>(opción {index + 1})</strong>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br/>
                                         </div>
-                                        <br/>
-                                    </div>
-                                ))}
+                                    ))}
+                                    <br/>
+                                </div>
                                 <br/>
-                            </div>
-                            <br/>
-                            <label htmlFor="myAnswersArea" className="custom-file-upload d-flex justify-center">
-                                <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text} ${styles.btn_sticky}`}>
-                                    +
-                                </div>
-                            </label>
-                            <input
-                                type="file"
-                                id="myAnswersArea"
-                                accept="image/*"
-                                onChange={handleFileChangeConcept1}
-                                style={{display: 'none'}} // Ocultar el input original
-                                multiple
-                            />
-                            <br/>
-                            <div className={`container-fluid`}>
-                                <div className={`row justify-content-evenly`}>
-                                    <div className={`col-12 d-flex justify-content-center`}>
-                                        <button onClick={() => setSelectedFiles1([])}
-                                                className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                            Limpiar imágenes
-                                        </button>
+                                <div className={`container-fluid`}>
+                                    <div className={`row`}>
+                                        <div className={`col-9 p-0`}>
+                                            <div className={`flex justify-center`}>
+                                                <div className={`w-100`}>
+                                                    <Button text={`Limpiar imágenes`} bg_color={button.btn_white}
+                                                            instruction={limpiarSelectedFiles1}></Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={`col-3 flex justify-end self-center`}>
+                                            <label htmlFor="myAnswersArea"
+                                                   className="custom-file-upload d-flex justify-center">
+                                                <div className={`px-3 py-2 rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${button.btn_red} ${styles.btn_text} ${styles.btn_sticky}`}>
+                                                    +
+                                                </div>
+                                            </label>
+                                            <input
+                                                type="file"
+                                                id="myAnswersArea"
+                                                accept="image/*"
+                                                onChange={handleFileChangeConcept1}
+                                                style={{display: 'none'}} // Ocultar el input original
+                                                multiple
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <br/>
-                        </div>
-
-                        <div className={`col-4`}>
-                            <h5><label>Opciones de respuesta de la Fila 2</label></h5>
-                            <div
-                                className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_samples}`}>
-                                {selectedFiles2.map((file, index) => (
-                                    <div key={index}>
-                                        <div className={`container-fluid p-0`}>
-                                            <div className={`row mx-0 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                            <div className={`col-4`}>
+                                <h4><label>Opciones de Respuesta de la Fila 2</label></h4>
+                                <div
+                                    className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_samples}`}>
+                                    {selectedFiles2.map((file, index) => (
+                                        <div key={index}>
+                                            <div className={`container-fluid p-0`}>
+                                                <div className={`row py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_red}`}>
-                                                <div className={`col-2 d-flex justify-content-end`}>
-                                                    <input
-                                                        type="checkbox"
-                                                        name={`otra_vaina_${index + 4}`}
-                                                        checked={correctAnswersConceptos[index + 4] || false}
-                                                        onChange={(e) => {
-                                                            const isChecked = e.target.checked;
-                                                            setCorrectAnswersConceptos((prevRespuestas) => {
-                                                                const newRespuestas = [...prevRespuestas];
-                                                                newRespuestas[index + 4] = isChecked ? 1 : 0;
-                                                                return newRespuestas;
-                                                            });
-                                                        }}
-                                                        className={`w-2/3`}
-                                                    />
-                                                </div>
-                                                <div className={`col-10`}>
-                                                    <div className={`p-0`}>
-                                                        <div className={`${styles.cart_answer_test}`}>
-                                                            {file.name}
-                                                        </div>
-                                                        <div className={`font-bold`}>
-                                                            (opcion {index + 1})
+                                                    <div className={`col-2 d-flex justify-content-end`}>
+                                                        <input
+                                                            type="checkbox"
+                                                            name={`otra_vaina_${index + 4}`}
+                                                            checked={correctAnswersConceptos[index + 4] || false}
+                                                            onChange={(e) => {
+                                                                const isChecked = e.target.checked;
+                                                                setCorrectAnswersConceptos((prevRespuestas) => {
+                                                                    const newRespuestas = [...prevRespuestas];
+                                                                    newRespuestas[index + 4] = isChecked ? 1 : 0;
+                                                                    return newRespuestas;
+                                                                });
+                                                            }}
+                                                            className={`w-2/3`}
+                                                        />
+                                                    </div>
+                                                    <div className={`col-10`}>
+                                                        <div className={`p-0`}>
+                                                            <div className={`${styles.cart_answer_test}`}>
+                                                                {file.name} <strong>(opción {index + 1})</strong>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br/>
                                         </div>
-                                        <br/>
-                                    </div>
-                                ))}
+                                    ))}
+                                    <br/>
+                                </div>
                                 <br/>
-                            </div>
-                            <br/>
-                            <label htmlFor="myAnswersArea2" className="custom-file-upload d-flex justify-center">
-                                <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text} ${styles.btn_sticky}`}>
-                                    +
-                                </div>
-                            </label>
-                            <input
-                                type="file"
-                                id="myAnswersArea2"
-                                accept="image/*"
-                                onChange={handleFileChangeConcept2}
-                                style={{display: 'none'}} // Ocultar el input original
-                                multiple
-                            />
-                            <br/>
-                            <div className={`container-fluid`}>
-                                <div className={`row justify-content-evenly`}>
-                                    <div className={`col-12 d-flex justify-content-center`}>
-                                        <button onClick={() => setSelectedFiles2([])}
-                                                className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                            Limpiar imágenes
-                                        </button>
+                                <div className={`container-fluid`}>
+                                    <div className={`row`}>
+                                        <div className={`col-9 p-0`}>
+                                            <div className={`flex justify-center`}>
+                                                <div className={`w-100`}>
+                                                    <Button text={`Limpiar imágenes`} bg_color={button.btn_white}
+                                                            instruction={limpiarSelectedFiles2}></Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={`col-3 flex justify-end self-center`}>
+                                            <label htmlFor="myAnswersArea2"
+                                                   className="custom-file-upload d-flex justify-center">
+                                                <div className={`px-3 py-2 rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${button.btn_red} ${styles.btn_text} ${styles.btn_sticky}`}>
+                                                    +
+                                                </div>
+                                            </label>
+                                            <input
+                                                type="file"
+                                                id="myAnswersArea2"
+                                                accept="image/*"
+                                                onChange={handleFileChangeConcept2}
+                                                style={{display: 'none'}} // Ocultar el input original
+                                                multiple
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <br/>
-                        </div>
-                        <div className={`col-4`}>
-                            <h5><label>Opciones de respuesta de la Fila 3</label></h5>
-                            <div
-                                className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_samples}`}>
-                                {selectedFiles3.map((file, index) => (
-                                    <div key={index}>
-                                        <div className={`container-fluid p-0`}>
-                                            <div className={`row mx-0 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                            <div className={`col-4`}>
+                                <h4><label>Opciones de respuesta de la Fila 3</label></h4>
+                                <div
+                                    className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_samples}`}>
+                                    {selectedFiles3.map((file, index) => (
+                                        <div key={index}>
+                                            <div className={`container-fluid p-0`}>
+                                                <div className={`row py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_red}`}>
-                                                <div className={`col-2 d-flex justify-content-end`}>
-                                                    <input
-                                                        type="checkbox"
-                                                        name={`respuestaCorrecta3_${index + 8}`}
-                                                        checked={correctAnswersConceptos[index + 8] || false}
-                                                        onChange={(e) => {
-                                                            const isChecked = e.target.checked;
-                                                            setCorrectAnswersConceptos((prevRespuestas) => {
-                                                                const newRespuestas = [...prevRespuestas];
-                                                                newRespuestas[index + 8] = isChecked ? 1 : 0;
-                                                                return newRespuestas;
-                                                            });
-                                                        }}
-                                                        className={`w-2/3`}
-                                                    />
-                                                </div>
-                                                <div className={`col-10`}>
-                                                    <div className={`p-0`}>
-                                                        <div className={`${styles.cart_answer_test}`}>
-                                                            {file.name}
-                                                        </div>
-                                                        <div className={`font-bold`}>
-                                                            (opcion {index + 1})
+                                                    <div className={`col-2 d-flex justify-content-end`}>
+                                                        <input
+                                                            type="checkbox"
+                                                            name={`respuestaCorrecta3_${index + 8}`}
+                                                            checked={correctAnswersConceptos[index + 8] || false}
+                                                            onChange={(e) => {
+                                                                const isChecked = e.target.checked;
+                                                                setCorrectAnswersConceptos((prevRespuestas) => {
+                                                                    const newRespuestas = [...prevRespuestas];
+                                                                    newRespuestas[index + 8] = isChecked ? 1 : 0;
+                                                                    return newRespuestas;
+                                                                });
+                                                            }}
+                                                            className={`w-2/3`}
+                                                        />
+                                                    </div>
+                                                    <div className={`col-10`}>
+                                                        <div className={`p-0`}>
+                                                            <div className={`${styles.cart_answer_test}`}>
+                                                                {file.name} <strong>(opción {index + 1})</strong>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br/>
                                         </div>
-                                        <br/>
-                                    </div>
-                                ))}
+                                    ))}
+                                    <br/>
+                                </div>
                                 <br/>
-                            </div>
-                            <br/>
-                            <label htmlFor="myAnswersArea3" className="custom-file-upload d-flex justify-center">
-                                <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text} ${styles.btn_sticky}`}>
-                                    +
-                                </div>
-                            </label>
-                            <input
-                                type="file"
-                                id="myAnswersArea3"
-                                accept="image/*"
-                                onChange={handleFileChangeConcept3}
-                                style={{display: 'none'}} // Ocultar el input original
-                                multiple
-                            />
-                            <br/>
-                            <div className={`container-fluid`}>
-                                <div className={`row justify-content-evenly`}>
-                                    <div className={`col-12 d-flex justify-content-center`}>
-                                        <button onClick={() => setSelectedFiles3([])}
-                                                className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                            Limpiar imágenes
-                                        </button>
+                                <div className={`container-fluid`}>
+                                    <div className={`row`}>
+                                        <div className={`col-9 p-0`}>
+                                            <div className={`flex justify-center`}>
+                                                <div className={`w-100`}>
+                                                    <Button text={`Limpiar imágenes`} bg_color={button.btn_white}
+                                                            instruction={limpiarSelectedFiles3}></Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={`col-3 flex justify-end self-center`}>
+                                            <label htmlFor="myAnswersArea3"
+                                                   className="custom-file-upload d-flex justify-center">
+                                                <div className={`px-3 py-2 rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${button.btn_red} ${styles.btn_text} ${styles.btn_sticky}`}>
+                                                    +
+                                                </div>
+                                            </label>
+                                            <input
+                                                type="file"
+                                                id="myAnswersArea3"
+                                                accept="image/*"
+                                                onChange={handleFileChangeConcept3}
+                                                style={{display: 'none'}} // Ocultar el input original
+                                                multiple
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <br/>
                         </div>
-                    </div>
-                    <div className={`d-flex justify-content-center`}>
-                        <button onClick={handleUpload}
-                                className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                            Crear Pregunta
-                        </button>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={`w-25`}>
+                                <Button text={`Crear Pregunta`} bg_color={button.btn_red}
+                                        instruction={handleUpload}></Button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}
             {tipoReconocimiento && (
                 <div>
+                    <InstructionBar confirmation={confirmGetBack}
+                                    instruction={`Crea una pregunta`}
+                                    information={showReconocimientoInstructions}
+                                    info_color={button.btn_red}/>
                     <div className={`container-fluid px-5`}>
-                        <div
-                            className={`w-100 border-1 border-black shadow-md rounded-2xl py-3 px-5 bg-white 
-                        ${styles.information_text_vocabulario}`}>
-                            Carga en las imágenes de muestra, las imágenes que el niño deberá reconocer. En las opciones
-                            de respuesta deberás incluir las imágenes que cargaste en las imágenes de muestra e imágenes
-                            adicionales para añadir dificultad.
-                        </div>
-                        <br/>
-                        <h5><label htmlFor="myTextarea">Pregunta</label></h5>
+                        <h4><label htmlFor="myTextarea">Nombre de la Pregunta</label></h4>
                         <textarea
                             id="myTextarea"
                             name="myTextarea"
@@ -2183,82 +2469,70 @@ export default function CreatePregunta() {
                             className={`w-100 border-1 border-black shadow-md rounded-2xl p-3`}
                         />
                         <br/> <br/>
-                        {warningLengthMessage && (
-                            <div>
-                                <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                                    ¡No se puede añadir más de 8 opciones de respuesta!
-                                </div>
-                                <br/> <br/>
-                            </div>
-                        )}
-                        {warningLengthSampleMessage && (
-                            <div>
-                                <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                                    ¡No se puede añadir más de 2 imágenes de muestra!
-                                </div>
-                                <br/> <br/>
-                            </div>
-                        )}
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <h5><label>Imágenes de Muestra</label></h5>
-                                <div className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white`}>
+                                <h4><label>Imágenes de Muestra</label></h4>
+                                <div
+                                    className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_answers_semejanzas}`}>
                                     {imagenesMuestra.map((file, index) => (
                                         <div key={index}>
-                                            <div className={`container-fluid `}>
-                                                <div className={`row mx-5 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`container-fluid`}>
+                                                <div className={`row py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_red}`}>
-                                                    <div className={`col-5`}>
-                                                        <div className={`py-3`}>
-                                                            {file.name}
-                                                            <div className={`font-bold`}>
-                                                                (muestra {index + 1})
-                                                            </div>
-                                                        </div>
+                                                    <div className={`col-8 py-1`}>
+                                                        {file.name}
+                                                    </div>
+                                                    <div className={`col-3 self-center`}>
+                                                        <strong>(muestra {index + 1}) </strong>
                                                     </div>
                                                 </div>
                                             </div>
                                             <br/>
                                         </div>
                                     ))}
-                                    <label htmlFor="myMuestraArea" className="custom-file-upload d-flex justify-center">
-                                        <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                            +
+                                </div>
+                                <br/>
+                                <div className={`container-fluid`}>
+                                    <div className={`row justify-content-evenly`}>
+                                        <div className={`col-3 flex justify-center`}>
+                                            <label htmlFor="myMuestraArea"
+                                                   className="custom-file-upload d-flex justify-center">
+                                                <div className={`px-3 py-2 text-white rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${button.btn_red} ${styles.btn_text}`}>
+                                                    +
+                                                </div>
+                                            </label>
+                                            <input
+                                                type="file"
+                                                id="myMuestraArea"
+                                                accept="image/*"
+                                                onChange={handleFileChangeMuestraReconocimiento}
+                                                style={{display: 'none'}} // Ocultar el input original
+                                                multiple
+                                            />
                                         </div>
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="myMuestraArea"
-                                        accept="image/*"
-                                        onChange={handleFileChangeMuestraReconocimiento}
-                                        style={{display: 'none'}} // Ocultar el input original
-                                        multiple
-                                    />
-                                    <br/>
-                                    <div className={`container-fluid`}>
-                                        <div className={`row justify-content-evenly`}>
-                                            <div className={`col-12 d-flex justify-content-center`}>
-                                                <button onClick={() => setImagenesMuestra([])}
-                                                        className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                                    Limpiar imágenes
-                                                </button>
+                                        <div className={`col-8`}>
+                                            <div className={`flex justify-end`}>
+                                                <div className={`w-75`}>
+                                                    <Button text={`Limpiar Imágenes`}
+                                                            instruction={limpiarImagenesMuestra}
+                                                            bg_color={button.btn_white}/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <br/>
                                 </div>
                             </div>
                             <div className={`col-6`}>
-                                <h5><label>Opciones de Repsuesta</label></h5>
-                                <div className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white`}>
+                                <h4><label>Opciones de Respuesta</label></h4>
+                                <div
+                                    className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_answers_semejanzas}`}>
                                     {selectedFiles.map((file, index) => (
                                         <div key={index}>
-                                            <div className={`container-fluid `}>
-                                                <div className={`row mx-5 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                            <div className={`container-fluid`}>
+                                                <div className={`row py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_red}`}>
-                                                    <div className={`col-2 d-flex justify-content-end`}>
+                                                    <div className={`col-1 d-flex justify-content-end`}>
                                                         <input
                                                             type="checkbox"
                                                             name={`respuestaCorrecta_${index}`}
@@ -2270,56 +2544,59 @@ export default function CreatePregunta() {
                                                                     [index]: isChecked,
                                                                 }));
                                                             }}
-                                                            className={`w-4/12`}
+                                                            className={`w-100`}
                                                         />
                                                     </div>
-                                                    <div className={`col-5`}>
-                                                        <div className={`py-3`}>
-                                                            <div>{file.name}</div>
-                                                            <div className={`font-bold`}>(opcion {index + 1})</div>
-                                                        </div>
+                                                    <div className={`col-8 py-1`}>
+                                                        <div>{file.name}</div>
+                                                    </div>
+                                                    <div className={`col-3 self-center`}>
+                                                        <strong>(opción {index + 1})</strong>
                                                     </div>
                                                 </div>
                                             </div>
                                             <br/>
                                         </div>
                                     ))}
-                                    <label htmlFor="myAnswersArea" className="custom-file-upload d-flex justify-center">
-                                        <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                            +
+                                </div>
+                                <br/>
+                                <div className={`container-fliud`}>
+                                    <div className={`row justify-content-evenly`}>
+                                        <div className={`col-3 flex justify-center`}>
+                                            <label htmlFor="myAnswersArea"
+                                                   className="custom-file-upload d-flex justify-center">
+                                                <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${button.btn_red} ${styles.btn_text}`}>
+                                                    +
+                                                </div>
+                                            </label>
+                                            <input
+                                                type="file"
+                                                id="myAnswersArea"
+                                                accept="image/*"
+                                                onChange={handleFileChangeReconocimiento}
+                                                style={{display: 'none'}} // Ocultar el input original
+                                                multiple
+                                            />
                                         </div>
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="myAnswersArea"
-                                        accept="image/*"
-                                        onChange={handleFileChangeReconocimiento}
-                                        style={{display: 'none'}} // Ocultar el input original
-                                        multiple
-                                    />
-                                    <br/>
-                                    <div className={`container-fluid`}>
-                                        <div className={`row justify-content-evenly`}>
-                                            <div className={`col-12 d-flex justify-content-center`}>
-                                                <button onClick={() => setSelectedFiles([])}
-                                                        className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                                    Limpiar imágenes
-                                                </button>
+                                        <div className={`col-8`}>
+                                            <div className={`flex justify-end`}>
+                                                <div className={`w-75`}>
+                                                    <Button text={`Limpiar Imágenes`}
+                                                            instruction={limpiarSelectedFiles}
+                                                            bg_color={button.btn_white}/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <br/>
                                 </div>
-                                <br/>
                             </div>
-                            <div className={`d-flex justify-content-center`}>
-                                <button onClick={handleUpload}
-                                        className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                    Crear Pregunta
-                                </button>
+                        </div>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={`w-25`}>
+                                <Button text={`Crear Pregunta`} bg_color={button.btn_red}
+                                        instruction={handleUpload}></Button>
                             </div>
                         </div>
                     </div>
@@ -2327,16 +2604,12 @@ export default function CreatePregunta() {
             )}
             {tipoBusqueda && (
                 <div>
+                    <InstructionBar confirmation={confirmGetBack}
+                                    instruction={`Crea una pregunta`}
+                                    information={showBusquedaInstructions}
+                                    info_color={button.btn_red}/>
                     <div className={`container-fluid px-5`}>
-                        <div
-                            className={`w-100 border-1 border-black shadow-md rounded-2xl py-3 px-5 bg-white 
-                        ${styles.information_text_vocabulario}`}>
-                            Dentro de la imagen de muestra, carga la imagen del animal que deseas que el niño
-                            identifique. En las opciones, carga imágenes de otros animales, incluída la imagen de
-                            muestra
-                        </div>
-                        <br/>
-                        <h5><label htmlFor="myTextarea">Pregunta</label></h5>
+                        <h4><label htmlFor="myTextarea">Pregunta</label></h4>
                         <textarea
                             id="myTextarea"
                             name="myTextarea"
@@ -2346,39 +2619,21 @@ export default function CreatePregunta() {
                             className={`w-100 border-1 border-black shadow-md rounded-2xl p-3`}
                         />
                         <br/> <br/>
-                        {warningLengthMessage && (
-                            <div>
-                                <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                                    ¡No se puede añadir más de 6 opciones de respuesta!
-                                </div>
-                                <br/> <br/>
-                            </div>
-                        )}
-                        {warningLengthSampleMessage && (
-                            <div>
-                                <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                                    ¡No se puede añadir más de 1 imagen de muestra!
-                                </div>
-                                <br/> <br/>
-                            </div>
-                        )}
                         <div className={`row`}>
                             <div className={`col-6`}>
-                                <h5><label>Imagen de Muestra</label></h5>
+                                <h4><label>Imagen de Muestra</label></h4>
                                 <div
                                     className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_samples_2}`}>
                                     {imagenesMuestra.map((file, index) => (
                                         <div key={index}>
                                             <div className={`container-fluid `}>
-                                                <div className={`row mx-5 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                                <div className={`row py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_red}`}>
-                                                    <div className={`col-5`}>
-                                                        <div className={`py-3`}>
-                                                            {file.name}
-                                                            <div className={`font-bold`}>
-                                                                (muestra {index + 1})
-                                                            </div>
-                                                        </div>
+                                                    <div className={`col-9 py-2`}>
+                                                        {file.name}
+                                                    </div>
+                                                    <div className={`col-3 self-center`}>
+                                                        <strong>(muestra {index + 1})</strong>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2387,44 +2642,47 @@ export default function CreatePregunta() {
                                     ))}
                                 </div>
                                 <br/>
-                                <label htmlFor="myMuestraArea" className="custom-file-upload d-flex justify-center">
-                                    <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                        +
-                                    </div>
-                                </label>
-                                <input
-                                    type="file"
-                                    id="myMuestraArea"
-                                    accept="image/*"
-                                    onChange={handleFileChangeMuestraBusqueda}
-                                    style={{display: 'none'}} // Ocultar el input original
-                                    multiple
-                                />
-                                <br/>
                                 <div className={`container-fluid`}>
                                     <div className={`row justify-content-evenly`}>
-                                        <div className={`col-12 d-flex justify-content-center`}>
-                                            <button onClick={() => setImagenesMuestra([])}
-                                                    className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                                Limpiar imágenes
-                                            </button>
+                                        <div className={`col-3 flex justify-center`}>
+                                            <label htmlFor="myMuestraArea"
+                                                   className="custom-file-upload d-flex justify-center">
+                                                <div className={`px-3 py-2 text-white rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${button.btn_red} ${styles.btn_text}`}>
+                                                    +
+                                                </div>
+                                            </label>
+                                            <input
+                                                type="file"
+                                                id="myMuestraArea"
+                                                accept="image/*"
+                                                onChange={handleFileChangeMuestraBusqueda}
+                                                style={{display: 'none'}} // Ocultar el input original
+                                                multiple
+                                            />
+                                        </div>
+                                        <div className={`col-8`}>
+                                            <div className={`flex justify-end`}>
+                                                <div className={`w-75`}>
+                                                    <Button text={`Limpiar Imágenes`}
+                                                            instruction={limpiarImagenesMuestra}
+                                                            bg_color={button.btn_white}/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <br/>
                             </div>
                             <div className={`col-6`}>
-                                <h5><label>Opciones de Respuesta</label></h5>
+                                <h4><label>Opciones de Respuesta</label></h4>
                                 <div
                                     className={`border-1 border-black shadow-md rounded-2xl px-5 pt-4 bg-white ${styles.overflow_container_answers_busqueda}`}>
                                     {selectedFiles.map((file, index) => (
                                         <div key={index}>
                                             <div className={`container-fluid `}>
-                                                <div className={`row mx-5 d-flex py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
+                                                <div className={`row py-2 px-2 border-2 border-black border-opacity-10 shadow-md rounded-xl
                                 ${styles.card_body_red}`}>
-                                                    <div className={`col-2 d-flex justify-content-end`}>
+                                                    <div className={`col-1 d-flex justify-content-end`}>
                                                         <input
                                                             type="checkbox"
                                                             name={`respuestaCorrecta_${index}`}
@@ -2436,14 +2694,14 @@ export default function CreatePregunta() {
                                                                     [index]: isChecked,
                                                                 }));
                                                             }}
-                                                            className={`w-4/12`}
+                                                            className={`w-100`}
                                                         />
                                                     </div>
-                                                    <div className={`col-5`}>
-                                                        <div className={`py-3`}>
-                                                            <div>{file.name}</div>
-                                                            <div className={`font-bold`}>(opcion {index + 1})</div>
-                                                        </div>
+                                                    <div className={`col-8 py-1`}>
+                                                        <div>{file.name}</div>
+                                                    </div>
+                                                    <div className={`col-3 self-center`}>
+                                                        <strong>(opción {index + 1})</strong>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2452,62 +2710,48 @@ export default function CreatePregunta() {
                                     ))}
                                 </div>
                                 <br/>
-                                <label htmlFor="myAnswersArea" className="custom-file-upload d-flex justify-center">
-                                    <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                        +
-                                    </div>
-                                </label>
-                                <input
-                                    type="file"
-                                    id="myAnswersArea"
-                                    accept="image/*"
-                                    onChange={handleFileChangeBusqueda}
-                                    style={{display: 'none'}} // Ocultar el input original
-                                    multiple
-                                />
-                                <br/>
-                                <div className={`container-fluid`}>
+                                <div className={`container-fliud`}>
                                     <div className={`row justify-content-evenly`}>
-                                        <div className={`col-12 d-flex justify-content-center`}>
-                                            <button onClick={() => setSelectedFiles([])}
-                                                    className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                                Limpiar imágenes
-                                            </button>
+                                        <div className={`col-3 flex justify-center`}>
+                                            <label htmlFor="myAnswersArea"
+                                                   className="custom-file-upload d-flex justify-center">
+                                                <div className={`px-4 py-2 text-white rounded-3xl shadow-md font-bold
+                    border-2 border-black border-opacity-10 ${button.btn_red} ${styles.btn_text}`}>
+                                                    +
+                                                </div>
+                                            </label>
+                                            <input
+                                                type="file"
+                                                id="myAnswersArea"
+                                                accept="image/*"
+                                                onChange={handleFileChangeBusqueda}
+                                                style={{display: 'none'}} // Ocultar el input original
+                                                multiple
+                                            />
+                                        </div>
+                                        <div className={`col-8`}>
+                                            <div className={`flex justify-end`}>
+                                                <div className={`w-75`}>
+                                                    <Button text={`Limpiar Imágenes`}
+                                                            instruction={limpiarSelectedFiles}
+                                                            bg_color={button.btn_white}/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <br/>
                             </div>
-                            <div className={`d-flex justify-content-center`}>
-                                <button onClick={handleUpload}
-                                        className={`px-5 py-2 text-black rounded-3xl shadow-md font-bold
-                    border-2 border-black border-opacity-10 ${navstyles.upper_bar_red} ${styles.btn_text}`}>
-                                    Crear Pregunta
-                                </button>
+                        </div>
+                        <br/>
+                        <div className={`flex justify-center`}>
+                            <div className={`w-25`}>
+                                <Button text={`Crear Pregunta`} bg_color={button.btn_red}
+                                        instruction={handleUpload}></Button>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
-            {successMessage && (
-                <div>
-                    <br/>
-                    <div className="alert alert-success d-flex justify-content-center" role="alert">
-                        ¡Pregunta Creada Correctamente!
-                    </div>
-                </div>
-            )}
-            {warningMessage && (
-                <div>
-                    <br/>
-                    <div className="alert alert-warning d-flex justify-content-center" role="alert">
-                        ¡Esta pregunta ya se encuentra registrada!
-                    </div>
-                </div>
-            )}
-            <br/>
         </main>
     )
 }

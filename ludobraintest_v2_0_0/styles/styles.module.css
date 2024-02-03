@@ -573,7 +573,7 @@
 .overflow_container_answers_busqueda {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 148px;
+    height: 133px;
 }
 
 .answer_btn {
@@ -796,4 +796,12 @@
     color: white;
     text-shadow: black 0.1em 0.1em 0.4em;
     font-weight: bold;
+}
+
+.megafono_image {
+    width: 7%;
+}
+
+.nombres_text {
+    text-align: center;
 }

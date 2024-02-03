@@ -9,6 +9,8 @@ import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
 import Swal from "sweetalert2";
 import Button from "@/components/Button";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
 
 const initialSelectedAnswers = {
     fila1: null,
@@ -25,7 +27,10 @@ export default function ReadPreguntaConceptos() {
     const id_test = localStorage.getItem('id_test');
     const nombre_test = localStorage.getItem('nombre_test');
     let arregloPreguntas;
+    const { speak, speaking } = UseSpeechSynthesis();
+    const texto = "¡Selecciona una imagen de cada fila! Recuerda que las imágenes deben tener alguna relación entre sí.";
     /*------------------- ESTADOS -------------------*/
+    const [isSpeaking, setIsSpeaking] = useState(false);
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState([]);
     const [preguntaActual, setPreguntaActual] = useState('');
@@ -93,6 +98,7 @@ export default function ReadPreguntaConceptos() {
     }
     const verifyAnswer = () => {
         if (correctAnswers.fila1 === 1 && correctAnswers.fila2 === 1 && correctAnswers.fila3 === 1) {
+            setIsSpeaking(false);
             console.log("Respuesta correcta");
             setPuntaje(prevPuntaje => prevPuntaje + 1);
             let timerInterval;
@@ -101,6 +107,7 @@ export default function ReadPreguntaConceptos() {
                 title: "¡Respuesta correcta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -114,6 +121,7 @@ export default function ReadPreguntaConceptos() {
                 }
             });
         } else {
+            setIsSpeaking(false);
             console.log("Respuesta incorrecta");
             let timerInterval;
             Swal.fire({
@@ -121,6 +129,7 @@ export default function ReadPreguntaConceptos() {
                 title: "¡Respuesta incorrecta!",
                 timer: 3000,
                 timerProgressBar: true,
+                allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
                 },
@@ -145,12 +154,12 @@ export default function ReadPreguntaConceptos() {
                 setPreguntaActualIndex(prevPreguntaActualIndex => prevPreguntaActualIndex + 1);
             } else {
                 console.log("No hay más preguntas");
-                router.push('/puntajeFinal');
+                router.push('/puntajeFinal').then(r => console.log(r));
+                shutUp();
             }
         }, 3000);
     }
     const handleSelectedAnswer = (e, respuestaCorrecta, fila) => {
-        console.log("id de la respuesta", e);
         const selectedAnswerId = e;
         const correctAnswer = respuestaCorrecta;
         // Desmarca la respuesta previamente seleccionada en la misma fila
@@ -162,8 +171,6 @@ export default function ReadPreguntaConceptos() {
             ...prevCorrectAnswers,
             [fila]: correctAnswer,
         }));
-        console.log("selectedAnswers", selectedAnswers);
-        console.log("respuestasCorrectas", correctAnswers);
     }
     const confirmGetBack = () => {
         Swal.fire({
@@ -177,25 +184,43 @@ export default function ReadPreguntaConceptos() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/menuOpcionesTest');
+                router.push('/menuOpcionesTest').then(r => console.log(r));
+                shutUp();
             }
         })
     }
+    const repeatVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(texto);
+                } while (isSpeaking);
+            }
+        }
+    }
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
+    }
+    useVoiceReader(texto, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={sections.conceptos}></UpperBar>
+            <UpperBar color={sections.conceptos}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>
                     <div className={`col-sm-3 col-lg-2`}>
                         <QuestionBar confirmGetBack={confirmGetBack}
                                      nombreTest={nombre_test}
-                                     labelColor={styles.label_blue}/>
+                                     labelColor={styles.label_blue}
+                                     voiceCommand={repeatVoice}
+                                     silenceCommand={shutUp}/>
                     </div>
                     <div className={`col-2 self-center`}>
                         <div className={`px-4 flex-col justify-center h-fit ${styles.instruction_matrix_text}`}>
-                            <p><strong>¡Debes elegir una imagen de cada fila!</strong></p>
+                            <p><strong>¡Selecciona una imagen de cada fila!</strong></p>
                             <p>Recuerda que las imágenes deben tener alguna
                                 relación entre sí.</p>
                         </div>

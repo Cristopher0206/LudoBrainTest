@@ -6,14 +6,19 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import styles from "@/styles/styles.module.css";
 import button from "@/styles/button.module.css";
-import Link from "next/link";
 import Button from "@/components/Button";
 import Swal from 'sweetalert2'
 import SweetAlert from "sweetalert2";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
 
 export default function SelectNinio() {
     const router = useRouter();
+    const {speak, speaking} = UseSpeechSynthesis();
     let section;
+    const text = "En la parte izquierda de la pantalla, selecciona al niño que realizará la evaluación. " +
+        "En la parte derecha, selecciona la sección y la evaluación que realizará el niño, ," +
+        "Una vez seleccionados, presiona el botón \"Iniciar sesión de evaluación\".";
     /*------------------- ESTADOS -------------------*/
     const [children, setChildren] = useState([]);
     const [childSelected, setChildSelected] = useState('');
@@ -44,6 +49,8 @@ export default function SelectNinio() {
     const [conceptosTitle, setConceptosTitle] = useState(false);
     const [reconocimientoTitle, setReconocimientoTitle] = useState(false);
     const [busquedaTitle, setBusquedaTitle] = useState(false);
+    // Estado para el texto de las instrucciones
+    const [isSpeaking, setIsSpeaking] = useState(false);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getNinios();
@@ -356,7 +363,8 @@ export default function SelectNinio() {
         }).then((res) => {
             localStorage.setItem('dato', res.data[0].id_t_n);
             localStorage.setItem('dato2', testSelected);
-            router.push(`/menuOpcionesTest`);
+            router.push(`/menuOpcionesTest`).then(r => console.log(r));
+            shutUp();
         }).catch((err) => {
             console.log(err);
         })
@@ -407,6 +415,7 @@ export default function SelectNinio() {
             }).then((res) => {
                 console.log("Test iniciado correctamente");
                 getTestSession();
+                shutUp();
             }).catch((err) => {
                 console.log(err);
             })
@@ -434,6 +443,7 @@ export default function SelectNinio() {
                 "                        la evaluación que realizará el niño.</strong></p>\n" +
                 "                <h5>Paso 3</h5>\n" +
                 "                <p>Una vez seleccionado el niño y la evaluación, presiona el botón <strong>\"Iniciar sesión de Evaluación\"</strong></p>" +
+                "                " +
                 "            </div>",
             confirmButtonText: "¡De acuerdo!",
             confirmButtonColor: "rgba(25,169,182,0.75)",
@@ -446,19 +456,38 @@ export default function SelectNinio() {
         })
     }
     const confirmGetBack = () => {
-        router.push('/modulos');
+        router.push('/modulos').then(r => console.log(r));
+        shutUp();
     }
+    const hearVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    };
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
+    }
+    useVoiceReader(text, isSpeaking);
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar color={navstyles.upper_bar_skyblue}/>
             <InstructionBar confirmation={confirmGetBack}
-                            instruction={`Selecciona al Jugador y la Evaluación que realizará`}
+                            instruction={`Selecciona al niño y la evaluación que realizará`}
                             information={showInstructions}
-                            info_color={button.btn_blue}/>
+                            info_color={button.btn_blue}
+                            voiceCommand={hearVoice}
+                            silenceCommand={shutUp}/>
             <div className={`container-fluid`}>
                 <div className={`row`}>
                     <div className={`col-6 ${styles.overflow_col}`}>
-                        <h4 className={`d-flex justify-content-center`}>Jugador</h4>
+                        <h4 className={`d-flex justify-content-center`}>Niños</h4>
                         <div className={`container-fluid border-1 border-black shadow-md rounded-2xl bg-white px-4
                         ${styles.overflow_container}`}>
                             <br/>

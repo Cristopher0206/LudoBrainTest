@@ -6,12 +6,19 @@ import navstyles from "@/styles/navstyles.module.css";
 import button from "@/styles/button.module.css";
 import {useRouter} from "next/router";
 import axios from "axios";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
+import {useState} from "react";
 
 export default function PuntajeFinal() {
     const router = useRouter();
     const puntaje = localStorage.getItem('puntaje');
+    const { speak, speaking } = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
+    const [isSpeaking, setIsSpeaking] = useState(false);
     /*------------------- EFECTOS -------------------*/
+    const text = "¡Felicitaciones! Completaste la Evaluación. Tu puntuación final es " + puntaje;
+    useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const finishTest = () => {
         axios({
@@ -25,17 +32,35 @@ export default function PuntajeFinal() {
             url: 'http://localhost:3001/finishTest',
         }).then(res => {
             console.log(res.data);
-            router.push(`/menuOpcionesTest`);
+            router.push(`/menuOpcionesTest`).then(r => console.log(r));
+            shutUp();
         }).catch(err => {
             console.log(err);
         })
     }
+    const hearVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    };
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_skyblue}></UpperBar>
+            <UpperBar color={navstyles.upper_bar_skyblue}/>
             <InstructionBar previousPage={`#`}
-                            instruction={`Observa la puntuación final`}/>
+                            instruction={`Observa la puntuación final`}
+                            hiddenInfo={`hidden`}
+                            voiceCommand={hearVoice}
+                            silenceCommand={shutUp}/>
             <br/>
             <div className={`container-fluid flex flex-col justify-center`}>
                 <div className={`row ${styles.test_info} self-center`}>

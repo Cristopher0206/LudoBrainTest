@@ -8,16 +8,23 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import axios from "axios";
 import Swal from "sweetalert2";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
 
 export default function ReadNinio() {
     const router = useRouter();
+    const { speak, speaking } = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
     const [children, setChildren] = useState([]);
+    const [isSpeaking, setIsSpeaking] = useState(false);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getNinios();
         showInstructions();
     }, []);
+    const text = "¡Bienvenido al Módulo de Registro! Aquí podrás ver la lista de Niños que has registrado. Dale clic al botón con el símbolo " +
+        "\"más\" que se encuentra en la parte superior central de la pantalla para registrar un nuevo niño. ";
+    useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const getNinios = () => {
         axios({
@@ -88,13 +95,16 @@ export default function ReadNinio() {
     }
     const goActualizarNinio = (idNinio) => {
         sessionStorage.setItem('dataToPass', idNinio);
-        router.push('../update/updateNinio')
+        router.push('../update/updateNinio').then(r => console.log(r));
+        shutUp();
     }
     const goCreateNinio = () => {
-        router.push('/create/createNinio')
+        router.push('/create/createNinio').then(r => console.log(r));
+        shutUp();
     }
     const confirmGetBack = () => {
-        router.push('/modulos')
+        router.push('/modulos').then(r => console.log(r));
+        shutUp();
     }
     const showInstructions = () => {
         Swal.fire({
@@ -120,15 +130,32 @@ export default function ReadNinio() {
             console.log(err);
         })
     }
+    const hearVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    };
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar color={navstyles.upper_bar_yellow}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Registra un niño`}
                             information={showInstructions}
-                            info_color={button.btn_yellow}/>
+                            info_color={button.btn_yellow}
+                            voiceCommand={hearVoice}
+                            silenceCommand={shutUp}/>
             <AddButton createPage={goCreateNinio}
-                       color={navstyles.upper_bar_yellow}/>
+                       color={button.btn_yellow}/>
             <br/>
             <div className={`px-32`}>
                 <div className={`container-fluid border-1 border-black shadow-md rounded-2xl bg-white

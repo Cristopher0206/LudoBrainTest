@@ -16,7 +16,7 @@ export default function SelectNinio() {
     const router = useRouter();
     const {speak, speaking} = UseSpeechSynthesis();
     let section;
-    const text = "En la parte izquierda de la pantalla, selecciona al niño que realizará la evaluación. " +
+    const text = "¡Bienvenido al módulo de Evaluación! En la parte izquierda de la pantalla, selecciona al niño que realizará la evaluación. " +
         "En la parte derecha, selecciona la sección y la evaluación que realizará el niño, ," +
         "Una vez seleccionados, presiona el botón \"Iniciar sesión de evaluación\".";
     /*------------------- ESTADOS -------------------*/

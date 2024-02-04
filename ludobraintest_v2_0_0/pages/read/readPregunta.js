@@ -8,11 +8,16 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
+import {shouldUseURLPlugin} from "next/dist/build/webpack/loaders/css-loader/src/utils";
 
 export default function ReadPregunta() {
     const router = useRouter();
     let section;
+    const {speak, speaking} = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
+    const [isSpeaking, setIsSpeaking] = useState(false);
     const [sectionSelected, setSectionSelected] = useState('');
     const [sections, setSections] = useState([]);
     // Estados para las preguntas
@@ -42,6 +47,11 @@ export default function ReadPregunta() {
         getSections();
         showInstructions();
     }, []);
+    const text = "¡Bienvenido al módulo de Administración de Preguntas!" +
+        "Selecciona una sección para ver la lista de preguntas creadas,..." +
+        "Dale clic al botón con el símbolo \"más\" que se encuentra en la parte superior central de la pantalla " +
+        "para crear una nueva pregunta.";
+    useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const getInformacionQuestions = () => {
         axios({
@@ -388,6 +398,7 @@ export default function ReadPregunta() {
                             title: "¡Pregunta eliminada Correctamente!",
                             timer: 3000,
                             timerProgressBar: true,
+                            allowOutsideClick: false,
                             didOpen: () => {
                                 Swal.showLoading();
                             },
@@ -566,18 +577,37 @@ export default function ReadPregunta() {
     const goCreatePregunta = () => {
         router.push("/select/selectSeccionPregunta")
             .then((result) => console.log(result));
+        shutUp();
     }
     const confirmGetBack = () => {
         router.push('/modulosCreacion')
             .then((result) => console.log(result));
+        shutUp();
+    }
+    const hearVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    };
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={navstyles.upper_bar_red}></UpperBar>
+            <UpperBar color={navstyles.upper_bar_red}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Crea una nueva pregunta`}
                             information={showInstructions}
-                            info_color={button.btn_red}/>
+                            info_color={button.btn_red}
+                            voiceCommand={hearVoice}
+                            silenceCommand={shutUp}/>
             <AddButton createPage={goCreatePregunta}
                        color={button.btn_red}/>
             <br/>

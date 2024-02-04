@@ -8,10 +8,14 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import axios from "axios";
 import Swal from "sweetalert2";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
 
 export default function Resultados() {
     const router = useRouter();
     let section;
+    const {speak, speaking} = UseSpeechSynthesis();
+    const [isSpeaking, setIsSpeaking] = useState(false);
     /*------------------- ESTADOS -------------------*/
     const [testSelected, setTestSelected] = useState('');
     const [sections, setSections] = useState([]);
@@ -52,6 +56,10 @@ export default function Resultados() {
         getScoreTable();
         showInstructions();
     }, []);
+    const text = "¡Bienvenido al Módulo de Resultados! " +
+        "Selecciona una sección para ver la lista de evaluaciones. " +
+        "Luego, selecciona una de las evaluaciones para ver la tabla de puntuaciones con los resultados de los niños. ";
+    useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const getScoreTable = (idTest) => {
         axios({
@@ -88,11 +96,6 @@ export default function Resultados() {
                     if (i === 2) setBronzeChild(res.data[i]);
                 }
             }
-            console.log("Niños en el podio", podiumChildren);
-            console.log("Otros niños", children);
-            console.log("Niño de oro", goldenChild);
-            console.log("Niño de plata", silverChild);
-            console.log("Niño de bronce", bronzeChild);
             if (res.data.length === 0) {
                 setNoResults(true);
             }
@@ -410,14 +413,33 @@ export default function Resultados() {
         })
     }
     const confirmGetBack = () => {
-        router.push('/modulos');
+        router.push('/modulos').then(r => console.log(r));
+        shutUp();
+    }
+    const hearVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    };
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar color={navstyles.upper_bar_red}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Resultados de los niños`}
-                            information={showInstructions} info_color={button.btn_red}/>
+                            information={showInstructions}
+                            info_color={button.btn_red}
+                            voiceCommand={hearVoice}
+                            silenceCommand={shutUp}/>
             <div className={`container-fluid px-5`}>
                 <div className={`row px-5 h-fit`}>
                     <div className={`col-4 self-center p-0`}>

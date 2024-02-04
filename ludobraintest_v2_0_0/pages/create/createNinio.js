@@ -91,6 +91,7 @@ export default function CreateNinio() {
                         title: "¡Niño registrado Correctamente!",
                         timer: 3000,
                         timerProgressBar: true,
+                        allowOutsideClick: false,
                         didOpen: () => {
                             Swal.showLoading();
                         },
@@ -105,7 +106,7 @@ export default function CreateNinio() {
                     });
                     clearFields();
                     setTimeout(() => {
-                        router.push('/read/readNinio');
+                        router.push('/read/readNinio').then(r => console.log(r));
                     }, 3000);
                 } else if(res.data.message === 'Este niño ya se encuentra registrado') {
                     let timerInterval;
@@ -114,6 +115,7 @@ export default function CreateNinio() {
                         title: "¡Este niño ya se encuentra registrado!",
                         timer: 3000,
                         timerProgressBar: true,
+                        allowOutsideClick: false,
                         didOpen: () => {
                             Swal.showLoading();
                         },
@@ -145,7 +147,7 @@ export default function CreateNinio() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/read/readNinio');
+                router.push('/read/readNinio').then(r => console.log(r));
             }
         })
     }
@@ -177,7 +179,8 @@ export default function CreateNinio() {
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Registra a un niño`}
                             information={showInstructions}
-                            info_color={button.btn_yellow}/>
+                            info_color={button.btn_yellow}
+                            hiddenVoice={`hidden`}/>
             <div className={`container-fluid text-black px-5`}>
                 <br/>
                 <div className={`row justify-content-center px-5`}>

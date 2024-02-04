@@ -92,6 +92,7 @@ export default function UpdateNinio() {
                         title: "¡Niño actualizado Correctamente!",
                         timer: 3000,
                         timerProgressBar: true,
+                        allowOutsideClick: false,
                         didOpen: () => {
                             Swal.showLoading();
                         },
@@ -105,7 +106,7 @@ export default function UpdateNinio() {
                         }
                     });
                     setTimeout(() => {
-                        router.push('/read/readNinio');
+                        router.push('/read/readNinio').then(r => console.log(r));
                     }, 3000);
                 }
             }).catch((err) => {
@@ -125,7 +126,7 @@ export default function UpdateNinio() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/read/readNinio');
+                router.push('/read/readNinio').then(r => console.log(r));
             }
         })
     }
@@ -157,7 +158,7 @@ export default function UpdateNinio() {
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Actualiza a un niño`}
                             information={showInstructions}
-                            info_color={button.btn_yellow}/>
+                            info_color={button.btn_yellow} hiddenVoice={`hidden`}/>
             <div className={`container-fluid text-black px-5`}>
                 <br/>
                 <div className={`row justify-content-center px-5`}>

@@ -34,7 +34,7 @@ export default function SelectSeccionPregunta(){
         })
     }
     const confirmGetBack = () => {
-        router.push('/read/readPregunta');
+        router.push('/read/readPregunta').then((r) => console.log("Sección de preguntas"));
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
@@ -42,7 +42,8 @@ export default function SelectSeccionPregunta(){
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`¿Qué tipo de pregunta quieres crear?`}
                             information={showInstructions}
-                            info_color={button.btn_red}/>
+                            info_color={button.btn_red}
+                            hiddenVoice={`hidden`}/>
             <br/>
             <SectionList informationPage={`../create/preguntas/createInformacion`}/>
         </main>

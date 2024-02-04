@@ -8,26 +8,32 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Button from "@/components/Button";
 import Swal from "sweetalert2";
+import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/pages/useVoiceReader";
 
 export default function CreateTest() {
     const router = useRouter();
     let section;
+    const {speak, speaking} = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
+    const [isSpeaking, setIsSpeaking] = useState(false);
     const [nombreTest, setNombreTest] = useState('');
     const [seccion, setSeccion] = useState('');
     const [newPreguntas, setNewPreguntas] = useState([]);
     /* Estados para los arrays */
     const [secciones, setSecciones] = useState([]);
     const [preguntas, setPreguntas] = useState([]);
-    /* Estados para los mensajes */
-    const [successMessage, setSuccessMessage] = useState(false); // Estado para la confirmacion de registro
-    const [warningLengthMessage, setWarningLengthMessage] = useState(false); // Estado para la advertencia de registro
-    const [warningMessage, setWarningMessage] = useState(false); // Estado para la advertencia de registro
     /*------------------- EFECTOS -------------------*/
     useEffect(() => {
         getSecciones();
         showInstructions();
     }, []);
+    const text = "Dale un nombre a la Evaluación,... " +
+        "Luego, Selecciona la Sección a la que pertenece,... " +
+        "Agrega preguntas dando clic al botón azul con el símbolo \"más\",... " +
+        "Puedes quitar preguntas de la evaluación dando clic en el botón rojo con el símbolo \"menos\",..." +
+        "Finalmente, dale clic al botón \"Crear Evaluación\"";
+    useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const clearFields = () => {
         setNombreTest('');
@@ -146,6 +152,7 @@ export default function CreateTest() {
                         title: "¡Evaluación creada Correctamente!",
                         timer: 3000,
                         timerProgressBar: true,
+                        allowOutsideClick: false,
                         didOpen: () => {
                             Swal.showLoading();
                         },
@@ -160,7 +167,8 @@ export default function CreateTest() {
                     });
                     clearFields();
                     setTimeout(() => {
-                        router.push('/read/readTest');
+                        router.push('/read/readTest').then(r => console.log(r));
+                        shutUp();
                     }, 3000);
                 } else if (res.data.message === "Este test ya ha sido creado") {
                     Swal.fire({
@@ -220,18 +228,35 @@ export default function CreateTest() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/read/readTest');
+                router.push('/read/readTest').then(r => console.log(r));
+                shutUp();
             }
         })
     }
+    const hearVoice = () => {
+        if (isSpeaking === false) {
+            setIsSpeaking(true);
+            if (!speaking) {
+                do {
+                    speak(text);
+                } while (isSpeaking);
+            }
+        }
+    };
+    const shutUp = () => {
+        if (isSpeaking === true) {
+            setIsSpeaking(false);
+        }
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`/`}
-                      color={navstyles.upper_bar_green}/>
+            <UpperBar color={navstyles.upper_bar_green}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Crea una nueva Evaluación`}
                             information={showInstructions}
-                            info_color={button.btn_green}/>
+                            info_color={button.btn_green}
+                            voiceCommand={hearVoice}
+                            silenceCommand={shutUp}/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>
                     <div className={`col-6`}>

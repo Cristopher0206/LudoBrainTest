@@ -195,7 +195,8 @@ export default function ReadPreguntaSemejanzas() {
     useVoiceReader(texto, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={sections.semejanzas}/>
+            <UpperBar color={sections.semejanzas}
+                      silenceVoice={shutUp}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>

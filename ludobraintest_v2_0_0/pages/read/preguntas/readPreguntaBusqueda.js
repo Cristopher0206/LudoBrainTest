@@ -232,7 +232,8 @@ export default function readPreguntaBusqueda() {
     useVoiceReader(texto2, isSpeaking2);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={sections.busqueda}/>
+            <UpperBar color={sections.busqueda}
+                      silenceVoice={shutUp2}/>
             {showSamples && (
                 <div>
                     <div className={`container-fluid px-5`}>

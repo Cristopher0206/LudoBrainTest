@@ -96,7 +96,7 @@ export default function Login() {
             <br/><br/>
             <div className={`row`}>
                 <div className={`col-12 d-flex justify-content-center`}>
-                    <h1>Poli-Quizzes</h1>
+                    <h1 className={`italic ${styles.label_red}`}>Poli-Quizzes</h1>
                 </div>
             </div>
             <br/>

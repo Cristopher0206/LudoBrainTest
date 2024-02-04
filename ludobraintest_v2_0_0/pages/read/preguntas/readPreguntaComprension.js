@@ -181,7 +181,8 @@ export default function ReadPreguntaComprension() {
     useVoiceReader(text, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={sections.comprension}/>
+            <UpperBar color={sections.comprension}
+                      silenceVoice={shutUp}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>

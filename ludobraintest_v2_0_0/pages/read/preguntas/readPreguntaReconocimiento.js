@@ -253,7 +253,8 @@ export default function readPreguntaReconocimiento() {
     useVoiceReader(texto2, isSpeaking2);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={sections.reconocimiento}/>
+            <UpperBar color={sections.reconocimiento}
+                      silenceVoice={shutUp2}/>
             <br/>
             {showSamples && (
                 <div>

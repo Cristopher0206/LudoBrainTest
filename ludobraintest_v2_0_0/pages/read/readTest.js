@@ -563,7 +563,8 @@ export default function ReadTest() {
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={navstyles.upper_bar_green}/>
+            <UpperBar color={navstyles.upper_bar_green}
+                      silenceVoice={shutUp}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Crea una nueva Evaluación`}
                             information={showInstructions}

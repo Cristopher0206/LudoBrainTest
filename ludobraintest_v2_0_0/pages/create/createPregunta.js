@@ -16,9 +16,6 @@ export default function CreatePregunta() {
     let imagenMuestraBusqueda = [];
     let bandera = false;
     let respCorrecta = 0;
-    let respCorrecta1 = 0;
-    let respCorrecta2 = 0;
-    let respCorrecta3 = 0;
     // Define un estado para manejar las respuestas correctas de cada fila
     /*------------------- ESTADOS -------------------*/
     const [tipoInformacion, setTipoInformacion] = useState(false);

@@ -88,7 +88,9 @@ export default function ChangePassword() {
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <InstructionBar confirmation={confirmGetBack}
-                            instruction={`¡Cambia tu contraseña!`}/>
+                            instruction={`¡Cambia tu contraseña!`}
+                            hiddenInfo={`hidden`}
+                            hiddenVoice={`hidden`}/>
             <br/> <br/> <br/> <br/>
             <div className={`container-fluid`}>
                 <div className={`row justify-content-center text-black`}>

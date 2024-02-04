@@ -22,8 +22,7 @@ export default function Presentacion(){
 
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar redirectionPath={`#`}
-                      color={navstyles.upper_bar_yellow}/>
+            <UpperBar color={navstyles.upper_bar_yellow}/>
             <div className={`container-fluid`}>
                 <br/><br/><br/>
                 <div className={`d-flex justify-content-center`}>

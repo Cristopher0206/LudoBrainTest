@@ -147,7 +147,8 @@ export default function ReadNinio() {
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={navstyles.upper_bar_yellow}/>
+            <UpperBar color={navstyles.upper_bar_yellow}
+                      silenceVoice={shutUp}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Registra un niño`}
                             information={showInstructions}

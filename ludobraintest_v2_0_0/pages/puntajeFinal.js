@@ -55,7 +55,8 @@ export default function PuntajeFinal() {
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={navstyles.upper_bar_skyblue}/>
+            <UpperBar color={navstyles.upper_bar_skyblue}
+                      silenceVoice={shutUp}/>
             <InstructionBar previousPage={`#`}
                             instruction={`Observa la puntuación final`}
                             hiddenInfo={`hidden`}

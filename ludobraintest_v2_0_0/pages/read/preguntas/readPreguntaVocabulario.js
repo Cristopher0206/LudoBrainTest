@@ -176,7 +176,8 @@ export default function ReadPreguntaVocabulario() {
     useVoiceReader(texto, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={sections.vocabulario}/>
+            <UpperBar color={sections.vocabulario}
+                      silenceVoice={shutUp}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>

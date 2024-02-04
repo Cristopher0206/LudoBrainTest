@@ -101,11 +101,16 @@ export default function UpdateTest() {
         if (newPreguntas.length < 10) {
             setNewPreguntas([...newPreguntas, pregunta]);
         } else {
-            setWarningLengthMessage(true);
-            // El mensaje desaparece luego de 3 segundos
-            setTimeout(() => {
-                setWarningLengthMessage(false);
-            }, 3000);
+            Swal.fire({
+                icon: 'warning',
+                title: "¡No puedes agregar más de 10 preguntas a la Evaluación!",
+                confirmButtonText: "¡De acuerdo!",
+                confirmButtonColor: "rgba(4,187,3,0.75)",
+            }).then((result) => {
+                console.log("result", result);
+            }).catch((err) => {
+                console.log(err);
+            })
         }
     }
     const deleteQuestionFromTest = (pregunta) => {

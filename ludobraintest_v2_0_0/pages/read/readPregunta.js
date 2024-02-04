@@ -601,7 +601,8 @@ export default function ReadPregunta() {
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={navstyles.upper_bar_red}/>
+            <UpperBar color={navstyles.upper_bar_red}
+                      silenceVoice={shutUp}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Crea una nueva pregunta`}
                             information={showInstructions}

@@ -7,7 +7,7 @@ import {useRouter} from "next/router";
 import Button from "@/components/Button";
 import SweetAlert from "sweetalert2";
 
-export default function UpperBar({color, questionType}) {
+export default function UpperBar({color, questionType, silenceVoice}) {
     const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     const [userId, setUserId] = useState('');
@@ -44,11 +44,15 @@ export default function UpperBar({color, questionType}) {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/');
+                router.push('/').then(r => console.log(r));
+                shutUp();
             }
         }).catch(err => {
             console.log(err);
         })
+    }
+    const shutUp = () => {
+        silenceVoice();
     }
     return (
         <div className={`${color} container-fluid px-4 py-3 shadow-md rounded-b-2xl border-2 border-black border-opacity-10`}>

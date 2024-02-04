@@ -751,7 +751,7 @@ export default function Resultados() {
                                     <div className={`px-2`}>
                                         {noResults && (
                                             <div>
-                                                <h5>No hay resultados para este test</h5>
+                                                <h5>No hay resultados para esta evaluación</h5>
                                             </div>
                                         )}
                                         {goldenChild !== null && silverChild !== null && bronzeChild !== null && (

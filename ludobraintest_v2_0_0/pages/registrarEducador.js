@@ -90,7 +90,9 @@ export default function RegistrarEducador() {
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <InstructionBar confirmation={confirmGetBack}
-                            instruction={`¡Regístrate!`}/>
+                            instruction={`¡Regístrate!`}
+                            hiddenVoice={`hidden`}
+                            hiddenInfo={`hidden`}/>
             <br/> <br/>
             <div className={`container-fluid`}>
                 <div className={`row justify-content-center text-black`}>

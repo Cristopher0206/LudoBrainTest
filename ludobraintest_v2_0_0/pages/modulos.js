@@ -83,7 +83,8 @@ export default function Modulos() {
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={navstyles.upper_bar_yellow}/>
+            <UpperBar color={navstyles.upper_bar_yellow}
+                      silenceVoice={shutUp}/>
             {isModule && (
                 <div>
                     <InstructionBar confirmation={confirmGetBack}

@@ -195,7 +195,8 @@ export default function readPreguntaMatrices() {
     useVoiceReader(texto, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={sections.matrices}/>
+            <UpperBar color={sections.matrices}
+                      silenceVoice={shutUp}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>

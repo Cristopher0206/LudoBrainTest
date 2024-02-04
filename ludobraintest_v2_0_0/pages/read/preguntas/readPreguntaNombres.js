@@ -176,7 +176,8 @@ export default function ReadPreguntaNombres() {
     useVoiceReader(texto, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={sections.nombres}/>
+            <UpperBar color={sections.nombres}
+                      silenceVoice={shutUp}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>

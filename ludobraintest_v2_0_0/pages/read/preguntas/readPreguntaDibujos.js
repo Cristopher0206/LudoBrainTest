@@ -183,7 +183,8 @@ export default function ReadPreguntaDibujos() {
     useVoiceReader(`Selecciona la imagen que coincide con la palabra: ${text}`, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={sections.dibujos}/>
+            <UpperBar color={sections.dibujos}
+                      silenceVoice={shutUp}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>

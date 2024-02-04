@@ -207,7 +207,8 @@ export default function ReadPreguntaConceptos() {
     useVoiceReader(texto, isSpeaking);
     return (
         <div className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={sections.conceptos}/>
+            <UpperBar color={sections.conceptos}
+                      silenceVoice={shutUp}/>
             <br/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>

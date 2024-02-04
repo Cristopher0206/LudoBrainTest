@@ -194,7 +194,8 @@ export default function MenuOpcionesTest() {
         <main className={`bg-amber-50 min-h-screen`}>
             {informationTitle &&
                 <div>
-                    <UpperBar color={sections.informacion}/>
+                    <UpperBar color={sections.informacion}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
@@ -237,7 +238,8 @@ export default function MenuOpcionesTest() {
             }
             {semejanzasTitle &&
                 <div>
-                    <UpperBar color={sections.semejanzas}/>
+                    <UpperBar color={sections.semejanzas}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
@@ -280,7 +282,8 @@ export default function MenuOpcionesTest() {
             }
             {vocabularioTitle &&
                 <div>
-                    <UpperBar color={sections.vocabulario}/>
+                    <UpperBar color={sections.vocabulario}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
@@ -323,7 +326,8 @@ export default function MenuOpcionesTest() {
             }
             {comprensionTitle &&
                 <div>
-                    <UpperBar color={sections.comprension}/>
+                    <UpperBar color={sections.comprension}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
@@ -366,7 +370,8 @@ export default function MenuOpcionesTest() {
             }
             {dibujosTitle &&
                 <div>
-                    <UpperBar color={sections.dibujos}/>
+                    <UpperBar color={sections.dibujos}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
@@ -408,7 +413,8 @@ export default function MenuOpcionesTest() {
             }
             {nombresTitle &&
                 <div>
-                    <UpperBar color={sections.nombres}/>
+                    <UpperBar color={sections.nombres}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
@@ -451,7 +457,8 @@ export default function MenuOpcionesTest() {
             }
             {matricesTitle &&
                 <div>
-                    <UpperBar color={sections.matrices}/>
+                    <UpperBar color={sections.matrices}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
@@ -494,7 +501,8 @@ export default function MenuOpcionesTest() {
             }
             {conceptosTitle &&
                 <div>
-                    <UpperBar color={sections.conceptos}/>
+                    <UpperBar color={sections.conceptos}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
@@ -537,7 +545,8 @@ export default function MenuOpcionesTest() {
             }
             {reconocimientoTitle &&
                 <div>
-                    <UpperBar color={sections.reconocimiento}/>
+                    <UpperBar color={sections.reconocimiento}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}
@@ -580,7 +589,8 @@ export default function MenuOpcionesTest() {
             }
             {busquedaTitle &&
                 <div>
-                    <UpperBar color={sections.busqueda}/>
+                    <UpperBar color={sections.busqueda}
+                              silenceVoice={shutUp}/>
                     <InstructionBar confirmation={confirmGetBack}
                                     instruction={`Selecciona una opción`}
                                     information={showInstructions}

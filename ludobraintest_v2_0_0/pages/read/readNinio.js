@@ -10,6 +10,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
+import Image from "next/image";
 
 export default function ReadNinio() {
     const router = useRouter();
@@ -21,7 +22,7 @@ export default function ReadNinio() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getNinios();
         showInstructions();
-    }, []);
+    });
     const text = "¡Bienvenido al Módulo de Registro! Aquí podrás ver la lista de Niños que has registrado. Dale clic al botón con el símbolo " +
         "\"más\" que se encuentra en la parte superior central de la pantalla para registrar un nuevo niño. ";
     useVoiceReader(text, isSpeaking);
@@ -184,11 +185,11 @@ export default function ReadNinio() {
                                                 </div>
                                                 <div className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
                                                     <button onClick={() => eliminarNinio(child.id_ninio)}>
-                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                              className={`${styles.manage_icon}`}/>
                                                     </button>
                                                     <button onClick={() => goActualizarNinio(child.id_ninio)}>
-                                                        <img src="/images/lapiz.png" alt="editIcon"
+                                                        <Image src="/images/lapiz.png" alt="editIcon"
                                                              className={`${styles.manage_icon} shadow-2xl`}/>
                                                     </button>
                                                 </div>

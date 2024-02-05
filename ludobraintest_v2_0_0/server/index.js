@@ -1,14 +1,12 @@
-const {useRouter} = require('next/router');
 const express = require('express');
 const boddParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const expressSession = require('express-session');
 const cookieParser = require('cookie-parser');
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 const db = require('./db');
 const multer = require("multer");
-const path = require("path");
 
 const app = express();
 

@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import Swal from "sweetalert2";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
+import Image from "next/image";
 
 export default function ReadPreguntaComprension() {
     const router = useRouter();
@@ -28,7 +29,7 @@ export default function ReadPreguntaComprension() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    }, []);
+    });
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -218,7 +219,7 @@ export default function ReadPreguntaComprension() {
                             <button onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                     className={`${styles.answer_btn_comprension} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                             </button>
                         </div>
                     ))}

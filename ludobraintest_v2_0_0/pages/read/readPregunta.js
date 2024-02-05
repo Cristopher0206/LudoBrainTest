@@ -10,7 +10,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
-import {shouldUseURLPlugin} from "next/dist/build/webpack/loaders/css-loader/src/utils";
+import Image from "next/image";
 
 export default function ReadPregunta() {
     const router = useRouter();
@@ -46,7 +46,7 @@ export default function ReadPregunta() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getSections();
         showInstructions();
-    }, []);
+    });
     const text = "¡Bienvenido al módulo de Administración de Preguntas!" +
         "Selecciona una sección para ver la lista de preguntas creadas,..." +
         "Dale clic al botón con el símbolo \"más\" que se encuentra en la parte superior central de la pantalla " +
@@ -660,7 +660,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>
@@ -695,7 +695,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>
@@ -730,7 +730,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>
@@ -765,7 +765,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>
@@ -800,7 +800,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>
@@ -835,7 +835,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>
@@ -870,7 +870,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>
@@ -905,7 +905,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>
@@ -940,7 +940,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>
@@ -975,7 +975,7 @@ export default function ReadPregunta() {
                                                                     className={`col-sm-4 col-md-5 col-lg-3 d-md-flex d-lg-flex justify-content-center self-center`}>
                                                                     <button
                                                                         onClick={() => eliminarPregunta(question.id_pregunta)}>
-                                                                        <img src="/images/eliminar.png" alt="trashIcon"
+                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
                                                                              className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                 </div>

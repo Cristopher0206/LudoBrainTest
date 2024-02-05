@@ -8,8 +8,9 @@ import {useRouter} from "next/router";
 import Swal from "sweetalert2";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
+import Image from "next/image";
 
-export default function readPreguntaMatrices() {
+export default function ReadPreguntaMatrices() {
     const router = useRouter();
     const id_test = localStorage.getItem('id_test');
     const nombre_test = localStorage.getItem('nombre_test');
@@ -28,7 +29,7 @@ export default function readPreguntaMatrices() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    }, []);
+    });
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -220,8 +221,8 @@ export default function readPreguntaMatrices() {
                             {samples.map((sample, index) => (
                                 <div key={index} className={`border-1 border-black bg-white px-3 py-3
                         flex justify-center shadow-inner h-100`}>
-                                    <img src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}
-                                         className={`img-fluid ${styles.sample_image}`}/>
+                                    <Image src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}
+                                         className={`Image-fluid ${styles.sample_image}`}/>
                                 </div>
                             ))}
                             <div className={`border-1 border-black bg-white flex justify-center
@@ -249,7 +250,7 @@ export default function readPreguntaMatrices() {
                             <button onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                     className={`${styles.answer_btn_matrices} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                             </button>
                         </div>
                     ))}

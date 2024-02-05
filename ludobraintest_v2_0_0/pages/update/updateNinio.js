@@ -20,7 +20,7 @@ export default function UpdateNinio() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getUser();
         showInstructions();
-    }, []);
+    });
     /*------------------- FUNCIONES -------------------*/
     const getUser = () => {
         setInfo(sessionStorage.getItem('dataToPass'));

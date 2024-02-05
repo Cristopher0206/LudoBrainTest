@@ -1,8 +1,17 @@
-import Link from "next/link";
 import styles from '@/styles/styles.module.css'
 import button from '@/styles/button.module.css'
-export default function InstructionBar({instruction, information, info_color, confirmation, voiceCommand, hiddenInfo, hiddenVoice,
-                                           silenceCommand}) {
+import Image from 'next/image'
+
+export default function InstructionBar({
+                                           instruction,
+                                           information,
+                                           info_color,
+                                           confirmation,
+                                           voiceCommand,
+                                           hiddenInfo,
+                                           hiddenVoice,
+                                           silenceCommand
+                                       }) {
     return (
         <div className={`container-fluid`}>
             <div className={`row p-0 py-4`}>
@@ -20,16 +29,17 @@ export default function InstructionBar({instruction, information, info_color, co
                     </div>
                 </div>
                 <div className={`col-4 d-flex justify-content-center pt-sm-3 pt-lg-3 pt-xl-4`}>
-                <div className={`pt-sm-1 pt-lg-4 pt-xl-3`}>
+                    <div className={`pt-sm-1 pt-lg-4 pt-xl-3`}>
                         <div className={`py-lg-1 py-xl-0 ${styles.instruction_text}`}>
                             {instruction}
                         </div>
                     </div>
                 </div>
                 <div className={`col-4 flex justify-center`}>
-                    <img src="/images/asistente-de-robot.png"
-                         alt="Mini Echo"
-                         className={`${styles.echo_logo_ib}`}/>
+                    <Image src="/images/asistente-de-robot.png"
+                           alt="Mini Echo"
+                           className={`${styles.echo_logo_ib}`}
+                           width={120} height={80}/>
                     <button onClick={information}
                             className={`mx-2 border-2 border-black border-opacity-25 flex h-fit rounded-full px-3 py-1 ${info_color} 
                     self-center ${hiddenInfo}`}>

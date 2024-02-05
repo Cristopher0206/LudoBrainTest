@@ -28,12 +28,6 @@ export default function CreatePregunta() {
     const [tipoConceptos, setTipoConceptos] = useState(false);
     const [tipoReconocimiento, setTipoReconocimiento] = useState(false);
     const [tipoBusqueda, setTipoBusqueda] = useState(false);
-    // Estados para los mensajes de alerta
-    const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
-    const [warningMessage, setWarningMessage] = useState(false); // Estado para la advertencia de registro
-    const [warningLengthMessage, setWarningLengthMessage] = useState(false); // Estado para la advertencia de registro
-    const [warningMinLengthMessage, setWarningMinLengthMessage] = useState(false); // Estado para la advertencia de registro
-    const [warningLengthSampleMessage, setWarningLengthSampleMessage] = useState(false); // Estado para la advertencia de registro
     /* Estados para los inputs */
     const [textareaValue, setTextareaValue] = useState('');
     const [selectedFiles, setSelectedFiles] = useState([]);
@@ -52,7 +46,7 @@ export default function CreatePregunta() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         crearInterfaz();
         showGeneralInstructions();
-    }, []);
+    });
     useEffect(() => {
     }, [selectedFiles]);
     useEffect(() => {
@@ -64,11 +58,6 @@ export default function CreatePregunta() {
         setCorrectAnswers({});
         setImagenesMuestra([]);
         setEsMuestra([]);
-        setSuccessMessage(false);
-        setWarningMessage(false);
-        setWarningMinLengthMessage(false);
-        setWarningLengthMessage(false);
-        setWarningLengthSampleMessage(false);
         setRowNumber([]);
     };
     const crearInterfaz = () => {

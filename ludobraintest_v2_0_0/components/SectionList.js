@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {useRouter} from "next/router";
 import styles from "@/styles/styles.module.css";
 
@@ -19,7 +18,7 @@ export default function SectionList(
     const router = useRouter();
     const definirPregunta = (tipoPregunta) => {
         localStorage.setItem('dato', tipoPregunta);
-        router.push('../create/createPregunta');
+        router.push('/create/createPregunta').then(r => r);
     }
     return (
         <div className="px-5 grid gap-x-8 gap-y-5 grid-cols-3 justify-center justify-items-center">

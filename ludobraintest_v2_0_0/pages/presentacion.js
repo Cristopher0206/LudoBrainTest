@@ -1,11 +1,11 @@
 import {useRouter} from "next/router";
 import UpperBar from "@/components/UpperBar";
-import axios from "axios";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import navstyles from "@/styles/navstyles.module.css";
 import styles from "@/styles/styles.module.css";
+import Image from "next/image";
 
-export default function Presentacion(){
+export default function Presentacion() {
     const router = useRouter();
     /*------------------- ESTADOS -------------------*/
     /*------------------- EFECTOS -------------------*/
@@ -26,9 +26,11 @@ export default function Presentacion(){
             <div className={`container-fluid`}>
                 <br/><br/><br/>
                 <div className={`d-flex justify-content-center`}>
-                    <img src="/images/asistente-de-robot.png"
-                         alt="Echo"
-                         className={`${styles.echo_logo}`}/>
+                    <Image src="/images/asistente-de-robot.png"
+                           alt="Echo"
+                           className={`${styles.echo_logo}`}
+                           width={500} height={100}
+                    />
                 </div>
                 <div className={`d-flex justify-content-center`}>
                     <h1>¡Hola, soy Echo!</h1>

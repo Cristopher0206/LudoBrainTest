@@ -2,7 +2,6 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import sections from "@/styles/upperBarSectionColors.module.css";
 import styles from "@/styles/styles.module.css";
-import navstyles from "@/styles/navstyles.module.css";
 import button from "@/styles/button.module.css";
 import UpperBar from "@/components/UpperBar";
 import QuestionBar from "@/components/QuestionBar";
@@ -11,6 +10,7 @@ import Swal from "sweetalert2";
 import Button from "@/components/Button";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
+import Image from "next/image";
 
 const initialSelectedAnswers = {
     fila1: null,
@@ -43,7 +43,7 @@ export default function ReadPreguntaConceptos() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    }, []);
+    });
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -248,7 +248,7 @@ export default function ReadPreguntaConceptos() {
                                                     /*verifyAnswer(answer.respuesta_correcta);*/
                                                     handleSelectedAnswer(answer.id_respuesta, answer.respuesta_correcta, 'fila1')
                                                 }}>
-                                                <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                                             </button>
                                         </div>
                                     )
@@ -267,7 +267,7 @@ export default function ReadPreguntaConceptos() {
                                                     /*verifyAnswer(answer.respuesta_correcta);*/
                                                     handleSelectedAnswer(answer.id_respuesta, answer.respuesta_correcta, 'fila2')
                                                 }}>
-                                                <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                                             </button>
                                         </div>
                                     )
@@ -286,7 +286,7 @@ export default function ReadPreguntaConceptos() {
                                                     /*verifyAnswer(answer.respuesta_correcta);*/
                                                     handleSelectedAnswer(answer.id_respuesta, answer.respuesta_correcta, 'fila3')
                                                 }}>
-                                                <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                                             </button>
                                         </div>
                                     )

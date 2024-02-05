@@ -192,10 +192,12 @@
 
     .epn_logo {
         height: 10vw;
+        width: auto;
     }
 
     .ludolab_logo {
         height: 10vw;
+        width: auto;
     }
 
     .user_logo {
@@ -300,6 +302,7 @@
 
     .logo_credits {
         height: 8.5vw;
+        width: auto;
     }
 }
 

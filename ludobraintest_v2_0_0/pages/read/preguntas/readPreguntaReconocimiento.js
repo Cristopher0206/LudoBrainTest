@@ -10,8 +10,9 @@ import Swal from "sweetalert2";
 import Button from "@/components/Button";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
+import Image from "next/image";
 
-export default function readPreguntaReconocimiento() {
+export default function ReadPreguntaReconocimiento() {
     const router = useRouter();
     let id_test;
     let nombre_test;
@@ -40,7 +41,7 @@ export default function readPreguntaReconocimiento() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
         showSamplesHandler();
-    }, []);
+    });
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -281,7 +282,7 @@ export default function readPreguntaReconocimiento() {
                                         {samples.map((sample, index) => (
                                             <div key={index}
                                                  className={`flex justify-center shadow-md w-100 h-100 ${styles.sample_btn_busqueda}`}>
-                                                <img src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}/>
+                                                <Image src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}/>
                                             </div>
                                         ))}
                                     </div>
@@ -323,7 +324,7 @@ export default function readPreguntaReconocimiento() {
                                                 onClick={() => {
                                                     handleAnswerClick(answer.id_respuesta)
                                                 }}>
-                                                <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                                             </button>
                                         ))}
                                     </div>

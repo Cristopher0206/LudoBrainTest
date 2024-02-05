@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import Swal from "sweetalert2";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
+import Image from "next/image";
 
 export default function ReadPreguntaDibujos() {
     const router = useRouter();
@@ -29,7 +30,7 @@ export default function ReadPreguntaDibujos() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    }, []);
+    });
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -214,7 +215,7 @@ export default function ReadPreguntaDibujos() {
                             {answers.map((answer, index) => (
                                 <button key={index} onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                         className={`${styles.answer_btn_dibujos}`}>
-                                    <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                    <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                                 </button>
                             ))}
                         </div>

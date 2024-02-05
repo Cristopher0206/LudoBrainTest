@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import Swal from "sweetalert2";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
+import Image from "next/image";
 
 export default function ReadPreguntaNombres() {
     const router = useRouter();
@@ -27,7 +28,7 @@ export default function ReadPreguntaNombres() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    }, []);
+    });
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -212,8 +213,8 @@ export default function ReadPreguntaNombres() {
                             {samples.map((sample, index) => (
                                 <div key={index} className={`border-1 border-black rounded-2xl bg-white px-4 py-4
                         flex justify-center shadow-inner h-100`}>
-                                    <img src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}
-                                         className={`img-fluid`}/>
+                                    <Image src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}
+                                         className={`Image-fluid`}/>
                                 </div>
                             ))}
                         </div>

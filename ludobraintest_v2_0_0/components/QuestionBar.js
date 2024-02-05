@@ -1,8 +1,15 @@
-import Link from "next/link";
 import styles from '@/styles/styles.module.css'
 import button from '@/styles/button.module.css'
+import Image from 'next/image'
 
-export default function QuestionBar({confirmGetBack, nombreTest, labelColor, voiceCommand, hiddenVoice, silenceCommand}) {
+export default function QuestionBar({
+                                        confirmGetBack,
+                                        nombreTest,
+                                        labelColor,
+                                        voiceCommand,
+                                        hiddenVoice,
+                                        silenceCommand
+                                    }) {
     return (
         <div className={`container-fluid flex flex-col h-100`}>
             <div className={`pt-sm-1 pt-md-2 pt-lg-0 flex justify-center text-decoration-none`}>
@@ -25,9 +32,10 @@ export default function QuestionBar({confirmGetBack, nombreTest, labelColor, voi
             </div>
             <div className={`flex justify-center h-75`}>
                 <div className={`flex self-end`}>
-                    <img src="/images/asistente-de-robot.png"
-                         alt="Mini Echo"
-                         className={`${styles.echo_logo_ib}`}/>
+                    <Image src="/images/asistente-de-robot.png"
+                           alt="Mini Echo"
+                           className={`${styles.echo_logo_ib}`}
+                           width={100} height={100}/>
                 </div>
             </div>
             <div className={`flex justify-center h-75`}>

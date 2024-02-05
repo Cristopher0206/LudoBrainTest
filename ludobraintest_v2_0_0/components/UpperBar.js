@@ -16,7 +16,7 @@ export default function UpperBar({color, questionType, silenceVoice}) {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getUser();
-    }, []);
+    });
     /*------------------- FUNCIONES -------------------*/
     const getUser = () => {
         axios({
@@ -29,7 +29,7 @@ export default function UpperBar({color, questionType, silenceVoice}) {
             setName(res.data.name);
         }).catch(err => {
             console.log(err);
-            router.push('/');
+            router.push('/').then(r => r);
         });
     }
     const cerrarSesion = () => {

@@ -9,8 +9,9 @@ import {useRouter} from "next/router";
 import Swal from "sweetalert2";
 import useVoiceReader from "@/pages/useVoiceReader";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import Image from "next/image";
 
-export default function readPreguntaBusqueda() {
+export default function ReadPreguntaBusqueda() {
     const router = useRouter();
     let id_test;
     let nombre_test;
@@ -19,7 +20,7 @@ export default function readPreguntaBusqueda() {
         nombre_test = localStorage.getItem('nombre_test');
     }
     let arregloPreguntas;
-    const { speak, speaking } = UseSpeechSynthesis();
+    const {speak, speaking} = UseSpeechSynthesis();
     const texto1 = "¿Puedes identificar a este animal?";
     const texto2 = "Selecciona el animal que apareció en pantalla hace unos segundos.";
     /*------------------- ESTADOS -------------------*/
@@ -38,7 +39,7 @@ export default function readPreguntaBusqueda() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
         showSamplesHandler();
-    }, []);
+    });
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -256,14 +257,14 @@ export default function readPreguntaBusqueda() {
                                 <div className={`container-fluid h-fit p-0`}>
                                     <br/>
                                     <div className={`row`}>
-                                        {samples.map((sample, index) => (
-                                            <div className={`col-12 d-flex justify-content-center`}>
+                                        <div className={`col-12 d-flex justify-content-center`}>
+                                            {samples.map((sample, index) => (
                                                 <div key={index}
                                                      className={`flex justify-center shadow-md ${styles.sample_btn_busqueda}`}>
-                                                    <img src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}/>
+                                                    <Image src={`/Images/${sample.imagen}`} alt={`${sample.imagen}`}/>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </div>
                                     </div>
                                     <br/>
                                 </div>
@@ -299,7 +300,7 @@ export default function readPreguntaBusqueda() {
                                                     onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                                     className={`${styles.answer_btn_comprension} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                                <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                                             </button>
                                         ))}
                                     </div>

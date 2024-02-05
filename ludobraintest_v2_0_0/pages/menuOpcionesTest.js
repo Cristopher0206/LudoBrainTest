@@ -36,7 +36,7 @@ export default function MenuOpcionesTest() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getTest();
         showInstructions();
-    }, []);
+    });
     /*------------------- FUNCIONES -------------------*/
     const getTest = () => {
         axios({

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from '../styles/styles.module.css'
 
 export default function AddButton({createPage, color}) {

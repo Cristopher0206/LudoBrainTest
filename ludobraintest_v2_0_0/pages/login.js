@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from '@/styles/styles.module.css'
-import navstyles from '@/styles/navstyles.module.css'
 import button from '@/styles/button.module.css'
 import {useState} from "react";
 import axios from "axios";
@@ -8,6 +7,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import Button from "@/components/Button";
 import Swal from "sweetalert2";
+import Image from "next/image";
 
 export default function Login() {
     const router = useRouter();
@@ -83,14 +83,14 @@ export default function Login() {
             <br/><br/>
             <div className={`row d-flex justify-content-between`}>
                 <div className={`col-5 d-flex justify-content-center`}>
-                    <img src="/images/EPN_logo_big.png"
+                    <Image src="/images/EPN_logo_big.png"
                          alt="EPN LOGO"
-                         className={`${styles.epn_logo}`}/>
+                         className={`${styles.epn_logo}`} width={1000} height={100}/>
                 </div>
                 <div className={`col-5 d-flex justify-content-center`}>
-                    <img src="/images/341894265_1090311248597302_516144097782360263_n.jpg"
+                    <Image src="/images/341894265_1090311248597302_516144097782360263_n.jpg"
                          alt="LUDOLAB LOGO"
-                         className={`${styles.ludolab_logo}`}/>
+                         className={`${styles.ludolab_logo}`} width={1000} height={100}/>
                 </div>
             </div>
             <br/><br/>
@@ -102,9 +102,9 @@ export default function Login() {
             <br/>
             <div className={`row justify-content-center px-28`}>
                 <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
-                    <img src="/images/usuario.png"
+                    <Image src="/images/usuario.png"
                          alt="user icon"
-                         className={`${styles.user_logo}`}/>
+                         className={`${styles.user_logo}`} width={100} height={100}/>
                 </div>
                 <div className={`col-8 self-center  `}>
                     <input type="text"
@@ -117,9 +117,9 @@ export default function Login() {
             <br/>
             <div className={`row justify-content-center px-28`}>
                 <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
-                    <img src="/images/llave-de-la-puerta.png"
+                    <Image src="/images/llave-de-la-puerta.png"
                          alt="password icon"
-                         className={`${styles.password_logo}`}/>
+                         className={`${styles.password_logo}`} width={100} height={100}/>
                 </div>
                 <div className={`col-8 self-center`}>
                     <input name={`password`}

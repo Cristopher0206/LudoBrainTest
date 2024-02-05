@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import Swal from "sweetalert2";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
+import Image from "next/image";
 
 export default function ReadPreguntaSemejanzas() {
     const router = useRouter();
@@ -28,7 +29,7 @@ export default function ReadPreguntaSemejanzas() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    }, []);
+    });
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -220,8 +221,8 @@ export default function ReadPreguntaSemejanzas() {
                             {samples.map((sample, index) => (
                                 <div key={index} className={`border-1 border-black rounded-2xl bg-white px-4 py-4
                         flex justify-center shadow-inner`}>
-                                    <img src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}
-                                         className={`img-fluid ${styles.sample_image}`}/>
+                                    <Image src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}
+                                         className={`Image-fluid ${styles.sample_image}`}/>
                                 </div>
                             ))}
                             <div className={`border-1 border-black rounded-2xl bg-white flex justify-center
@@ -249,7 +250,7 @@ export default function ReadPreguntaSemejanzas() {
                             <button onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                     className={`${styles.answer_btn_semejanzas} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                <img src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
                             </button>
                         </div>
                     ))}

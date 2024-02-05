@@ -15,13 +15,11 @@ export default function CreateNinio() {
     const [registerName, setRegisterName] = useState('');
     const [registerAge, setRegisterAge] = useState('');
     const [registerEducatorId, setRegisterEducatorId] = useState('');
-    const [successMessage, setSuccessMessage] = useState(false); // Estado para el mensaje de registro
-    const [warningMessage, setWarningMessage] = useState(false); // Estado para la advertencia de registro
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getUser();
         showInstructions();
-    }, []);
+    });
     /*------------------- FUNCIONES -------------------*/
     const getUser = () => {
         axios({

@@ -49,8 +49,8 @@ export default function UpperBar({color, questionType, silenceVoice}) {
                     url: "http://3.134.64.181:3001/logout"
                 }).then(res => {
                     if (res.data.message === "Sesión cerrada exitosamente") {
-                        //router.push('/').then(r => console.log(r));
                         console.log('Sesión cerrada exitosamente');
+                        router.push('/').then(r => console.log(r));
                         shutUp();
                     } else {
                         SweetAlert.fire({

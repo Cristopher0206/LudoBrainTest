@@ -16,7 +16,7 @@ export default function InstructionBar({
                                        }) {
     const router = useRouter();
     const goHome = () => {
-        router.push('/').then(r => r);
+        router.push('/modulos').then(r => r);
     }
     return (
         <div className={`container-fluid`}>
@@ -24,7 +24,7 @@ export default function InstructionBar({
                 <div className={`col-4 flex justify-center self-center`}>
                     <div className={`container-fluid`}>
                         <div className={`row justify-content-center`}>
-                            <div className={`col-6 flex flex-col justify-center`}>
+                            <div className={`col-3 flex flex-col justify-center`}>
                                 <div
                                     className={`pt-sm-1 pt-md-2 pt-lg-3 pt-lg-2 flex justify-center text-decoration-none`}>
                                     <button onClick={confirmation} className={`rounded-full px-2 py-0 font-bold drop-shadow-lg 
@@ -38,7 +38,7 @@ export default function InstructionBar({
                                     </h5>
                                 </div>
                             </div>
-                            <div className={`col-6 flex flex-col justify-center ${hiddenHome}`}>
+                            <div className={`col-3 flex flex-col justify-center ${hiddenHome}`}>
                                 <div
                                     className={`pt-sm-1 pt-md-2 pt-lg-3 pt-lg-2 flex justify-center text-decoration-none`}>
                                     <button onClick={goHome} className={`rounded-full px-2 py-0 font-bold drop-shadow-lg 

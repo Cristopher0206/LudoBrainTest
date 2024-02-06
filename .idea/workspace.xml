@@ -7,17 +7,6 @@
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/InstructionBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/InstructionBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/changePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/changePassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulos.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulosCreacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/modulosCreacion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readNinio.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readNinio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/registrarEducador.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/registrarEducador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/resultados.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/resultados.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectNinio.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectNinio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateNinio.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateNinio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateTest.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +160,7 @@
       <workItem from="1707137363004" duration="1558000" />
       <workItem from="1707155352085" duration="9303000" />
       <workItem from="1707229803255" duration="482000" />
-      <workItem from="1707230306807" duration="17427000" />
+      <workItem from="1707230306807" duration="17679000" />
     </task>
     <servers />
   </component>

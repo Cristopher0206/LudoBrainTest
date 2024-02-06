@@ -16,8 +16,7 @@ app.use(boddParser.json());
 app.use(expressSession({secret: 'mySecretKey', resave: false, saveUninitialized: false}));
 
 app.use(cors({
-    origin: `${path}:${frontEndPort}`,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "http://poliquizzes:3000",
     credentials: true
 }));
 
@@ -29,9 +28,7 @@ require("./passportConfig")(passport);
 
 app.get('/', (req, res) => {
     res.send("Hello World");
-})app.get('/login', (req, res) => {
-    res.send("Hello World desde el login");
-})
+});
 app.listen(3001, () => {
     console.log('Server started on port 3001');
 })
@@ -52,9 +49,10 @@ app.get('/getUser', (req, res) => {
     }
 })
 /* Función para el Login */
-app.post('/login', (req, res, next) => {
+/*app.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) {
+            console.log("estoy en el error");
             throw err;
         }
         if (!user) {
@@ -69,7 +67,21 @@ app.post('/login', (req, res, next) => {
             })
         }
     })(req, res, next)
-});
+});*/
+app.post('/login', (req, res) => {
+    const {username, password} = req.body;
+    const query = "SELECT * FROM educador WHERE usuario = ? AND user_password = ?";
+    db.query(query, [username, password], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        if (result.length > 0) {
+            res.send({message: "Usuario logeado"});
+        } else {
+            res.send({message: "Usuario no encontrado"});
+        }
+    })
+})
 /* Funciones de registro */
 app.post('/registrarEducador', (req, res) => {
     const {usuario, user_password, nombre, apellido} = req.body;

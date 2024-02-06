@@ -25,7 +25,7 @@ export default function Login() {
                 password: loginPassword
             },
             withCredentials: true,
-            url: `${path}:${backEndPort}/login`
+            url: `http://poliquizzes:3001/login`
         }).then(res => {
             if (res.data === "Usuario logeado") {
                 let timerInterval;
@@ -72,6 +72,7 @@ export default function Login() {
                 });
             }
         }).catch(err => {
+            console.log("Error al iniciar sesión");
             console.log(err);
         });
     }

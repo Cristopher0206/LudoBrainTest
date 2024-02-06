@@ -69,9 +69,11 @@ app.post('/login', (req, res, next) => {
     })(req, res, next)
 });
 /* Función para cerrar sesión */
-app.post('/logout', (req, res) => {
-    req.logout();
-    res.send('Sesión cerrada exitosamente');
+app.post('/logout', function(req, res, next){
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.send({message: "Sesión cerrada exitosamente"});
+    });
 });
 /* Funciones de registro */
 app.post('/registrarEducador', (req, res) => {

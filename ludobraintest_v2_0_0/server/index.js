@@ -71,7 +71,6 @@ app.post('/login', (req, res, next) => {
 /* Función para cerrar sesión */
 app.get('/logout', (req, res) => {
     req.logout();
-    res.clearCookie('connect.sid');
     res.send('Sesión cerrada exitosamente');
 });
 /* Funciones de registro */

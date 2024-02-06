@@ -188,11 +188,12 @@ export default function UpdateTest() {
                 console.log(err);
             })
         } else {
+            console.log("INFO", info);
             axios({
                 method: "post",
                 withCredentials: true,
                 data: {
-                    id_test: information,
+                    id_test: info,
                     nombre: nombreTest,
                     seccion: seccion,
                     viejasPreguntas: oldPreguntas,

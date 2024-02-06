@@ -72,6 +72,7 @@ app.post('/login', (req, res, next) => {
 app.post('/logout', function(req, res, next){
     req.logout(function(err) {
         if (err) { return next(err); }
+        res.clearCookie('connect.sid');
         res.send({message: "Sesión cerrada exitosamente"});
     });
 });

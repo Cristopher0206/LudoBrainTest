@@ -13,7 +13,7 @@ export default function SelectSeccionPregunta(){
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         showInstructions();
-    });
+    }, []);
     /*------------------- FUNCIONES -------------------*/
     const showInstructions = () => {
         Swal.fire({

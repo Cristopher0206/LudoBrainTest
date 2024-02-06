@@ -15,7 +15,7 @@ export default function ReadPreguntaVocabulario() {
     const id_test = localStorage.getItem('id_test');
     const nombre_test = localStorage.getItem('nombre_test');
     let arregloPreguntas;
-    const { speak, speaking } = UseSpeechSynthesis();
+    const {speak, speaking} = UseSpeechSynthesis();
     const texto = "¿Qué es esta figura? ¿Podrías definirla? ";
     /* ------------------- ESTADOS ------------------- */
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -28,7 +28,7 @@ export default function ReadPreguntaVocabulario() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    });
+    }, []);
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -216,8 +216,10 @@ export default function ReadPreguntaVocabulario() {
                             {samples.map((sample, index) => (
                                 <div key={index} className={`border-1 border-black rounded-2xl bg-white px-4 py-4
                         flex justify-center shadow-inner h-100`}>
-                                    <Image src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}
-                                         className={`Image-fluid`}/>
+                                    <Image src={`/images/${sample.imagen}`}
+                                           width={100}
+                                           height={100}
+                                           alt={`${sample.imagen}`}/>
                                 </div>
                             ))}
                         </div>

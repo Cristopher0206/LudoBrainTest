@@ -46,7 +46,7 @@ export default function ReadTest() {
     useEffect(() => {
         getSections();
         showInstructions();
-    });
+    }, []);
     const text = "¡Bienvenido al módulo de Administración de Evaluaciones!" +
         "Selecciona una sección para ver la lista de evaluaciones creadas,..." +
         "Dale clic al botón con el símbolo \"más\" que se encuentra en la parte superior central de la pantalla " +
@@ -612,7 +612,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -621,13 +622,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               className={`${styles.manage_icon}`}
+                                                                               width={100}
+                                                                               height={100}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -650,7 +656,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -659,13 +666,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -688,7 +700,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -697,13 +710,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -726,7 +744,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -735,13 +754,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -764,7 +788,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -773,13 +798,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -802,7 +832,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -811,13 +842,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -840,7 +876,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -849,13 +886,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -878,7 +920,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -887,13 +930,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -916,7 +964,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -925,13 +974,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -954,7 +1008,8 @@ export default function ReadTest() {
                                                     <div className={`card-body`}>
                                                         <div className={`container-fluid`}>
                                                             <div className={`row justify-content-between`}>
-                                                                <div className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
+                                                                <div
+                                                                    className={`col-sm-4 col-md-6 col-lg-6 col-xl-7 self-center`}>
                                                                     <div
                                                                         className={`font-medium card-title ${styles.card_test_text}`}>
                                                                         {test.nombre_test}
@@ -963,13 +1018,18 @@ export default function ReadTest() {
                                                                 <div
                                                                     className={`col-sm-4 col-md-5 col-lg-4 col-xl-3 d-md-flex d-lg-flex justify-content-between self-center`}>
                                                                     <button onClick={() => eliminarTest(test.id_test)}>
-                                                                        <Image src="/images/eliminar.png" alt="trashIcon"
-                                                                             className={`${styles.manage_icon}`}/>
+                                                                        <Image src="/images/eliminar.png"
+                                                                               alt="trashIcon"
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon}`}/>
                                                                     </button>
                                                                     <button
                                                                         onClick={() => goActualizarTest(test.id_test)}>
                                                                         <Image src="/images/lapiz.png" alt="editIcon"
-                                                                             className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               className={`${styles.manage_icon} shadow-2xl pt-sm-2 pt-md-0`}/>
                                                                     </button>
                                                                 </div>
                                                             </div>

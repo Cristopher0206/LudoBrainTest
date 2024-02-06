@@ -39,7 +39,7 @@ export default function ReadPreguntaBusqueda() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
         showSamplesHandler();
-    });
+    }, []);
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -261,7 +261,10 @@ export default function ReadPreguntaBusqueda() {
                                             {samples.map((sample, index) => (
                                                 <div key={index}
                                                      className={`flex justify-center shadow-md ${styles.sample_btn_busqueda}`}>
-                                                    <Image src={`/Images/${sample.imagen}`} alt={`${sample.imagen}`}/>
+                                                    <Image src={`/Images/${sample.imagen}`}
+                                                           width={100}
+                                                           height={100}
+                                                           alt={`${sample.imagen}`}/>
                                                 </div>
                                             ))}
                                         </div>
@@ -300,7 +303,10 @@ export default function ReadPreguntaBusqueda() {
                                                     onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                                     className={`${styles.answer_btn_comprension} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`}
+                                                       width={100}
+                                                       height={100}
+                                                       alt={`${answer.imagen}`}/>
                                             </button>
                                         ))}
                                     </div>

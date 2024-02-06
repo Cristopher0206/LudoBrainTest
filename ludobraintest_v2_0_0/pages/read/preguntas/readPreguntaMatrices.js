@@ -15,7 +15,7 @@ export default function ReadPreguntaMatrices() {
     const id_test = localStorage.getItem('id_test');
     const nombre_test = localStorage.getItem('nombre_test');
     let arregloPreguntas;
-    const { speak, speaking } = UseSpeechSynthesis();
+    const {speak, speaking} = UseSpeechSynthesis();
     const texto = "¿Qué imagen completa la secuencia de imágenes que observas a continuación?";
     /*------------------- ESTADOS -------------------*/
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -29,7 +29,7 @@ export default function ReadPreguntaMatrices() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    });
+    }, []);
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -221,8 +221,11 @@ export default function ReadPreguntaMatrices() {
                             {samples.map((sample, index) => (
                                 <div key={index} className={`border-1 border-black bg-white px-3 py-3
                         flex justify-center shadow-inner h-100`}>
-                                    <Image src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}
-                                         className={`Image-fluid ${styles.sample_image}`}/>
+                                    <Image src={`/images/${sample.imagen}`}
+                                           width={100}
+                                           height={100}
+                                           alt={`${sample.imagen}`}
+                                           className={`image-fluid ${styles.sample_image}`}/>
                                 </div>
                             ))}
                             <div className={`border-1 border-black bg-white flex justify-center
@@ -241,7 +244,7 @@ export default function ReadPreguntaMatrices() {
             <br/>
             <div className={`container-fluid px-5`}>
                 <h4 className={`d-flex justify-content-center font-bold ${styles.label_olive}`}>
-                Opciones de respuesta
+                    Opciones de respuesta
                 </h4>
                 <br/>
                 <div className={`row gy-5 justify-content-center`}>
@@ -250,7 +253,10 @@ export default function ReadPreguntaMatrices() {
                             <button onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                     className={`${styles.answer_btn_matrices} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                <Image src={`/images/${answer.imagen}`}
+                                       width={100}
+                                       height={100}
+                                       alt={`${answer.imagen}`}/>
                             </button>
                         </div>
                     ))}

@@ -36,7 +36,7 @@ export default function Instrucciones() {
     useEffect(() => {
         generateColor();
         showPresentationHandler();
-    });
+    }, []);
     useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const generateColor = () => {

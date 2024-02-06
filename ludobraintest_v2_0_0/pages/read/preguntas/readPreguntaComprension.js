@@ -29,7 +29,7 @@ export default function ReadPreguntaComprension() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    });
+    }, []);
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -219,7 +219,10 @@ export default function ReadPreguntaComprension() {
                             <button onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                     className={`${styles.answer_btn_comprension} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                <Image src={`/images/${answer.imagen}`}
+                                       width={100}
+                                       height={100}
+                                       alt={`${answer.imagen}`}/>
                             </button>
                         </div>
                     ))}

@@ -27,7 +27,7 @@ export default function CreateTest() {
     useEffect(() => {
         getSecciones();
         showInstructions();
-    });
+    }, []);
     const text = "Dale un nombre a la Evaluación,... " +
         "Luego, Selecciona la Sección a la que pertenece,... " +
         "Agrega preguntas dando clic al botón azul con el símbolo \"más\",... " +

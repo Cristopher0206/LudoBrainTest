@@ -85,7 +85,7 @@ export default function RegistrarEducador() {
         })
     }
     const confirmGetBack = () => {
-        router.push('/');
+        router.push('/').then(r => console.log(r));
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>

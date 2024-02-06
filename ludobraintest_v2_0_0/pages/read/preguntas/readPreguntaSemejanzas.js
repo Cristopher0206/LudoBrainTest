@@ -15,7 +15,7 @@ export default function ReadPreguntaSemejanzas() {
     const id_test = localStorage.getItem('id_test');
     const nombre_test = localStorage.getItem('nombre_test');
     let arregloPreguntas;
-    const { speak, speaking } = UseSpeechSynthesis();
+    const {speak, speaking} = UseSpeechSynthesis();
     const texto = "Selecciona la imagen que más se asemeja al grupo de imágenes que se te muestra a continuación.";
     /*------------------- ESTADOS -------------------*/
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -29,7 +29,7 @@ export default function ReadPreguntaSemejanzas() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    });
+    }, []);
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -221,8 +221,11 @@ export default function ReadPreguntaSemejanzas() {
                             {samples.map((sample, index) => (
                                 <div key={index} className={`border-1 border-black rounded-2xl bg-white px-4 py-4
                         flex justify-center shadow-inner`}>
-                                    <Image src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}
-                                         className={`Image-fluid ${styles.sample_image}`}/>
+                                    <Image src={`/images/${sample.imagen}`}
+                                           width={100}
+                                           height={100}
+                                           alt={`${sample.imagen}`}
+                                           className={`Image-fluid ${styles.sample_image}`}/>
                                 </div>
                             ))}
                             <div className={`border-1 border-black rounded-2xl bg-white flex justify-center
@@ -233,7 +236,7 @@ export default function ReadPreguntaSemejanzas() {
                     </div>
                     <div className={`col-lg-2 flex self-center`}>
                         <h3 className={`${styles.label_green}`}>
-                        {nombre_test}
+                            {nombre_test}
                         </h3>
                     </div>
                 </div>
@@ -250,7 +253,10 @@ export default function ReadPreguntaSemejanzas() {
                             <button onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                     className={`${styles.answer_btn_semejanzas} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                <Image src={`/images/${answer.imagen}`}
+                                       width={100}
+                                       height={100}
+                                       alt={`${answer.imagen}`}/>
                             </button>
                         </div>
                     ))}

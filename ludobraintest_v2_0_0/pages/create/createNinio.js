@@ -19,7 +19,7 @@ export default function CreateNinio() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getUser();
         showInstructions();
-    });
+    }, []);
     /*------------------- FUNCIONES -------------------*/
     const getUser = () => {
         axios({

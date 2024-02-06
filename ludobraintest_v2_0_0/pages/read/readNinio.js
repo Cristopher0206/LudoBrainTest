@@ -22,7 +22,7 @@ export default function ReadNinio() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getNinios();
         showInstructions();
-    });
+    }, []);
     const text = "¡Bienvenido al Módulo de Registro! Aquí podrás ver la lista de Niños que has registrado. Dale clic al botón con el símbolo " +
         "\"más\" que se encuentra en la parte superior central de la pantalla para registrar un nuevo niño. ";
     useVoiceReader(text, isSpeaking);
@@ -96,7 +96,7 @@ export default function ReadNinio() {
     }
     const goActualizarNinio = (idNinio) => {
         sessionStorage.setItem('dataToPass', idNinio);
-        router.push('../update/updateNinio').then(r => console.log(r));
+        router.push('/update/updateNinio').then(r => console.log(r));
         shutUp();
     }
     const goCreateNinio = () => {
@@ -186,10 +186,14 @@ export default function ReadNinio() {
                                                 <div className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
                                                     <button onClick={() => eliminarNinio(child.id_ninio)}>
                                                         <Image src="/images/eliminar.png" alt="trashIcon"
+                                                               width={100}
+                                                               height={100}
                                                              className={`${styles.manage_icon}`}/>
                                                     </button>
                                                     <button onClick={() => goActualizarNinio(child.id_ninio)}>
                                                         <Image src="/images/lapiz.png" alt="editIcon"
+                                                               width={100}
+                                                               height={100}
                                                              className={`${styles.manage_icon} shadow-2xl`}/>
                                                     </button>
                                                 </div>

@@ -41,7 +41,7 @@ export default function ReadPreguntaReconocimiento() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
         showSamplesHandler();
-    });
+    }, []);
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -282,7 +282,10 @@ export default function ReadPreguntaReconocimiento() {
                                         {samples.map((sample, index) => (
                                             <div key={index}
                                                  className={`flex justify-center shadow-md w-100 h-100 ${styles.sample_btn_busqueda}`}>
-                                                <Image src={`/images/${sample.imagen}`} alt={`${sample.imagen}`}/>
+                                                <Image src={`/images/${sample.imagen}`}
+                                                       width={100}
+                                                       height={100}
+                                                       alt={`${sample.imagen}`}/>
                                             </div>
                                         ))}
                                     </div>
@@ -324,7 +327,10 @@ export default function ReadPreguntaReconocimiento() {
                                                 onClick={() => {
                                                     handleAnswerClick(answer.id_respuesta)
                                                 }}>
-                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`}
+                                                       width={100}
+                                                       height={100}
+                                                       alt={`${answer.imagen}`}/>
                                             </button>
                                         ))}
                                     </div>

@@ -30,7 +30,7 @@ export default function UpdateTest() {
         showInstructions();
         setNombreTest(nombreActual);
         setSeccion(seccionActual);
-    });
+    }, []);
     /*------------------- FUNCIONES -------------------*/
     const clearFields = () => {
         setNombreTest('');

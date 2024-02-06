@@ -56,7 +56,7 @@ export default function SelectNinio() {
         getNinios();
         getSections();
         showInstructions();
-    });
+    }, []);
     /*------------------- FUNCIONES -------------------*/
     const getNinios = () => {
         axios({

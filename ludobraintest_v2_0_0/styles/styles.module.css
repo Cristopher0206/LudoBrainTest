@@ -188,6 +188,7 @@
     /* Para pantallas xl */
     .manage_icon {
         width: 2.5vw;
+        height: auto;
     }
 
     .epn_logo {

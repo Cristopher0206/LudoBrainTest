@@ -35,7 +35,6 @@ export default function CreatePregunta() {
     const [correctAnswersConceptos, setCorrectAnswersConceptos] = useState([]);
     const [esMuestra, setEsMuestra] = useState([]);
     const [rowNumber, setRowNumber] = useState([]);
-    //const [rowNumber, setRowNumber] = useState(0);
     /* Estados para los inputs de Conceptos */
     const [selectedFiles1, setSelectedFiles1] = useState([]);
     const [selectedFiles2, setSelectedFiles2] = useState([]);
@@ -46,7 +45,7 @@ export default function CreatePregunta() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         crearInterfaz();
         showGeneralInstructions();
-    });
+    }, []);
     useEffect(() => {
     }, [selectedFiles]);
     useEffect(() => {

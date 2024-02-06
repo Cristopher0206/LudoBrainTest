@@ -43,7 +43,7 @@ export default function ReadPreguntaConceptos() {
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getQuestionsbyTestId();
-    });
+    }, []);
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
@@ -248,7 +248,10 @@ export default function ReadPreguntaConceptos() {
                                                     /*verifyAnswer(answer.respuesta_correcta);*/
                                                     handleSelectedAnswer(answer.id_respuesta, answer.respuesta_correcta, 'fila1')
                                                 }}>
-                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`}
+                                                       width={100}
+                                                       height={100}
+                                                       alt={`${answer.imagen}`}/>
                                             </button>
                                         </div>
                                     )
@@ -267,7 +270,10 @@ export default function ReadPreguntaConceptos() {
                                                     /*verifyAnswer(answer.respuesta_correcta);*/
                                                     handleSelectedAnswer(answer.id_respuesta, answer.respuesta_correcta, 'fila2')
                                                 }}>
-                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`}
+                                                       width={100}
+                                                       height={100}
+                                                       alt={`${answer.imagen}`}/>
                                             </button>
                                         </div>
                                     )
@@ -286,7 +292,10 @@ export default function ReadPreguntaConceptos() {
                                                     /*verifyAnswer(answer.respuesta_correcta);*/
                                                     handleSelectedAnswer(answer.id_respuesta, answer.respuesta_correcta, 'fila3')
                                                 }}>
-                                                <Image src={`/images/${answer.imagen}`} alt={`${answer.imagen}`}/>
+                                                <Image src={`/images/${answer.imagen}`}
+                                                       width={100}
+                                                       height={100}
+                                                       alt={`${answer.imagen}`}/>
                                             </button>
                                         </div>
                                     )

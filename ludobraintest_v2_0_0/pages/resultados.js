@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
 import Image from "next/image";
+
 export default function Resultados() {
     const router = useRouter();
     let section;
@@ -55,7 +56,7 @@ export default function Resultados() {
         getSections();
         getScoreTable();
         showInstructions();
-    },[]);
+    }, []);
     const text = "¡Bienvenido al Módulo de Resultados! " +
         "Selecciona una sección para ver la lista de evaluaciones. " +
         "Luego, selecciona una de las evaluaciones para ver la tabla de puntuaciones con los resultados de los niños. ";
@@ -765,12 +766,16 @@ export default function Resultados() {
                                                                     <div
                                                                         className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.silver_star}`}>
                                                                         <Image alt={`medalla de plata`}
-                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
                                                                     </div>
                                                                     <div
                                                                         className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.silver_star}`}>
                                                                         <Image alt={`medalla de plata`}
-                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
                                                                     </div>
 
                                                                 </div>
@@ -792,17 +797,23 @@ export default function Resultados() {
                                                                     <div
                                                                         className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.golden_star}`}>
                                                                         <Image alt={`medalla de plata`}
-                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
                                                                     </div>
                                                                     <div
                                                                         className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.golden_star}`}>
                                                                         <Image alt={`medalla de plata`}
-                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
                                                                     </div>
                                                                     <div
                                                                         className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.golden_star}`}>
                                                                         <Image alt={`medalla de plata`}
-                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
                                                                     </div>
                                                                 </div>
                                                                 <br/>
@@ -823,7 +834,9 @@ export default function Resultados() {
                                                                     <div
                                                                         className={`border-2 border-black border-opacity-10 rounded-full p-2 ${score.bronze_star}`}>
                                                                         <Image alt={`medalla de plata`}
-                                                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
+                                                                               width={100}
+                                                                               height={100}
+                                                                               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAVRJREFUSEvFluFRwzAMhV8nATaBTegkhUnoJu0mpZNQHmflhGNJtpJcfNdrfiT+/KQnyQfstA47cbEE/F4Ofc4cPgt+BXApwDcA11F4Fkwo4VyEEj60MmCtVmDDqjPgLwCSXwEzz8cRyRnwTwPwXcLN/641Cv4AcDJ2HlI9Cm6plXNQ7UuXXGBWxzSOuPWpbPIMQH7RvhJq/svzXT1PNa8V0zA0zpZrcr8Gt8pk7UMwFX+RqHPsmWfpIf7VestcW4R81mAsV68FZ1jZWGa93CunpXC3qUR1nIWHgyMC01Be07AMF3axCJxVHHaxrcCMhDsqI3BrBPbW8+fvi+wLzRWBb6VP98L0e67BIrBlLG4qg59RkcGiwW6eM3XcCqHVas08e+A6v6LSumVwdNbqzbLywPom6RqlMoBWnwJTAXNHpd13KXV54LfmZT8yV8bNXd/sBn4AJNlEH49DWZ4AAAAASUVORK5CYII="/>
                                                                     </div>
                                                                 </div>
                                                                 <br/>

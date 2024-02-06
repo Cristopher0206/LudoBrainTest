@@ -34,7 +34,7 @@ export default function RegistrarEducador() {
                 apellido: apellido,
             },
             withCredentials: true,
-            url: "http://localhost:3001/registrarEducador"
+            url: "http://3.134.64.181:3001/registrarEducador"
         }).then(res => {
             console.log(res);
             if (res.data.message === 'Usuario creado correctamente') {

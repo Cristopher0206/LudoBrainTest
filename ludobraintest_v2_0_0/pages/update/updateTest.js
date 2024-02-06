@@ -50,7 +50,7 @@ export default function UpdateTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSections"
+            url: "http://3.134.64.181:3001/getSections"
         }).then((res) => {
             setSecciones(res.data);
         }).catch((err) => {
@@ -64,7 +64,7 @@ export default function UpdateTest() {
             data: {
                 id_test: info
             },
-            url: "http://localhost:3001/getCurrentInformation",
+            url: "http://3.134.64.181:3001/getCurrentInformation",
         }).then((res) => {
             setNombreActual(res.data[0].nombre_test);
             setSeccionActual(res.data[0].nombre_seccion);
@@ -81,7 +81,7 @@ export default function UpdateTest() {
             data: {
                 id_test: info
             },
-            url: "http://localhost:3001/getPreguntasByIdTest"
+            url: "http://3.134.64.181:3001/getPreguntasByIdTest"
         }).then((res) => {
             setNewPreguntas(res.data);
         }).catch((err) => {
@@ -98,7 +98,7 @@ export default function UpdateTest() {
             data: {
                 seccion: section
             },
-            url: "http://localhost:3001/getPreguntasBySeccion",
+            url: "http://3.134.64.181:3001/getPreguntasBySeccion",
         }).then((res) => {
             setPreguntas(res.data);
         }).catch((err) => {
@@ -176,7 +176,7 @@ export default function UpdateTest() {
                 data: {
                     id_test: info
                 },
-                url: "http://localhost:3001/deleteTest",
+                url: "http://3.134.64.181:3001/deleteTest",
             }).then((res) => {
                 console.log(res);
                 createTest();
@@ -194,7 +194,7 @@ export default function UpdateTest() {
                 seccion: seccion,
                 preguntas: newPreguntas
             },
-            url: "http://localhost:3001/createTest",
+            url: "http://3.134.64.181:3001/createTest",
         }).then((res) => {
             console.log(res);
             if (res.data.message === "Test creado correctamente") {

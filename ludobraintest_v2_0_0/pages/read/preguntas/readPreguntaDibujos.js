@@ -53,7 +53,7 @@ export default function ReadPreguntaDibujos() {
                 id_test: idTest,
             },
             withCredentials: true,
-            url: 'http://localhost:3001/getTestNameById',
+            url: 'http://3.134.64.181:3001/getTestNameById',
         }).then(res => {
             console.log("Nombre del test", res.data);
             setNombreTest(res.data[0].nombre_test);
@@ -69,7 +69,7 @@ export default function ReadPreguntaDibujos() {
                 id_ninio: idNinio,
             },
             withCredentials: true,
-            url: 'http://localhost:3001/getQuestionsbyTestId',
+            url: 'http://3.134.64.181:3001/getQuestionsbyTestId',
         }).then(res => {
             setQuestions(res.data);
             arregloPreguntas = res.data;
@@ -89,7 +89,7 @@ export default function ReadPreguntaDibujos() {
                 id: id_question,
             },
             withCredentials: true,
-            url: 'http://localhost:3001/getAnswersbyQuestionId',
+            url: 'http://3.134.64.181:3001/getAnswersbyQuestionId',
         }).then(res => {
             console.log(res.data);
             setAnswers(res.data);

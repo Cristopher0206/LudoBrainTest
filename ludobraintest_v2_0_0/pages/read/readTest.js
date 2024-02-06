@@ -57,7 +57,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSections"
+            url: "http://3.134.64.181:3001/getSections"
         }).then((res) => {
             setSections(res.data);
         }).catch((err) => {
@@ -68,7 +68,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getInformacionTests"
+            url: "http://3.134.64.181:3001/getInformacionTests"
         }).then((res) => {
             setInformacionTests(res.data);
             if (res.data.length !== 0) {
@@ -82,7 +82,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSemejanzasTests"
+            url: "http://3.134.64.181:3001/getSemejanzasTests"
         }).then((res) => {
             setSemejanzasTests(res.data);
             if (res.data.length !== 0) {
@@ -96,7 +96,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getVocabularioTests"
+            url: "http://3.134.64.181:3001/getVocabularioTests"
         }).then((res) => {
             setVocabularioTests(res.data);
             if (res.data.length !== 0) {
@@ -110,7 +110,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getComprensionTests"
+            url: "http://3.134.64.181:3001/getComprensionTests"
         }).then((res) => {
             setComprensionTests(res.data);
             if (res.data.length !== 0) {
@@ -124,7 +124,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getDibujosTests"
+            url: "http://3.134.64.181:3001/getDibujosTests"
         }).then((res) => {
             setDibujosTests(res.data);
             if (res.data.length !== 0) {
@@ -138,7 +138,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getNombresTests"
+            url: "http://3.134.64.181:3001/getNombresTests"
         }).then((res) => {
             setNombresTests(res.data);
             if (res.data.length !== 0) {
@@ -152,7 +152,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getMatricesTests"
+            url: "http://3.134.64.181:3001/getMatricesTests"
         }).then((res) => {
             setMatricesTests(res.data);
             if (res.data.length !== 0) {
@@ -166,7 +166,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getConceptosTests"
+            url: "http://3.134.64.181:3001/getConceptosTests"
         }).then((res) => {
             setConceptosTests(res.data);
             if (res.data.length !== 0) {
@@ -180,7 +180,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getReconocimientoTests"
+            url: "http://3.134.64.181:3001/getReconocimientoTests"
         }).then((res) => {
             setReconocimientoTests(res.data);
             if (res.data.length !== 0) {
@@ -194,7 +194,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getBusquedaTests"
+            url: "http://3.134.64.181:3001/getBusquedaTests"
         }).then((res) => {
             setBusquedaTests(res.data);
             if (res.data.length !== 0) {
@@ -348,7 +348,7 @@ export default function ReadTest() {
                         id_test: idTest,
                     },
                     withCredentials: true,
-                    url: "http://localhost:3001/deleteTest"
+                    url: "http://3.134.64.181:3001/deleteTest"
                 }).then((res) => {
                     console.log(res);
                     if (res.data.message === 'Test eliminado exitosamente') {

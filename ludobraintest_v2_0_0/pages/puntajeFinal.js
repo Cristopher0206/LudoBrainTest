@@ -40,7 +40,7 @@ export default function PuntajeFinal() {
                 puntaje: puntaje,
             },
             withCredentials: true,
-            url: 'http://localhost:3001/finishTest',
+            url: 'http://3.134.64.181:3001/finishTest',
         }).then(res => {
             console.log(res.data);
             router.push(`/menuOpcionesTest`).then(r => console.log(r));

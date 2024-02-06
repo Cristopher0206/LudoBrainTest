@@ -31,7 +31,7 @@ export default function ChangePassword() {
                 user_password: password,
             },
             withCredentials: true,
-            url: "http://localhost:3001/updateEducador"
+            url: "http://3.134.64.181:3001/updateEducador"
         }).then(res => {
             console.log(res);
             if (res.data.message === 'Contraseña actualizada exitosamente') {

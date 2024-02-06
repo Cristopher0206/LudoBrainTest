@@ -62,7 +62,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getChildren"
+            url: "http://3.134.64.181:3001/getChildren"
         }).then((res) => {
             if (res.data) {
                 setChildren(res.data); // Establece el estado con los resultados
@@ -77,7 +77,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSections"
+            url: "http://3.134.64.181:3001/getSections"
         }).then((res) => {
             setSections(res.data);
         }).catch((err) => {
@@ -88,7 +88,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getInformacionTests"
+            url: "http://3.134.64.181:3001/getInformacionTests"
         }).then((res) => {
             setInformacionTests(res.data);
             if (res.data.length !== 0) {
@@ -102,7 +102,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSemejanzasTests"
+            url: "http://3.134.64.181:3001/getSemejanzasTests"
         }).then((res) => {
             setSemejanzasTests(res.data);
             if (res.data.length !== 0) {
@@ -116,7 +116,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getVocabularioTests"
+            url: "http://3.134.64.181:3001/getVocabularioTests"
         }).then((res) => {
             setVocabularioTests(res.data);
             if (res.data.length !== 0) {
@@ -130,7 +130,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getComprensionTests"
+            url: "http://3.134.64.181:3001/getComprensionTests"
         }).then((res) => {
             setComprensionTests(res.data);
             if (res.data.length !== 0) {
@@ -144,7 +144,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getDibujosTests"
+            url: "http://3.134.64.181:3001/getDibujosTests"
         }).then((res) => {
             setDibujosTests(res.data);
             if (res.data.length !== 0) {
@@ -158,7 +158,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getNombresTests"
+            url: "http://3.134.64.181:3001/getNombresTests"
         }).then((res) => {
             setNombresTests(res.data);
             if (res.data.length !== 0) {
@@ -172,7 +172,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getMatricesTests"
+            url: "http://3.134.64.181:3001/getMatricesTests"
         }).then((res) => {
             setMatricesTests(res.data);
             if (res.data.length !== 0) {
@@ -186,7 +186,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getConceptosTests"
+            url: "http://3.134.64.181:3001/getConceptosTests"
         }).then((res) => {
             setConceptosTests(res.data);
             if (res.data.length !== 0) {
@@ -200,7 +200,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getReconocimientoTests"
+            url: "http://3.134.64.181:3001/getReconocimientoTests"
         }).then((res) => {
             setReconocimientoTests(res.data);
             if (res.data.length !== 0) {
@@ -214,7 +214,7 @@ export default function SelectNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getBusquedaTests"
+            url: "http://3.134.64.181:3001/getBusquedaTests"
         }).then((res) => {
             setBusquedaTests(res.data);
             if (res.data.length !== 0) {
@@ -359,7 +359,7 @@ export default function SelectNinio() {
                 id_test: testSelected
             },
             withCredentials: true,
-            url: "http://localhost:3001/getTestSession"
+            url: "http://3.134.64.181:3001/getTestSession"
         }).then((res) => {
             localStorage.setItem('dato', res.data[0].id_t_n);
             localStorage.setItem('dato2', testSelected);
@@ -407,7 +407,7 @@ export default function SelectNinio() {
             axios({
                 method: "post",
                 withCredentials: true,
-                url: "http://localhost:3001/startTest",
+                url: "http://3.134.64.181:3001/startTest",
                 data: {
                     id_ninio: childSelected,
                     id_test: testSelected

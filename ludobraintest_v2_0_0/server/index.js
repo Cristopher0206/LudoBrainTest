@@ -1,7 +1,5 @@
 const path = process.env.REACT_APP_BACKEND_URL;
 const frontEndPort = process.env.REACT_APP_FRONTEND_PORT;
-//const backEndPort = process.env.REACT_APP_BACKEND_PORT;
-
 const express = require('express');
 const boddParser = require('body-parser');
 const cors = require('cors');
@@ -31,10 +29,14 @@ require("./passportConfig")(passport);
 
 app.get('/', (req, res) => {
     res.send("Hello World");
+})app.get('/login', (req, res) => {
+    res.send("Hello World desde el login");
 })
 app.listen(3001, () => {
     console.log('Server started on port 3001');
 })
+
+
 /* Función para obtener el usuario de la sesión */
 app.get('/getUser', (req, res) => {
     if (req.isAuthenticated()) {

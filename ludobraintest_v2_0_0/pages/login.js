@@ -84,8 +84,12 @@ export default function Login() {
     const loginAsGuest = () => {
         axios({
             method: "post",
+            data: {
+                username: 'invitado@hotmail.com',
+                password: 'invitado123'
+            },
             withCredentials: true,
-            url: `http://3.134.64.181:3001/loginAsGuest`
+            url: `http://3.134.64.181:3001/login`
         }).then(res => {
             if (res.data === "Usuario logeado") {
                 let timerInterval;
@@ -112,6 +116,7 @@ export default function Login() {
                 }, 3000);
             }
         }).catch(err => {
+            console.log("Error al iniciar sesión de Invitado");
             console.log(err);
         });
     }

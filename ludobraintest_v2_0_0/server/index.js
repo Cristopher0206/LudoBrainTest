@@ -67,24 +67,6 @@ app.post('/login', (req, res, next) => {
         }
     })(req, res, next)
 });
-app.post('/loginAsGuest', (req, res, next) => {
-    const username = 'invitado@hotmail.com';
-    const password = 'invitado123';
-    const query = 'SELECT * FROM educador WHERE usuario = ? AND user_password = ?';
-    db.query(query, [username, password], (err, result) => {
-        if (err) {
-            throw err;
-        }
-        if (result.length > 0) {
-            req.login(result[0], (err) => {
-                if (err) {
-                    throw err;
-                }
-                res.send("Usuario logeado");
-            })
-        }
-    })(req, res, next)
-});
 /* Función para cerrar sesión */
 app.post('/logout', function (req, res, next) {
     req.logout(function (err) {

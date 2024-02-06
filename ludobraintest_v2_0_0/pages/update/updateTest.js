@@ -197,8 +197,8 @@ export default function UpdateTest() {
                 console.log(res);
                 setTimeout(() => {
                     console.log("ESPERANDO 3 SEGUNDOS...");
+                    createTest();
                 }, 3000);
-                createTest();
             }).catch((err) => {
                 console.log(err);
             })

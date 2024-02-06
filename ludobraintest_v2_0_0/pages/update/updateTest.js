@@ -188,7 +188,7 @@ export default function UpdateTest() {
                 console.log(err);
             })
         } else {
-            console.log("INFO", info);
+            console.log("INFORMATION", information);
             axios({
                 method: "post",
                 withCredentials: true,

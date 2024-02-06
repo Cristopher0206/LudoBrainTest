@@ -52,7 +52,6 @@ app.get('/getUser', (req, res) => {
 app.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) {
-            console.log("estoy en el error");
             throw err;
         }
         if (!user) {
@@ -68,10 +67,30 @@ app.post('/login', (req, res, next) => {
         }
     })(req, res, next)
 });
+app.post('/loginAsGuest', (req, res, next) => {
+    const username = 'invitado@hotmail.com';
+    const password = 'invitado123';
+    const query = 'SELECT * FROM educador WHERE usuario = ? AND user_password = ?';
+    db.query(query, [username, password], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        if (result.length > 0) {
+            req.login(result[0], (err) => {
+                if (err) {
+                    throw err;
+                }
+                res.send("Usuario logeado");
+            })
+        }
+    })(req, res, next)
+});
 /* Función para cerrar sesión */
-app.post('/logout', function(req, res, next){
-    req.logout(function(err) {
-        if (err) { return next(err); }
+app.post('/logout', function (req, res, next) {
+    req.logout(function (err) {
+        if (err) {
+            return next(err);
+        }
         res.clearCookie('connect.sid');
         res.send({message: "Sesión cerrada exitosamente"});
     });

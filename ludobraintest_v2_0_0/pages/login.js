@@ -81,19 +81,54 @@ export default function Login() {
             .then(r => console.log('Redirigiendo...'));
     }
 
+    const loginAsGuest = () => {
+        axios({
+            method: "post",
+            withCredentials: true,
+            url: `http://3.134.64.181:3001/loginAsGuest`
+        }).then(res => {
+            if (res.data === "Usuario logeado") {
+                let timerInterval;
+                Swal.fire({
+                    icon: 'success',
+                    title: "¡Acceso Correcto!",
+                    timer: 3000,
+                    timerProgressBar: true,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log("I was closed by the timer");
+                    }
+                });
+                setTimeout(() => {
+                    startApp();
+                }, 3000);
+            }
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
     return (
         <div className={`container-fluid px-5`}>
             <br/><br/>
             <div className={`row d-flex justify-content-between`}>
                 <div className={`col-5 d-flex justify-content-center`}>
                     <Image src="/images/EPN_logo_big.png"
-                         alt="EPN LOGO"
-                         className={`${styles.epn_logo}`} width={1000} height={100}/>
+                           alt="EPN LOGO"
+                           className={`${styles.epn_logo}`} width={1000} height={100}/>
                 </div>
                 <div className={`col-5 d-flex justify-content-center`}>
                     <Image src="/images/341894265_1090311248597302_516144097782360263_n.jpg"
-                         alt="LUDOLAB LOGO"
-                         className={`${styles.ludolab_logo}`} width={1000} height={100}/>
+                           alt="LUDOLAB LOGO"
+                           className={`${styles.ludolab_logo}`} width={1000} height={100}/>
                 </div>
             </div>
             <br/><br/>
@@ -106,8 +141,8 @@ export default function Login() {
             <div className={`row justify-content-center px-28`}>
                 <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
                     <Image src="/images/usuario.png"
-                         alt="user icon"
-                         className={`${styles.user_logo}`} width={100} height={100}/>
+                           alt="user icon"
+                           className={`${styles.user_logo}`} width={100} height={100}/>
                 </div>
                 <div className={`col-8 self-center  `}>
                     <input type="text"
@@ -121,8 +156,8 @@ export default function Login() {
             <div className={`row justify-content-center px-28`}>
                 <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
                     <Image src="/images/llave-de-la-puerta.png"
-                         alt="password icon"
-                         className={`${styles.password_logo}`} width={100} height={100}/>
+                           alt="password icon"
+                           className={`${styles.password_logo}`} width={100} height={100}/>
                 </div>
                 <div className={`col-8 self-center`}>
                     <input name={`password`}
@@ -138,7 +173,7 @@ export default function Login() {
                     <Button text={`Iniciar sesión`} instruction={login} bg_color={button.btn_green}></Button>
                 </div>
                 <div className={`col-5 flex justify-start`}>
-                    <Button text={`Jugar como invitado`} instruction={startApp} bg_color={button.btn_green}></Button>
+                    <Button text={`Jugar como invitado`} instruction={loginAsGuest} bg_color={button.btn_green}></Button>
                 </div>
             </div>
             <br/> <br/>

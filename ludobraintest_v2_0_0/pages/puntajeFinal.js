@@ -20,7 +20,7 @@ export default function PuntajeFinal() {
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [puntuacion, setPuntuacion] = useState(puntaje);
     /*------------------- EFECTOS -------------------*/
-    const text = "¡Felicitaciones! Completaste la Evaluación. Tu puntuación final es " + puntaje;
+    const text = "¡Felicitaciones! Completaste la Evaluación. Tu puntuación final es " + puntuacion;
     useVoiceReader(text, isSpeaking);
     useEffect(() => {
         console.log('puntaje', puntaje);
@@ -41,7 +41,7 @@ export default function PuntajeFinal() {
             data: {
                 id_test: idTest,
                 id_ninio: idNinio,
-                puntaje: puntaje,
+                puntaje: puntuacion,
             },
             withCredentials: true,
             url: 'http://3.134.64.181:3001/finishTest',

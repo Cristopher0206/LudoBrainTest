@@ -215,7 +215,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_red}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -259,8 +260,7 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_green}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}
-                                    silenceVoice={shutUp}/>
+                                    silenceCommand={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -304,7 +304,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_blue}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -348,7 +349,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_orange}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -392,7 +394,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_purple}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
                             <div className={`col-6 ${styles.test_info} self-center`}>
@@ -435,7 +438,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_electric_blue}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
                             <div className={`col-6 ${styles.test_info} self-center`}>
@@ -479,7 +483,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_olive}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -523,7 +528,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_blue}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -567,7 +573,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_red}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>
@@ -611,7 +618,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_orange}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>

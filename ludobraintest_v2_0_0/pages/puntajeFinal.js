@@ -18,12 +18,16 @@ export default function PuntajeFinal() {
     const { speak, speaking } = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
     const [isSpeaking, setIsSpeaking] = useState(false);
+    const [puntuacion, setPuntuacion] = useState(puntaje);
     /*------------------- EFECTOS -------------------*/
     const text = "¡Felicitaciones! Completaste la Evaluación. Tu puntuación final es " + puntaje;
     useVoiceReader(text, isSpeaking);
     useEffect(() => {
+        console.log('puntaje', puntaje);
+        console.log('puntuacion', puntuacion);
         if (typeof window !== 'undefined') {
             puntaje = localStorage.getItem('puntaje');
+            setPuntuacion(localStorage.getItem('puntaje'));
             idTest = localStorage.getItem('id_test');
             idNinio = localStorage.getItem('id_ninio');
         } else {

@@ -20,6 +20,7 @@ export default function MenuOpcionesTest() {
     const {speak, speaking} = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
     const [test, setTest] = useState('');
+    const [nombreSeccion, setNombreSeccion] = useState('');
     const [isSpeaking, setIsSpeaking] = useState(false);
     // Estados para generar el color
     const [informationTitle, setInformationTitle] = useState(false);
@@ -58,8 +59,9 @@ export default function MenuOpcionesTest() {
             console.log(res);
             setTest(res.data[0]);
             nombre_seccion = res.data[0].nombre_seccion;
+            setNombreSeccion(res.data[0].nombre_seccion);
             localStorage.setItem('id_ninio', res.data[0].id_ninio);
-            generateColor();
+            generateColor().then(r => console.log(r));
         }).catch((err) => {
             console.log(err);
         })

@@ -1,10 +1,13 @@
+const path = process.env.REACT_APP_BACKEND_URL;
+const frontEndPort = process.env.REACT_APP_FRONTEND_PORT;
+//const backEndPort = process.env.REACT_APP_BACKEND_PORT;
+
 const express = require('express');
 const boddParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const expressSession = require('express-session');
 const cookieParser = require('cookie-parser');
-//const bcrypt = require('bcrypt');
 const db = require('./db');
 const multer = require("multer");
 
@@ -15,7 +18,7 @@ app.use(boddParser.json());
 app.use(expressSession({secret: 'mySecretKey', resave: false, saveUninitialized: false}));
 
 app.use(cors({
-    origin: '3.134.64.181:3000',
+    origin: `${path}:${frontEndPort}`,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));

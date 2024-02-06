@@ -11,6 +11,8 @@ import Image from "next/image";
 
 export default function Login() {
     const router = useRouter();
+    const path = process.env.REACT_APP_BACKEND_URL;
+    const backEndPort = process.env.REACT_APP_BACKEND_PORT;
     /* ESTADOS */
     const [loginUsuario, setLoginUsuario] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
@@ -23,7 +25,7 @@ export default function Login() {
                 password: loginPassword
             },
             withCredentials: true,
-            url: "http://3.134.64.181:3001/login"
+            url: `${path}:${backEndPort}/login`
         }).then(res => {
             if (res.data === "Usuario logeado") {
                 let timerInterval;

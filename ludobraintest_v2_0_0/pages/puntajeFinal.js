@@ -27,7 +27,7 @@ export default function PuntajeFinal() {
         console.log('puntuacion', puntuacion);
         if (typeof window !== 'undefined') {
             puntaje = localStorage.getItem('puntaje');
-            setPuntuacion(localStorage.getItem('puntaje'));
+            setPuntuacion(puntaje);
             idTest = localStorage.getItem('id_test');
             idNinio = localStorage.getItem('id_ninio');
         } else {
@@ -87,7 +87,7 @@ export default function PuntajeFinal() {
                     <br/> <br/> <br/>
                     <h2 className={`font-bold`}>Tu puntuación final es</h2>
                     <div className={`text-3xl italic`}>
-                        {puntaje}
+                        {puntuacion}
                     </div>
                 </div>
             </div>

@@ -258,7 +258,8 @@ export default function CreateTest() {
                             info_color={button.btn_green}
                             voiceCommand={hearVoice}
                             silenceCommand={shutUp}
-                            silenceVoice={shutUp}/>
+                            silenceVoice={shutUp}
+                            hiddenHome={`hidden`}/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>
                     <div className={`col-6`}>

@@ -178,7 +178,8 @@ export default function CreateNinio() {
                             instruction={`Registra a un niño`}
                             information={showInstructions}
                             info_color={button.btn_yellow}
-                            hiddenVoice={`hidden`}/>
+                            hiddenVoice={`hidden`}
+                            hiddenHome={`hidden`}/>
             <div className={`container-fluid text-black px-5`}>
                 <br/>
                 <div className={`row justify-content-center px-5`}>

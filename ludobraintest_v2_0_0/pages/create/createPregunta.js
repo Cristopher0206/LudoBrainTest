@@ -1474,7 +1474,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showInformationInstructions}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Pregunta</label></h4>
                         <textarea
@@ -1568,7 +1569,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showSemejanzasInstructions}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Nombre de la Pregunta</label></h4>
                         <textarea
@@ -1719,7 +1721,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showVocabularioInstruction}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Pregunta</label></h4>
                         <textarea
@@ -1799,7 +1802,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showComprensionInstructions}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Pregunta</label></h4>
                         <textarea
@@ -1893,7 +1897,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showDibujosInstructions}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Palabra</label></h4>
                         <textarea
@@ -1987,7 +1992,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showNombresInstructions}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Pregunta</label></h4>
                         <textarea
@@ -2067,7 +2073,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showMatricesInstructions}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Pregunta</label></h4>
                         <textarea
@@ -2219,7 +2226,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showConceptosInstructions}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Nombre de la Pregunta</label></h4>
                         <textarea
@@ -2458,7 +2466,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showReconocimientoInstructions}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Nombre de la Pregunta</label></h4>
                         <textarea
@@ -2609,7 +2618,8 @@ export default function CreatePregunta() {
                                     instruction={`Crea una pregunta`}
                                     information={showBusquedaInstructions}
                                     info_color={button.btn_red}
-                                    hiddenVoice={`hidden`}/>
+                                    hiddenVoice={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid px-5`}>
                         <h4><label htmlFor="myTextarea">Pregunta</label></h4>
                         <textarea

@@ -434,7 +434,8 @@ export default function Resultados() {
     }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={navstyles.upper_bar_red}/>
+            <UpperBar color={navstyles.upper_bar_red}
+                      silenceVoice={shutUp}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Resultados de los niños`}
                             information={showInstructions}

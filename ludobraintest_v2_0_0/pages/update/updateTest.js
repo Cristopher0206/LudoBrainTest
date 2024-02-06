@@ -45,7 +45,7 @@ export default function UpdateTest() {
         axios({
             method: 'post',
             data: {
-                id_test: idTest,
+                id_test: information,
             },
             withCredentials: true,
             url: 'http://3.134.64.181:3001/getTestNameById',

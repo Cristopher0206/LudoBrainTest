@@ -202,73 +202,35 @@ export default function UpdateTest() {
                 url: "http://3.134.64.181:3001/updateTest",
             }).then((res) => {
                 console.log(res);
-                /*setTimeout(() => {
-                    console.log("ESPERANDO 3 SEGUNDOS...");
-                    createTest();
-                }, 3000);*/
+                if (res.data.message === "Test actualizado correctamente") {
+                    let timerInterval;
+                    Swal.fire({
+                        icon: 'success',
+                        title: "¡Evaluación actualizada Correctamente!",
+                        timer: 2500,
+                        timerProgressBar: true,
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval);
+                        }
+                    }).then((result) => {
+                        /* Read more about handling dismissals below */
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            console.log("I was closed by the timer");
+                        }
+                    });
+                    clearFields();
+                    setTimeout(() => {
+                        router.push("/read/readTest");
+                    }, 3000);
+                }
             }).catch((err) => {
                 console.log(err);
             })
         }
-    }
-    const createTest = () => {
-        axios({
-            method: "post",
-            withCredentials: true,
-            data: {
-                nombre: nombreTest,
-                seccion: seccion,
-                preguntas: newPreguntas
-            },
-            url: "http://3.134.64.181:3001/createTest",
-        }).then((res) => {
-            console.log(res);
-            if (res.data.message === "Test creado correctamente") {
-                let timerInterval;
-                Swal.fire({
-                    icon: 'success',
-                    title: "¡Evaluación actualizada Correctamente!",
-                    timer: 2500,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        Swal.showLoading();
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval);
-                    }
-                }).then((result) => {
-                    /* Read more about handling dismissals below */
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log("I was closed by the timer");
-                    }
-                });
-                clearFields();
-                setTimeout(() => {
-                    router.push("/read/readTest");
-                }, 2500);
-            } else if (res.data.message === "No se pudo actualizar el test") {
-                let timerInterval;
-                Swal.fire({
-                    icon: 'warning',
-                    title: "¡No se pudo actualizar la Evaluación!",
-                    timer: 2500,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        Swal.showLoading();
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval);
-                    }
-                }).then((result) => {
-                    /* Read more about handling dismissals below */
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log("I was closed by the timer");
-                    }
-                });
-            }
-        }).catch((err) => {
-            console.log(err);
-        })
     }
     const showInstructions = () => {
         Swal.fire({

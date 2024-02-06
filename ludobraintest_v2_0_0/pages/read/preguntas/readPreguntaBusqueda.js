@@ -7,8 +7,8 @@ import UpperBar from "@/components/UpperBar";
 import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
 import Swal from "sweetalert2";
-import useVoiceReader from "@/pages/useVoiceReader";
-import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/effects/useVoiceReader";
+import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
 import Image from "next/image";
 
 export default function ReadPreguntaBusqueda() {

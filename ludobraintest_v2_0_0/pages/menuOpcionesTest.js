@@ -8,8 +8,8 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import Button from "@/components/Button";
 import Swal from "sweetalert2";
-import useVoiceReader from "@/pages/useVoiceReader";
-import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import useVoiceReader from "@/effects/useVoiceReader";
+import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
 
 export default function MenuOpcionesTest() {
     const router = useRouter();

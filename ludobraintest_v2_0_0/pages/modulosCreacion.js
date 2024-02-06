@@ -6,8 +6,8 @@ import styles from '@/styles/styles.module.css'
 import button from '@/styles/button.module.css'
 import {useRouter} from "next/router";
 import Button from "@/components/Button";
-import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
-import useVoiceReader from "@/pages/useVoiceReader";
+import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
+import useVoiceReader from "@/effects/useVoiceReader";
 import {useState} from "react";
 
 export default function ModulosCreacion() {

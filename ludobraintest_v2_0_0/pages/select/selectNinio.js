@@ -9,8 +9,8 @@ import button from "@/styles/button.module.css";
 import Button from "@/components/Button";
 import Swal from 'sweetalert2'
 import SweetAlert from "sweetalert2";
-import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
-import useVoiceReader from "@/pages/useVoiceReader";
+import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
+import useVoiceReader from "@/effects/useVoiceReader";
 
 export default function SelectNinio() {
     const router = useRouter();

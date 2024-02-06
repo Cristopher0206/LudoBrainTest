@@ -6,9 +6,9 @@ import button from "@/styles/button.module.css";
 import Button from "@/components/Button";
 import {useRouter} from "next/router";
 import SweetAlert from "sweetalert2";
-import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
 import {useEffect, useState} from "react";
-import useVoiceReader from "@/pages/useVoiceReader";
+import useVoiceReader from "@/effects/useVoiceReader";
 export default function Modulos() {
     const router = useRouter();
     const { speak, speaking } = UseSpeechSynthesis();

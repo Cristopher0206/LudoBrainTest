@@ -8,8 +8,8 @@ import QuestionBar from "@/components/QuestionBar";
 import {useRouter} from "next/router";
 import Swal from "sweetalert2";
 import Button from "@/components/Button";
-import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
-import useVoiceReader from "@/pages/useVoiceReader";
+import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
+import useVoiceReader from "@/effects/useVoiceReader";
 import Image from "next/image";
 
 export default function ReadPreguntaReconocimiento() {

@@ -6,8 +6,8 @@ import navstyles from "@/styles/navstyles.module.css";
 import button from "@/styles/button.module.css";
 import {useRouter} from "next/router";
 import axios from "axios";
-import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
-import useVoiceReader from "@/pages/useVoiceReader";
+import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
+import useVoiceReader from "@/effects/useVoiceReader";
 import {useEffect, useState} from "react";
 
 export default function PuntajeFinal() {

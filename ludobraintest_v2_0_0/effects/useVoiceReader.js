@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
+import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
 
 const useVoiceReader = (text, condition) => {
     const { speak, speaking, stopSpeaking } = UseSpeechSynthesis();

@@ -8,8 +8,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Button from "@/components/Button";
 import Swal from "sweetalert2";
-import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
-import useVoiceReader from "@/pages/useVoiceReader";
+import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
+import useVoiceReader from "@/effects/useVoiceReader";
 
 export default function CreateTest() {
     const router = useRouter();

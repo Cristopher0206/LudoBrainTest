@@ -50,7 +50,7 @@ export default function ReadPreguntaInformacion() {
         axios({
             method: 'post',
             data: {
-                id_test: idTest,
+                id_test: id_test,
             },
             withCredentials: true,
             url: 'http://3.134.64.181:3001/getTestNameById',
@@ -65,7 +65,7 @@ export default function ReadPreguntaInformacion() {
         axios({
             method: 'post',
             data: {
-                id: idTest,
+                id: id_test,
                 id_ninio: idNinio,
             },
             withCredentials: true,

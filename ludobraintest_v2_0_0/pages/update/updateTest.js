@@ -195,10 +195,10 @@ export default function UpdateTest() {
                 url: "http://3.134.64.181:3001/deleteTest",
             }).then((res) => {
                 console.log(res);
-                setTimeout(() => {
+                /*setTimeout(() => {
                     console.log("ESPERANDO 3 SEGUNDOS...");
                     createTest();
-                }, 3000);
+                }, 3000);*/
             }).catch((err) => {
                 console.log(err);
             })

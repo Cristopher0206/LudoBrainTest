@@ -36,6 +36,10 @@ export default function PuntajeFinal() {
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const finishTest = () => {
+        console.log('idTest', idTest);
+        console.log('idNinio', idNinio);
+        console.log('puntuacion', puntuacion);
+        console.log('puntaje', puntaje);
         axios({
             method: 'post',
             data: {

@@ -190,7 +190,7 @@ export default function UpdateTest() {
                 method: "post",
                 withCredentials: true,
                 data: {
-                    id_test: info
+                    id_test: information
                 },
                 url: "http://3.134.64.181:3001/deleteTest",
             }).then((res) => {

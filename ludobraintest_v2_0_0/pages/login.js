@@ -25,7 +25,7 @@ export default function Login() {
                 password: loginPassword
             },
             withCredentials: true,
-            url: `http://poliquizzes:3001/login`
+            url: `http://3.134.64.181:3001/login`
         }).then(res => {
             if (res.data === "Usuario logeado") {
                 let timerInterval;

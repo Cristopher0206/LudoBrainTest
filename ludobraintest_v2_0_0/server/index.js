@@ -16,7 +16,7 @@ app.use(boddParser.json());
 app.use(expressSession({secret: 'mySecretKey', resave: false, saveUninitialized: false}));
 
 app.use(cors({
-    origin: "http://poliquizzes:3000",
+    origin: "http://3.134.64.181:3000",
     credentials: true
 }));
 

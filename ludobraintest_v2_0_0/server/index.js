@@ -49,7 +49,7 @@ app.get('/getUser', (req, res) => {
     }
 })
 /* Función para el Login */
-/*app.post('/login', (req, res, next) => {
+app.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) {
             console.log("estoy en el error");
@@ -67,21 +67,7 @@ app.get('/getUser', (req, res) => {
             })
         }
     })(req, res, next)
-});*/
-app.post('/login', (req, res) => {
-    const {username, password} = req.body;
-    const query = "SELECT * FROM educador WHERE usuario = ? AND user_password = ?";
-    db.query(query, [username, password], (err, result) => {
-        if (err) {
-            throw err;
-        }
-        if (result.length > 0) {
-            res.send({message: "Usuario logeado"});
-        } else {
-            res.send({message: "Usuario no encontrado"});
-        }
-    })
-})
+});
 /* Funciones de registro */
 app.post('/registrarEducador', (req, res) => {
     const {usuario, user_password, nombre, apellido} = req.body;

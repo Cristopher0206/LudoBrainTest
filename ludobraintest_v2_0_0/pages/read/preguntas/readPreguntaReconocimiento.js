@@ -14,12 +14,8 @@ import Image from "next/image";
 
 export default function ReadPreguntaReconocimiento() {
     const router = useRouter();
-    let id_test;
-    let nombre_test;
-    if (typeof window !== 'undefined') {
-        id_test = localStorage.getItem('id_test');
-        nombre_test = localStorage.getItem('nombre_test');
-    }
+    let idTest;
+    let idNinio;
     let arregloPreguntas;
     const { speak, speaking } = UseSpeechSynthesis();
     const texto1 = "¡Observa con atención las imágenes que aparecen en pantalla!";
@@ -37,15 +33,40 @@ export default function ReadPreguntaReconocimiento() {
     const [puntaje, setPuntaje] = useState(0); // Estado para el puntaje final
     const [showSamples, setShowSamples] = useState(false); // Estado para mostrar las muestras
     const [goQuestion, setGoQuestion] = useState(false); // Estado para mostrar la pregunta
+    const [nombre_test, setNombreTest] = useState(''); // Estado para el nombre del test
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
+        getTestNameById();
         getQuestionsbyTestId();
         showSamplesHandler();
     }, []);
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            idTest = localStorage.getItem('id_test');
+            idNinio = localStorage.getItem('id_ninio');
+        } else {
+            router.push('/modulos').then(r => console.log(r));
+        }
+    }, []);
     /*------------------- FUNCIONES -------------------*/
+    const getTestNameById = () => {
+        axios({
+            method: 'post',
+            data: {
+                id_test: idTest,
+            },
+            withCredentials: true,
+            url: 'http://localhost:3001/getTestNameById',
+        }).then(res => {
+            console.log("Nombre del test", res.data);
+            setNombreTest(res.data[0].nombre_test);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
     const showSamplesHandler = () => {
         setGoQuestion(false);
         setShowSamples(true);
@@ -59,8 +80,8 @@ export default function ReadPreguntaReconocimiento() {
         axios({
             method: 'post',
             data: {
-                id: id_test,
-                id_ninio: localStorage.getItem('id_ninio'),
+                id: idTest,
+                id_ninio: idNinio,
             },
             withCredentials: true,
             url: 'http://localhost:3001/getQuestionsbyTestId',

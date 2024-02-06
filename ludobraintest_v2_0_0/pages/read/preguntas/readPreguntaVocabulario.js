@@ -12,8 +12,8 @@ import Image from "next/image";
 
 export default function ReadPreguntaVocabulario() {
     const router = useRouter();
-    const id_test = localStorage.getItem('id_test');
-    const nombre_test = localStorage.getItem('nombre_test');
+    let idTest;
+    let idNinio;
     let arregloPreguntas;
     const {speak, speaking} = UseSpeechSynthesis();
     const texto = "¿Qué es esta figura? ¿Podrías definirla? ";
@@ -25,20 +25,45 @@ export default function ReadPreguntaVocabulario() {
     const [totalPreguntas, setTotalPreguntas] = useState(0); // Estado para el total de preguntas
     const [preguntaActualIndex, setPreguntaActualIndex] = useState(1); // Estado para el índice de la pregunta actual
     const [puntaje, setPuntaje] = useState(0); // Estado para el puntaje final
+    const [nombre_test, setNombreTest] = useState(''); // Estado para el nombre del test
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
+        getTestNameById();
         getQuestionsbyTestId();
     }, []);
     useEffect(() => {
         localStorage.setItem('puntaje', puntaje.toString());
     }, [puntaje]);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            idTest = localStorage.getItem('id_test');
+            idNinio = localStorage.getItem('id_ninio');
+        } else {
+            router.push('/modulos').then(r => console.log(r));
+        }
+    }, []);
     /*------------------- FUNCIONES -------------------*/
+    const getTestNameById = () => {
+        axios({
+            method: 'post',
+            data: {
+                id_test: idTest,
+            },
+            withCredentials: true,
+            url: 'http://localhost:3001/getTestNameById',
+        }).then(res => {
+            console.log("Nombre del test", res.data);
+            setNombreTest(res.data[0].nombre_test);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
     const getQuestionsbyTestId = () => {
         axios({
             method: 'post',
             data: {
-                id: id_test,
-                id_ninio: localStorage.getItem('id_ninio'),
+                id: idTest,
+                id_ninio: idNinio,
             },
             withCredentials: true,
             url: 'http://localhost:3001/getQuestionsbyTestId',

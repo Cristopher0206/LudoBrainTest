@@ -8,24 +8,35 @@ import {useRouter} from "next/router";
 import axios from "axios";
 import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 import useVoiceReader from "@/pages/useVoiceReader";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export default function PuntajeFinal() {
     const router = useRouter();
-    const puntaje = localStorage.getItem('puntaje');
+    let puntaje;
+    let idTest;
+    let idNinio;
     const { speak, speaking } = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
     const [isSpeaking, setIsSpeaking] = useState(false);
     /*------------------- EFECTOS -------------------*/
     const text = "¡Felicitaciones! Completaste la Evaluación. Tu puntuación final es " + puntaje;
     useVoiceReader(text, isSpeaking);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            puntaje = localStorage.getItem('puntaje');
+            idTest = localStorage.getItem('id_test');
+            idNinio = localStorage.getItem('id_ninio');
+        } else {
+            router.push('/modulos').then(r => console.log(r));
+        }
+    }, []);
     /*------------------- FUNCIONES -------------------*/
     const finishTest = () => {
         axios({
             method: 'post',
             data: {
-                id_test: localStorage.getItem('id_test'),
-                id_ninio: localStorage.getItem('id_ninio'),
+                id_test: idTest,
+                id_ninio: idNinio,
                 puntaje: puntaje,
             },
             withCredentials: true,

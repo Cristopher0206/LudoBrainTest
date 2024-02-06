@@ -13,8 +13,8 @@ import UseSpeechSynthesis from "@/pages/useSpeechSynthesis";
 
 export default function MenuOpcionesTest() {
     const router = useRouter();
-    const id = localStorage.getItem('dato');
-    const id_test = localStorage.getItem('dato2');
+    let id;
+    let id_test;
     let nombre_seccion;
     const text = "Selecciona una opción";
     const {speak, speaking} = UseSpeechSynthesis();
@@ -36,6 +36,14 @@ export default function MenuOpcionesTest() {
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getTest();
         showInstructions();
+    }, []);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            id = localStorage.getItem('dato');
+            id_test = localStorage.getItem('dato2');
+        } else {
+            router.push('/modulos').then(r => console.log(r));
+        }
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getTest = () => {

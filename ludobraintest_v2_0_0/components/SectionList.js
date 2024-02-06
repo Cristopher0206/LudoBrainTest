@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import styles from "@/styles/styles.module.css";
+import button from "@/styles/button.module.css";
 
 export default function SectionList(
     {
@@ -23,54 +23,54 @@ export default function SectionList(
     return (
         <div className="px-5 grid gap-x-8 gap-y-5 grid-cols-3 justify-center justify-items-center">
             <button onClick={() => definirPregunta('Información')}
-                    className={`btn py-4 rounded-lg text-black shadow-md font-medium
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_informacion}`}>
+                    className={`py-4 rounded-lg shadow-md font-medium
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_informacion}`}>
                 Información
             </button>
             <button onClick={() => definirPregunta('Semejanzas')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_semejanza}`}>
+                    className={`py-4 rounded-lg font-bold shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_semejanza}`}>
                 Semejanzas
             </button>
             <button onClick={() => definirPregunta('Vocabulario')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_vocabulario}`}>
+                    className={`py-4 rounded-lg font-bold shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_vocabulario}`}>
                 Vocabulario
             </button>
             <button onClick={() => definirPregunta('Comprensión')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_comprension}`}>
+                    className={`py-4 rounded-lg font-bold shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_comprension}`}>
                 Comprensión
             </button>
             <button onClick={() => definirPregunta('Dibujos')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_dibujos}`}>
+                    className={`py-4 rounded-lg font-bold shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_dibujos}`}>
                 Dibujos
             </button>
             <button onClick={() => definirPregunta('Nombres')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_nombres}`}>
+                    className={`py-4 rounded-lg font-bold shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_nombres}`}>
                 Nombres
             </button>
             <button onClick={() => definirPregunta('Matrices')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_matrices}`}>
+                    className={`py-4 rounded-lg font-bold shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_matrices}`}>
                 Matrices
             </button>
             <button onClick={() => definirPregunta('Conceptos')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_conceptos}`}>
+                    className={`py-4 rounded-lg font-bold shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_conceptos}`}>
                 Conceptos
             </button>
             <button onClick={() => definirPregunta('Reconocimiento')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_reconocimiento}`}>
+                    className={`py-4 rounded-lg font-bold shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_reconocimiento}`}>
                 Reconocimiento
             </button>
             <div></div>
             <button onClick={() => definirPregunta('Búsqueda')}
-                    className={`btn py-4 rounded-lg font-bold text-black shadow-md
-                            border-2 border-black border-opacity-10 h-100 w-100 ${styles.btn_busqueda}`}>
+                    className={`py-4 rounded-lg font-bold shadow-md
+                            border-2 border-black border-opacity-10 h-100 w-100 ${button.btn_busqueda}`}>
                 Búsqueda
             </button>
         </div>

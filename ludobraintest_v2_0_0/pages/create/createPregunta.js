@@ -10,7 +10,7 @@ import Button from "@/components/Button";
 import Swal from "sweetalert2";
 
 export default function CreatePregunta() {
-    const dato = localStorage.getItem('dato');
+    let dato;
     const router = useRouter();
     let imagenMuestraVocabulario = [];
     let imagenMuestraBusqueda = [];
@@ -50,6 +50,13 @@ export default function CreatePregunta() {
     }, [selectedFiles]);
     useEffect(() => {
     }, [imagenesMuestra]);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            dato = localStorage.getItem('dato');
+        } else {
+            router.push('/modulos').then(r => console.log(r));
+        }
+    }, []);
     /*------------------- FUNCIONES -------------------*/
     const clearFields = () => { /* Funciòn para limpiar los campos */
         setTextareaValue('');

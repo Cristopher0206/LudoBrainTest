@@ -154,3 +154,154 @@
     text-shadow: black 0.075em 0.075em 0.125em;
     transition: all 0.3s ease-in-out;
 }
+
+/*Estilos para los botones de la lista de secciones*/
+.btn_informacion {
+    background-color: rgba(255, 67, 49, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_informacion:hover {
+    background-color: rgba(255, 67, 49);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn_semejanza {
+    background-color: rgba(4, 187, 3, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_semejanza:hover {
+    background-color: rgba(4, 187, 3);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_vocabulario {
+    background-color: rgba(25, 169, 182, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_vocabulario:hover {
+    background-color: rgba(25, 169, 182);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_comprension {
+    background-color: rgba(246, 114, 39, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_comprension:hover {
+    background-color: rgba(246, 114, 39);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_dibujos {
+    background-color: rgba(189, 49, 255, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_dibujos:hover {
+    background-color: rgba(189, 49, 255);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_nombres {
+    background-color: rgba(49, 70, 255, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_nombres:hover {
+    background-color: rgba(49, 70, 255);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_matrices {
+    background-color: rgba(161, 187, 3, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_matrices:hover {
+    background-color: rgba(161, 187, 3);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_conceptos {
+    background-color: rgba(25, 169, 182, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_conceptos:hover {
+    background-color: rgba(25, 169, 182);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_reconocimiento {
+    background-color: rgba(255, 67, 49, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_reconocimiento:hover {
+    background-color: rgba(255, 67, 49);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_busqueda {
+    background-color: rgba(246, 114, 39, 0.75);
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_busqueda:hover {
+    background-color: rgba(246, 114, 39);
+    font-weight: bolder;
+    color: white;
+    box-shadow: black 0.075em 0.075em 0.125em;
+    text-shadow: black 0.075em 0.075em 0.125em;
+    transition: all 0.3s ease-in-out;
+}

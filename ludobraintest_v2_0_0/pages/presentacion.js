@@ -19,7 +19,6 @@ export default function Presentacion() {
         nextPage();
     }, [router]);
     /*------------------- FUNCIONES -------------------*/
-
     return (
         <main className={`bg-amber-50 min-h-screen`}>
             <UpperBar color={navstyles.upper_bar_yellow}/>

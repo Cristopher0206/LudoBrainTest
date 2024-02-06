@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/InstructionBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/InstructionBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/QuestionBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/QuestionBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/SectionList.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/SectionList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/menuOpcionesTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/menuOpcionesTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/presentacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/presentacion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaBusqueda.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaBusqueda.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaComprension.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaComprension.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaConceptos.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaConceptos.js" afterDir="false" />
@@ -18,8 +21,11 @@
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaReconocimiento.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaReconocimiento.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaSemejanzas.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaSemejanzas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaVocabulario.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaVocabulario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/resultados.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/resultados.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/score.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/score.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectSeccionPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/select/selectSeccionPregunta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateNinio.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateNinio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/update/updateTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/button.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/button.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,15 +187,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/ludobraintest_v2_0_0/pages/instrucciones.js</url>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

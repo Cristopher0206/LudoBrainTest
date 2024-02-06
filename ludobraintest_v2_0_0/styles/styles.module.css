@@ -424,56 +424,6 @@
     color: #000000;
 }
 
-.btn_informacion {
-    background-color: rgba(255, 67, 49, 0.75);
-    font-weight: bolder;
-}
-
-.btn_semejanza {
-    background-color: rgba(4, 187, 3, 0.75);
-    font-weight: bolder;
-}
-
-.btn_vocabulario {
-    background-color: rgba(25, 169, 182, 0.75);
-    font-weight: bolder;
-}
-
-.btn_comprension {
-    background-color: rgba(246, 114, 39, 0.75);
-    font-weight: bolder;
-}
-
-.btn_dibujos {
-    background-color: rgba(189, 49, 255, 0.75);
-    font-weight: bolder;
-}
-
-.btn_nombres {
-    background-color: rgba(49, 70, 255, 0.75);
-    font-weight: bolder;
-}
-
-.btn_matrices {
-    background-color: rgba(161, 187, 3, 0.75);
-    font-weight: bolder;
-}
-
-.btn_conceptos {
-    background-color: rgba(25, 169, 182, 0.75);
-    font-weight: bolder;
-}
-
-.btn_reconocimiento {
-    background-color: rgba(255, 67, 49, 0.75);
-    font-weight: bolder;
-}
-
-.btn_busqueda {
-    background-color: rgba(246, 114, 39, 0.75);
-    font-weight: bolder;
-}
-
 .selected_child_card {
     background-color: rgb(25, 169, 182);
     color: #ffffff;

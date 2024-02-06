@@ -11,19 +11,27 @@ import Swal from "sweetalert2";
 
 export default function UpdateNinio() {
     const router = useRouter();
+    let information;
     /*------------------- ESTADOS -------------------*/
     const [idNinio, setIdNinio] = useState('');
     const [registerUpdateName, setRegisterUpdateName] = useState('');
     const [registerUpdateAge, setRegisterUpdateAge] = useState('');
-    const [info, setInfo] = useState(sessionStorage.getItem("dataToPass"));
+    const [info, setInfo] = useState(information);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getUser();
         showInstructions();
     }, []);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            information = sessionStorage.getItem("dataToPass");
+        } else {
+            router.push('/modulos').then(r => console.log(r));
+        }
+    }, []);
     /*------------------- FUNCIONES -------------------*/
     const getUser = () => {
-        setInfo(sessionStorage.getItem('dataToPass'));
+        setInfo(information);
         axios({
             method: "post",
             data: {

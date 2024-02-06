@@ -45,7 +45,7 @@ export default function SelectSeccionPregunta(){
                             info_color={button.btn_red}
                             hiddenVoice={`hidden`}/>
             <br/>
-            <SectionList informationPage={`../create/preguntas/createInformacion`}/>
+            <SectionList informationPage={`/create/preguntas/createInformacion`}/>
         </main>
     )
 }

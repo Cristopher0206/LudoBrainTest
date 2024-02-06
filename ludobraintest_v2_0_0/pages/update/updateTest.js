@@ -12,11 +12,12 @@ import Button from "@/components/Button";
 export default function UpdateTest() {
     const router = useRouter();
     let section;
+    let information;
     /*------------------- ESTADOS -------------------*/
     const [nombreTest, setNombreTest] = useState('');
     const [seccion, setSeccion] = useState('');
     const [newPreguntas, setNewPreguntas] = useState([]);
-    const [info, setInfo] = useState(sessionStorage.getItem("dataToPass"));
+    const [info, setInfo] = useState(information);
     const [nombreActual, setNombreActual] = useState('');
     const [seccionActual, setSeccionActual] = useState('');
     /* Estados para los arrays */
@@ -30,6 +31,13 @@ export default function UpdateTest() {
         showInstructions();
         setNombreTest(nombreActual);
         setSeccion(seccionActual);
+    }, []);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            information = sessionStorage.getItem("dataToPass");
+        } else {
+            router.push('/modulos').then(r => console.log(r));
+        }
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const clearFields = () => {

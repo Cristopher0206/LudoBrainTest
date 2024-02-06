@@ -753,6 +753,21 @@ app.post('/updateEducador', (req, res) => {
         }
     });
 })
+app.post('/updateTest', (req, res) => {
+    const {id_test, nombre, seccion, viejasPreguntas, nuevasPreguntas} = req.body;
+    console.log("id_test: ", id_test);
+    console.log("nombre: ", nombre);
+    console.log("seccion: ", seccion);
+    console.log("Viejas preguntas: ", viejasPreguntas);
+    console.log("Nuevas preguntas: ", nuevasPreguntas);
+    /*const queryUpdate = 'UPDATE test SET nombre_test = ?, id_seccion = ? WHERE id_test = ?';
+    db.query(queryUpdate, [nombre, seccion, id_test], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.send({message: 'Test actualizado correctamente'});
+    })*/
+})
 /* Funciones de eliminación */
 app.post('/deleteChild', (req, res) => {
     const id_educador = req.user.id;

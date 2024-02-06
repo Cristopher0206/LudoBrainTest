@@ -16,6 +16,7 @@ export default function UpdateTest() {
     /*------------------- ESTADOS -------------------*/
     const [nombreTest, setNombreTest] = useState('');
     const [seccion, setSeccion] = useState('');
+    const [oldPreguntas, setOldPreguntas] = useState([]); // Preguntas que ya tiene la evaluación
     const [newPreguntas, setNewPreguntas] = useState([]);
     const [info, setInfo] = useState(information);
     const [nombreActual, setNombreActual] = useState('');
@@ -99,6 +100,7 @@ export default function UpdateTest() {
             },
             url: "http://3.134.64.181:3001/getPreguntasByIdTest"
         }).then((res) => {
+            setOldPreguntas(res.data);
             setNewPreguntas(res.data);
         }).catch((err) => {
             console.log(err);
@@ -190,9 +192,13 @@ export default function UpdateTest() {
                 method: "post",
                 withCredentials: true,
                 data: {
-                    id_test: information
+                    id_test: information,
+                    nombre: nombreTest,
+                    seccion: seccion,
+                    viejasPreguntas: oldPreguntas,
+                    nuevasPreguntas: newPreguntas
                 },
-                url: "http://3.134.64.181:3001/deleteTest",
+                url: "http://3.134.64.181:3001/updateTest",
             }).then((res) => {
                 console.log(res);
                 /*setTimeout(() => {

@@ -15,7 +15,8 @@ app.use(boddParser.json());
 app.use(expressSession({secret: 'mySecretKey', resave: false, saveUninitialized: false}));
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: '3.134.64.181:3000',
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
 

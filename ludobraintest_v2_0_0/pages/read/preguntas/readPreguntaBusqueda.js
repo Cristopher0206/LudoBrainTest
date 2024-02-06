@@ -261,9 +261,10 @@ export default function ReadPreguntaBusqueda() {
                                             {samples.map((sample, index) => (
                                                 <div key={index}
                                                      className={`flex justify-center shadow-md ${styles.sample_btn_busqueda}`}>
-                                                    <Image src={`/Images/${sample.imagen}`}
-                                                           width={100}
-                                                           height={100}
+                                                    <Image src={`/images/${sample.imagen}`}
+                                                           width={500}
+                                                           height={500}
+                                                           className={`${styles.sample_img}`}
                                                            alt={`${sample.imagen}`}/>
                                                 </div>
                                             ))}
@@ -304,8 +305,9 @@ export default function ReadPreguntaBusqueda() {
                                                     className={`${styles.answer_btn_comprension} flex justify-center 
                                 shadow-md w-100 h-100`}>
                                                 <Image src={`/images/${answer.imagen}`}
-                                                       width={100}
-                                                       height={100}
+                                                       width={500}
+                                                       height={500}
+                                                       className={`${styles.answer_img}`}
                                                        alt={`${answer.imagen}`}/>
                                             </button>
                                         ))}

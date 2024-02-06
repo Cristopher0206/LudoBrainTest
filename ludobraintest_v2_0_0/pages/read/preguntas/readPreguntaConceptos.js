@@ -249,8 +249,9 @@ export default function ReadPreguntaConceptos() {
                                                     handleSelectedAnswer(answer.id_respuesta, answer.respuesta_correcta, 'fila1')
                                                 }}>
                                                 <Image src={`/images/${answer.imagen}`}
-                                                       width={100}
-                                                       height={100}
+                                                       width={500}
+                                                       height={500}
+                                                       className={`${styles.answer_img}`}
                                                        alt={`${answer.imagen}`}/>
                                             </button>
                                         </div>
@@ -271,8 +272,9 @@ export default function ReadPreguntaConceptos() {
                                                     handleSelectedAnswer(answer.id_respuesta, answer.respuesta_correcta, 'fila2')
                                                 }}>
                                                 <Image src={`/images/${answer.imagen}`}
-                                                       width={100}
-                                                       height={100}
+                                                       width={500}
+                                                       height={500}
+                                                       className={`${styles.answer_img}`}
                                                        alt={`${answer.imagen}`}/>
                                             </button>
                                         </div>
@@ -293,8 +295,9 @@ export default function ReadPreguntaConceptos() {
                                                     handleSelectedAnswer(answer.id_respuesta, answer.respuesta_correcta, 'fila3')
                                                 }}>
                                                 <Image src={`/images/${answer.imagen}`}
-                                                       width={100}
-                                                       height={100}
+                                                       width={500}
+                                                       height={500}
+                                                       className={`${styles.answer_img}`}
                                                        alt={`${answer.imagen}`}/>
                                             </button>
                                         </div>

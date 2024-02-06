@@ -283,8 +283,9 @@ export default function ReadPreguntaReconocimiento() {
                                             <div key={index}
                                                  className={`flex justify-center shadow-md w-100 h-100 ${styles.sample_btn_busqueda}`}>
                                                 <Image src={`/images/${sample.imagen}`}
-                                                       width={100}
-                                                       height={100}
+                                                       width={500}
+                                                       height={500}
+                                                       className={`${styles.sample_img}`}
                                                        alt={`${sample.imagen}`}/>
                                             </div>
                                         ))}
@@ -328,8 +329,9 @@ export default function ReadPreguntaReconocimiento() {
                                                     handleAnswerClick(answer.id_respuesta)
                                                 }}>
                                                 <Image src={`/images/${answer.imagen}`}
-                                                       width={100}
-                                                       height={100}
+                                                       width={500}
+                                                       height={500}
+                                                       className={`${styles.answer_img}`}
                                                        alt={`${answer.imagen}`}/>
                                             </button>
                                         ))}

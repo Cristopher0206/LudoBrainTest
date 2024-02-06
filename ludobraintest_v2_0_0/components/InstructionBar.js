@@ -39,7 +39,7 @@ export default function InstructionBar({
                     <Image src="/images/asistente-de-robot.png"
                            alt="Mini Echo"
                            className={`${styles.echo_logo_ib}`}
-                           width={120} height={80}/>
+                           width={110} height={80}/>
                     <button onClick={information}
                             className={`mx-2 border-2 border-black border-opacity-25 flex h-fit rounded-full px-3 py-1 ${info_color} 
                     self-center ${hiddenInfo}`}>

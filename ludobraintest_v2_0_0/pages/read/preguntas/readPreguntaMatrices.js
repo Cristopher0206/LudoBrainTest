@@ -206,7 +206,7 @@ export default function ReadPreguntaMatrices() {
                                      voiceCommand={repeatVoice}
                                      silenceCommand={shutUp}/>
                     </div>
-                    <div className={`col-sm-3 col-lg-2 self-end`}>
+                    <div className={`col-sm-3 col-lg-2 self-center`}>
                         <div className={`border-1 border-black rounded-2xl bg-white p-5 shadow-inner h-100
                         ${styles.semejanza_instruction_text}`}>
                             ¿Qué imagen completa la secuencia de imágenes que observas a continuación?
@@ -222,10 +222,10 @@ export default function ReadPreguntaMatrices() {
                                 <div key={index} className={`border-1 border-black bg-white px-3 py-3
                         flex justify-center shadow-inner h-100`}>
                                     <Image src={`/images/${sample.imagen}`}
-                                           width={100}
-                                           height={100}
+                                           width={400}
+                                           height={400}
                                            alt={`${sample.imagen}`}
-                                           className={`image-fluid ${styles.sample_image}`}/>
+                                           className={`image-fluid ${styles.sample_img}`}/>
                                 </div>
                             ))}
                             <div className={`border-1 border-black bg-white flex justify-center
@@ -254,8 +254,9 @@ export default function ReadPreguntaMatrices() {
                                     className={`${styles.answer_btn_matrices} flex justify-center 
                                 shadow-md w-100 h-100`}>
                                 <Image src={`/images/${answer.imagen}`}
-                                       width={100}
-                                       height={100}
+                                       width={500}
+                                       height={500}
+                                       className={`${styles.answer_img}`}
                                        alt={`${answer.imagen}`}/>
                             </button>
                         </div>

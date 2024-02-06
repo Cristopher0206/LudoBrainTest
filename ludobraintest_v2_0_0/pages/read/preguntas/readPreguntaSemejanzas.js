@@ -65,7 +65,6 @@ export default function ReadPreguntaSemejanzas() {
             withCredentials: true,
             url: 'http://localhost:3001/getAnswersbyQuestionId',
         }).then(res => {
-            console.log(res.data);
             setAnswers(res.data);
             showQuestion()
         }).catch(err => {
@@ -81,7 +80,6 @@ export default function ReadPreguntaSemejanzas() {
             withCredentials: true,
             url: 'http://localhost:3001/getSamplesByQuestionId',
         }).then(res => {
-            console.log(res.data);
             setSamples(res.data);
             showQuestion()
         }).catch(err => {
@@ -155,7 +153,6 @@ export default function ReadPreguntaSemejanzas() {
                 getSamplesByQuestionId(questions[0].id_pregunta);
                 setPreguntaActualIndex((prevPreguntaActualIndex) => prevPreguntaActualIndex + 1);
             } else {
-                console.log("No hay más preguntas");
                 router.push('/puntajeFinal').then(r => console.log(r));
                 shutUp();
             }
@@ -206,7 +203,7 @@ export default function ReadPreguntaSemejanzas() {
                                      voiceCommand={repeatVoice}
                                      silenceCommand={shutUp}/>
                     </div>
-                    <div className={`col-sm-3 col-lg-2 self-end`}>
+                    <div className={`col-sm-3 col-lg-2 self-center`}>
                         <div className={`border-1 border-black rounded-2xl bg-white py-5 px-4 shadow-inner h-100
                         ${styles.semejanza_instruction_text}`}>
                             Selecciona la imagen que más se asemeja al grupo de imágenes que se te muestra a
@@ -222,10 +219,10 @@ export default function ReadPreguntaSemejanzas() {
                                 <div key={index} className={`border-1 border-black rounded-2xl bg-white px-4 py-4
                         flex justify-center shadow-inner`}>
                                     <Image src={`/images/${sample.imagen}`}
-                                           width={100}
-                                           height={100}
+                                           width={500}
+                                           height={500}
                                            alt={`${sample.imagen}`}
-                                           className={`Image-fluid ${styles.sample_image}`}/>
+                                           className={`image-fluid ${styles.sample_img}`}/>
                                 </div>
                             ))}
                             <div className={`border-1 border-black rounded-2xl bg-white flex justify-center
@@ -254,8 +251,9 @@ export default function ReadPreguntaSemejanzas() {
                                     className={`${styles.answer_btn_semejanzas} flex justify-center 
                                 shadow-md w-100 h-100`}>
                                 <Image src={`/images/${answer.imagen}`}
-                                       width={100}
-                                       height={100}
+                                       width={500}
+                                       height={500}
+                                       className={`${styles.answer_img}`}
                                        alt={`${answer.imagen}`}/>
                             </button>
                         </div>

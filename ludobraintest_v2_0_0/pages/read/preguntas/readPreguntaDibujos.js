@@ -214,10 +214,11 @@ export default function ReadPreguntaDibujos() {
                         <div className={`grid grid-cols-3 gap-x-5 gap-y-5`}>
                             {answers.map((answer, index) => (
                                 <button key={index} onClick={() => verifyAnswer(answer.respuesta_correcta)}
-                                        className={`${styles.answer_btn_dibujos}`}>
+                                        className={`flex justify-center ${styles.answer_btn_dibujos}`}>
                                     <Image src={`/images/${answer.imagen}`}
-                                           width={100}
-                                           height={100}
+                                           width={500}
+                                           height={500}
+                                           className={`${styles.answer_img}`}
                                            alt={`${answer.imagen}`}/>
                                 </button>
                             ))}

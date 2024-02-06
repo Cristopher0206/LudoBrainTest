@@ -214,9 +214,10 @@ export default function ReadPreguntaNombres() {
                                 <div key={index} className={`border-1 border-black rounded-2xl bg-white px-4 py-4
                         flex justify-center shadow-inner h-100`}>
                                     <Image src={`/images/${sample.imagen}`}
-                                           width={100}
-                                           height={100} alt={`${sample.imagen}`}
-                                           className={`Image-fluid`}/>
+                                           width={500}
+                                           height={500}
+                                           alt={`${sample.imagen}`}
+                                           className={`${styles.sample_img}`}/>
                                 </div>
                             ))}
                         </div>

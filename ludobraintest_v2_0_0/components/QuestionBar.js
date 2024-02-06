@@ -34,7 +34,7 @@ export default function QuestionBar({
                 <div className={`flex self-end`}>
                     <Image src="/images/asistente-de-robot.png"
                            alt="Mini Echo"
-                           className={`${styles.echo_logo_ib}`}
+                           className={`${styles.echo_logo_qb}`}
                            width={100} height={100}/>
                 </div>
             </div>

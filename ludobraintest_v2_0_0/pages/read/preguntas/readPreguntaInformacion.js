@@ -220,8 +220,9 @@ export default function ReadPreguntaInformacion() {
                                     className={`${styles.answer_btn} flex justify-center 
                                 shadow-md w-100 h-100`}>
                                 <Image src={`/images/${answer.imagen}`}
-                                       width={100}
-                                       height={100}
+                                       width={500}
+                                       height={500}
+                                       className={`${styles.answer_img}`}
                                        alt={`${answer.imagen}`}/>
                             </button>
                         </div>

@@ -172,19 +172,19 @@ export default function ReadNinio() {
                                     <div className={`card-body`}>
                                         <div className={`container-fluid`}>
                                             <div className={`row justify-content-between`}>
-                                                <div className={`col-sm-4 col-lg-4`}>
+                                                <div className={`col-sm-4 col-lg-4 flex justify-center self-center`}>
                                                     <div
-                                                        className={`font-semibold card-title pt-sm-1 pt-md-1 ${styles.child_data}`}>
+                                                        className={`font-semibold card-title ${styles.child_data}`}>
                                                         {child.nombre}
                                                     </div>
                                                 </div>
-                                                <div className={`col-sm-4 col-lg-6 d-flex justify-content-center`}>
+                                                <div className={`col-sm-4 col-lg-6 flex justify-center self-center`}>
                                                     <div className={`font-semibold card-title ps-sm-1 pt-sm-4 pt-md-3 
                                                     ${styles.child_data}`}>
                                                         {child.edad} años
                                                     </div>
                                                 </div>
-                                                <div className={`col-sm-4 col-lg-2 d-flex justify-content-around`}>
+                                                <div className={`col-sm-4 col-lg-2 d-flex justify-content-around self-center`}>
                                                     <button onClick={() => eliminarNinio(child.id_ninio)}>
                                                         <Image src="/images/eliminar.png" alt="trashIcon"
                                                                width={100}

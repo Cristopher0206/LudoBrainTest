@@ -43,9 +43,9 @@ export default function MenuOpcionesTest() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             id = localStorage.getItem('dato');
-            setIdNinio(localStorage.getItem('dato'));
+            setIdNinio(id);
             id_test = localStorage.getItem('dato2');
-            setIdTest(localStorage.getItem('dato2'));
+            setIdTest(id_test);
         } else {
             router.push('/modulos').then(r => console.log(r));
         }
@@ -55,7 +55,7 @@ export default function MenuOpcionesTest() {
         axios({
             method: 'post',
             data: {
-                id_test: id,
+                id_test: id_test,
             },
             withCredentials: true,
             url: `http://3.134.64.181:3001/getNinioTestById`,

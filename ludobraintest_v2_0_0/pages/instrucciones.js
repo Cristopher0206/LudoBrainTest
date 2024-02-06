@@ -183,7 +183,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -206,7 +207,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -229,7 +231,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -251,7 +254,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -274,7 +278,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -298,7 +303,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -322,7 +328,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -346,7 +353,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -370,7 +378,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>

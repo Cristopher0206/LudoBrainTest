@@ -18,6 +18,7 @@ export default function ReadPreguntaInformacion() {
     const { speak, speaking } = UseSpeechSynthesis();
     let texto;
     /*------------------- ESTADOS -------------------*/
+    const [id_test, setIdTest] = useState(idTest);
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [text, setText] = useState('');
     const [questions, setQuestions] = useState([]);
@@ -38,6 +39,7 @@ export default function ReadPreguntaInformacion() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             idTest = localStorage.getItem('id_test');
+            setIdTest(localStorage.getItem('id_test'));
             idNinio = localStorage.getItem('id_ninio');
         } else {
             router.push('/modulos').then(r => console.log(r));
@@ -48,7 +50,7 @@ export default function ReadPreguntaInformacion() {
         axios({
             method: 'post',
             data: {
-                id_test: idTest,
+                id_test: id_test,
             },
             withCredentials: true,
             url: 'http://3.134.64.181:3001/getTestNameById',
@@ -63,7 +65,7 @@ export default function ReadPreguntaInformacion() {
         axios({
             method: 'post',
             data: {
-                id: idTest,
+                id: id_test,
                 id_ninio: idNinio,
             },
             withCredentials: true,

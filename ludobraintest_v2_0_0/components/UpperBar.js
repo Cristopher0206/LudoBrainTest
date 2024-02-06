@@ -22,7 +22,7 @@ export default function UpperBar({color, questionType, silenceVoice}) {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://poliquizzes:3001/getUser"
+            url: "http://3.134.64.181:3001/getUser"
         }).then(res => {
             setUserId(res.data.id);
             setUsername(res.data.username);

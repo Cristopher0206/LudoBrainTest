@@ -267,7 +267,8 @@ export default function ReadPreguntaBusqueda() {
                                              nombreTest={nombre_test}
                                              labelColor={styles.label_orange}
                                              voiceCommand={repeatVoice1}
-                                             silenceCommand={shutUp1}/>
+                                             silenceCommand={shutUp1}
+                                             hiddenHome={`hidden`}/>
                             </div>
                             <div className={`col-sm-9 col-lg-10 pt-5`}>
                                 <h5>
@@ -309,7 +310,8 @@ export default function ReadPreguntaBusqueda() {
                                              nombreTest={nombre_test}
                                              labelColor={styles.label_orange}
                                              voiceCommand={repeatVoice2}
-                                             silenceCommand={shutUp2}/>
+                                             silenceCommand={shutUp2}
+                                             hiddenHome={`hidden`}/>
                             </div>
                             <div className={`col-sm-9 col-lg-10 pt-5`}>
                                 <h5>

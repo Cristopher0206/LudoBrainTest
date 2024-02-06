@@ -259,7 +259,8 @@ export default function MenuOpcionesTest() {
                                     information={showInstructions}
                                     info_color={button.btn_green}
                                     voiceCommand={hearVoice}
-                                    silenceCommand={shutUp}/>
+                                    silenceCommand={shutUp}
+                                    silenceVoice={shutUp}/>
                     <br/>
                     <div className={`container-fluid px-5`}>
                         <div className={`row`}>

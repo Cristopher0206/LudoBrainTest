@@ -287,7 +287,8 @@ export default function ReadPreguntaReconocimiento() {
                                              nombreTest={nombre_test}
                                              labelColor={styles.label_red}
                                              voiceCommand={repeatVoice1}
-                                             silenceCommand={shutUp1}/>
+                                             silenceCommand={shutUp1}
+                                             hiddenHome={`hidden`}/>
                             </div>
                             <div className={`col-sm-9 col-lg-10`}>
                                 <h5>
@@ -327,7 +328,8 @@ export default function ReadPreguntaReconocimiento() {
                                              nombreTest={nombre_test}
                                              labelColor={styles.label_red}
                                              voiceCommand={repeatVoice2}
-                                             silenceCommand={shutUp2}/>
+                                             silenceCommand={shutUp2}
+                                             hiddenHome={`hidden`}/>
                             </div>
                             <div className={`col-sm-9 col-lg-10`}>
                                 <h5>

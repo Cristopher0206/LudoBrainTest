@@ -12,11 +12,16 @@ export default function InstructionBar({
                                            hiddenInfo,
                                            hiddenVoice,
                                            silenceCommand,
-                                           hiddenHome
+                                           hiddenHome,
+                                           silenceVoice
                                        }) {
     const router = useRouter();
     const goHome = () => {
+        shutUp();
         router.push('/modulos').then(r => r);
+    }
+    const shutUp = () => {
+        silenceVoice();
     }
     return (
         <div className={`container-fluid`}>

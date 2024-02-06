@@ -243,7 +243,8 @@ export default function ReadPreguntaConceptos() {
                                      nombreTest={nombre_test}
                                      labelColor={styles.label_blue}
                                      voiceCommand={repeatVoice}
-                                     silenceCommand={shutUp}/>
+                                     silenceCommand={shutUp}
+                                     hiddenHome={`hidden`}/>
                     </div>
                     <div className={`col-2 self-center`}>
                         <div className={`px-4 flex-col justify-center h-fit ${styles.instruction_matrix_text}`}>

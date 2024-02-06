@@ -226,7 +226,8 @@ export default function ReadPreguntaSemejanzas() {
                     <div className={`col-sm-3 col-lg-2`}>
                         <QuestionBar confirmGetBack={confirmGetBack}
                                      voiceCommand={repeatVoice}
-                                     silenceCommand={shutUp}/>
+                                     silenceCommand={shutUp}
+                                     hiddenHome={`hidden`}/>
                     </div>
                     <div className={`col-sm-3 col-lg-2 self-center`}>
                         <div className={`border-1 border-black rounded-2xl bg-white py-5 px-4 shadow-inner h-100

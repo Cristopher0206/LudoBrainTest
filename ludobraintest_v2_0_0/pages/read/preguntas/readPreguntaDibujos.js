@@ -220,7 +220,8 @@ export default function ReadPreguntaDibujos() {
                                      nombreTest={nombre_test}
                                      labelColor={styles.label_purple}
                                      voiceCommand={repeatVoice}
-                                     silenceCommand={shutUp}/>
+                                     silenceCommand={shutUp}
+                                     hiddenHome={`hidden`}/>
                     </div>
                     <div className={`col-sm-3 col-lg-2 self-start`}>
                         <div className={`pb-2 d-flex justify-content-center font-bold ${styles.dibujos_text}`}>

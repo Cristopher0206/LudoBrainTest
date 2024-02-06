@@ -17,7 +17,7 @@ export default function Instrucciones() {
         seccion = localStorage.getItem('seccion');
         informacion = localStorage.getItem('informacion');
     }
-    const { speak, speaking } = UseSpeechSynthesis();
+    const {speak, speaking} = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
     const [isSpeaking, setIsSpeaking] = useState(false);
     // Estados para generar el color
@@ -158,7 +158,8 @@ export default function Instrucciones() {
                                     instruction={`Instrucciones para las Evaluaciones de habilidad de ${seccion}`}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    silenceVoice={shutUp}/>
                     <div className={`px-5`}>
                         <div
                             className={`container-fluid px-4 py-5 flex justify-center self-center italic ${styles.section_text}`}>
@@ -282,7 +283,8 @@ export default function Instrucciones() {
                         <br/>
                         <div className={`flex justify-center`}>
                             <div className={styles.div_btn}>
-                                <Button instruction={goBack} text={`Regresar`} bg_color={button.btn_electric_blue}></Button>
+                                <Button instruction={goBack} text={`Regresar`}
+                                        bg_color={button.btn_electric_blue}></Button>
                             </div>
                         </div>
                     </div>

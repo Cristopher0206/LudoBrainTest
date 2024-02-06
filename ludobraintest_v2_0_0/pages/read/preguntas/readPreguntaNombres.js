@@ -210,7 +210,8 @@ export default function ReadPreguntaNombres() {
                     <div className={`col-sm-3 col-lg-2`}>
                         <QuestionBar confirmGetBack={confirmGetBack}
                                      voiceCommand={repeatVoice}
-                                     silenceCommand={shutUp}/>
+                                     silenceCommand={shutUp}
+                                     hiddenHome={`hidden`}/>
                     </div>
                     <div className={`col-sm-3 col-lg-3 pt-0`}>
                         <div className={`border-1 border-black rounded-2xl bg-white px-5 py-5

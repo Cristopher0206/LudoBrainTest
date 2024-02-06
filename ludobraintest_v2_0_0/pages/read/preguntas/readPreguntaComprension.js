@@ -217,7 +217,8 @@ export default function ReadPreguntaComprension() {
                     <div className={`col-sm-3 col-lg-2`}>
                         <QuestionBar confirmGetBack={confirmGetBack}
                                      voiceCommand={repeatVoice}
-                                     silenceCommand={shutUp}/>
+                                     silenceCommand={shutUp}
+                                     hiddenHome={`hidden`}/>
                     </div>
                     <div className={`col-sm-9 col-lg-8 pt-0`}>
                         <h5 className={``}>

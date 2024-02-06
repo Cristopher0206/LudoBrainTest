@@ -228,7 +228,8 @@ export default function ReadPreguntaMatrices() {
                     <div className={`col-sm-3 col-lg-2`}>
                         <QuestionBar confirmGetBack={confirmGetBack}
                                      voiceCommand={repeatVoice}
-                                     silenceCommand={shutUp}/>
+                                     silenceCommand={shutUp}
+                                     hiddenHome={`hidden`}/>
                     </div>
                     <div className={`col-sm-3 col-lg-2 self-center`}>
                         <div className={`border-1 border-black rounded-2xl bg-white p-5 shadow-inner h-100

@@ -608,7 +608,8 @@ export default function ReadPregunta() {
                             information={showInstructions}
                             info_color={button.btn_red}
                             voiceCommand={hearVoice}
-                            silenceCommand={shutUp}/>
+                            silenceCommand={shutUp}
+                            silenceVoice={shutUp}/>
             <AddButton createPage={goCreatePregunta}
                        color={button.btn_red}/>
             <br/>

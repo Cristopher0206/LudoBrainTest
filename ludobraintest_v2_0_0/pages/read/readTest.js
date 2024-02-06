@@ -571,7 +571,8 @@ export default function ReadTest() {
                             information={showInstructions}
                             info_color={button.btn_green}
                             voiceCommand={hearVoice}
-                            silenceCommand={shutUp}/>
+                            silenceCommand={shutUp}
+                            silenceVoice={shutUp}/>
             <AddButton createPage={goCreateTest}
                        color={button.btn_green}/>
             <br/>

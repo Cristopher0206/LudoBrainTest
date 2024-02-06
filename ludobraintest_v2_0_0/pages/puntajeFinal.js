@@ -84,7 +84,8 @@ export default function PuntajeFinal() {
                             instruction={`Observa la puntuación final`}
                             hiddenInfo={`hidden`}
                             voiceCommand={hearVoice}
-                            silenceCommand={shutUp}/>
+                            silenceCommand={shutUp}
+                            hiddenHome={`hidden`}/>
             <br/>
             <div className={`container-fluid flex flex-col justify-center`}>
                 <div className={`row ${styles.test_info} self-center`}>

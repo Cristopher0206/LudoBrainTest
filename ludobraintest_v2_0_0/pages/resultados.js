@@ -440,7 +440,8 @@ export default function Resultados() {
                             information={showInstructions}
                             info_color={button.btn_red}
                             voiceCommand={hearVoice}
-                            silenceCommand={shutUp}/>
+                            silenceCommand={shutUp}
+                            hiddenHome={`hidden`}/>
             <div className={`container-fluid px-5`}>
                 <div className={`row px-5 h-fit`}>
                     <div className={`col-4 self-center p-0`}>

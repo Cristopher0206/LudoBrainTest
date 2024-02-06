@@ -92,7 +92,8 @@ export default function Modulos() {
                                     info_color={button.btn_speak}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
-                                    hiddenInfo={`hidden`}/>
+                                    hiddenInfo={`hidden`}
+                                    hiddenHome={`hidden`}/>
                     <div className={`container-fluid`}>
                         <div className={`row`}>
                             <div className={`col-6 self-center p-5`}>

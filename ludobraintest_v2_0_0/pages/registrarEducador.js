@@ -92,7 +92,8 @@ export default function RegistrarEducador() {
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`¡Regístrate!`}
                             hiddenVoice={`hidden`}
-                            hiddenInfo={`hidden`}/>
+                            hiddenInfo={`hidden`}
+                            hiddenHome={`hidden`}/>
             <br/> <br/>
             <div className={`container-fluid`}>
                 <div className={`row justify-content-center text-black`}>

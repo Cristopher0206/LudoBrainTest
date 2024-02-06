@@ -155,7 +155,8 @@ export default function ReadNinio() {
                             information={showInstructions}
                             info_color={button.btn_yellow}
                             voiceCommand={hearVoice}
-                            silenceCommand={shutUp}/>
+                            silenceCommand={shutUp}
+                            hiddenHome={`hidden`}/>
             <AddButton createPage={goCreateNinio}
                        color={button.btn_yellow}/>
             <br/>

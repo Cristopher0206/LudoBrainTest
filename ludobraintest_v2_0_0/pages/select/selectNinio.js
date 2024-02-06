@@ -484,7 +484,8 @@ export default function SelectNinio() {
                             information={showInstructions}
                             info_color={button.btn_blue}
                             voiceCommand={hearVoice}
-                            silenceCommand={shutUp}/>
+                            silenceCommand={shutUp}
+                            hiddenHome={`hidden`}/>
             <div className={`container-fluid`}>
                 <div className={`row`}>
                     <div className={`col-6 ${styles.overflow_col}`}>

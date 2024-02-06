@@ -283,7 +283,8 @@ export default function UpdateTest() {
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Actualiza una Evaluación`}
                             information={showInstructions}
-                            info_color={button.btn_green}/>
+                            info_color={button.btn_green}
+                            hiddenHome={`hidden`}/>
             <div className={`container-fluid px-5`}>
                 <div className={`row`}>
                     <div className={`col-6`}>

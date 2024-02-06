@@ -90,7 +90,8 @@ export default function ChangePassword() {
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`¡Cambia tu contraseña!`}
                             hiddenInfo={`hidden`}
-                            hiddenVoice={`hidden`}/>
+                            hiddenVoice={`hidden`}
+                            hiddenHome={`hidden`}/>
             <br/> <br/> <br/> <br/>
             <div className={`container-fluid`}>
                 <div className={`row justify-content-center text-black`}>

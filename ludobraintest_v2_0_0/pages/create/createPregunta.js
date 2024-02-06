@@ -2075,7 +2075,7 @@ export default function CreatePregunta() {
                             name="myTextarea"
                             value={textareaValue}
                             onChange={handleChange}
-                            rows="2" // Puedes ajustar la cantidad de filas según tus necesidades
+                            rows="1" // Puedes ajustar la cantidad de filas según tus necesidades
                             className={`w-100 border-1 border-black shadow-md rounded-2xl p-3`}
                         />
                         <br/><br/>

@@ -179,7 +179,7 @@ export default function ReadNinio() {
                                                     </div>
                                                 </div>
                                                 <div className={`col-sm-4 col-lg-6 flex justify-center self-center`}>
-                                                    <div className={`font-semibold card-title ps-sm-1 pt-sm-4 pt-md-3 
+                                                    <div className={`font-semibold card-title ps-sm-1 
                                                     ${styles.child_data}`}>
                                                         {child.edad} años
                                                     </div>

@@ -37,6 +37,7 @@ export default function UpdateTest() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             information = sessionStorage.getItem("dataToPass");
+            setInfo(information);
         } else {
             router.push('/modulos').then(r => console.log(r));
         }
@@ -189,6 +190,7 @@ export default function UpdateTest() {
             })
         } else {
             console.log("INFORMATION", information);
+            console.log("INFO", info);
             axios({
                 method: "post",
                 withCredentials: true,

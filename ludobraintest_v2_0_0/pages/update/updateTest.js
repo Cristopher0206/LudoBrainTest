@@ -25,6 +25,7 @@ export default function UpdateTest() {
     const [preguntas, setPreguntas] = useState([]);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => {
+        getTestNameById();
         getSecciones();
         getCurrentInformation();
         getPreguntasByIdTest();
@@ -40,6 +41,21 @@ export default function UpdateTest() {
         }
     }, []);
     /*------------------- FUNCIONES -------------------*/
+    const getTestNameById = () => {
+        axios({
+            method: 'post',
+            data: {
+                id_test: idTest,
+            },
+            withCredentials: true,
+            url: 'http://3.134.64.181:3001/getTestNameById',
+        }).then(res => {
+            console.log("Nombre del test", res.data);
+            setNombreTest(res.data[0].nombre_test);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
     const clearFields = () => {
         setNombreTest('');
         setSeccion('');

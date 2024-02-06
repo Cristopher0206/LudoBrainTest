@@ -709,12 +709,13 @@ app.post('/getPreguntasByIdTest', (req, res) => {
 })
 app.post('/getScoreTable', (req, res) => {
     const id_test = req.body.id_test;
+    const id_educador = req.user.id;
     const querySelect = 'SELECT niño.nombre, niño.edad, test_ninio.puntaje\n' +
-        'FROM test_ninio JOIN niño\n' +
-        'ON test_ninio.id_ninio = niño.id_ninio\n' +
-        'WHERE test_ninio.id_test = ? \n' +
-        'ORDER BY test_ninio.puntaje DESC';
-    db.query(querySelect, [id_test], (err, result) => {
+        'FROM test_ninio JOIN niño ON test_ninio.id_ninio = niño.id_ninio\n' +
+        'JOIN educador_niño ON test_ninio.id_ninio = educador_niño.id_niño\n' +
+        'WHERE test_ninio.id_test = ? AND educador_niño.id_educador = ?\n' +
+        'ORDER BY test_ninio.puntaje DESC;';
+    db.query(querySelect, [id_test, id_educador], (err, result) => {
         if (err) {
             throw err;
         }

@@ -47,8 +47,8 @@ export default function PuntajeFinal() {
         axios({
             method: 'post',
             data: {
-                id_test: idTest,
-                id_ninio: idNinio,
+                id_test: id_test,
+                id_ninio: id_ninio,
                 puntaje: puntuacion,
             },
             withCredentials: true,

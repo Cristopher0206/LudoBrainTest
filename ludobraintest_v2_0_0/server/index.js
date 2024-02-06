@@ -233,7 +233,7 @@ app.post('/uploadQuestion', upload, (req, res) => {
                                     })
                                 }
                             } else { /* Si la imagen no existe */
-                                if(muestra === '0'){
+                                if (muestra === '0') {
                                     const queryInsertImage = 'INSERT INTO respuesta (imagen) VALUES (?)';
                                     db.query(queryInsertImage, [respuestas[index].originalname], (err, result4) => {
                                         if (err) {
@@ -742,7 +742,7 @@ app.post('/updateEducador', (req, res) => {
     // Construye la consulta de actualización
     const queryUpdate = `UPDATE educador SET user_password = ? WHERE usuario = ?;`;
     // Ejecuta la consulta de actualización con los valores correspondientes
-    db.query(queryUpdate, [user_password ,usuario], (err, result) => {
+    db.query(queryUpdate, [user_password, usuario], (err, result) => {
         if (err) {
             throw err;
         }
@@ -760,13 +760,36 @@ app.post('/updateTest', (req, res) => {
     console.log("seccion: ", seccion);
     console.log("Viejas preguntas: ", viejasPreguntas);
     console.log("Nuevas preguntas: ", nuevasPreguntas);
-    /*const queryUpdate = 'UPDATE test SET nombre_test = ?, id_seccion = ? WHERE id_test = ?';
-    db.query(queryUpdate, [nombre, seccion, id_test], (err, result) => {
+    const querySelect = 'SELECT id_seccion FROM seccion WHERE nombre_seccion = ?';
+    db.query(querySelect, [seccion], (err, result) => {
         if (err) {
             throw err;
         }
-        res.send({message: 'Test actualizado correctamente'});
-    })*/
+        const id_seccion = result[0].id_seccion;
+        const queryUpdate = 'UPDATE test SET nombre_test = ?, id_seccion = ? WHERE id_test = ?';
+        db.query(queryUpdate, [nombre, id_seccion, id_test], (err, result) => {
+            if (err) {
+                throw err;
+            }
+            viejasPreguntas.forEach((pregunta) => {
+                const queryDelete = 'DELETE FROM test_pregunta WHERE id_test = ? AND id_pregunta = ?';
+                db.query(queryDelete, [id_test, pregunta.id_pregunta], (err, result) => {
+                    if (err) {
+                        throw err;
+                    }
+                })
+            })
+            nuevasPreguntas.forEach((pregunta) => {
+                const queryInsert = 'INSERT INTO test_pregunta (id_test, id_pregunta) VALUES (?, ?)';
+                db.query(queryInsert, [id_test, pregunta.id_pregunta], (err, result) => {
+                    if (err) {
+                        throw err;
+                    }
+                })
+            })
+            res.send({message: 'Test actualizado correctamente'});
+        })
+    })
 })
 /* Funciones de eliminación */
 app.post('/deleteChild', (req, res) => {

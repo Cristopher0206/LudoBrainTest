@@ -47,10 +47,13 @@ export default function ReadPreguntaInformacion() {
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getTestNameById = () => {
+        console.log("idTest",idTest);
+        console.log("idNinio",idNinio);
+        console.log("id_test",id_test);
         axios({
             method: 'post',
             data: {
-                id_test: id_test,
+                id_test: idTest,
             },
             withCredentials: true,
             url: 'http://3.134.64.181:3001/getTestNameById',
@@ -65,7 +68,7 @@ export default function ReadPreguntaInformacion() {
         axios({
             method: 'post',
             data: {
-                id: id_test,
+                id: idTest,
                 id_ninio: idNinio,
             },
             withCredentials: true,

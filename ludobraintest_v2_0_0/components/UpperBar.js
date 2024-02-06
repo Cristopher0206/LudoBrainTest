@@ -45,7 +45,7 @@ export default function UpperBar({color, questionType, silenceVoice}) {
         }).then((result) => {
             if (result.isConfirmed) {
                 axios({
-                    method: "get",
+                    method: "post",
                     url: "http://3.134.64.181:3001/logout"
                 }).then(res => {
                     if (res.data.message === "Sesión cerrada exitosamente") {

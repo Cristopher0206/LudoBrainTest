@@ -47,6 +47,8 @@ export default function ReadPreguntaInformacion() {
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getTestNameById = () => {
+        console.log("id_test", id_test);
+        console.log("idTest", idTest);
         axios({
             method: 'post',
             data: {

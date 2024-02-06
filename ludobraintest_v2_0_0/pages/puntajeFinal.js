@@ -19,6 +19,8 @@ export default function PuntajeFinal() {
     /*------------------- ESTADOS -------------------*/
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [puntuacion, setPuntuacion] = useState(puntaje);
+    const [id_test, setIdTest] = useState(idTest);
+    const [id_ninio, setIdNinio] = useState(idNinio);
     /*------------------- EFECTOS -------------------*/
     const text = "¡Felicitaciones! Completaste la Evaluación. Tu puntuación final es " + puntuacion;
     useVoiceReader(text, isSpeaking);
@@ -29,7 +31,9 @@ export default function PuntajeFinal() {
             puntaje = localStorage.getItem('puntaje');
             setPuntuacion(puntaje);
             idTest = localStorage.getItem('id_test');
+            setIdTest(idTest);
             idNinio = localStorage.getItem('id_ninio');
+            setIdNinio(idNinio);
         } else {
             router.push('/modulos').then(r => console.log(r));
         }

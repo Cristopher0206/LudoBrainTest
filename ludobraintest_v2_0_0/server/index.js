@@ -68,6 +68,12 @@ app.post('/login', (req, res, next) => {
         }
     })(req, res, next)
 });
+/* Función para cerrar sesión */
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.clearCookie('connect.sid');
+    res.send('Sesión cerrada exitosamente');
+});
 /* Funciones de registro */
 app.post('/registrarEducador', (req, res) => {
     const {usuario, user_password, nombre, apellido} = req.body;

@@ -44,8 +44,23 @@ export default function UpperBar({color, questionType, silenceVoice}) {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                router.push('/').then(r => console.log(r));
-                shutUp();
+                axios({
+                    method: "get",
+                    withCredentials: true,
+                    url: "http://3.134.64.181:3001/logout"
+                }).then(res => {
+                    if (res.data.message === "Sesión cerrada exitosamente") {
+                        router.push('/').then(r => console.log(r));
+                        shutUp();
+                    } else {
+                        SweetAlert.fire({
+                            title: 'Error',
+                            text: 'No se pudo cerrar la sesión. Por favor, inténtalo de nuevo.',
+                            icon: 'error',
+                            confirmButtonColor: '#1D4ED8'
+                        });
+                    }
+                });
             }
         }).catch(err => {
             console.log(err);

@@ -39,7 +39,7 @@ export default function ReadPreguntaInformacion() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             idTest = localStorage.getItem('id_test');
-            setIdTest(localStorage.getItem('id_test'));
+            setIdTest(idTest);
             idNinio = localStorage.getItem('id_ninio');
         } else {
             router.push('/modulos').then(r => console.log(r));
@@ -47,8 +47,6 @@ export default function ReadPreguntaInformacion() {
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getTestNameById = () => {
-        console.log("id_test", id_test);
-        console.log("idTest", idTest);
         axios({
             method: 'post',
             data: {
@@ -95,7 +93,7 @@ export default function ReadPreguntaInformacion() {
         }).then(res => {
             console.log(res.data);
             setAnswers(res.data);
-            showQuestion()
+            showQuestion().then(r => r);
         }).catch(err => {
             console.log(err);
         })

@@ -20,6 +20,7 @@ export default function ReadPreguntaBusqueda() {
     const texto1 = "¿Puedes identificar a este animal?";
     const texto2 = "Selecciona el animal que apareció en pantalla hace unos segundos.";
     /*------------------- ESTADOS -------------------*/
+    const [id_test, setIdTest] = useState(idTest);
     const [isSpeaking1, setIsSpeaking1] = useState(false);
     const [isSpeaking2, setIsSpeaking2] = useState(false);
     const [questions, setQuestions] = useState([]);
@@ -44,6 +45,7 @@ export default function ReadPreguntaBusqueda() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             idTest = localStorage.getItem('id_test');
+            setIdTest(localStorage.getItem('id_test'));
             idNinio = localStorage.getItem('id_ninio');
         } else {
             router.push('/modulos').then(r => console.log(r));
@@ -78,8 +80,8 @@ export default function ReadPreguntaBusqueda() {
         axios({
             method: 'post',
             data: {
-                id: id_test,
-                id_ninio: localStorage.getItem('id_ninio'),
+                id: idTest,
+                id_ninio: idNinio,
             },
             withCredentials: true,
             url: 'http://3.134.64.181:3001/getQuestionsbyTestId',
@@ -107,7 +109,7 @@ export default function ReadPreguntaBusqueda() {
         }).then(res => {
             console.log(res.data);
             setAnswers(res.data);
-            showQuestion()
+            showQuestion().then(r => r);
         }).catch(err => {
             console.log(err);
         })

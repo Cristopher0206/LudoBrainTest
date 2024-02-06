@@ -18,6 +18,7 @@ export default function ReadPreguntaComprension() {
     const { speak, speaking } = UseSpeechSynthesis();
     let texto;
     /*------------------- ESTADOS -------------------*/
+    const [id_test, setIdTest] = useState(idTest);
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [text, setText] = useState('');
     const [questions, setQuestions] = useState([]);
@@ -38,6 +39,7 @@ export default function ReadPreguntaComprension() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             idTest = localStorage.getItem('id_test');
+            setIdTest(idTest);
             idNinio = localStorage.getItem('id_ninio');
         } else {
             router.push('/modulos').then(r => console.log(r));

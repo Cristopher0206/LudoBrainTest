@@ -22,7 +22,7 @@ export default function UpperBar({color, questionType, silenceVoice}) {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://3.134.64.181:3001/getUser"
+            url: "http://poliquizzes.com:3001/getUser"
         }).then(res => {
             setUserId(res.data.id);
             setUsername(res.data.username);
@@ -46,7 +46,7 @@ export default function UpperBar({color, questionType, silenceVoice}) {
             if (result.isConfirmed) {
                 axios({
                     method: "post",
-                    url: "http://3.134.64.181:3001/logout"
+                    url: "http://poliquizzes.com:3001/logout"
                 }).then(res => {
                     if (res.data.message === "Sesión cerrada exitosamente") {
                         console.log('Sesión cerrada exitosamente');

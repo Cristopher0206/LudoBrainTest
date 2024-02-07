@@ -50,7 +50,7 @@ export default function UpdateTest() {
                 id_test: information,
             },
             withCredentials: true,
-            url: 'http://3.134.64.181:3001/getTestNameById',
+            url: 'http://poliquizzes.com:3001/getTestNameById',
         }).then(res => {
             console.log("Nombre del test", res.data);
             setNombreTest(res.data[0].nombre_test);
@@ -68,7 +68,7 @@ export default function UpdateTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://3.134.64.181:3001/getSections"
+            url: "http://poliquizzes.com:3001/getSections"
         }).then((res) => {
             setSecciones(res.data);
         }).catch((err) => {
@@ -82,7 +82,7 @@ export default function UpdateTest() {
             data: {
                 id_test: information
             },
-            url: "http://3.134.64.181:3001/getCurrentInformation",
+            url: "http://poliquizzes.com:3001/getCurrentInformation",
         }).then((res) => {
             setNombreActual(res.data[0].nombre_test);
             setSeccionActual(res.data[0].nombre_seccion);
@@ -99,7 +99,7 @@ export default function UpdateTest() {
             data: {
                 id_test: information
             },
-            url: "http://3.134.64.181:3001/getPreguntasByIdTest"
+            url: "http://poliquizzes.com:3001/getPreguntasByIdTest"
         }).then((res) => {
             setOldPreguntas(res.data);
             setNewPreguntas(res.data);
@@ -117,7 +117,7 @@ export default function UpdateTest() {
             data: {
                 seccion: section
             },
-            url: "http://3.134.64.181:3001/getPreguntasBySeccion",
+            url: "http://poliquizzes.com:3001/getPreguntasBySeccion",
         }).then((res) => {
             setPreguntas(res.data);
         }).catch((err) => {
@@ -199,7 +199,7 @@ export default function UpdateTest() {
                     viejasPreguntas: oldPreguntas,
                     nuevasPreguntas: newPreguntas
                 },
-                url: "http://3.134.64.181:3001/updateTest",
+                url: "http://poliquizzes.com:3001/updateTest",
             }).then((res) => {
                 console.log(res);
                 if (res.data.message === "Test actualizado correctamente") {

@@ -52,7 +52,7 @@ export default function PuntajeFinal() {
                 puntaje: puntuacion,
             },
             withCredentials: true,
-            url: 'http://3.134.64.181:3001/finishTest',
+            url: 'http://poliquizzes.com:3001/finishTest',
         }).then(res => {
             console.log(res.data);
             router.push(`/menuOpcionesTest`).then(r => console.log(r));

@@ -31,7 +31,7 @@ export default function ReadNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://3.134.64.181:3001/getChildren"
+            url: "http://poliquizzes.com:3001/getChildren"
         }).then((res) => {
             if (res.data) {
                 setChildren(res.data); // Establece el estado con los resultados
@@ -60,7 +60,7 @@ export default function ReadNinio() {
                         id_ninio: idNinio,
                     },
                     withCredentials: true,
-                    url: "http://3.134.64.181:3001/deleteChild"
+                    url: "http://poliquizzes.com:3001/deleteChild"
                 }).then((res) => {
                     console.log(res);
                     if (res.data.message === 'Niño eliminado exitosamente') {

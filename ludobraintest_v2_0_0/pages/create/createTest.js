@@ -45,7 +45,7 @@ export default function CreateTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://3.134.64.181:3001/getSections"
+            url: "http://poliquizzes.com:3001/getSections"
         }).then((res) => {
             setSecciones(res.data);
         }).catch((err) => {
@@ -62,7 +62,7 @@ export default function CreateTest() {
             data: {
                 seccion: section
             },
-            url: "http://3.134.64.181:3001/getPreguntasBySeccion",
+            url: "http://poliquizzes.com:3001/getPreguntasBySeccion",
         }).then((res) => {
             setPreguntas(res.data);
         }).catch((err) => {
@@ -142,7 +142,7 @@ export default function CreateTest() {
                     seccion: seccion,
                     preguntas: newPreguntas
                 },
-                url: "http://3.134.64.181:3001/createTest",
+                url: "http://poliquizzes.com:3001/createTest",
             }).then((res) => {
                 console.log(res);
                 if (res.data.message === "Test creado correctamente") {

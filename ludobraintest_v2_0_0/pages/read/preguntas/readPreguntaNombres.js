@@ -50,7 +50,7 @@ export default function ReadPreguntaNombres() {
                 id_test: idTest,
             },
             withCredentials: true,
-            url: 'http://3.134.64.181:3001/getTestNameById',
+            url: 'http://poliquizzes.com:3001/getTestNameById',
         }).then(res => {
             console.log("Nombre del test", res.data);
             setNombreTest(res.data[0].nombre_test);
@@ -66,7 +66,7 @@ export default function ReadPreguntaNombres() {
                 id_ninio: idNinio,
             },
             withCredentials: true,
-            url: 'http://3.134.64.181:3001/getQuestionsbyTestId',
+            url: 'http://poliquizzes.com:3001/getQuestionsbyTestId',
         }).then(res => {
             setQuestions(res.data);
             arregloPreguntas = res.data;
@@ -86,7 +86,7 @@ export default function ReadPreguntaNombres() {
                 id: id_question,
             },
             withCredentials: true,
-            url: 'http://3.134.64.181:3001/getSamplesByQuestionId',
+            url: 'http://poliquizzes.com:3001/getSamplesByQuestionId',
         }).then(res => {
             console.log(res.data);
             setSamples(res.data);

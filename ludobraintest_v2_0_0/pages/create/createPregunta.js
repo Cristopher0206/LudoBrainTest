@@ -1083,7 +1083,7 @@ export default function CreatePregunta() {
             if (!bandera) {
                 // Enviar la solicitud al servidor
                 const response = await axios.post(
-                    "http://3.134.64.181:3001/uploadQuestion",
+                    "http://poliquizzes.com:3001/uploadQuestion",
                     formData,
                     {
                         headers: {

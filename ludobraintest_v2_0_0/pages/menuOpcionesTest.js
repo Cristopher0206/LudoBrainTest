@@ -58,7 +58,7 @@ export default function MenuOpcionesTest() {
                 id_test: id_test,
             },
             withCredentials: true,
-            url: `http://3.134.64.181:3001/getNinioTestById`,
+            url: `http://poliquizzes.com:3001/getNinioTestById`,
         }).then((res) => {
             console.log(res);
             setTest(res.data[0]);

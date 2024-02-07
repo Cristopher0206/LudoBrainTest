@@ -352,6 +352,8 @@ export default function SelectNinio() {
         }
     }
     const getTestSession = () => {
+        console.log("childSelected", childSelected);
+        console.log("testSelected", testSelected);
         axios({
             method: "post",
             data: {

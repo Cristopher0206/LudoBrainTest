@@ -42,9 +42,9 @@ export default function MenuOpcionesTest() {
     }, []);
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            id = localStorage.getItem('dato');
+            id = localStorage.getItem('id_ninio');
             setIdNinio(id);
-            id_test = localStorage.getItem('dato2');
+            id_test = localStorage.getItem('id_t_n');
             setIdTest(id_test);
         } else {
             router.push('/modulos').then(r => console.log(r));

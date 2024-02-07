@@ -366,6 +366,7 @@ export default function SelectNinio() {
         }).then((res) => {
             localStorage.setItem('id_t_n', res.data[0].id_t_n);
             localStorage.setItem('id_test', testSelected);
+            localStorage.setItem('id_ninio', childSelected);
             router.push(`/menuOpcionesTest`).then(r => console.log(r));
             shutUp();
         }).catch((err) => {

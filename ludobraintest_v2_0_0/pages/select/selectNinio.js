@@ -352,6 +352,7 @@ export default function SelectNinio() {
         }
     }
     const getTestSession = () => {
+        console.log("DESDE EL getTestSession");
         console.log("childSelected", childSelected);
         console.log("testSelected", testSelected);
         axios({
@@ -363,8 +364,8 @@ export default function SelectNinio() {
             withCredentials: true,
             url: "http://3.134.64.181:3001/getTestSession"
         }).then((res) => {
-            localStorage.setItem('dato', res.data[0].id_t_n);
-            localStorage.setItem('dato2', testSelected);
+            localStorage.setItem('id_t_n', res.data[0].id_t_n);
+            localStorage.setItem('id_test', testSelected);
             router.push(`/menuOpcionesTest`).then(r => console.log(r));
             shutUp();
         }).catch((err) => {
@@ -372,6 +373,9 @@ export default function SelectNinio() {
         })
     }
     const startTest = () => {
+        console.log("Desde el StartTest");
+        console.log("childSelected", childSelected);
+        console.log("testSelected", testSelected);
         if (!selectedChild && selectedTest) {
             SweetAlert.fire({
                 icon: "warning",

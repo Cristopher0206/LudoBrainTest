@@ -334,6 +334,7 @@ app.post('/createTest', upload, (req, res) => {
 /* Funciones de Lectura */
 app.post('/getTestNameById', (req, res) => {
     const id_test = req.body.id_test;
+    console.log(id_test);
     const query = 'SELECT nombre_test FROM test WHERE id_test = ?';
     db.query(query, [id_test], (err, result) => {
         if (err) {

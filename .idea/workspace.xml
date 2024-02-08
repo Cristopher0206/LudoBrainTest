@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/fondo_login2.png" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/fondo_login2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +161,7 @@
       <workItem from="1707229803255" duration="482000" />
       <workItem from="1707230306807" duration="25695000" />
       <workItem from="1707263033460" duration="6009000" />
-      <workItem from="1707366489208" duration="3981000" />
+      <workItem from="1707366489208" duration="4152000" />
     </task>
     <servers />
   </component>

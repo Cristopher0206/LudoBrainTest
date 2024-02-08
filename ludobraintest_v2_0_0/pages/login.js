@@ -188,17 +188,17 @@ export default function Login() {
             </div>
             <br/> <br/>
             <div className={`flex justify-center`}>
-                <Link href={`/changePassword`} className={`text-decoration-none`}>
+                <Link href={`/changePassword`} className={`text-decoration-none text-black hover:font-bold`}>
                     ¿Olvidaste tu contraseña?
                 </Link>
             </div>
             <div className={`flex justify-center`}>
-                <Link href={`/registrarEducador`} className={`text-decoration-none`}>
+                <Link href={`/registrarEducador`} className={`text-decoration-none hover:font-bold`}>
                     ¿No tienes una cuenta? ¡Regístrate!
                 </Link>
             </div>
             <div className={`flex justify-center`}>
-                <Link href={`/creditos`} className={`text-decoration-none`}>
+                <Link href={`/creditos`} className={`text-decoration-none hover:font-bold`}>
                     Acerca de
                 </Link>
             </div>

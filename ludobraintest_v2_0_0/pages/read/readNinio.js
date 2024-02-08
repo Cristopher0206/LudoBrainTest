@@ -23,7 +23,7 @@ export default function ReadNinio() {
         getNinios();
         showInstructions();
     }, []);
-    const text = "¡Bienvenido al Módulo de Registro! Aquí podrás ver la lista de Niños que has registrado. Dale clic al botón con el símbolo " +
+    const text = "¡Bienvenido al Módulo de Administración de Usuarios! Aquí podrás ver la lista de Niños que has registrado. Dale clic al botón con el símbolo " +
         "\"más\" que se encuentra en la parte superior central de la pantalla para registrar un nuevo niño. ";
     useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
@@ -110,7 +110,7 @@ export default function ReadNinio() {
     const showInstructions = () => {
         Swal.fire({
             icon: "info",
-            title: "Bienvenido al Módulo de Registro",
+            title: "Bienvenido al Módulo de Administración de Usuarios",
             html: "<div>\n" +
                 "                <p>En la parte inferior de la pantalla encontrarás la lista de <strong>Niños</strong>\n" +
                 "                    ques has registrado.</p>\n" +
@@ -151,7 +151,7 @@ export default function ReadNinio() {
             <UpperBar color={navstyles.upper_bar_yellow}
                       silenceVoice={shutUp}/>
             <InstructionBar confirmation={confirmGetBack}
-                            instruction={`Registra un niño`}
+                            instruction={`Administra tus usuarios`}
                             information={showInstructions}
                             info_color={button.btn_yellow}
                             voiceCommand={hearVoice}

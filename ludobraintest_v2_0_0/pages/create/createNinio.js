@@ -32,7 +32,7 @@ export default function CreateNinio() {
             console.log(err);
         });
     }
-    const clearFields = () => { /* Funciòn para limpiar los campos */
+    const clearFields = () => { /* Función para limpiar los campos */
         setRegisterName('');
         setRegisterAge('');
     };

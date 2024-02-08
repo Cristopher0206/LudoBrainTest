@@ -102,7 +102,10 @@ app.post('/registrarEducador', (req, res) => {
 });
 app.post('/crearNinio', (req, res) => {
     const id_educador = req.user.id;
+    console.log("id_educador: ", id_educador);
     const {nombre, edad} = req.body;
+    console.log("nombre: ", nombre);
+    console.log("edad: ", edad);
     const querySelect = "SELECT * FROM niño WHERE nombre = ?"
     db.query(querySelect, [nombre], (err, result) => {
         if (err) { /* La consulta no pudo ejecutarse */

@@ -138,39 +138,42 @@ export default function Login() {
             </div>
             <br/><br/>
             <div className={`row`}>
-                <div className={`col-12 d-flex justify-content-center`}>
+                <div className={`col-6`}>
+                    <div className={`container-fluid`}>
+                        <div className={`row justify-content-center px-28`}>
+                            <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
+                                <Image src="/images/usuario.png"
+                                       alt="user icon"
+                                       className={`${styles.user_logo}`} width={100} height={100}/>
+                            </div>
+                            <div className={`col-8 self-center  `}>
+                                <input type="text"
+                                       placeholder={`Ingresa tu usuario (correo electrónico)`}
+                                       onChange={e => setLoginUsuario(e.target.value)}
+                                       className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100  
+                           text-black text-xl ${styles.input_sky_blue}`}/>
+                            </div>
+                        </div>
+                        <br/>
+                        <div className={`row justify-content-center px-28`}>
+                            <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
+                                <Image src="/images/llave-de-la-puerta.png"
+                                       alt="password icon"
+                                       className={`${styles.password_logo}`} width={100} height={100}/>
+                            </div>
+                            <div className={`col-8 self-center`}>
+                                <input name={`password`}
+                                       type="password"
+                                       onChange={e => setLoginPassword(e.target.value)}
+                                       className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100
+                           text-black text-xl ${styles.input_sky_blue}`}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={`col-6 d-flex justify-content-center`}>
                     <Image src="/images/logo_entrenaTuMente2.png"
                            alt="Logo de Entrena Tu Mente" width={500} height={50}/>
-                </div>
-            </div>
-            <br/>
-            <div className={`row justify-content-center px-28`}>
-                <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
-                    <Image src="/images/usuario.png"
-                           alt="user icon"
-                           className={`${styles.user_logo}`} width={100} height={100}/>
-                </div>
-                <div className={`col-8 self-center  `}>
-                    <input type="text"
-                           placeholder={`Ingresa tu usuario (correo electrónico)`}
-                           onChange={e => setLoginUsuario(e.target.value)}
-                           className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100  
-                           text-black text-xl ${styles.input_sky_blue}`}/>
-                </div>
-            </div>
-            <br/>
-            <div className={`row justify-content-center px-28`}>
-                <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
-                    <Image src="/images/llave-de-la-puerta.png"
-                           alt="password icon"
-                           className={`${styles.password_logo}`} width={100} height={100}/>
-                </div>
-                <div className={`col-8 self-center`}>
-                    <input name={`password`}
-                           type="password"
-                           onChange={e => setLoginPassword(e.target.value)}
-                           className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100
-                           text-black text-xl ${styles.input_sky_blue}`}/>
                 </div>
             </div>
             <br/> <br/>
@@ -179,7 +182,8 @@ export default function Login() {
                     <Button text={`Iniciar sesión`} instruction={login} bg_color={button.btn_green}></Button>
                 </div>
                 <div className={`col-5 flex justify-start`}>
-                    <Button text={`Jugar como invitado`} instruction={loginAsGuest} bg_color={button.btn_green}></Button>
+                    <Button text={`Jugar como invitado`} instruction={loginAsGuest}
+                            bg_color={button.btn_green}></Button>
                 </div>
             </div>
             <br/> <br/>

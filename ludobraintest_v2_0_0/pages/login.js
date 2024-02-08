@@ -128,12 +128,12 @@ export default function Login() {
                 <div className={`col-5 d-flex justify-content-center`}>
                     <Image src="/images/EPN_logo_big.png"
                            alt="EPN LOGO"
-                           className={`${styles.epn_logo}`} width={1000} height={100}/>
+                           className={`${styles.epn_logo}`} width={500} height={500}/>
                 </div>
                 <div className={`col-5 d-flex justify-content-center`}>
                     <Image src="/images/LudoLab.png"
                            alt="LUDOLAB LOGO"
-                           className={`${styles.ludolab_logo}`} width={1000} height={100}/>
+                           className={`${styles.ludolab_logo}`} width={900} height={90}/>
                 </div>
             </div>
             <br/><br/>

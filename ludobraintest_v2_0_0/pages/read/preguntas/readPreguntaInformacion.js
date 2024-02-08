@@ -245,7 +245,7 @@ export default function ReadPreguntaInformacion() {
                             <button onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                     className={`${styles.answer_btn} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                <Image src={`/images/${answer.imagen}`}
+                                <Image src={`/assets/${answer.imagen}`}
                                        width={500}
                                        height={500}
                                        className={`${styles.answer_img}`}

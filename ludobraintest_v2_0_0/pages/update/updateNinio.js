@@ -160,9 +160,13 @@ export default function UpdateNinio() {
             console.log(err);
         })
     }
+    const endSession = () => {
+        console.log("Cerrando Sesión")
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={navstyles.upper_bar_yellow}/>
+            <UpperBar color={navstyles.upper_bar_yellow}
+                      silenceVoice={endSession}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`Actualiza a un niño`}
                             information={showInstructions}

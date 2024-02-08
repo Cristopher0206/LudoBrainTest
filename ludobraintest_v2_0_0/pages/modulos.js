@@ -22,7 +22,9 @@ export default function Modulos() {
             showPresentationHandler();
         }
     }, []);
-    const text = "¡Hola, Bienvenido a Poli-Cuizzes! " + "Selecciona uno de los cuatro módulos que se encuentran al lado derecho de la pantalla.";
+    const text = "¡Hola, Bienvenido a Entrena Tu Mente! "
+        + "Esta aplicación le permitirá crear evaluaciones personalizadas para poder evaluar y mejorar el desarrollo " +
+        "de las habilidades cognitivas en niños preescolares";
     useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const goTest = () => {
@@ -88,7 +90,6 @@ export default function Modulos() {
             {isModule && (
                 <div>
                     <InstructionBar confirmation={confirmGetBack}
-                                    instruction={`Selecciona un módulo`}
                                     info_color={button.btn_speak}
                                     voiceCommand={hearVoice}
                                     silenceCommand={shutUp}
@@ -99,26 +100,29 @@ export default function Modulos() {
                             <div className={`col-6 self-center p-5`}>
                                 <div
                                     className={`container-fluid px-4 py-5 justify-center self-center italic ${styles.modules_instruction_text}`}>
-                                    <p>¡Hola, Bienvenido a Poli-Quizzes!</p>
-                                    <p>Esta aplicación le permitirá crear evaluaciones personalizadas para poder evaluar y mejorar
-                                    el desarrollo de las habilidades cognitivas en niños preescolares</p>
+                                    <p>¡Hola, Bienvenido a <strong>Entrena tu Mente</strong>!</p>
+                                    <p>Esta aplicación le permitirá crear evaluaciones personalizadas para poder evaluar
+                                        y mejorar
+                                        el desarrollo de las habilidades cognitivas en niños preescolares</p>
+                                </div>
+                                <div className={`px-20`}>
+                                    <Button instruction={goTest} bg_color={button.btn_blue}
+                                            text={`Empezar`}></Button>
                                 </div>
                             </div>
                             <div className={`col-6 self-center`}>
                                 <br/>
-                                <div className={`px-20`}>
-                                    <Button instruction={goTest} bg_color={button.btn_blue}
-                                            text={`Evaluar un niño`}></Button>
-                                </div>
                                 <br/>
+                                <h4 className={`flex justify-center align-middle self-senter`}>
+                                    Seleccionar un módulo
+                                </h4>
+                                <div className={`px-20`}>
+                                    <Button instruction={goRegister} bg_color={button.btn_yellow}
+                                            text={`Administrar Usuarios`}></Button>
+                                </div>
                                 <div className={`px-20`}>
                                     <Button instruction={goCreate} bg_color={button.btn_green}
                                             text={`Administrar Evaluaciones y Preguntas`}></Button>
-                                </div>
-                                <br/>
-                                <div className={`px-20`}>
-                                    <Button instruction={goRegister} bg_color={button.btn_yellow}
-                                            text={`Registrar un niño`}></Button>
                                 </div>
                                 <br/>
                                 <div className={`px-20`}>

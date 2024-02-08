@@ -30,7 +30,6 @@ export default function CreateNinio() {
             setRegisterEducatorId(res.data.id);
         }).catch(err => {
             console.log(err);
-            //router.push('/login');
         });
     }
     const clearFields = () => { /* Funciòn para limpiar los campos */
@@ -38,6 +37,8 @@ export default function CreateNinio() {
         setRegisterAge('');
     };
     const crearNinio = () => {
+        console.log("registerName", registerName);
+        console.log("registerAge", registerAge);
         if (registerName === '' || registerAge === '') {
             Swal.fire({
                 icon: 'warning',

@@ -159,7 +159,7 @@ app.post('/crearNinio', (req, res) => {
 // Configuración de multer para guardar archivos en una carpeta
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "./public/assets"); // La carpeta donde se guardarán los archivos
+        cb(null, "/public/assets"); // La carpeta donde se guardarán los archivos
     },
     filename: function (req, file, cb) {
         const index = req.body.imagenIndex || 0; // Obtener el índice del campo imagenIndex

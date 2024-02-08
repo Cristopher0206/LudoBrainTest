@@ -66,7 +66,7 @@ export default function Modulos() {
         setIsSpeaking(true);
         setTimeout(() => {
             setIsSpeaking(false);
-        }, 14000);
+        }, 13000);
     }
     const hearVoice = () => {
         if (isSpeaking === false) {

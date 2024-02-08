@@ -137,9 +137,9 @@ export default function Login() {
                 </div>
             </div>
             <br/><br/>
-            <div className={`row border-2 border-black`}>
+            <div className={`row px-5 border-2 border-black`}>
                 <div className={`col-6 flex justify-end self-center border-2 border-red-500`}>
-                    <div className={`container-fluid`}>
+                    <div className={`container-fluid border-2 border-green-500`}>
                         <div className={`row justify-content-center`}>
                             <div className={`col-1 flex justify-center`}>
                                 <Image src="/images/usuario.png"

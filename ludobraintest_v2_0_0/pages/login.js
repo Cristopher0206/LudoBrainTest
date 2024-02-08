@@ -138,7 +138,7 @@ export default function Login() {
             </div>
             <br/><br/>
             <div className={`row`}>
-                <div className={`col-6`}>
+                <div className={`col-6 justify-content-end`}>
                     <div className={`container-fluid`}>
                         <div className={`row justify-content-center`}>
                             <div className={`col-1 flex justify-center`}>
@@ -146,7 +146,7 @@ export default function Login() {
                                        alt="user icon"
                                        className={`${styles.user_logo}`} width={100} height={100}/>
                             </div>
-                            <div className={`col-8 self-center bg-amber-50`}>
+                            <div className={`col-8 self-center bg-amber-50 rounded-xl w-fit`}>
                                 <input type="text"
                                        placeholder={`Ingresa tu usuario (correo electrónico)`}
                                        onChange={e => setLoginUsuario(e.target.value)}
@@ -161,7 +161,7 @@ export default function Login() {
                                        alt="password icon"
                                        className={`${styles.password_logo}`} width={100} height={100}/>
                             </div>
-                            <div className={`col-8 self-center bg-amber-50`}>
+                            <div className={`col-8 self-center bg-amber-50 rounded-xl w-fit`}>
                                 <input name={`password`}
                                        type="password"
                                        onChange={e => setLoginPassword(e.target.value)}

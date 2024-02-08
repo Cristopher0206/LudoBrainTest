@@ -137,8 +137,8 @@ export default function Login() {
                 </div>
             </div>
             <br/><br/>
-            <div className={`row`}>
-                <div className={`col-6 justify-content-end`}>
+            <div className={`row border-2 border-black`}>
+                <div className={`col-6 justify-content-end border-2 border-red-500`}>
                     <div className={`container-fluid`}>
                         <div className={`row justify-content-center`}>
                             <div className={`col-1 flex justify-center`}>
@@ -171,7 +171,7 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-                <div className={`col-6 d-flex justify-content-center`}>
+                <div className={`col-6 d-flex justify-content-center border-2 border-red-500`}>
                     <Image src="/images/logo_entrenaTuMente2.png"
                            alt="Logo de Entrena Tu Mente" width={500} height={50}/>
                 </div>

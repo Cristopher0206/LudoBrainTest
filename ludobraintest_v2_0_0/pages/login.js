@@ -199,7 +199,7 @@ export default function Login() {
             </div>
             <div className={`flex justify-center`}>
                 <Link href={`/creditos`} className={`d-flex justify-content-center`}>
-                    Más información
+                    Acerca de
                 </Link>
             </div>
         </div>

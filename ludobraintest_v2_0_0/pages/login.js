@@ -150,8 +150,8 @@ export default function Login() {
                                 <input type="text"
                                        placeholder={`Ingresa tu usuario (correo electrónico)`}
                                        onChange={e => setLoginUsuario(e.target.value)}
-                                       className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100  
-                           text-black text-xl ${styles.input_sky_blue}`}/>
+                                       className={`w-100 p-3 rounded-xl shadow-md border-2 border-opacity-100  
+                           text-black text-2xl ${styles.input_sky_blue}`}/>
                             </div>
                         </div>
                         <br/>
@@ -161,12 +161,12 @@ export default function Login() {
                                        alt="password icon"
                                        className={`${styles.password_logo}`} width={100} height={100}/>
                             </div>
-                            <div className={`col-10 self-center bg-amber-50 rounded-xl w-fit`}>
+                            <div className={`col-10 self-center bg-amber-50 rounded-xl w-fit p-0`}>
                                 <input name={`password`}
                                        type="password"
                                        onChange={e => setLoginPassword(e.target.value)}
-                                       className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100
-                           text-black text-xl ${styles.input_sky_blue}`}/>
+                                       className={`w-100 p-3 rounded-xl shadow-md border-2 border-opacity-100
+                           text-black text-2xl ${styles.input_sky_blue}`}/>
                             </div>
                         </div>
                     </div>

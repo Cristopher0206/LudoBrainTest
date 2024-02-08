@@ -12,13 +12,13 @@ import Image from "next/image";
 
 export default function ReadPreguntaInformacion() {
     const router = useRouter();
-    let idTest;
-    let idNinio;
+    let id_test;
+    let id_ninio;
     let arregloPreguntas;
     const { speak, speaking } = UseSpeechSynthesis();
     let texto;
     /*------------------- ESTADOS -------------------*/
-    const [id_test, setIdTest] = useState(idTest);
+    //const [id_test, setIdTest] = useState(id_test);
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [text, setText] = useState('');
     const [questions, setQuestions] = useState([]);
@@ -38,22 +38,22 @@ export default function ReadPreguntaInformacion() {
     }, [puntaje]);
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            idTest = localStorage.getItem('id_test');
-            setIdTest(idTest);
-            idNinio = localStorage.getItem('id_ninio');
+            id_test = localStorage.getItem('id_test');
+            //setIdTest(id_test);
+            id_ninio = localStorage.getItem('id_ninio');
         } else {
             router.push('/modulos').then(r => console.log(r));
         }
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getTestNameById = () => {
-        console.log("idTest",idTest);
-        console.log("idNinio",idNinio);
         console.log("id_test",id_test);
+        console.log("id_ninio",id_ninio);
+        //console.log("id_test",id_test);
         axios({
             method: 'post',
             data: {
-                id_test: idTest,
+                id_test: id_test,
             },
             withCredentials: true,
             url: 'http://poliquizzes.com:3001/getTestNameById',
@@ -68,8 +68,8 @@ export default function ReadPreguntaInformacion() {
         axios({
             method: 'post',
             data: {
-                id: idTest,
-                id_ninio: idNinio,
+                id: id_test,
+                id_ninio: id_ninio,
             },
             withCredentials: true,
             url: 'http://poliquizzes.com:3001/getQuestionsbyTestId',

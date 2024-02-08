@@ -139,7 +139,7 @@ export default function Login() {
             <br/><br/>
             <div className={`row pl-5`}>
                 <div className={`col-6 flex justify-end self-center`}>
-                    <div className={`container-fluid px-5`}>
+                    <div className={`container-fluid ps-5`}>
                         <div className={`row justify-content-end`}>
                             <div className={`col-2 flex justify-center`}>
                                 <Image src="/images/usuario.png"

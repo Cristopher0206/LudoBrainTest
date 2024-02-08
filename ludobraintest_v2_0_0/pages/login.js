@@ -139,7 +139,7 @@ export default function Login() {
             <br/><br/>
             <div className={`row`}>
                 <div className={`col-12 d-flex justify-content-center`}>
-                    <Image src="/images/logo_entrenaTuMente.png"
+                    <Image src="/images/logo_entrenaTuMente2.png"
                            alt="Logo de Entrena Tu Mente" width={500} height={50}/>
                 </div>
             </div>

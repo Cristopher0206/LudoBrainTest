@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +161,7 @@
       <workItem from="1707229803255" duration="482000" />
       <workItem from="1707230306807" duration="25695000" />
       <workItem from="1707263033460" duration="6009000" />
-      <workItem from="1707366489208" duration="3858000" />
+      <workItem from="1707366489208" duration="3908000" />
     </task>
     <servers />
   </component>

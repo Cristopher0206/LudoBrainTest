@@ -22,9 +22,9 @@ export default function Modulos() {
             showPresentationHandler();
         }
     }, []);
-    const text = "¡Hola, Bienvenido a Entrena Tu Mente! "
+    const text = "¡Hola, Bienvenido a \"Entrena Tu Mente\"! "
         + "Esta aplicación le permitirá crear evaluaciones personalizadas para poder evaluar y mejorar el desarrollo " +
-        "de las habilidades cognitivas en niños preescolares";
+        "de habilidades cognitivas en niños preescolares";
     useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const goTest = () => {
@@ -111,8 +111,8 @@ export default function Modulos() {
                                 </div>
                             </div>
                             <div className={`col-6 self-center`}>
-                                <h3 className={`flex justify-center align-middle self-senter`}>
-                                    Seleccionar un módulo
+                                <h3 className={`flex justify-center align-middle self-center font-bold`}>
+                                    Seleccione un módulo
                                 </h3>
                                 <br/>
                                 <div className={`px-20`}>

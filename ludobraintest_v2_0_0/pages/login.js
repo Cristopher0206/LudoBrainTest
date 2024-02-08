@@ -89,7 +89,7 @@ export default function Login() {
                 password: 'invitado123'
             },
             withCredentials: true,
-            url: `http://3.134.64.181:3001/login`
+            url: `http://poliquizzes.com:3001/login`
         }).then(res => {
             if (res.data === "Usuario logeado") {
                 let timerInterval;
@@ -140,13 +140,13 @@ export default function Login() {
             <div className={`row`}>
                 <div className={`col-6`}>
                     <div className={`container-fluid`}>
-                        <div className={`row justify-content-center px-28`}>
-                            <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
+                        <div className={`row justify-content-center`}>
+                            <div className={`col-1 flex justify-center`}>
                                 <Image src="/images/usuario.png"
                                        alt="user icon"
                                        className={`${styles.user_logo}`} width={100} height={100}/>
                             </div>
-                            <div className={`col-8 self-center  `}>
+                            <div className={`col-8 self-center bg-amber-50`}>
                                 <input type="text"
                                        placeholder={`Ingresa tu usuario (correo electrónico)`}
                                        onChange={e => setLoginUsuario(e.target.value)}
@@ -155,13 +155,13 @@ export default function Login() {
                             </div>
                         </div>
                         <br/>
-                        <div className={`row justify-content-center px-28`}>
-                            <div className={`col-sm-2 col-md-1 d-flex justify-content-center`}>
+                        <div className={`row justify-content-center`}>
+                            <div className={`col-1 flex justify-center`}>
                                 <Image src="/images/llave-de-la-puerta.png"
                                        alt="password icon"
                                        className={`${styles.password_logo}`} width={100} height={100}/>
                             </div>
-                            <div className={`col-8 self-center`}>
+                            <div className={`col-8 self-center bg-amber-50`}>
                                 <input name={`password`}
                                        type="password"
                                        onChange={e => setLoginPassword(e.target.value)}
@@ -188,17 +188,17 @@ export default function Login() {
             </div>
             <br/> <br/>
             <div className={`flex justify-center`}>
-                <Link href={`/changePassword`} className={`text-decoration-none text-black hover:font-bold text-lg text-decoration-underline`}>
+                <Link href={`/changePassword`} className={`text-decoration-none hover:font-bold text-lg text-decoration-underline`}>
                     ¿Olvidaste tu contraseña?
                 </Link>
             </div>
             <div className={`flex justify-center`}>
-                <Link href={`/registrarEducador`} className={`text-decoration-none text-black hover:font-bold text-lg text-decoration-underline`}>
+                <Link href={`/registrarEducador`} className={`text-decoration-none hover:font-bold text-lg text-decoration-underline`}>
                     ¿No tienes una cuenta? ¡Regístrate!
                 </Link>
             </div>
             <div className={`flex justify-center`}>
-                <Link href={`/creditos`} className={`text-decoration-none text-black hover:font-bold text-lg text-decoration-underline`}>
+                <Link href={`/creditos`} className={`text-decoration-none hover:font-bold text-lg text-decoration-underline`}>
                     Acerca de
                 </Link>
             </div>

@@ -38,7 +38,7 @@ export default function ReadPreguntaInformacion() {
     }, [puntaje]);
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            id_test = localStorage.getItem('id_test');
+            id_test = localStorage.getItem('id_evaluated_test');
             //setIdTest(id_test);
             id_ninio = localStorage.getItem('id_ninio');
         } else {

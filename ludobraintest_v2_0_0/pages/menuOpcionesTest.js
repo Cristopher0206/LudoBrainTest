@@ -22,7 +22,7 @@ export default function MenuOpcionesTest() {
     /*------------------- ESTADOS -------------------*/
     const [test, setTest] = useState('');
     const [idNinio, setIdNinio] = useState(id);
-    const [idTest, setIdTest] = useState(id_test);
+    const [idTest, setIdTest] = useState('');
     const [nombreSeccion, setNombreSeccion] = useState('');
     const [isSpeaking, setIsSpeaking] = useState(false);
     // Estados para generar el color
@@ -46,7 +46,6 @@ export default function MenuOpcionesTest() {
             id = localStorage.getItem('id_ninio');
             setIdNinio(id);
             id_t_n = localStorage.getItem('id_t_n');
-            setIdTest(id_t_n);
             id_test = localStorage.getItem('id_test');
             setIdTest(id_test);
         } else {
@@ -84,7 +83,7 @@ export default function MenuOpcionesTest() {
         shutUp();
     }
     const goTest = () => {
-        localStorage.setItem('id_test', id_test);
+        localStorage.setItem('id_evaluated_test', idTest);
         localStorage.setItem('nombre_test', test.nombre_test);
         switch (test.nombre_seccion) {
             case "Información":

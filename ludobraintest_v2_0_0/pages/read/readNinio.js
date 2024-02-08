@@ -95,7 +95,7 @@ export default function ReadNinio() {
         })
     }
     const goActualizarNinio = (idNinio) => {
-        sessionStorage.setItem('dataToPass', idNinio);
+        sessionStorage.setItem('id_ninio_update', idNinio);
         router.push('/update/updateNinio').then(r => console.log(r));
         shutUp();
     }

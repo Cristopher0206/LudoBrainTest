@@ -11,12 +11,12 @@ import Swal from "sweetalert2";
 
 export default function UpdateNinio() {
     const router = useRouter();
-    let information;
+    let id_ninio;
     /*------------------- ESTADOS -------------------*/
     const [idNinio, setIdNinio] = useState('');
     const [registerUpdateName, setRegisterUpdateName] = useState('');
     const [registerUpdateAge, setRegisterUpdateAge] = useState('');
-    const [info, setInfo] = useState(information);
+    const [info, setInfo] = useState(id_ninio);
     /*------------------- EFECTOS -------------------*/
     useEffect(() => { // useEffect para obtener el usuario de la sesión
         getUser();
@@ -24,18 +24,18 @@ export default function UpdateNinio() {
     }, []);
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            information = sessionStorage.getItem("dataToPass");
+            id_ninio = sessionStorage.getItem("id_ninio_update");
         } else {
             router.push('/modulos').then(r => console.log(r));
         }
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getUser = () => {
-        setInfo(information);
+        setInfo(id_ninio);
         axios({
             method: "post",
             data: {
-                id_ninio: info,
+                id_ninio: id_ninio,
             },
             withCredentials: true,
             url: "http://poliquizzes.com:3001/getChildrenById"
@@ -85,7 +85,7 @@ export default function UpdateNinio() {
             axios({
                 method: "post",
                 data: {
-                    id_ninio: idNinio,
+                    id_ninio: id_ninio,
                     nombre: registerUpdateName,
                     edad: registerUpdateAge,
                 },

@@ -59,7 +59,7 @@ export default function ReadPreguntaInformacion() {
             url: 'http://poliquizzes.com:3001/getTestNameById',
         }).then(res => {
             console.log("Nombre del test", res.data);
-            setNombreTest(res.data[0].nombre_test);
+            //setNombreTest(res.data[0].nombre_test);
         }).catch(err => {
             console.log(err);
         });

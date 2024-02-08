@@ -137,16 +137,16 @@ export default function Login() {
                 </div>
             </div>
             <br/><br/>
-            <div className={`row px-5`}>
+            <div className={`row`}>
                 <div className={`col-6 flex justify-end self-center`}>
-                    <div className={`container-fluid px-5`}>
+                    <div className={`container-fluid`}>
                         <div className={`row justify-content-end`}>
-                            <div className={`col-1 flex justify-center`}>
+                            <div className={`col-2 flex justify-center`}>
                                 <Image src="/images/usuario.png"
-                                       alt="user icon"
+                                       alt="Ícono de usuario"
                                        className={`${styles.user_logo}`} width={100} height={100}/>
                             </div>
-                            <div className={`col-8 self-center bg-amber-50 rounded-xl w-fit`}>
+                            <div className={`col-10 self-center bg-amber-50 rounded-xl w-fit`}>
                                 <input type="text"
                                        placeholder={`Ingresa tu usuario (correo electrónico)`}
                                        onChange={e => setLoginUsuario(e.target.value)}
@@ -156,12 +156,12 @@ export default function Login() {
                         </div>
                         <br/>
                         <div className={`row justify-content-end`}>
-                            <div className={`col-1 flex justify-center`}>
+                            <div className={`col-2 flex justify-center`}>
                                 <Image src="/images/llave-de-la-puerta.png"
                                        alt="password icon"
                                        className={`${styles.password_logo}`} width={100} height={100}/>
                             </div>
-                            <div className={`col-8 self-center bg-amber-50 rounded-xl w-fit`}>
+                            <div className={`col-10 self-center bg-amber-50 rounded-xl w-fit`}>
                                 <input name={`password`}
                                        type="password"
                                        onChange={e => setLoginPassword(e.target.value)}

@@ -774,7 +774,7 @@
 }
 
 .bg_robot_image {
-    background-image: url('/ludobraintest_v2_0_0/public/images/fondo_login.jpg');
+    background-image: url('/images/fondo_login.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

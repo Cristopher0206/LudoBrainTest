@@ -352,9 +352,6 @@ export default function SelectNinio() {
         }
     }
     const getTestSession = () => {
-        console.log("DESDE EL getTestSession");
-        console.log("childSelected", childSelected);
-        console.log("testSelected", testSelected);
         axios({
             method: "post",
             data: {
@@ -374,9 +371,6 @@ export default function SelectNinio() {
         })
     }
     const startTest = () => {
-        console.log("Desde el StartTest");
-        console.log("childSelected", childSelected);
-        console.log("testSelected", testSelected);
         if (!selectedChild && selectedTest) {
             SweetAlert.fire({
                 icon: "warning",

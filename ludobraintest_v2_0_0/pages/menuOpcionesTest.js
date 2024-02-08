@@ -14,6 +14,7 @@ import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
 export default function MenuOpcionesTest() {
     const router = useRouter();
     let id;
+    let id_t_n;
     let id_test;
     let nombre_seccion;
     const text = "Selecciona una opción";
@@ -44,7 +45,9 @@ export default function MenuOpcionesTest() {
         if (typeof window !== 'undefined') {
             id = localStorage.getItem('id_ninio');
             setIdNinio(id);
-            id_test = localStorage.getItem('id_t_n');
+            id_t_n = localStorage.getItem('id_t_n');
+            setIdTest(id_t_n);
+            id_test = localStorage.getItem('id_test');
             setIdTest(id_test);
         } else {
             router.push('/modulos').then(r => console.log(r));
@@ -55,7 +58,7 @@ export default function MenuOpcionesTest() {
         axios({
             method: 'post',
             data: {
-                id_test: id_test,
+                id_test: id_t_n,
             },
             withCredentials: true,
             url: `http://poliquizzes.com:3001/getNinioTestById`,
@@ -81,7 +84,7 @@ export default function MenuOpcionesTest() {
         shutUp();
     }
     const goTest = () => {
-        localStorage.setItem('id_test', idTest);
+        localStorage.setItem('id_test', id_test);
         localStorage.setItem('nombre_test', test.nombre_test);
         switch (test.nombre_seccion) {
             case "Información":

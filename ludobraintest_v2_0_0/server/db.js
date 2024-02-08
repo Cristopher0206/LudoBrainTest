@@ -6,7 +6,7 @@ const DATABASE = process.env.REACT_APP_BACKEND_DB_NAME
 const mysql = require('mysql');
 
 const db = mysql.createPool({
-    connectionLimit: 25,
+    connectionLimit: 100,
     host: '3.134.64.181',
     user: 'root',
     password: 'Cr1stopherp3rez',

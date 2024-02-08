@@ -39,9 +39,13 @@ export default function SelectSeccionPregunta(){
     const goHome = () => {
         router.push('/modulos').then((r) => console.log("Inicio"));
     }
+    const voidFunction = () => {
+        console.log("Cerrando Sesión");
+    }
     return (
         <main className={`bg-amber-50 min-h-screen`}>
-            <UpperBar color={navstyles.upper_bar_red}/>
+            <UpperBar color={navstyles.upper_bar_red}
+                      silenceVoice={voidFunction}/>
             <InstructionBar confirmation={confirmGetBack}
                             instruction={`¿Qué tipo de pregunta quieres crear?`}
                             information={showInstructions}

@@ -24,7 +24,7 @@ export default function Modulos() {
     }, []);
     const text = "¡Hola, Bienvenido a \"Entrena Tu Mente\"! "
         + "Esta aplicación le permitirá crear evaluaciones personalizadas para poder evaluar y mejorar el desarrollo " +
-        "de habilidades cognitivas en niños preescolares";
+        "de habilidades cognitivas en niños preescolares.";
     useVoiceReader(text, isSpeaking);
     /*------------------- FUNCIONES -------------------*/
     const goTest = () => {
@@ -66,7 +66,7 @@ export default function Modulos() {
         setIsSpeaking(true);
         setTimeout(() => {
             setIsSpeaking(false);
-        }, 16000);
+        }, 15000);
     }
     const hearVoice = () => {
         if (isSpeaking === false) {

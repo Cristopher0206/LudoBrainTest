@@ -123,7 +123,7 @@ export default function Login() {
 
     return (
         <div className={`container-fluid px-5`}>
-            <br/><br/>
+            <br/>
             <div className={`row d-flex justify-content-between`}>
                 <div className={`col-5 d-flex justify-content-center`}>
                     <Image src="/images/EPN_logo_big.png"
@@ -139,7 +139,8 @@ export default function Login() {
             <br/><br/>
             <div className={`row`}>
                 <div className={`col-12 d-flex justify-content-center`}>
-                    <h1 className={`italic ${styles.label_red}`}>Poli-Quizzes</h1>
+                    <Image src="/images/logo_entrenaTuMente.png"
+                           alt="Logo de Entrena Tu Mente" width={900} height={90}/>
                 </div>
             </div>
             <br/>

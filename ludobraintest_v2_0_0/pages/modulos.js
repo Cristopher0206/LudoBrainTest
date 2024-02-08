@@ -102,8 +102,7 @@ export default function Modulos() {
                                     className={`container-fluid px-4 py-5 justify-center self-center italic ${styles.modules_instruction_text}`}>
                                     <p>¡Hola, Bienvenido a <strong>Entrena tu Mente</strong>!</p>
                                     <p>Esta aplicación le permitirá crear evaluaciones personalizadas para poder evaluar
-                                        y mejorar
-                                        el desarrollo de las habilidades cognitivas en niños preescolares</p>
+                                        y mejorar el desarrollo de habilidades cognitivas en niños preescolares.</p>
                                 </div>
                                 <div className={`px-20`}>
                                     <Button instruction={goTest} bg_color={button.btn_blue}

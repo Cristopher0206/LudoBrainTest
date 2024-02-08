@@ -137,7 +137,7 @@ export default function Login() {
                 </div>
             </div>
             <br/><br/>
-            <div className={`row`}>
+            <div className={`row pl-5`}>
                 <div className={`col-6 flex justify-end self-center`}>
                     <div className={`container-fluid`}>
                         <div className={`row justify-content-end`}>
@@ -146,7 +146,7 @@ export default function Login() {
                                        alt="Ícono de usuario"
                                        className={`${styles.user_logo}`} width={100} height={100}/>
                             </div>
-                            <div className={`col-10 self-center bg-amber-50 rounded-xl w-fit`}>
+                            <div className={`col-10 self-center bg-amber-50 rounded-xl w-fit p-0`}>
                                 <input type="text"
                                        placeholder={`Ingresa tu usuario (correo electrónico)`}
                                        onChange={e => setLoginUsuario(e.target.value)}

@@ -41,6 +41,7 @@ export default function ChangePassword() {
                     title: "¡Contraseña actualizada Correctamente!",
                     timer: 3000,
                     timerProgressBar: true,
+                    allowOutsideClick: false,
                     didOpen: () => {
                         Swal.showLoading();
                     },
@@ -61,8 +62,9 @@ export default function ChangePassword() {
                 Swal.fire({
                     icon: 'warning',
                     title: "¡Nombre de usuario incorrecto, vuelve a intentar!",
-                    timer: 3000,
+                    timer: 2000,
                     timerProgressBar: true,
+                    allowOutsideClick: false,
                     didOpen: () => {
                         Swal.showLoading();
                     },

@@ -111,15 +111,15 @@ export default function Modulos() {
                                 </div>
                             </div>
                             <div className={`col-6 self-center`}>
-                                <br/>
-                                <br/>
-                                <h4 className={`flex justify-center align-middle self-senter`}>
+                                <h3 className={`flex justify-center align-middle self-senter`}>
                                     Seleccionar un módulo
-                                </h4>
+                                </h3>
+                                <br/>
                                 <div className={`px-20`}>
                                     <Button instruction={goRegister} bg_color={button.btn_yellow}
                                             text={`Administrar Usuarios`}></Button>
                                 </div>
+                                <br/>
                                 <div className={`px-20`}>
                                     <Button instruction={goCreate} bg_color={button.btn_green}
                                             text={`Administrar Evaluaciones y Preguntas`}></Button>

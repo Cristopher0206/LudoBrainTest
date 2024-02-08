@@ -18,7 +18,6 @@ export default function ReadPreguntaInformacion() {
     const { speak, speaking } = UseSpeechSynthesis();
     let texto;
     /*------------------- ESTADOS -------------------*/
-    //const [id_test, setIdTest] = useState(id_test);
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [text, setText] = useState('');
     const [questions, setQuestions] = useState([]);
@@ -39,7 +38,6 @@ export default function ReadPreguntaInformacion() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             id_test = localStorage.getItem('id_evaluated_test');
-            //setIdTest(id_test);
             id_ninio = localStorage.getItem('id_ninio');
         } else {
             router.push('/modulos').then(r => console.log(r));
@@ -47,9 +45,6 @@ export default function ReadPreguntaInformacion() {
     }, []);
     /*------------------- FUNCIONES -------------------*/
     const getTestNameById = () => {
-        console.log("id_test",id_test);
-        console.log("id_ninio",id_ninio);
-        //console.log("id_test",id_test);
         axios({
             method: 'post',
             data: {
@@ -59,7 +54,7 @@ export default function ReadPreguntaInformacion() {
             url: 'http://poliquizzes.com:3001/getTestNameById',
         }).then(res => {
             console.log("Nombre del test", res.data);
-            //setNombreTest(res.data[0].nombre_test);
+            setNombreTest(res.data[0].nombre_test);
         }).catch(err => {
             console.log(err);
         });

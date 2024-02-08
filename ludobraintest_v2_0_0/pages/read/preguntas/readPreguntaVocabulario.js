@@ -12,8 +12,8 @@ import Image from "next/image";
 
 export default function ReadPreguntaVocabulario() {
     const router = useRouter();
-    let idTest;
-    let idNinio;
+    let id_test;
+    let id_ninio;
     let arregloPreguntas;
     const {speak, speaking} = UseSpeechSynthesis();
     const texto = "¿Qué es esta figura? ¿Podrías definirla? ";
@@ -36,8 +36,8 @@ export default function ReadPreguntaVocabulario() {
     }, [puntaje]);
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            idTest = localStorage.getItem('id_test');
-            idNinio = localStorage.getItem('id_ninio');
+            id_test = localStorage.getItem('id_evaluated_test');
+            id_ninio = localStorage.getItem('id_ninio');
         } else {
             router.push('/modulos').then(r => console.log(r));
         }
@@ -47,7 +47,7 @@ export default function ReadPreguntaVocabulario() {
         axios({
             method: 'post',
             data: {
-                id_test: idTest,
+                id_test: id_test,
             },
             withCredentials: true,
             url: 'http://poliquizzes.com:3001/getTestNameById',
@@ -62,8 +62,8 @@ export default function ReadPreguntaVocabulario() {
         axios({
             method: 'post',
             data: {
-                id: idTest,
-                id_ninio: idNinio,
+                id: id_test,
+                id_ninio: id_ninio,
             },
             withCredentials: true,
             url: 'http://poliquizzes.com:3001/getQuestionsbyTestId',

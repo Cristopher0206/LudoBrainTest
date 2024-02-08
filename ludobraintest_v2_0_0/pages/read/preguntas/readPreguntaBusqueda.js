@@ -13,14 +13,13 @@ import Image from "next/image";
 
 export default function ReadPreguntaBusqueda() {
     const router = useRouter();
-    let idTest;
-    let idNinio
+    let id_test;
+    let id_ninio;
     let arregloPreguntas;
     const {speak, speaking} = UseSpeechSynthesis();
     const texto1 = "¿Puedes identificar a este animal?";
     const texto2 = "Selecciona el animal que apareció en pantalla hace unos segundos.";
     /*------------------- ESTADOS -------------------*/
-    const [id_test, setIdTest] = useState(idTest);
     const [isSpeaking1, setIsSpeaking1] = useState(false);
     const [isSpeaking2, setIsSpeaking2] = useState(false);
     const [questions, setQuestions] = useState([]);
@@ -44,9 +43,8 @@ export default function ReadPreguntaBusqueda() {
     }, [puntaje]);
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            idTest = localStorage.getItem('id_test');
-            setIdTest(localStorage.getItem('id_test'));
-            idNinio = localStorage.getItem('id_ninio');
+            id_test = localStorage.getItem('id_evaluated_test');
+            id_ninio = localStorage.getItem('id_ninio');
         } else {
             router.push('/modulos').then(r => console.log(r));
         }
@@ -56,7 +54,7 @@ export default function ReadPreguntaBusqueda() {
         axios({
             method: 'post',
             data: {
-                id_test: idTest,
+                id_test: id_test,
             },
             withCredentials: true,
             url: 'http://poliquizzes.com:3001/getTestNameById',
@@ -80,8 +78,8 @@ export default function ReadPreguntaBusqueda() {
         axios({
             method: 'post',
             data: {
-                id: idTest,
-                id_ninio: idNinio,
+                id: id_test,
+                id_ninio: id_ninio,
             },
             withCredentials: true,
             url: 'http://poliquizzes.com:3001/getQuestionsbyTestId',

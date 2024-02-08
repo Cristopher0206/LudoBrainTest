@@ -131,7 +131,7 @@ export default function Login() {
                            className={`${styles.epn_logo}`} width={1000} height={100}/>
                 </div>
                 <div className={`col-5 d-flex justify-content-center`}>
-                    <Image src="/images/ludolab_logo_credits.png"
+                    <Image src="/images/LudoLab.png"
                            alt="LUDOLAB LOGO"
                            className={`${styles.ludolab_logo}`} width={1000} height={100}/>
                 </div>

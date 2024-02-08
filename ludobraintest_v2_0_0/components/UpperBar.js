@@ -72,15 +72,15 @@ export default function UpperBar({color, questionType, silenceVoice}) {
     return (
         <div className={`${color} container-fluid px-4 py-3 shadow-md rounded-b-2xl border-2 border-black border-opacity-10`}>
             <div className={`row justify-content-between`}>
-                <div className={`col-4 d-flex justify-content-center p-3`}>
+                <div className={`col-4 flex justify-center p-3 self-center`}>
                     <div className={`ps-2 pt-2`}>
                         <h5 className={styles.welcome_text}>¡Bienvenido, {name}!</h5>
                     </div>
                 </div>
-                <div className={`col-4 d-flex justify-content-center`}>
-                    <h4 className={`pt-4 font-medium`}>{questionType}</h4>
+                <div className={`col-4 flex justify-center self-center`}>
+                    <h4 className={`font-medium`}>{questionType}</h4>
                 </div>
-                <div className={`col-4 d-flex justify-content-center pt-2`}>
+                <div className={`col-4 flex justify-center self-center`}>
                     <Button text={`Cerrar Sesión`} bg_color={button.btn_black} instruction={cerrarSesion}></Button>
                 </div>
             </div>

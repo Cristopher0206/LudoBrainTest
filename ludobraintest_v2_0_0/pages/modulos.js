@@ -100,8 +100,8 @@ export default function Modulos() {
                                 <div
                                     className={`container-fluid px-4 py-5 justify-center self-center italic ${styles.modules_instruction_text}`}>
                                     <p>¡Hola, Bienvenido a Poli-Quizzes!</p>
-                                    <p>Selecciona uno de los cuatro módulos que se encuentran
-                                        al lado derecho de la pantalla.</p>
+                                    <p>Esta aplicación le permitirá crear evaluaciones personalizadas para poder evaluar y mejorar
+                                    el desarrollo de las habilidades cognitivas en niños preescolares</p>
                                 </div>
                             </div>
                             <div className={`col-6 self-center`}>

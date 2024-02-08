@@ -137,9 +137,9 @@ export default function Login() {
                 </div>
             </div>
             <br/><br/>
-            <div className={`row px-5 border-2 border-black`}>
-                <div className={`col-6 flex justify-end self-center border-2 border-red-500`}>
-                    <div className={`container-fluid border-2 border-green-500`}>
+            <div className={`row px-5`}>
+                <div className={`col-6 flex justify-end self-center`}>
+                    <div className={`container-fluid px-5`}>
                         <div className={`row justify-content-end`}>
                             <div className={`col-1 flex justify-center`}>
                                 <Image src="/images/usuario.png"
@@ -155,7 +155,7 @@ export default function Login() {
                             </div>
                         </div>
                         <br/>
-                        <div className={`row justify-content-center`}>
+                        <div className={`row justify-content-end`}>
                             <div className={`col-1 flex justify-center`}>
                                 <Image src="/images/llave-de-la-puerta.png"
                                        alt="password icon"
@@ -171,7 +171,7 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-                <div className={`col-6 flex justify-start border-2 border-red-500`}>
+                <div className={`col-6 flex justify-start`}>
                     <Image src="/images/logo_entrenaTuMente2.png"
                            alt="Logo de Entrena Tu Mente" width={500} height={50}/>
                 </div>

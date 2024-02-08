@@ -53,7 +53,7 @@ export default function Creditos() {
                     </div>
                     <div className={`col-4`}>
                         <h4 className={`flex justify-center`}>Colaboradores</h4>
-                        <div className={`flex justify-center text-lg`}>Ph.D Marco Oswaldo Santorum Gaibor</div>
+                        <div className={`flex justify-center text-lg`}>Psc. Verónica Maldonado</div>
                     </div>
                 </div>
                 <div className={`pt-3 row`}>

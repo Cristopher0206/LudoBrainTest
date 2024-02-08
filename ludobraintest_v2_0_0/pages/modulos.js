@@ -97,7 +97,7 @@ export default function Modulos() {
                                     hiddenHome={`hidden`}/>
                     <div className={`container-fluid`}>
                         <div className={`row`}>
-                            <div className={`col-6 self-center p-5`}>
+                            <div className={`col-6 self-center px-5`}>
                                 <div
                                     className={`container-fluid px-4 py-5 justify-center self-center italic ${styles.modules_instruction_text}`}>
                                     <p>¡Hola, Bienvenido a <strong>Entrena tu Mente</strong>!</p>

@@ -30,7 +30,7 @@ export default function ReadNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getChildren"
+            url: "http://localhost:3002/getChildren"
         }).then((res) => {
             if (res.data) {
                 setChildren(res.data); // Establece el estado con los resultados
@@ -59,7 +59,7 @@ export default function ReadNinio() {
                         id_ninio: idNinio,
                     },
                     withCredentials: true,
-                    url: "http://localhost:3001/deleteChild"
+                    url: "http://localhost:3002/deleteChild"
                 }).then((res) => {
                     console.log(res);
                     if (res.data.message === 'Niño eliminado exitosamente') {

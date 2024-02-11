@@ -27,7 +27,7 @@ export default function CreateNinio() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getUser"
+            url: "http://localhost:3002/getUser"
         }).then(res => {
             setRegisterEducatorId(res.data.id);
         }).catch(err => {
@@ -81,7 +81,7 @@ export default function CreateNinio() {
                     edad: registerAge,
                 },
                 withCredentials: true,
-                url: "http://localhost:3001/crearNinio"
+                url: "http://localhost:3002/crearNinio"
             }).then((res) => {
                 console.log(res);
                 if (res.data.message === 'Niño creado correctamente') {

@@ -21,7 +21,7 @@ export default function Login() {
                 password: loginPassword
             },
             withCredentials: true,
-            url: "http://localhost:3001/login"
+            url: "http://localhost:3002/login"
         }).then(res => {
             if (res.data === "Usuario logeado") {
                 router.push('/presentacion');

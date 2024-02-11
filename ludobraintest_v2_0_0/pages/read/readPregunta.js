@@ -46,7 +46,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getInformacionQuestions",
+            url: "http://localhost:3002/getInformacionQuestions",
         }).then((res) => {
             if (res.data) {
                 setInformationQuestions(res.data);
@@ -64,7 +64,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSemejanzasQuestions",
+            url: "http://localhost:3002/getSemejanzasQuestions",
         }).then((res) => {
             if (res.data) {
                 setSemejanzasQuestions(res.data);
@@ -82,7 +82,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getVocabularioQuestions",
+            url: "http://localhost:3002/getVocabularioQuestions",
         }).then((res) => {
             if (res.data) {
                 setVocabularioQuestions(res.data);
@@ -100,7 +100,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getComprensionQuestions",
+            url: "http://localhost:3002/getComprensionQuestions",
         }).then((res) => {
             if (res.data) {
                 setComprensionQuestions(res.data);
@@ -118,7 +118,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getDibujosQuestions",
+            url: "http://localhost:3002/getDibujosQuestions",
         }).then((res) => {
             if (res.data) {
                 setDibujosQuestions(res.data);
@@ -136,7 +136,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getNombresQuestions",
+            url: "http://localhost:3002/getNombresQuestions",
         }).then((res) => {
             if (res.data) {
                 setNombresQuestions(res.data);
@@ -154,7 +154,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getMatricesQuestions",
+            url: "http://localhost:3002/getMatricesQuestions",
         }).then((res) => {
             if (res.data) {
                 setMatricesQuestions(res.data);
@@ -172,7 +172,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getConceptosQuestions",
+            url: "http://localhost:3002/getConceptosQuestions",
         }).then((res) => {
             if (res.data) {
                 setConceptosQuestions(res.data);
@@ -190,7 +190,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getReconocimientoQuestions",
+            url: "http://localhost:3002/getReconocimientoQuestions",
         }).then((res) => {
             if (res.data) {
                 setReconocimientoQuestions(res.data);
@@ -208,7 +208,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getBusquedaQuestions",
+            url: "http://localhost:3002/getBusquedaQuestions",
         }).then((res) => {
             if (res.data) {
                 setBusquedaQuestions(res.data);
@@ -226,7 +226,7 @@ export default function ReadPregunta() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSections"
+            url: "http://localhost:3002/getSections"
         }).then((res) => {
             setSections(res.data);
         }).catch((err) => {
@@ -369,7 +369,7 @@ export default function ReadPregunta() {
                     id_pregunta: id_pregunta
                 },
                 withCredentials: true,
-                url: "http://localhost:3001/deleteQuestion",
+                url: "http://localhost:3002/deleteQuestion",
             }).then((res) => {
                 console.log(res);
                 if (res.data.message === 'Pregunta eliminada exitosamente') {

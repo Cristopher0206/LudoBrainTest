@@ -30,8 +30,8 @@ require("./passportConfig")(passport);
 app.get('/', (req, res) => {
     res.send("Hello World");
 })
-app.listen(3001, () => {
-    console.log('Server started on port 3001');
+app.listen(3002, () => {
+    console.log('Server started on port 3002');
 })
 /* Función para obtener el usuario de la sesión */
 app.get('/getUser', (req, res) => {

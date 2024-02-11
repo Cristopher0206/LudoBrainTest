@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaDibujos.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/amanecer-en-las-montanas-arte-digital_5120x2880_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/atardecer-en-la-montanas-ilustracion_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/atardecer-rosado-arte-digital_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/escenario-de-the-last-of-us_3248x1773_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/espiral-deformada-en-rosa-y-azul_3840x2160_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/ilustracion-atardecer-en-el-bosque_3840x2400_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/noche-colorida-en-las-montanas-arte-digital_7680x4320_xtrafondos.com.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/public/images/zorros-3d-low-poly_3840x2160_xtrafondos.com.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createPregunta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/puntajeFinal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaConceptos.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaConceptos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaNombres.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/preguntas/readPreguntaNombres.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/UpperBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/components/UpperBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/create/createTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readNinio.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readNinio.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readPregunta.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readPregunta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/pages/read/readTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/styles/styles.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +55,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ludobraintest__cris&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;questions__completed&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.9.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.9.5&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/GitHub/LudoBrainTest&quot;,

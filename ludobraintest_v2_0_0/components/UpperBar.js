@@ -22,7 +22,7 @@ export default function UpperBar({color, questionType}) {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getUser"
+            url: "http://localhost:3002/getUser"
         }).then(res => {
             setUserId(res.data.id);
             setUsername(res.data.username);

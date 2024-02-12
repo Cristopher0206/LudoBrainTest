@@ -30,7 +30,7 @@ export default function UpdateNinio() {
                 id_ninio: info,
             },
             withCredentials: true,
-            url: "http://localhost:3001/getChildrenById"
+            url: "http://localhost:3002/getChildrenById"
         }).then(res => {
             setIdNinio(res.data[0].id_ninio);
             setRegisterUpdateName(res.data[0].nombre);
@@ -82,7 +82,7 @@ export default function UpdateNinio() {
                     edad: registerUpdateAge,
                 },
                 withCredentials: true,
-                url: "http://localhost:3001/updateChildren"
+                url: "http://localhost:3002/updateChildren"
             }).then(res => {
                 console.log(res);
                 if (res.data.message === 'Niño actualizado exitosamente') {

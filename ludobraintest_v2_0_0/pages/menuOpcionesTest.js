@@ -40,7 +40,7 @@ export default function MenuOpcionesTest() {
                 id_test: id,
             },
             withCredentials: true,
-            url: `http://localhost:3001/getNinioTestById`,
+            url: `http://localhost:3002/getNinioTestById`,
         }).then((res) => {
             console.log(res);
             setTest(res.data[0]);

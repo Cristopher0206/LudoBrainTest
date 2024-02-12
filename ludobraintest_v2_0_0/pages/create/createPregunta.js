@@ -897,7 +897,7 @@ export default function CreatePregunta() {
             if (!bandera) {
                 // Enviar la solicitud al servidor
                 const response = await axios.post(
-                    "http://localhost:3001/uploadQuestion",
+                    "http://localhost:3002/uploadQuestion",
                     formData,
                     {
                         headers: {

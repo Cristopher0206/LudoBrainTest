@@ -36,7 +36,7 @@ export default function ReadPreguntaInformacion() {
                 id_ninio: localStorage.getItem('id_ninio'),
             },
             withCredentials: true,
-            url: 'http://localhost:3001/getQuestionsbyTestId',
+            url: 'http://localhost:3002/getQuestionsbyTestId',
         }).then(res => {
             setQuestions(res.data);
             arregloPreguntas = res.data;
@@ -56,7 +56,7 @@ export default function ReadPreguntaInformacion() {
                 id: id_question,
             },
             withCredentials: true,
-            url: 'http://localhost:3001/getAnswersbyQuestionId',
+            url: 'http://localhost:3002/getAnswersbyQuestionId',
         }).then(res => {
             console.log(res.data);
             setAnswers(res.data);

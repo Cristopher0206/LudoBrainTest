@@ -35,7 +35,7 @@ export default function ReadPreguntaVocabulario() {
                 id_ninio: localStorage.getItem('id_ninio'),
             },
             withCredentials: true,
-            url: 'http://localhost:3001/getQuestionsbyTestId',
+            url: 'http://localhost:3002/getQuestionsbyTestId',
         }).then(res => {
             setQuestions(res.data);
             arregloPreguntas = res.data;
@@ -55,7 +55,7 @@ export default function ReadPreguntaVocabulario() {
                 id: id_question,
             },
             withCredentials: true,
-            url: 'http://localhost:3001/getSamplesByQuestionId',
+            url: 'http://localhost:3002/getSamplesByQuestionId',
         }).then(res => {
             console.log(res.data);
             setSamples(res.data);

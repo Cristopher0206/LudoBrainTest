@@ -39,7 +39,7 @@ export default function CreateTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSections"
+            url: "http://localhost:3002/getSections"
         }).then((res) => {
             setSecciones(res.data);
         }).catch((err) => {
@@ -56,7 +56,7 @@ export default function CreateTest() {
             data: {
                 seccion: section
             },
-            url: "http://localhost:3001/getPreguntasBySeccion",
+            url: "http://localhost:3002/getPreguntasBySeccion",
         }).then((res) => {
             setPreguntas(res.data);
         }).catch((err) => {
@@ -136,7 +136,7 @@ export default function CreateTest() {
                     seccion: seccion,
                     preguntas: newPreguntas
                 },
-                url: "http://localhost:3001/createTest",
+                url: "http://localhost:3002/createTest",
             }).then((res) => {
                 console.log(res);
                 if (res.data.message === "Test creado correctamente") {

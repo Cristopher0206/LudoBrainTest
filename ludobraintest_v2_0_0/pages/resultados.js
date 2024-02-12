@@ -60,7 +60,7 @@ export default function Resultados() {
                 id_test: idTest,
             },
             withCredentials: true,
-            url: "http://localhost:3001/getScoreTable"
+            url: "http://localhost:3002/getScoreTable"
         }).then((res) => {
             console.log(res.data);
             setNoResults(false);
@@ -107,7 +107,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSections"
+            url: "http://localhost:3002/getSections"
         }).then((res) => {
             setSections(res.data);
         }).catch((err) => {
@@ -118,7 +118,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getInformacionTests"
+            url: "http://localhost:3002/getInformacionTests"
         }).then((res) => {
             setInformacionTests(res.data);
             if (res.data.length !== 0) {
@@ -132,7 +132,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getSemejanzasTests"
+            url: "http://localhost:3002/getSemejanzasTests"
         }).then((res) => {
             setSemejanzasTests(res.data);
             if (res.data.length !== 0) {
@@ -146,7 +146,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getVocabularioTests"
+            url: "http://localhost:3002/getVocabularioTests"
         }).then((res) => {
             setVocabularioTests(res.data);
             if (res.data.length !== 0) {
@@ -160,7 +160,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getComprensionTests"
+            url: "http://localhost:3002/getComprensionTests"
         }).then((res) => {
             setComprensionTests(res.data);
             if (res.data.length !== 0) {
@@ -174,7 +174,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getDibujosTests"
+            url: "http://localhost:3002/getDibujosTests"
         }).then((res) => {
             setDibujosTests(res.data);
             if (res.data.length !== 0) {
@@ -188,7 +188,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getNombresTests"
+            url: "http://localhost:3002/getNombresTests"
         }).then((res) => {
             setNombresTests(res.data);
             if (res.data.length !== 0) {
@@ -202,7 +202,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getMatricesTests"
+            url: "http://localhost:3002/getMatricesTests"
         }).then((res) => {
             setMatricesTests(res.data);
             if (res.data.length !== 0) {
@@ -216,7 +216,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getConceptosTests"
+            url: "http://localhost:3002/getConceptosTests"
         }).then((res) => {
             setConceptosTests(res.data);
             if (res.data.length !== 0) {
@@ -230,7 +230,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getReconocimientoTests"
+            url: "http://localhost:3002/getReconocimientoTests"
         }).then((res) => {
             setReconocimientoTests(res.data);
             if (res.data.length !== 0) {
@@ -244,7 +244,7 @@ export default function Resultados() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3001/getBusquedaTests"
+            url: "http://localhost:3002/getBusquedaTests"
         }).then((res) => {
             setBusquedaTests(res.data);
             if (res.data.length !== 0) {

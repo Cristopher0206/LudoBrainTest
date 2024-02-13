@@ -283,7 +283,7 @@ export default function ReadPreguntaBusqueda() {
                                             {samples.map((sample, index) => (
                                                 <div key={index}
                                                      className={`flex justify-center shadow-md ${styles.sample_btn_busqueda}`}>
-                                                    <Image src={`/assets/${sample.imagen}`}
+                                                    <Image src={`/images/${sample.imagen}`}
                                                            width={500}
                                                            height={500}
                                                            className={`${styles.sample_img}`}
@@ -327,7 +327,7 @@ export default function ReadPreguntaBusqueda() {
                                                     onClick={() => verifyAnswer(answer.respuesta_correcta)}
                                                     className={`${styles.answer_btn_comprension} flex justify-center 
                                 shadow-md w-100 h-100`}>
-                                                <Image src={`/assets/${answer.imagen}`}
+                                                <Image src={`/images/${answer.imagen}`}
                                                        width={500}
                                                        height={500}
                                                        className={`${styles.answer_img}`}

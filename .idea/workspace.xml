@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bc06d86-58d0-4429-90d8-bfeb2a3109dd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ludobraintest_v2_0_0/server/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +50,10 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;branch__4&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.9.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.9.5&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/ConstruLOG&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/LudoBrainTest&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -65,11 +67,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\effects" />
       <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages\read\preguntas" />
       <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages\select" />
       <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages\create" />
       <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages\read" />
+      <recent name="D:\GitHub\LudoBrainTest\ludobraintest_v2_0_0\pages" />
     </key>
   </component>
   <component name="RunManager">
@@ -155,16 +157,7 @@
       <workItem from="1706912326551" duration="14826000" />
       <workItem from="1706954443237" duration="1502000" />
       <workItem from="1706985249392" duration="20551000" />
-      <workItem from="1707015915050" duration="3575000" />
-      <workItem from="1707137363004" duration="1558000" />
-      <workItem from="1707155352085" duration="9303000" />
-      <workItem from="1707229803255" duration="482000" />
-      <workItem from="1707230306807" duration="25695000" />
-      <workItem from="1707263033460" duration="6009000" />
-      <workItem from="1707366489208" duration="10405000" />
-      <workItem from="1707395573675" duration="6952000" />
-      <workItem from="1707615906979" duration="592000" />
-      <workItem from="1707669034083" duration="593000" />
+      <workItem from="1708630352199" duration="4277000" />
     </task>
     <servers />
   </component>

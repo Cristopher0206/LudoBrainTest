@@ -16,7 +16,7 @@ app.use(boddParser.json());
 app.use(expressSession({secret: 'mySecretKey', resave: false, saveUninitialized: false}));
 
 app.use(cors({
-    origin: "http://poliquizzes.com:3000",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
@@ -29,9 +29,9 @@ require("./passportConfig")(passport);
 
 app.get('/', (req, res) => {
     res.send("Hello World");
-});
-app.listen(3001, () => {
-    console.log('Server started on port 3001');
+})
+app.listen(3002, () => {
+    console.log('Server started on port 3002');
 })
 
 

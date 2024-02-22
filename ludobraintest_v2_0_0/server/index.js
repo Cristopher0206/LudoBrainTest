@@ -1,5 +1,4 @@
-const path = process.env.REACT_APP_BACKEND_URL;
-const frontEndPort = process.env.REACT_APP_FRONTEND_PORT;
+require('dotenv').config({path:'./.env'});
 const express = require('express');
 const boddParser = require('body-parser');
 const cors = require('cors');
@@ -11,12 +10,17 @@ const multer = require("multer");
 
 const app = express();
 
+const path = process.env.REACT_APP_BACKEND_URL;
+const frontEndPort = process.env.REACT_APP_FRONTEND_PORT;
+const port = process.env.REACT_APP_BACKEND_PORT;
+
 app.use(boddParser.urlencoded({extended: true}));
 app.use(boddParser.json());
 app.use(expressSession({secret: 'mySecretKey', resave: false, saveUninitialized: false}));
 
+const completePath = path + ':' + frontEndPort;
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: completePath,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
@@ -30,8 +34,8 @@ require("./passportConfig")(passport);
 app.get('/', (req, res) => {
     res.send("Hello World");
 })
-app.listen(3002, () => {
-    console.log('Server started on port 3002');
+app.listen(port, () => {
+    console.log('Server started successfully');
 })
 
 

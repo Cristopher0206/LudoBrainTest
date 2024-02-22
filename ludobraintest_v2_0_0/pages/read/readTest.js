@@ -1,4 +1,4 @@
-    import UpperBar from "@/components/UpperBar";
+import UpperBar from "@/components/UpperBar";
 import InstructionBar from "@/components/InstructionBar";
 import navstyles from '@/styles/navstyles.module.css'
 import styles from '@/styles/styles.module.css'
@@ -11,10 +11,13 @@ import Swal from "sweetalert2";
 import UseSpeechSynthesis from "@/effects/useSpeechSynthesis";
 import useVoiceReader from "@/effects/useVoiceReader";
 import Image from "next/image";
+import configurationServices from "@/public/config/configurationServices";
+import configurationPort from "@/public/config/configurationPort";
 
 export default function ReadTest() {
     const router = useRouter();
     let section;
+    const basePath = configurationServices.url + configurationPort.port;
     const {speak, speaking} = UseSpeechSynthesis();
     /*------------------- ESTADOS -------------------*/
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -57,7 +60,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getSections"
+            url: basePath + "/getSections"
         }).then((res) => {
             setSections(res.data);
         }).catch((err) => {
@@ -68,7 +71,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getInformacionTests"
+            url: basePath + "/getInformacionTests"
         }).then((res) => {
             setInformacionTests(res.data);
             if (res.data.length !== 0) {
@@ -82,7 +85,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getSemejanzasTests"
+            url: basePath + "/getSemejanzasTests"
         }).then((res) => {
             setSemejanzasTests(res.data);
             if (res.data.length !== 0) {
@@ -96,7 +99,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getVocabularioTests"
+            url: basePath + "/getVocabularioTests"
         }).then((res) => {
             setVocabularioTests(res.data);
             if (res.data.length !== 0) {
@@ -110,7 +113,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getComprensionTests"
+            url: basePath + "/getComprensionTests"
         }).then((res) => {
             setComprensionTests(res.data);
             if (res.data.length !== 0) {
@@ -124,7 +127,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getDibujosTests"
+            url: basePath + "/getDibujosTests"
         }).then((res) => {
             setDibujosTests(res.data);
             if (res.data.length !== 0) {
@@ -138,7 +141,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getNombresTests"
+            url: basePath + "/getNombresTests"
         }).then((res) => {
             setNombresTests(res.data);
             if (res.data.length !== 0) {
@@ -152,7 +155,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getMatricesTests"
+            url: basePath + "/getMatricesTests"
         }).then((res) => {
             setMatricesTests(res.data);
             if (res.data.length !== 0) {
@@ -166,7 +169,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getConceptosTests"
+            url: basePath + "/getConceptosTests"
         }).then((res) => {
             setConceptosTests(res.data);
             if (res.data.length !== 0) {
@@ -180,7 +183,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getReconocimientoTests"
+            url: basePath + "/getReconocimientoTests"
         }).then((res) => {
             setReconocimientoTests(res.data);
             if (res.data.length !== 0) {
@@ -194,7 +197,7 @@ export default function ReadTest() {
         axios({
             method: "get",
             withCredentials: true,
-            url: "http://localhost:3002/getBusquedaTests"
+            url: basePath + "/getBusquedaTests"
         }).then((res) => {
             setBusquedaTests(res.data);
             if (res.data.length !== 0) {
@@ -348,7 +351,7 @@ export default function ReadTest() {
                         id_test: idTest,
                     },
                     withCredentials: true,
-                    url: "http://localhost:3002/deleteTest"
+                    url: basePath + "/deleteTest"
                 }).then((res) => {
                     console.log(res);
                     if (res.data.message === 'Test eliminado exitosamente') {

@@ -1,2 +1,2 @@
-const url = 'http://localhost';
+const url = 'http://poliquizzes.com';
 export default {url};

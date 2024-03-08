@@ -110,8 +110,9 @@ export default function ChangePassword() {
                                type="text"
                                placeholder={`example@gmail.com`}
                                onChange={e => setUsuario(e.target.value)}
+                               autoComplete="new-username"
                                className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-black border-opacity-10  
-                           text-black ${styles.input_yellow} ${styles.input_text}`}/>
+                           text-black ${styles.input_sky_blue} ${styles.input_text}`}/>
                     </div>
                     <br/>
                     <div className={`flex justify-start`}>
@@ -123,10 +124,11 @@ export default function ChangePassword() {
                         <input value={password}
                                type="password"
                                onChange={e => setPassword(e.target.value)}
+                               autoComplete="new-password"
                                className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-black border-opacity-10  
-                           text-black ${styles.input_yellow} ${styles.input_text}`}/>
+                           text-black ${styles.input_sky_blue} ${styles.input_text}`}/>
                     </div>
-                    <br/>
+                    <br/><br/>
                     <div className={`flex justify-center`}>
                         <div className={`w-50`}>
                             <Button text={`Actualizar Contraseña`} instruction={updateEducador}

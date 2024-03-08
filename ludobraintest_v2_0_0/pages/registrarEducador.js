@@ -108,7 +108,7 @@ export default function RegistrarEducador() {
                                type="text"
                                onChange={e => setNombre(e.target.value)}
                                className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-black border-opacity-10  
-                           text-black ${styles.input_yellow} ${styles.input_text}`}/>
+                           text-black ${styles.input_sky_blue} ${styles.input_text}`}/>
                     </p>
                     <label className={`font-bold ${styles.label_red} ${styles.label}`}>
                         Apellido
@@ -119,7 +119,7 @@ export default function RegistrarEducador() {
                                type="text"
                                onChange={e => setApellido(e.target.value)}
                                className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-black border-opacity-10  
-                           text-black ${styles.input_yellow} ${styles.input_text}`}/>
+                           text-black ${styles.input_sky_blue} ${styles.input_text}`}/>
                     </p>
                     <label className={`font-bold ${styles.label_red} ${styles.label}`}>
                         Usuario
@@ -127,11 +127,13 @@ export default function RegistrarEducador() {
                     <p
                         className={`flex justify-center bg-white p-0 rounded-2xl`}>
                         <input value={usuario}
+                                 name={`usuario`}
                                type="text"
-                               placeholder={`example@gmail.com`}
+                               placeholder={`yourName@example.com`}
                                onChange={e => setUsuario(e.target.value)}
+                               autoComplete="new-username"
                                className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-black border-opacity-10  
-                           text-black ${styles.input_yellow} ${styles.input_text}`}/>
+                           text-black ${styles.input_sky_blue} ${styles.input_text}`}/>
                     </p>
                     <label className={`font-bold ${styles.label_red} ${styles.label}`}>
                         Contraseña
@@ -139,10 +141,12 @@ export default function RegistrarEducador() {
                     <p
                         className={`flex justify-center bg-white p-0 rounded-2xl`}>
                         <input value={password}
+                               name={`password`}
                                type="password"
                                onChange={e => setPassword(e.target.value)}
+                               autoComplete="new-password"
                                className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-black border-opacity-10  
-                           text-black ${styles.input_yellow} ${styles.input_text}`}/>
+                           text-black ${styles.input_sky_blue} ${styles.input_text}`}/>
                     </p>
                     <br/>
                     <div className={`flex justify-center`}>

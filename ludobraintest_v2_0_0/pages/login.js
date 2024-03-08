@@ -137,38 +137,36 @@ export default function Login() {
                            className={`${styles.ludolab_logo}`} width={500} height={50}/>
                 </div>
             </header>
-            <br/><br/>
+            <br/>
             <section className={`row px-5`}>
-                <div className={`col-7 py-5 flex justify-end self-center border-t-2 border-l-2 border-b-2 border-black bg-white bg-opacity-75
+                <div className={`col-sm-5 col-lg-7 py-5 flex justify-end self-center border-t-2 border-l-2 border-b-2 border-black bg-white bg-opacity-75
                 rounded-l-2xl border-opacity-50`}>
-                    <div className={`container-fluid`}>
-                        <div className={`row justify-content-end`}>
-                            <label className={`col-2 flex justify-center self-center`}>
-                                <Image src="/images/usuario.png"
-                                       alt="Ícono de usuario"
-                                       className={`${styles.user_logo}`} width={100} height={100}/>
+                    <div className={`container-fluid ps-sm-4`}>
+                        <div className={`row justify-content-end px-lg-5`}>
+                            <label className={`flex justify-start self-center 
+                            ${styles.label_red}`}>
+                                <h4>Usuario</h4>
                             </label>
-                            <div className={`col-10 self-center bg-amber-50 rounded-xl w-fit p-0`}>
+                            <div className={`self-center bg-amber-50 rounded-xl w-fit p-0`}>
                                 <input type="text"
                                        placeholder={`Ingresa tu usuario (correo electrónico)`}
                                        onChange={e => setLoginUsuario(e.target.value)}
-                                       className={`w-100 p-3 rounded-xl shadow-md border-2 border-opacity-100  
-                           text-black text-xl ${styles.input_sky_blue}`}/>
+                                       className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100  
+                           text-black text-lg ${styles.input_sky_blue}`}/>
                             </div>
                         </div>
                         <br/>
-                        <div className={`row justify-content-end`}>
-                            <label className={`col-2 flex justify-center`}>
-                                <Image src="/images/llave-de-la-puerta.png"
-                                       alt="password icon"
-                                       className={`${styles.password_logo}`} width={100} height={100}/>
+                        <div className={`row justify-content-end px-lg-5`}>
+                            <label className={`flex justify-start self-center text-2xl
+                            ${styles.label_red}`}>
+                                <h4>Contraseña</h4>
                             </label>
-                            <div className={`col-10 self-center bg-amber-50 rounded-xl w-fit p-0`}>
+                            <div className={`self-center bg-amber-50 rounded-xl w-fit p-0`}>
                                 <input name={`password`}
                                        type="password"
                                        onChange={e => setLoginPassword(e.target.value)}
-                                       className={`w-100 p-3 rounded-xl shadow-md border-2 border-opacity-100
-                           text-black text-xl ${styles.input_sky_blue}`}/>
+                                       className={`w-100 px-3 py-2 rounded-xl shadow-md border-2 border-opacity-100
+                           text-black text-lg ${styles.input_sky_blue}`}/>
                             </div>
                         </div>
                         <br/>
@@ -188,13 +186,15 @@ export default function Login() {
                     </div>
                 </div>
                 <div
-                    className={`col-5 py-5 flex justify-center border-t-2 border-r-2 border-b-2 border-black bg-white 
+                    className={`col-sm-7 col-lg-5 py-5 flex justify-center border-t-2 border-r-2 border-b-2 border-black bg-white 
                     border-opacity-50 bg-opacity-75 rounded-r-2xl`}>
                     <Image src="/images/logo_entrenaTuMente2.png"
-                           alt="Logo de Entrena Tu Mente" width={500} height={50}/>
+                           alt="Logo de Entrena Tu Mente"
+                           width={500}
+                           height={50} className={`self-center ${styles.ETM_logo}`}/>
                 </div>
             </section>
-            <br/><br/>
+            <br/>
             <footer className={`self-end`}>
                 <div className={`flex justify-center`}>
                     <Link href={`/changePassword`}

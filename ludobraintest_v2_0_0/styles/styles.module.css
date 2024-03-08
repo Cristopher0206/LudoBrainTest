@@ -5,19 +5,21 @@
     }
 
     .epn_logo {
-        height: 15vw;
+        height: 11vw;
+        width: auto;
     }
 
     .ludolab_logo {
-        height: 15vw;
+        height: 11vw;
+        width: auto;
     }
 
     .user_logo {
-        width: 7.5vw;
+        width: 2vw;
     }
 
     .password_logo {
-        width: 7.5vw;
+        width: 2vw;
     }
 
     .echo_logo {
@@ -43,7 +45,7 @@
     }
 
     .btn_text {
-        font-size: 2.7vw;
+        font-size: 2vw;
     }
 
     .btns_div {
@@ -58,6 +60,11 @@
     .card_test_text {
         font-size: 2.5vw;
     }
+
+    .ETM_logo {
+        height: auto;
+        width: 50vw;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
@@ -67,11 +74,13 @@
     }
 
     .epn_logo {
-        height: 13vw;
+        height: 10vw;
+        width: auto;
     }
 
     .ludolab_logo {
-        height: 13vw;
+        height: 10vw;
+        width: auto;
     }
 
     .user_logo {
@@ -105,7 +114,7 @@
     }
 
     .btn_text {
-        font-size: 2vw;
+        font-size: 1.8vw;
     }
 
     .btns_div {
@@ -120,6 +129,10 @@
     .card_test_text {
         font-size: 2vw;
     }
+    .ETM_logo {
+        height: auto;
+        width: 40vw;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
@@ -129,11 +142,13 @@
     }
 
     .epn_logo {
-        height: 12vw;
+        height: 9vw;
+        width: auto;
     }
 
     .ludolab_logo {
-        height: 12vw;
+        height: 9vw;
+        width: auto;
     }
 
     .user_logo {
@@ -167,7 +182,7 @@
     }
 
     .btn_text {
-        font-size: 1.8vw;
+        font-size: 1.6vw;
     }
 
     .btns_div {
@@ -192,12 +207,12 @@
     }
 
     .epn_logo {
-        height: 8vw;
+        height: 9vw;
         width: auto;
     }
 
     .ludolab_logo {
-        height: 8vw;
+        height: 9vw;
         width: auto;
     }
 
@@ -241,7 +256,7 @@
     }
 
     .btn_text {
-        font-size: 1.6vw;
+        font-size: 1.4vw;
     }
 
     .btns_div {

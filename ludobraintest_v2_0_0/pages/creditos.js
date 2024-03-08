@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from '@/styles/styles.module.css'
 import Image from 'next/image'
+import Link from "next/link";
 
 export default function Creditos() {
     return (
@@ -68,18 +69,18 @@ export default function Creditos() {
                 </div>
                 <div className={`row py-3`}>
                     <div className={`col-12 flex justify-center`}>
-                        <button>
+                        <Link href={"https://www.facebook.com/LudoLab403"}>
                             <Image src="/images/facebook.png" alt="Facebook LOGO" className={`h-10`}
                                    width={40} height={100}/>
-                        </button>
-                        <button>
+                        </Link>
+                        <Link href={"https://www.instagram.com/ludolabepn/"}>
                             <Image src="/images/instagram.png" alt="Facebook LOGO" className={`h-10`}
                                    width={40} height={100}/>
-                        </button>
-                        <button>
+                        </Link>
+                        <Link href={"#"}>
                             <Image src="/images/gorjeo.png" alt="Facebook LOGO" className={`h-10`}
                                    width={40} height={100}/>
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div className={`row`}>
